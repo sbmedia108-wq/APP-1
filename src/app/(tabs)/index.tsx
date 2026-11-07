@@ -5,6 +5,7 @@ import { Image, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Icon, SectionHeader, StatusPill } from '@/components/ui';
 import { pipelineStats } from '@/lib/memory';
+import { monthKey, summarise } from '@/lib/receipts';
 import { calcTotals, formatGBP0 } from '@/lib/money';
 import { useStore } from '@/lib/store';
 import { chaseMessage, whatsAppUrl } from '@/lib/whatsapp';
@@ -17,7 +18,9 @@ function greeting() {
 
 export default function Home() {
   const insets = useSafeAreaInsets();
-  const { quotes, profile, tools, updateQuote, ready, onboarded } = useStore();
+  const { quotes, profile, tools, updateQuote, ready, onboarded, purchases } = useStore();
+  const month = new Date().toISOString().slice(0, 7);
+  const spent = summarise(purchases.filter((p) => monthKey(p) === month));
   useEffect(() => {
     if (ready && !onboarded) router.push('/welcome');
   }, [ready, onboarded]);
@@ -103,6 +106,20 @@ export default function Home() {
             </View>
           </Card>
         ))}
+
+        <SectionHeader title="Receipts" />
+        <Card onPress={() => router.push('/receipts')} style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+          <View style={[st.round, { backgroundColor: colors.amberSoft }]}>
+            <Icon name="receipt-text-outline" color={colors.amberDeep} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={type.h3}>Snap a receipt</Text>
+            <Text style={{ color: colors.muted, marginTop: 2 }}>
+              {spent.count ? `${spent.count} this month · ${formatGBP0(spent.total)} spent` : 'Clean records for your tax return'}
+            </Text>
+          </View>
+          <Icon name="camera-outline" color={colors.faint} />
+        </Card>
 
         <SectionHeader title="Before you set off" />
         <Card onPress={() => router.push('/tools')} style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>

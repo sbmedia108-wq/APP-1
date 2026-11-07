@@ -25,6 +25,8 @@ export default function RootLayout() {
           <Stack.Screen name="settings" options={{ title: 'Your business', presentation: 'modal' }} />
           <Stack.Screen name="prices" options={{ title: 'My materials & prices' }} />
           <Stack.Screen name="import-materials" options={{ title: 'Import materials' }} />
+          <Stack.Screen name="receipts" options={{ title: 'Receipts' }} />
+          <Stack.Screen name="receipt/[id]" options={{ title: 'Receipt' }} />
           <Stack.Screen name="welcome" options={{ presentation: 'fullScreenModal', headerShown: false, contentStyle: { backgroundColor: colors.ink } }} />
         </Stack>
       </StoreProvider>

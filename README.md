@@ -22,6 +22,7 @@ One codebase for **iOS and Android** (Expo / React Native), plus a small AI serv
 | **My materials & prices** | Import your own materials from a CSV (Excel, Google Sheets, merchant price list) or paste a list from your notes; add items by hand; or override guide prices with what you pay. Recognised in voice quotes, search and calculators. |
 | **Backup & restore** | One tap saves a backup file to Google Drive, email or WhatsApp; restore it on a new phone. |
 | **First-time setup** | Name, trade, day rate and mobile in 30 seconds; example jobs are labelled and removable. |
+| **Receipts** | Snap a merchant receipt; the AI reads supplier, items, VAT and total into a clean branded purchase record PDF with the original attached. Link to a job, save the prices into your materials, and send a whole month as one PDF for your accountant. |
 | **UK business setup** | VAT (20%) toggle and number, deposit %, payment terms, bank details, quote numbering. |
 
 ## Run it

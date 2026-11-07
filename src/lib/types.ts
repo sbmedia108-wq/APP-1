@@ -94,3 +94,37 @@ export interface ToolCheck {
   loaded: string[];
   startedAt: string;
 }
+
+export interface PurchaseItem {
+  id: string;
+  description: string;
+  qty: number;
+  unit: string;
+  /** As printed on the receipt (see Purchase.pricesIncludeVat). */
+  unitPrice: number;
+}
+
+/** A merchant receipt or invoice the user has scanned, kept as their own purchase record. */
+export interface Purchase {
+  id: string;
+  createdAt: string;
+  /** Date on the receipt, YYYY-MM-DD. */
+  date: string;
+  supplier: string;
+  branch: string;
+  supplierVatNumber: string;
+  reference: string;
+  items: PurchaseItem[];
+  subtotal: number;
+  vat: number;
+  total: number;
+  pricesIncludeVat: boolean;
+  paymentMethod: string;
+  /** Local URI of the original receipt photo. */
+  photo?: string;
+  /** Job (quote) these materials were bought for. */
+  quoteId?: string;
+  notes: string;
+  /** Things the reader couldn't make out, for the user to check. */
+  unreadable: string[];
+}

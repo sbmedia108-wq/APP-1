@@ -7,7 +7,8 @@ import { applyRememberedPrices, findSimilarJobs } from './memory';
 import { applyPricingMode, parseTranscriptOffline, type ParsedDraft } from './parser';
 import { uid } from './id';
 import { calcTotals } from './money';
-import type { BusinessProfile, Quote } from './types';
+import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
+import type { BusinessProfile, Purchase, Quote } from './types';
 
 const API_URL = process.env.EXPO_PUBLIC_QUOTE_API_URL;
 const API_TOKEN = process.env.EXPO_PUBLIC_QUOTE_API_TOKEN;
@@ -47,4 +48,40 @@ export async function draftQuote(transcript: string, profile: BusinessProfile, h
   }
   const d = parseTranscriptOffline(transcript, p);
   return { ...d, items: applyPricingMode(applyRememberedPrices(d.items, history), p), source: 'offline' };
+}
+
+export class NoServerError extends Error {}
+
+/**
+ * Reads a receipt photo into purchase fields using the Graft server (Claude vision).
+ * The photo is shrunk to ~1600px first to keep uploads small on site.
+ */
+export async function readReceipt(photoUri: string): Promise<Partial<Purchase>> {
+  if (!API_URL) throw new NoServerError('Automatic reading needs the Graft server.');
+  const ref = await ImageManipulator.manipulate(photoUri).resize({ width: 1600 }).renderAsync();
+  const img = await ref.saveAsync({ compress: 0.75, format: SaveFormat.JPEG, base64: true });
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 60_000);
+  try {
+    const res = await fetch(`${API_URL.replace(/\/$/, '')}/v1/receipt/parse`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', ...(API_TOKEN ? { authorization: `Bearer ${API_TOKEN}` } : {}) },
+      body: JSON.stringify({ imageBase64: img.base64, mediaType: 'image/jpeg' }),
+      signal: ctrl.signal,
+    });
+    if (!res.ok) throw new Error((await res.json().catch(() => ({})) as { error?: string }).error ?? `Server error ${res.status}`);
+    const r = (await res.json()) as {
+      isReceipt: boolean; supplier: string; supplierBranch: string; supplierVatNumber: string; date: string; reference: string;
+      items: { description: string; qty: number; unit: string; unitPrice: number }[]; subtotal: number; vat: number; total: number;
+      pricesIncludeVat: boolean; paymentMethod: string; unreadable: string[];
+    };
+    if (!r.isReceipt) throw new Error('That doesn’t look like a receipt or invoice. Try again with the whole receipt in shot.');
+    return {
+      supplier: r.supplier, branch: r.supplierBranch, supplierVatNumber: r.supplierVatNumber, date: /^\d{4}-\d{2}-\d{2}$/.test(r.date) ? r.date : '',
+      reference: r.reference, items: r.items.map((i) => ({ ...i, id: uid() })), subtotal: r.subtotal, vat: r.vat, total: r.total,
+      pricesIncludeVat: r.pricesIncludeVat, paymentMethod: r.paymentMethod, unreadable: r.unreadable,
+    };
+  } finally {
+    clearTimeout(timer);
+  }
 }

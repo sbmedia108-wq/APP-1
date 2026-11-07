@@ -3,7 +3,8 @@ import * as Sharing from 'expo-sharing';
 import { Platform } from 'react-native';
 import { photoDataUri } from './files';
 import { calcTotals, formatGBP } from './money';
-import type { BusinessProfile, Quote } from './types';
+import { monthLabel, summarise } from './receipts';
+import type { BusinessProfile, Purchase, Quote } from './types';
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
@@ -48,4 +49,82 @@ export async function shareQuotePdf(q: Quote, p: BusinessProfile, kind: 'Quote' 
   }
   const { uri } = await Print.printToFileAsync({ html });
   await Sharing.shareAsync(uri, { mimeType: 'application/pdf', dialogTitle: `${kind} ${q.number}`, UTI: 'com.adobe.pdf' });
+}
+
+const fmtDate = (d: string) => (d ? new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '—');
+
+const RECORD_CSS = `*{box-sizing:border-box}body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#0B1726;margin:0;padding:40px;font-size:13px}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:4px solid #FFB020;padding-bottom:20px}
+  h1{font-size:24px;margin:0 0 4px}.muted{color:#5B6B7F}.tag{background:#0B1726;color:#fff;padding:6px 12px;border-radius:6px;font-weight:700;letter-spacing:1px;font-size:12px;white-space:nowrap}
+  .grid{display:flex;gap:32px;margin:24px 0}.grid div{flex:1}.lbl{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#98A2B3;font-weight:700;margin-bottom:4px}
+  table{width:100%;border-collapse:collapse;margin-top:8px}th{text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#5B6B7F;border-bottom:1px solid #E4E7EC;padding:8px 0}
+  td{padding:9px 0;border-bottom:1px solid #F0F2F5;vertical-align:top}.r{text-align:right}.b{font-weight:700}
+  .tot{margin-left:auto;width:280px;margin-top:16px}.tot div{display:flex;justify-content:space-between;padding:4px 0}.grand{font-size:18px;font-weight:800;border-top:2px solid #0B1726;margin-top:6px;padding-top:10px!important}
+  .foot{margin-top:28px;font-size:11px;color:#5B6B7F;line-height:1.6}.page{page-break-before:always;padding-top:8px}
+  .orig{display:block;max-width:100%;max-height:900px;margin:12px auto 0;border:1px solid #E4E7EC;border-radius:6px}`;
+
+function bizHeader(p: BusinessProfile, tag: string) {
+  return `<div class="top"><div><h1>${esc(p.businessName || p.ownerName || 'Your Business')}</h1><div class="muted">${esc([p.ownerName && p.businessName ? p.ownerName : '', p.phone, p.email].filter(Boolean).join(' · '))}</div>${p.vatRegistered && p.vatNumber ? `<div class="muted">VAT ${esc(p.vatNumber)}</div>` : ''}</div><span class="tag">${tag}</span></div>`;
+}
+
+/** A clean purchase record for the user's own books, with the original receipt attached. */
+export function purchaseHtml(x: Purchase, p: BusinessProfile, job?: Quote, photo?: string): string {
+  const rows = x.items
+    .map((i) => `<tr><td>${esc(i.description)}</td><td class="r">${i.qty} ${esc(i.unit)}</td><td class="r">${formatGBP(i.unitPrice)}</td><td class="r b">${formatGBP(i.qty * i.unitPrice)}</td></tr>`)
+    .join('');
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${RECORD_CSS}</style></head><body>
+  ${bizHeader(p, 'PURCHASE RECORD')}
+  <div class="grid"><div><div class="lbl">Supplier</div><b>${esc(x.supplier || '—')}</b><div class="muted">${esc(x.branch)}</div>${x.supplierVatNumber ? `<div class="muted">VAT ${esc(x.supplierVatNumber)}</div>` : ''}</div>
+  <div><div class="lbl">Date</div><b>${fmtDate(x.date)}</b><div class="lbl" style="margin-top:10px">Receipt / invoice no.</div>${esc(x.reference || '—')}</div>
+  <div><div class="lbl">Job</div><b>${esc(job ? job.title : 'General stock')}</b>${job ? `<div class="muted">${esc([job.number, job.client.name].filter(Boolean).join(' · '))}</div>` : ''}${x.paymentMethod ? `<div class="lbl" style="margin-top:10px">Paid by</div>${esc(x.paymentMethod)}` : ''}</div></div>
+  <table><thead><tr><th>Item</th><th class="r">Qty</th><th class="r">Unit price${x.pricesIncludeVat ? ' (inc VAT)' : ''}</th><th class="r">Amount</th></tr></thead><tbody>${rows || '<tr><td colspan="4" class="muted">No line items recorded</td></tr>'}</tbody></table>
+  <div class="tot"><div><span>Net</span><span>${formatGBP(x.subtotal)}</span></div><div><span>VAT</span><span>${formatGBP(x.vat)}</span></div><div class="grand"><span>Total paid</span><span>${formatGBP(x.total)}</span></div></div>
+  ${x.notes ? `<div class="foot"><b>Notes:</b> ${esc(x.notes)}</div>` : ''}
+  <div class="foot">Purchase record prepared by ${esc(p.businessName || p.ownerName || 'the business')} from the supplier’s original ${photo ? 'receipt, attached on the next page' : 'receipt'}. This is an internal record, not a supplier invoice.</div>
+  ${photo ? `<div class="page"><div class="lbl">Original receipt</div><img class="orig" src="${photo}"></div>` : ''}
+  </body></html>`;
+}
+
+/** Month summary for the accountant / tax return, with every original receipt attached. */
+export function monthHtml(monthKey: string, list: Purchase[], p: BusinessProfile, jobs: Record<string, Quote>, photos: Record<string, string>): string {
+  const sum = summarise(list);
+  const sorted = [...list].sort((a, b) => (a.date || a.createdAt).localeCompare(b.date || b.createdAt));
+  const rows = sorted
+    .map((x) => `<tr><td>${x.date ? new Date(x.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }) : '—'}</td><td>${esc(x.supplier || '—')}<div class="muted">${esc(x.reference)}</div></td><td>${esc(x.quoteId && jobs[x.quoteId] ? jobs[x.quoteId]!.title : 'General')}</td><td class="r">${formatGBP(x.subtotal)}</td><td class="r">${formatGBP(x.vat)}</td><td class="r b">${formatGBP(x.total)}</td></tr>`)
+    .join('');
+  const pages = sorted
+    .filter((x) => photos[x.id])
+    .map((x) => `<div class="page"><div class="lbl">${esc(x.supplier || 'Receipt')} · ${fmtDate(x.date)} · ${formatGBP(x.total)}</div><img class="orig" src="${photos[x.id]}"></div>`)
+    .join('');
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${RECORD_CSS}</style></head><body>
+  ${bizHeader(p, 'PURCHASES')}
+  <div class="grid"><div><div class="lbl">Period</div><b>${monthLabel(monthKey)}</b></div><div><div class="lbl">Receipts</div><b>${sum.count}</b></div><div><div class="lbl">Total spent</div><b>${formatGBP(sum.total)}</b></div></div>
+  <table><thead><tr><th>Date</th><th>Supplier</th><th>Job</th><th class="r">Net</th><th class="r">VAT</th><th class="r">Total</th></tr></thead><tbody>${rows}</tbody></table>
+  <div class="tot"><div><span>Net</span><span>${formatGBP(sum.net)}</span></div><div><span>VAT</span><span>${formatGBP(sum.vat)}</span></div><div class="grand"><span>Total</span><span>${formatGBP(sum.total)}</span></div></div>
+  <div class="foot">Prepared from original supplier receipts, attached on the following pages.</div>
+  ${pages}
+  </body></html>`;
+}
+
+async function shareHtml(html: string, title: string) {
+  if (Platform.OS === 'web') {
+    await Print.printAsync({ html });
+    return;
+  }
+  const { uri } = await Print.printToFileAsync({ html });
+  await Sharing.shareAsync(uri, { mimeType: 'application/pdf', dialogTitle: title, UTI: 'com.adobe.pdf' });
+}
+
+export async function sharePurchasePdf(x: Purchase, p: BusinessProfile, job?: Quote) {
+  const photo = x.photo ? await photoDataUri(x.photo) : undefined;
+  await shareHtml(purchaseHtml(x, p, job, photo), `Purchase record ${x.supplier} ${x.date}`);
+}
+
+export async function shareMonthPdf(monthKey: string, list: Purchase[], p: BusinessProfile, quotes: Quote[]) {
+  const photos: Record<string, string> = {};
+  for (const x of list) if (x.photo) {
+    const d = await photoDataUri(x.photo);
+    if (d) photos[x.id] = d;
+  }
+  await shareHtml(monthHtml(monthKey, list, p, Object.fromEntries(quotes.map((q) => [q.id, q])), photos), `Purchases ${monthLabel(monthKey)}`);
 }

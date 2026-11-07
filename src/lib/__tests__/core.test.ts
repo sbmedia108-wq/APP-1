@@ -155,3 +155,19 @@ test('custom materials are found by search and by voice parsing', async () => {
   assert.equal(d.items.find((i) => /jakcured/i.test(i.description))?.qty, 14);
   setCustomMaterials([]);
 });
+
+test('receipts: totals, grouping and turning lines into materials', async () => {
+  const r = await import('../receipts.ts');
+  const base = { id: 'a', createdAt: '2026-11-03T10:00:00Z', branch: '', supplierVatNumber: '', reference: '', paymentMethod: '', notes: '', unreadable: [] };
+  const p1 = r.fillTotals({ ...base, date: '2026-11-02', supplier: 'Screwfix', items: [{ id: '1', description: 'Postcrete 20kg', qty: 10, unit: 'bag', unitPrice: 7.68 }], subtotal: 0, vat: 12.8, total: 0, pricesIncludeVat: true });
+  assert.equal(p1.total, 76.8);
+  assert.equal(p1.subtotal, 64);
+  const p2 = { ...p1, id: 'b', date: '2026-10-28', subtotal: 100, vat: 20, total: 120 };
+  const months = r.groupByMonth([p2, p1]);
+  assert.deepEqual(months.map((m) => m.key), ['2026-11', '2026-10']);
+  assert.equal(months[0]!.label, 'November 2026');
+  assert.deepEqual(r.summarise([p1, p2]), { count: 2, net: 164, vat: 32.8, total: 196.8 });
+  const mats = r.purchaseToMaterials(p1);
+  assert.equal(mats[0]!.price, 6.4);
+  assert.equal(mats[0]!.category, 'From Screwfix');
+});

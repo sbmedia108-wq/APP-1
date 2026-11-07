@@ -6,6 +6,7 @@
  * so the Anthropic API key never ships inside the app binary.
  *
  *   POST /v1/quote/parse   { transcript, profile, similarJobs }  ->  ParsedQuote
+ *   POST /v1/receipt/parse { imageBase64, mediaType }       ->  ParsedReceipt
  *   GET  /health
  *
  * Run:  ANTHROPIC_API_KEY=... npm start   (listens on $PORT, default 8787)
@@ -180,6 +181,92 @@ async function parseQuote(input: z.infer<typeof RequestSchema>): Promise<ParsedQ
 }
 
 // ---------------------------------------------------------------------------
+// Receipts: read a photo of a merchant receipt / invoice into structured data
+// ---------------------------------------------------------------------------
+
+const ReceiptRequestSchema = z.object({
+  imageBase64: z.string().min(100).max(8_000_000),
+  mediaType: z.enum(["image/jpeg", "image/png", "image/webp"]).default("image/jpeg"),
+});
+
+const ReceiptSchema = z.object({
+  isReceipt: z.boolean(),
+  supplier: z.string(),
+  supplierBranch: z.string(),
+  supplierVatNumber: z.string(),
+  date: z.string(),
+  reference: z.string(),
+  items: z.array(z.object({ description: z.string(), qty: z.number(), unit: z.string(), unitPrice: z.number(), total: z.number() })),
+  subtotal: z.number(),
+  vat: z.number(),
+  total: z.number(),
+  pricesIncludeVat: z.boolean(),
+  paymentMethod: z.string(),
+  unreadable: z.array(z.string()),
+});
+export type ParsedReceipt = z.infer<typeof ReceiptSchema>;
+
+const RECEIPT_JSON_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["isReceipt", "supplier", "supplierBranch", "supplierVatNumber", "date", "reference", "items", "subtotal", "vat", "total", "pricesIncludeVat", "paymentMethod", "unreadable"],
+  properties: {
+    isReceipt: { type: "boolean" },
+    supplier: str, supplierBranch: str, supplierVatNumber: str,
+    date: { type: "string", description: "ISO date YYYY-MM-DD, or empty if not shown" },
+    reference: { type: "string", description: "Receipt, invoice or transaction number" },
+    items: {
+      type: "array",
+      items: {
+        type: "object", additionalProperties: false,
+        required: ["description", "qty", "unit", "unitPrice", "total"],
+        properties: { description: str, qty: num, unit: str, unitPrice: num, total: num },
+      },
+    },
+    subtotal: num, vat: num, total: num,
+    pricesIncludeVat: { type: "boolean", description: "True if item prices on the receipt already include VAT (typical for retail till receipts)" },
+    paymentMethod: str,
+    unreadable: { type: "array", items: str, description: "Anything that couldn't be read clearly, for the user to check" },
+  },
+} as const;
+
+const RECEIPT_PROMPT = `You read photos of UK builders' merchant and DIY store receipts, invoices and delivery notes (Screwfix, Toolstation, Travis Perkins, Jewson, Selco, Wickes, B&Q, local merchants, fuel and tool hire) for a self-employed tradesperson's records.
+
+Transcribe exactly what is printed. Never invent or estimate a value: if something isn't visible, use "" or 0 and list it in "unreadable".
+- items: one entry per product line. Expand abbreviated product names into readable ones only when the meaning is certain (e.g. "PSTCRT 20KG" -> "Postcrete 20kg"); otherwise keep the printed text. qty defaults to 1 if not shown. unit is "each" unless the receipt says otherwise (bag, m, pack, length).
+- unitPrice/total: as printed. Set pricesIncludeVat accordingly.
+- subtotal (ex VAT), vat and total: as printed. If only a total and a VAT amount are shown, subtotal = total - vat.
+- If the photo is not a receipt or invoice, set isReceipt false and leave the rest empty.`;
+
+async function parseReceipt(input: z.infer<typeof ReceiptRequestSchema>): Promise<ParsedReceipt> {
+  const response = await client.beta.messages.create({
+    model: MODEL,
+    max_tokens: 16000,
+    betas: ["server-side-fallback-2026-07-01"],
+    fallbacks: "default",
+    thinking: { type: "adaptive" },
+    output_config: { effort: "low", format: { type: "json_schema", schema: RECEIPT_JSON_SCHEMA } },
+    system: RECEIPT_PROMPT,
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "image", source: { type: "base64", media_type: input.mediaType, data: input.imageBase64 } },
+          { type: "text", text: "Read this receipt." },
+        ],
+      },
+    ],
+  });
+  if (response.stop_reason === "refusal") throw new HttpError(422, "The receipt could not be processed.");
+  if (response.stop_reason === "max_tokens") throw new HttpError(502, "Receipt was too long to read.");
+  const text = response.content
+    .filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text")
+    .map((b) => b.text)
+    .join("");
+  return ReceiptSchema.parse(JSON.parse(text));
+}
+
+// ---------------------------------------------------------------------------
 // HTTP plumbing
 // ---------------------------------------------------------------------------
 
@@ -205,7 +292,7 @@ async function readJson(req: IncomingMessage): Promise<unknown> {
   let size = 0;
   for await (const chunk of req) {
     size += (chunk as Buffer).length;
-    if (size > 200_000) throw new HttpError(413, "Body too large");
+    if (size > 9_000_000) throw new HttpError(413, "Body too large");
     chunks.push(chunk as Buffer);
   }
   try {
@@ -225,6 +312,12 @@ const server = createServer(async (req, res) => {
       const parsed = RequestSchema.safeParse(await readJson(req));
       if (!parsed.success) throw new HttpError(400, parsed.error.issues[0]?.message ?? "Bad request");
       return send(res, 200, await parseQuote(parsed.data));
+    }
+    if (req.method === "POST" && req.url === "/v1/receipt/parse") {
+      if (APP_TOKEN && req.headers.authorization !== `Bearer ${APP_TOKEN}`) throw new HttpError(401, "Unauthorised");
+      const parsed = ReceiptRequestSchema.safeParse(await readJson(req));
+      if (!parsed.success) throw new HttpError(400, parsed.error.issues[0]?.message ?? "Bad request");
+      return send(res, 200, await parseReceipt(parsed.data));
     }
     throw new HttpError(404, "Not found");
   } catch (err) {

@@ -92,7 +92,16 @@ export default function Materials() {
       <Text style={type.h1}>Materials</Text>
       <Text style={{ color: colors.muted, marginTop: 4 }}>Find it cheapest near you, or work out how much you need.</Text>
 
-      <Card style={{ marginTop: space(5), gap: space(3) }}>
+      <Card onPress={() => router.push('/receipts')} style={{ marginTop: space(5), flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.ink, borderColor: colors.ink }}>
+        <Icon name="receipt-text-outline" color={colors.amber} size={24} />
+        <View style={{ flex: 1 }}>
+          <Text style={{ color: colors.white, fontWeight: '700', fontSize: 15 }}>Receipts</Text>
+          <Text style={{ color: 'rgba(255,255,255,0.6)', marginTop: 2 }}>Snap it, get a clean record, keep your prices up to date</Text>
+        </View>
+        <Icon name="chevron-right" color="rgba(255,255,255,0.5)" />
+      </Card>
+
+      <Card style={{ marginTop: space(4), gap: space(3) }}>
         <View style={{ justifyContent: 'center' }}>
           <TextInput
             value={query}

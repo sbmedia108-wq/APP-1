@@ -4,7 +4,7 @@ import { DEFAULT_KITS, DEFAULT_PROFILE, DEFAULT_TOOLS, sampleQuotes } from './se
 import { uid } from './id';
 import { setCustomMaterials, type Material } from './materials';
 import { mergeMaterials } from './materialImport';
-import type { BusinessProfile, Kit, LineItem, Quote, Tool } from './types';
+import type { BusinessProfile, Kit, LineItem, Purchase, Quote, Tool } from './types';
 
 const KEY = 'graft/state/v1';
 
@@ -15,6 +15,8 @@ interface State {
   kits: Kit[];
   /** The user's own materials (imported or added by hand). */
   customMaterials: Material[];
+  /** Scanned receipts / purchase records. */
+  purchases: Purchase[];
   onboarded: boolean;
 }
 
@@ -24,6 +26,7 @@ const initial: State = {
   tools: DEFAULT_TOOLS,
   kits: DEFAULT_KITS,
   customMaterials: [],
+  purchases: [],
   onboarded: false,
 };
 
@@ -44,6 +47,9 @@ interface Store extends State {
   importMaterials: (items: Material[]) => { added: number; updated: number };
   upsertMaterial: (m: Material) => void;
   deleteMaterial: (id: string) => void;
+  addPurchase: (p: Purchase) => void;
+  updatePurchase: (id: string, patch: Partial<Purchase>) => void;
+  deletePurchase: (id: string) => void;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -143,6 +149,13 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
   const upsertMaterial = useCallback((m: Material) => setState((s) => ({ ...s, customMaterials: mergeMaterials(s.customMaterials, [m]).list })), []);
   const deleteMaterial = useCallback((id: string) => setState((s) => ({ ...s, customMaterials: s.customMaterials.filter((m) => m.id !== id) })), []);
+  const addPurchase = useCallback((p: Purchase) => {
+    const next = { ...stateRef.current, purchases: [p, ...stateRef.current.purchases] };
+    stateRef.current = next;
+    setState(next);
+  }, []);
+  const updatePurchase = useCallback((id: string, patch: Partial<Purchase>) => setState((s) => ({ ...s, purchases: s.purchases.map((p) => (p.id === id ? { ...p, ...patch } : p)) })), []);
+  const deletePurchase = useCallback((id: string) => setState((s) => ({ ...s, purchases: s.purchases.filter((p) => p.id !== id) })), []);
   const snapshot = useCallback(() => ({ app: 'graft', version: 1, exportedAt: new Date().toISOString(), state: stateRef.current }), []);
   const restore = useCallback((data: unknown) => {
     const d = data as { app?: string; state?: Partial<State> };
@@ -154,8 +167,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Store>(
-    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial }),
-    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial],
+    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial, addPurchase, updatePurchase, deletePurchase }),
+    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial, addPurchase, updatePurchase, deletePurchase],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
