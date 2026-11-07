@@ -1,0 +1,21 @@
+# Render Blueprint for the Graft quote API (server/).
+# In Render: New → Blueprint → pick this repo. You'll be asked for ANTHROPIC_API_KEY.
+services:
+  - type: web
+    name: graft-api
+    runtime: node
+    plan: starter
+    region: frankfurt
+    branch: claude/tradesman-quote-app-0idvj2
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: RATE_LIMIT_PER_HOUR
+        value: "60"

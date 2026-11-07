@@ -21,6 +21,19 @@ const APP_TOKEN = process.env.GRAFT_APP_TOKEN; // optional shared secret checked
 
 const client = new Anthropic();
 
+// Simple per-device rate limit so a leaked URL can't run up the AI bill.
+const RATE_LIMIT_PER_HOUR = Number(process.env.RATE_LIMIT_PER_HOUR ?? 60);
+const hits = new Map<string, number[]>();
+function rateLimited(req: IncomingMessage): boolean {
+  const ip = String(req.headers["x-forwarded-for"] ?? req.socket.remoteAddress ?? "?").split(",")[0]!.trim();
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 3_600_000);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 10_000) hits.clear();
+  return recent.length > RATE_LIMIT_PER_HOUR;
+}
+
 // ---------------------------------------------------------------------------
 // Schemas
 // ---------------------------------------------------------------------------
@@ -307,6 +320,7 @@ const server = createServer(async (req, res) => {
     if (req.method === "OPTIONS") return send(res, 204, {});
     if (req.method === "GET" && req.url === "/health") return send(res, 200, { ok: true, model: MODEL });
 
+    if (req.method === "POST" && rateLimited(req)) throw new HttpError(429, "Too many requests — try again in a bit.");
     if (req.method === "POST" && req.url === "/v1/quote/parse") {
       if (APP_TOKEN && req.headers.authorization !== `Bearer ${APP_TOKEN}`) throw new HttpError(401, "Unauthorised");
       const parsed = RequestSchema.safeParse(await readJson(req));
