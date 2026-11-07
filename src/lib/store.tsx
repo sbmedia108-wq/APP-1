@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_KITS, DEFAULT_PROFILE, DEFAULT_TOOLS, sampleQuotes } from './seed';
 import { uid } from './id';
+import { setCustomMaterials, type Material } from './materials';
+import { mergeMaterials } from './materialImport';
 import type { BusinessProfile, Kit, LineItem, Quote, Tool } from './types';
 
 const KEY = 'graft/state/v1';
@@ -11,6 +13,8 @@ interface State {
   quotes: Quote[];
   tools: Tool[];
   kits: Kit[];
+  /** The user's own materials (imported or added by hand). */
+  customMaterials: Material[];
   onboarded: boolean;
 }
 
@@ -19,6 +23,7 @@ const initial: State = {
   quotes: sampleQuotes(),
   tools: DEFAULT_TOOLS,
   kits: DEFAULT_KITS,
+  customMaterials: [],
   onboarded: false,
 };
 
@@ -36,6 +41,9 @@ interface Store extends State {
   /** Replaces everything with a backup. Returns false if the data isn't a Graft backup. */
   restore: (data: unknown) => boolean;
   snapshot: () => object;
+  importMaterials: (items: Material[]) => { added: number; updated: number };
+  upsertMaterial: (m: Material) => void;
+  deleteMaterial: (id: string) => void;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -45,6 +53,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const stateRef = useRef(state);
   stateRef.current = state;
+  // Keep search and voice parsing in step with the user's own materials.
+  setCustomMaterials(state.customMaterials);
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
@@ -124,6 +134,15 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const deleteTool = useCallback((id: string) => setState((s) => ({ ...s, tools: s.tools.filter((t) => t.id !== id) })), []);
   const setOnboarded = useCallback(() => setState((s) => ({ ...s, onboarded: true })), []);
   const clearExamples = useCallback(() => setState((s) => ({ ...s, quotes: s.quotes.filter((q) => !q.example) })), []);
+  const importMaterials = useCallback((items: Material[]) => {
+    const r = mergeMaterials(stateRef.current.customMaterials, items);
+    const next = { ...stateRef.current, customMaterials: r.list };
+    stateRef.current = next;
+    setState(next);
+    return { added: r.added, updated: r.updated };
+  }, []);
+  const upsertMaterial = useCallback((m: Material) => setState((s) => ({ ...s, customMaterials: mergeMaterials(s.customMaterials, [m]).list })), []);
+  const deleteMaterial = useCallback((id: string) => setState((s) => ({ ...s, customMaterials: s.customMaterials.filter((m) => m.id !== id) })), []);
   const snapshot = useCallback(() => ({ app: 'graft', version: 1, exportedAt: new Date().toISOString(), state: stateRef.current }), []);
   const restore = useCallback((data: unknown) => {
     const d = data as { app?: string; state?: Partial<State> };
@@ -135,8 +154,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Store>(
-    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot }),
-    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot],
+    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial }),
+    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot, importMaterials, upsertMaterial, deleteMaterial],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

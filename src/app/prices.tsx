@@ -1,34 +1,65 @@
+import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { SectionList, Text, TextInput, View } from 'react-native';
-import { Icon, Label, s as ui } from '@/components/ui';
-import { MATERIALS } from '@/lib/materials';
+import { Pressable, SectionList, Text, TextInput, View } from 'react-native';
+import { Button, Card, Icon, Label, s as ui } from '@/components/ui';
+import { customId } from '@/lib/materialImport';
+import { MATERIALS, type Material } from '@/lib/materials';
 import { formatGBP } from '@/lib/money';
 import { useStore } from '@/lib/store';
 import { colors, space } from '@/theme';
 
-/** The user's own cost prices. Used instead of guide prices whenever Graft prices up a job. */
+const num = (t: string) => {
+  const clean = t.replace(/[^0-9.]/g, '');
+  return clean === '' || Number.isNaN(Number(clean)) ? undefined : Number(clean);
+};
+
+/** The user's own materials and prices. Used instead of guide prices whenever Graft prices up a job. */
 export default function Prices() {
-  const { profile, updateProfile } = useStore();
+  const { profile, updateProfile, customMaterials, upsertMaterial, deleteMaterial } = useStore();
   const [q, setQ] = useState('');
   const [draft, setDraft] = useState<Record<string, string>>({});
+  const [adding, setAdding] = useState(false);
+  const [newName, setNewName] = useState('');
+  const [newUnit, setNewUnit] = useState('');
+  const [newPrice, setNewPrice] = useState('');
 
   const sections = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    const list = MATERIALS.filter((m) => !needle || `${m.name} ${m.category} ${m.keywords.join(' ')}`.toLowerCase().includes(needle));
-    const cats = [...new Set(list.map((m) => m.category))];
-    return cats.map((c) => ({ title: c, data: list.filter((m) => m.category === c) }));
-  }, [q]);
+    const match = (m: Material) => !needle || `${m.name} ${m.category} ${m.keywords.join(' ')}`.toLowerCase().includes(needle);
+    const mine = customMaterials.filter(match).sort((a, b) => a.name.localeCompare(b.name));
+    const builtIn = MATERIALS.filter(match);
+    const cats = [...new Set(builtIn.map((m) => m.category))];
+    return [
+      ...(mine.length ? [{ title: `Your materials (${mine.length})`, data: mine }] : []),
+      ...cats.map((c) => ({ title: c, data: builtIn.filter((m) => m.category === c) })),
+    ];
+  }, [q, customMaterials]);
 
-  const save = (id: string, text: string) => {
-    setDraft((d) => ({ ...d, [id]: text }));
-    const clean = text.replace(/[^0-9.]/g, '');
+  const setPrice = (m: Material, text: string) => {
+    setDraft((d) => ({ ...d, [m.id]: text }));
+    const n = num(text);
+    if (m.custom) {
+      if (n !== undefined) upsertMaterial({ ...m, price: n });
+      return;
+    }
     const next = { ...profile.priceBook };
-    if (clean === '' || Number.isNaN(Number(clean))) delete next[id];
-    else next[id] = Number(clean);
+    if (n === undefined) delete next[m.id];
+    else next[m.id] = n;
     updateProfile({ priceBook: next });
   };
 
-  const count = Object.keys(profile.priceBook).length;
+  const addOne = () => {
+    const price = num(newPrice);
+    if (!newName.trim() || price === undefined) return;
+    const name = newName.trim().replace(/\s+/g, ' ');
+    upsertMaterial({ id: customId(name), name, unit: newUnit.trim() || 'each', price, category: 'My materials', keywords: [name.toLowerCase()], custom: true });
+    setNewName('');
+    setNewUnit('');
+    setNewPrice('');
+    setAdding(false);
+  };
+
+  const saved = Object.keys(profile.priceBook).length;
 
   return (
     <SectionList
@@ -40,11 +71,25 @@ export default function Prices() {
       ListHeaderComponent={
         <View style={{ gap: space(3), marginBottom: space(2) }}>
           <Text style={{ color: colors.muted, lineHeight: 21 }}>
-            Put in what you actually pay your merchant (ex-VAT). Graft uses these instead of guide prices, then adds your {profile.markupPct}% markup. Leave blank to use the guide price.
+            Add your own materials, or put in what you actually pay for the built-in ones (ex-VAT). Graft uses your prices, then adds your {profile.markupPct}% markup.
           </Text>
-          {count > 0 && (
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <Button small variant="dark" icon="file-upload-outline" title="Import a list" onPress={() => router.push('/import-materials')} style={{ flex: 1 }} />
+            <Button small variant="ghost" icon="plus" title="Add one" onPress={() => setAdding((a) => !a)} style={{ flex: 1 }} />
+          </View>
+          {adding && (
+            <Card style={{ gap: 10 }}>
+              <TextInput value={newName} onChangeText={setNewName} placeholder="Name, e.g. Jakcured rail 3.6m" placeholderTextColor={colors.faint} style={ui.input} autoFocus />
+              <View style={{ flexDirection: 'row', gap: 8 }}>
+                <TextInput value={newUnit} onChangeText={setNewUnit} placeholder="Unit (each, bag, m²)" placeholderTextColor={colors.faint} style={[ui.input, { flex: 1 }]} autoCapitalize="none" />
+                <TextInput value={newPrice} onChangeText={setNewPrice} placeholder="£ price" placeholderTextColor={colors.faint} keyboardType="decimal-pad" style={[ui.input, { width: 110 }]} />
+              </View>
+              <Button small title="Save material" icon="check" onPress={addOne} disabled={!newName.trim() || num(newPrice) === undefined} />
+            </Card>
+          )}
+          {saved > 0 && (
             <Text style={{ color: colors.amberDeep, fontWeight: '700' }}>
-              {count} price{count === 1 ? '' : 's'} saved
+              {saved} built-in price{saved === 1 ? '' : 's'} set to yours
             </Text>
           )}
           <View style={{ justifyContent: 'center' }}>
@@ -55,29 +100,33 @@ export default function Prices() {
           </View>
         </View>
       }
-      renderSectionHeader={({ section }) => <Label style={{ marginTop: space(6), marginBottom: space(2) }}>{section.title}</Label>}
+      renderSectionHeader={({ section }) => <Label style={{ marginTop: space(6), marginBottom: space(2), color: section.title.startsWith('Your') ? colors.amberDeep : colors.faint }}>{section.title}</Label>}
       renderItem={({ item: m, index, section }) => {
-        const mine = profile.priceBook[m.id];
+        const value = m.custom ? m.price : profile.priceBook[m.id];
+        const first = index === 0;
+        const last = index === section.data.length - 1;
         return (
           <View
             style={{
               flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.card, paddingHorizontal: space(4), paddingVertical: space(3),
-              borderColor: colors.line, borderWidth: 1, borderTopWidth: index === 0 ? 1 : 0,
-              borderTopLeftRadius: index === 0 ? 14 : 0, borderTopRightRadius: index === 0 ? 14 : 0,
-              borderBottomLeftRadius: index === section.data.length - 1 ? 14 : 0, borderBottomRightRadius: index === section.data.length - 1 ? 14 : 0,
+              borderColor: colors.line, borderWidth: 1, borderTopWidth: first ? 1 : 0,
+              borderTopLeftRadius: first ? 14 : 0, borderTopRightRadius: first ? 14 : 0, borderBottomLeftRadius: last ? 14 : 0, borderBottomRightRadius: last ? 14 : 0,
             }}
           >
+            {m.custom && (
+              <Pressable onPress={() => deleteMaterial(m.id)} hitSlop={8} accessibilityLabel={`Remove ${m.name}`}>
+                <Icon name="minus-circle-outline" color={colors.faint} />
+              </Pressable>
+            )}
             <View style={{ flex: 1 }}>
               <Text style={{ fontWeight: '600', color: colors.text }}>{m.name}</Text>
-              <Text style={{ color: colors.faint, fontSize: 12, marginTop: 2 }}>
-                Guide {formatGBP(m.price)} / {m.unit}
-              </Text>
+              <Text style={{ color: colors.faint, fontSize: 12, marginTop: 2 }}>{m.custom ? `Your price per ${m.unit}` : `Guide ${formatGBP(m.price)} / ${m.unit}`}</Text>
             </View>
-            <View style={[ui.input, { flexDirection: 'row', alignItems: 'center', width: 104, paddingVertical: 8, borderColor: mine !== undefined ? colors.amber : colors.line }]}>
+            <View style={[ui.input, { flexDirection: 'row', alignItems: 'center', width: 104, paddingVertical: 8, borderColor: value !== undefined ? colors.amber : colors.line }]}>
               <Text style={{ color: colors.muted, fontWeight: '600' }}>£</Text>
               <TextInput
-                value={draft[m.id] ?? (mine !== undefined ? String(mine) : '')}
-                onChangeText={(t) => save(m.id, t)}
+                value={draft[m.id] ?? (value !== undefined ? String(value) : '')}
+                onChangeText={(t) => setPrice(m, t)}
                 placeholder={m.price.toFixed(2)}
                 placeholderTextColor={colors.faint}
                 keyboardType="decimal-pad"

@@ -19,7 +19,7 @@ One codebase for **iOS and Android** (Expo / React Native), plus a small AI serv
 | **Van check** | Tick-list per kit before you leave site; lend tools and see who's had what for how long. |
 | **Pipeline** | Draft → Sent → Won → Invoiced → Paid, chase-up reminders with a pre-written nudge, win rate and work out for quote on the home screen. |
 | **Site photos** | Take or pick photos on the quote; they're kept privately and added to the PDF. |
-| **My prices** | Enter what you actually pay your merchant; used instead of guide prices everywhere, before your markup. |
+| **My materials & prices** | Import your own materials from a CSV (Excel, Google Sheets, merchant price list) or paste a list from your notes; add items by hand; or override guide prices with what you pay. Recognised in voice quotes, search and calculators. |
 | **Backup & restore** | One tap saves a backup file to Google Drive, email or WhatsApp; restore it on a new phone. |
 | **First-time setup** | Name, trade, day rate and mobile in 30 seconds; example jobs are labelled and removable. |
 | **UK business setup** | VAT (20%) toggle and number, deposit %, payment terms, bank details, quote numbering. |

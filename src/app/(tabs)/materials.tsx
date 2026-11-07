@@ -7,7 +7,7 @@ import { Button, Card, Chip, Icon, Label, SectionHeader, s as ui } from '@/compo
 import { CALCULATORS } from '@/lib/calculators';
 import { uid } from '@/lib/id';
 import { labourLine } from '@/lib/labour';
-import { lookupPrices, MATERIAL_BY_ID, searchMaterials, type Material, type PriceQuote } from '@/lib/materials';
+import { lookupPrices, MATERIAL_BY_ID, MERCHANTS, searchMaterials, type Material, type PriceQuote } from '@/lib/materials';
 import { formatGBP } from '@/lib/money';
 import { useStore } from '@/lib/store';
 import { useDictation } from '@/lib/useDictation';
@@ -41,7 +41,10 @@ export default function Materials() {
   const quantity = Math.max(1, Number(qty) || 1);
 
   useEffect(() => {
-    if (!picked) return;
+    if (!picked || picked.custom) {
+      setPrices([]);
+      return;
+    }
     let live = true;
     lookupPrices(picked, quantity, profile.postcode).then((r) => live && setPrices(r));
     return () => {
@@ -154,7 +157,7 @@ export default function Materials() {
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontWeight: '700', fontSize: 15, color: colors.text }}>{m.name}</Text>
                   <Text style={{ color: colors.muted, marginTop: 2 }}>
-                    {m.category} · from ~{formatGBP(m.price)} / {m.unit}
+                    {m.custom ? `Your material · ${formatGBP(m.price)} / ${m.unit}` : `${m.category} · from ~${formatGBP(m.price)} / ${m.unit}`}
                   </Text>
                 </View>
                 <Icon name="chevron-right" color={colors.faint} />
@@ -174,14 +177,25 @@ export default function Materials() {
               <Text style={{ color: colors.amberDeep, fontWeight: '700' }}>Change</Text>
             </Pressable>
           </View>
-          {profile.priceBook[picked.id] !== undefined && (
+          {(picked.custom || profile.priceBook[picked.id] !== undefined) && (
             <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10, backgroundColor: colors.amberSoft, borderColor: '#F5C46B' }}>
               <Icon name="book-open-variant" color={colors.amberDeep} />
               <Text style={{ flex: 1, fontWeight: '700', color: colors.text }}>Your price</Text>
-              <Text style={[{ fontWeight: '800', fontSize: 17, color: colors.text }, type.money]}>{formatGBP(profile.priceBook[picked.id]! * quantity)}</Text>
+              <Text style={[{ fontWeight: '800', fontSize: 17, color: colors.text }, type.money]}>{formatGBP((picked.custom ? picked.price : profile.priceBook[picked.id]!) * quantity)}</Text>
             </Card>
           )}
-          <Card style={{ padding: 0 }}>
+          {picked.custom && (
+            <Card style={{ padding: 0 }}>
+              {MERCHANTS.map((mer, i) => (
+                <Pressable key={mer.id} onPress={() => Linking.openURL(mer.searchUrl(picked.name))} style={({ pressed }) => [st.priceRow, i > 0 && st.rowLine, pressed && { backgroundColor: colors.bg }]}>
+                  <Text style={{ flex: 1, fontWeight: '700', fontSize: 15, color: colors.text }}>{mer.name}</Text>
+                  <Text style={{ color: colors.amberDeep, fontWeight: '700' }}>Check price</Text>
+                  <Icon name="open-in-new" size={16} color={colors.faint} />
+                </Pressable>
+              ))}
+            </Card>
+          )}
+          <Card style={{ padding: 0, display: picked.custom ? 'none' : 'flex' }}>
             {prices.map((p, i) => (
               <Pressable key={p.merchant.id} onPress={() => Linking.openURL(p.url)} style={({ pressed }) => [st.priceRow, i > 0 && st.rowLine, pressed && { backgroundColor: colors.bg }]}>
                 <View style={{ flex: 1 }}>
@@ -203,7 +217,7 @@ export default function Materials() {
             ))}
           </Card>
           <Text style={st.disclaimer}>
-            {prices[0]?.source === 'live' ? 'Live trade prices.' : 'Guide prices ex-VAT based on typical trade-counter rates.'} Tap a merchant to check live price and stock{profile.postcode ? ` near ${profile.postcode}` : ''}.
+            {picked.custom ? 'Your own price.' : prices[0]?.source === 'live' ? 'Live trade prices.' : 'Guide prices ex-VAT based on typical trade-counter rates.'} Tap a merchant to check live price and stock{profile.postcode ? ` near ${profile.postcode}` : ''}.
           </Text>
           {prices[0] && profile.postcode ? (
             <Button small variant="ghost" icon="map-marker-outline" title={`Nearest ${prices[0].merchant.name} branch`} onPress={() => Linking.openURL(prices[0]!.merchant.branchUrl(profile.postcode))} style={{ marginTop: 10 }} />
@@ -211,7 +225,7 @@ export default function Materials() {
         </View>
       )}
 
-      <Button small variant="ghost" icon="book-open-variant" title="My prices — what you pay your merchant" onPress={() => router.push('/prices')} style={{ marginTop: space(4), alignSelf: 'flex-start' }} />
+      <Button small variant="ghost" icon="book-open-variant" title="My materials & prices" onPress={() => router.push('/prices')} style={{ marginTop: space(4), alignSelf: 'flex-start' }} />
 
       <SectionHeader title="How much do I need?" />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: space(3) }}>

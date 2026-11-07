@@ -61,6 +61,16 @@ export async function shareBackup(snapshot: object) {
   await Sharing.shareAsync(f.uri, { mimeType: 'application/json', dialogTitle: 'Save your Graft backup' });
 }
 
+/** Lets the user pick a spreadsheet export (CSV/TSV/text) and returns its text. */
+export async function pickTextFile(): Promise<{ name: string; text: string } | undefined> {
+  const res = await DocumentPicker.getDocumentAsync({ type: ['text/csv', 'text/comma-separated-values', 'text/tab-separated-values', 'text/plain', 'application/vnd.ms-excel', '*/*'], copyToCacheDirectory: true });
+  if (res.canceled || !res.assets[0]) return undefined;
+  const a = res.assets[0];
+  if (/\.xlsx?$/i.test(a.name)) throw new Error('That’s an Excel file. In Excel or Google Sheets, use File → Download / Save as → CSV, then import the CSV.');
+  const text = Platform.OS === 'web' ? await (await fetch(a.uri)).text() : await new File(a.uri).text();
+  return { name: a.name, text };
+}
+
 /** Lets the user pick a backup file and returns its parsed contents. */
 export async function pickBackup(): Promise<unknown | undefined> {
   const res = await DocumentPicker.getDocumentAsync({ type: ['application/json', '*/*'], copyToCacheDirectory: true });

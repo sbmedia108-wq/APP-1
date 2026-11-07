@@ -120,3 +120,38 @@ test('labour follows the pricing mode', async () => {
   assert.equal(labour[0]?.unitPrice, 2 * 240 + 2 * 144);
   assert.equal(job.length, base.items.length - 1);
 });
+
+test('imports a CSV with a header row', async () => {
+  const { parseMaterialList } = await import('../materialImport.ts');
+  const csv = 'Description,Unit,Trade Price,Category\n"Jacksons Jakcured post 100x100 2.4m",each,"£18.95",Fencing\nPostcrete 20kg,bag,6.40,\nBroken row,each,TBC,';
+  const r = parseMaterialList(csv);
+  assert.equal(r.items.length, 2);
+  assert.equal(r.items[0]?.price, 18.95);
+  assert.equal(r.items[0]?.category, 'Fencing');
+  assert.equal(r.items[1]?.unit, 'bag');
+  assert.equal(r.items[1]?.category, 'My materials');
+  assert.equal(r.skipped.length, 1);
+});
+
+test('imports loose pasted lines from a phone', async () => {
+  const { parseMaterialList } = await import('../materialImport.ts');
+  const r = parseMaterialList('Postcrete 20kg, bag, 6.40\nSharp sand - bulk bag - £55\nGravel board £12.50\nMarley Eternit slate 85p\nrandom note');
+  assert.deepEqual(r.items.map((m) => [m.name, m.unit, m.price]), [
+    ['Postcrete 20kg', 'bag', 6.4],
+    ['Sharp sand', 'bulk bag', 55],
+    ['Gravel board', 'each', 12.5],
+    ['Marley Eternit slate', 'each', 0.85],
+  ]);
+  assert.ok(r.skipped.some((s) => s.text === 'random note'));
+});
+
+test('custom materials are found by search and by voice parsing', async () => {
+  const { parseMaterialList } = await import('../materialImport.ts');
+  const { setCustomMaterials, searchMaterials: search } = await import('../materials.ts');
+  const r = parseMaterialList('Name,Unit,Price\nJakcured rail 3.6m,length,9.80');
+  setCustomMaterials(r.items);
+  assert.equal(search('jakcured rail')[0]?.name, 'Jakcured rail 3.6m');
+  const d = parseTranscriptOffline('need 14 jakcured rail', {});
+  assert.equal(d.items.find((i) => /jakcured/i.test(i.description))?.qty, 14);
+  setCustomMaterials([]);
+});

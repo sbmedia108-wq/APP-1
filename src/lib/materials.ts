@@ -12,7 +12,9 @@
 export interface Material {
   id: string;
   name: string;
-  category: 'Fencing' | 'Timber' | 'Landscaping' | 'Building' | 'Plastering' | 'Decorating' | 'Plumbing' | 'Electrical' | 'Tiling' | 'Roofing' | 'Fixings';
+  category: string;
+  /** Added by the user (imported or typed in); price is their own price. */
+  custom?: boolean;
   unit: string;
   /** Indicative ex-VAT trade price in GBP. */
   price: number;
@@ -79,6 +81,16 @@ export const MATERIALS: Material[] = [
 
 export const MATERIAL_BY_ID: Record<string, Material> = Object.fromEntries(MATERIALS.map((m) => [m.id, m]));
 
+// The user's own materials, registered by the store so search and voice parsing see them.
+let customMaterials: Material[] = [];
+export function setCustomMaterials(list: Material[]) {
+  for (const m of customMaterials) delete MATERIAL_BY_ID[m.id];
+  customMaterials = list;
+  for (const m of list) MATERIAL_BY_ID[m.id] = m;
+}
+/** User's materials first, so their own items win ties against the built-in catalogue. */
+export const allMaterials = () => (customMaterials.length ? [...customMaterials, ...MATERIALS] : MATERIALS);
+
 // ---------------------------------------------------------------------------
 // Search
 // ---------------------------------------------------------------------------
@@ -97,7 +109,7 @@ export function searchMaterials(query: string, limit = 8): Material[] {
   const q = norm(query);
   if (!q) return [];
   const qTokens = q.split(' ');
-  const scored = MATERIALS.map((m) => {
+  const scored = allMaterials().map((m) => {
     const hay = norm(`${m.name} ${m.keywords.join(' ')} ${m.category}`);
     let score = 0;
     for (const k of m.keywords) if (q.includes(norm(k))) score += 10 + norm(k).length;
@@ -113,7 +125,7 @@ export function searchMaterials(query: string, limit = 8): Material[] {
 export function matchMaterial(phrase: string): Material | undefined {
   const p = norm(phrase);
   let best: { m: Material; len: number } | undefined;
-  for (const m of MATERIALS) {
+  for (const m of allMaterials()) {
     for (const k of m.keywords) {
       const nk = norm(k);
       if (new RegExp(`(^|\\s)${nk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}s?(\\s|$)`).test(p) && (!best || nk.length > best.len)) {
