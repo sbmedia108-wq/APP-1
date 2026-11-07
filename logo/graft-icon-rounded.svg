@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <rect width="1024" height="1024" rx="230" fill="#0B1726"/><g><g transform="translate(512 512) scale(0.9) translate(-528 -568)"><g fill="#FFFFFF"><path d="M 753.9 411.0 A 307.0 307.0 0 1 0 819.0 600.0 L 685.0 600.0 A 173.0 173.0 0 1 1 648.3 493.5 Z"/><rect x="604" y="486" width="215.0" height="116" rx="0"/><path d="M 412.0 847.6 L 223.0 971.0 L 249.1 646.4 Z" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/></g>
+  <rect width="1024" height="1024" rx="230" fill="#0B1726"/><g><g transform="translate(512 512) scale(0.9) translate(-528 -568)"><g fill="#FFFFFF"><path d="M 717.4 371.9 A 307.0 307.0 0 1 0 819.0 600.0 L 685.0 600.0 A 173.0 173.0 0 1 1 627.8 471.4 Z"/><rect x="604" y="520" width="215.0" height="96" rx="0"/><path d="M 412.0 847.6 L 223.0 971.0 L 249.1 646.4 Z" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/></g>
   <g fill="#FFB020"><rect x="383.0" y="580.0" width="22" height="40" rx="11.0"/><rect x="419.0" y="559.0" width="22" height="82" rx="11.0"/><rect x="455.0" y="537.0" width="22" height="126" rx="11.0"/><rect x="491.0" y="559.0" width="22" height="82" rx="11.0"/><rect x="527.0" y="580.0" width="22" height="40" rx="11.0"/></g>
-  <g transform="rotate(-5 512 367)">
-    <clipPath id="dome"><path d="M 306 355 A 206 176 0 0 1 718 355 Z"/></clipPath>
-    <path d="M 276 347 H 726 Q 804 347 812 371 Q 814 387 782 387 H 276 A 20 20 0 0 1 276 347 Z" fill="#0B1726" stroke="#0B1726" stroke-width="40" stroke-linejoin="round"/>
-    <path d="M 306 355 A 206 176 0 0 1 718 355 Z" fill="#FFB020" stroke="#0B1726" stroke-width="40" paint-order="stroke"/>
+  <g transform="rotate(-5 512 355)">
+    <clipPath id="dome"><path d="M 306 343 A 206 176 0 0 1 718 343 Z"/></clipPath>
+    <path d="M 276 335 H 726 Q 804 335 812 359 Q 814 375 782 375 H 276 A 20 20 0 0 1 276 335 Z" fill="#0B1726" stroke="#0B1726" stroke-width="40" stroke-linejoin="round"/>
+    <path d="M 306 343 A 206 176 0 0 1 718 343 Z" fill="#FFB020" stroke="#0B1726" stroke-width="40" paint-order="stroke"/>
     <g clip-path="url(#dome)" fill="none" stroke="#0B1726" stroke-width="24" stroke-linecap="round">
-      <path d="M 460 167 Q 416 257 424 343"/>
-      <path d="M 556 167 Q 596 257 590 343"/>
+      <path d="M 460 155 Q 416 245 424 331"/>
+      <path d="M 556 155 Q 596 245 590 331"/>
     </g>
-    <path d="M 276 347 H 726 Q 804 347 812 371 Q 814 387 782 387 H 276 A 20 20 0 0 1 276 347 Z" fill="#FFB020"/>
+    <path d="M 276 335 H 726 Q 804 335 812 359 Q 814 375 782 375 H 276 A 20 20 0 0 1 276 335 Z" fill="#FFB020"/>
   </g></g></g>
 </svg>

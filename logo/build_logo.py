@@ -6,12 +6,12 @@ ro, ri = R+SW/2, R-SW/2
 def P(r, deg): a=math.radians(deg); return (cx+r*math.cos(a), cy+r*math.sin(a))
 def f(p): return f"{p[0]:.1f} {p[1]:.1f}"
 def mark(fg=WHITE, accent=AMB, cut=INK):
-    a0, a1 = -38, 0      # opening between these angles (top-right)
+    a0, a1 = -48, 0      # opening between these angles (top-right)
     # G bowl as a filled annular sector (long way round from a0 to a1)
     o0,o1,i0,i1 = P(ro,a0),P(ro,a1),P(ri,a0),P(ri,a1)
     bowl = (f"M {f(o0)} A {ro} {ro} 0 1 0 {f(o1)} L {f(i1)} A {ri} {ri} 0 1 1 {f(i0)} Z")
-    bar_h = 116
-    cross = f'<rect x="{cx+92}" y="{cy-bar_h+2}" width="{ro-92}" height="{bar_h}" rx="0"/>'
+    bar_h = 96
+    cross = f'<rect x="{cx+92}" y="{cy-80}" width="{ro-92}" height="{bar_h}" rx="0"/>'
     # speech tail, bottom-left
     t1, t2 = P(ro-40, 112), P(ro-40, 170)
     apex = (cx-ro+18, cy+ro+64)
@@ -23,7 +23,7 @@ def mark(fg=WHITE, accent=AMB, cut=INK):
         x=x0+k*gap-w/2
         bars.append(f'<rect x="{x:.1f}" y="{cy-h/2:.1f}" width="{w}" height="{h}" rx="{w/2}"/>')
     # hard hat (local coords, then rotated)
-    hb = int(cy - ro + 74)   # brim crosses the G's crown, like a hat on a head
+    hb = int(cy - ro + 62)   # brim crosses the G's crown, like a hat on a head
     dome = f"M {cx-206} {hb-12} A 206 176 0 0 1 {cx+206} {hb-12} Z"
     brim = (f"M {cx-236} {hb-20} H {cx+214} Q {cx+292} {hb-20} {cx+300} {hb+4} "
             f"Q {cx+302} {hb+20} {cx+270} {hb+20} H {cx-236} A 20 20 0 0 1 {cx-236} {hb-20} Z")
