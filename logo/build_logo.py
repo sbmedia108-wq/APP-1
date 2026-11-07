@@ -18,29 +18,28 @@ def mark(fg=WHITE, accent=AMB, cut=INK):
     tail = f"M {f(t1)} L {f(apex)} L {f(t2)} Z"
     # voice bars
     bars=[]
-    hs=[64,128,196,128,64]; w=28; gap=46; x0=cx-62-2*gap
+    hs=[40,82,126,82,40]; w=22; gap=36; x0=cx-46-2*gap
     for k,h in enumerate(hs):
         x=x0+k*gap-w/2
         bars.append(f'<rect x="{x:.1f}" y="{cy-h/2:.1f}" width="{w}" height="{h}" rx="{w/2}"/>')
     # hard hat (local coords, then rotated)
-    hb = int(cy - ro - 6)   # brim centre y, resting on the G
-    dome = f"M {cx-246} {hb-14} A 246 196 0 0 1 {cx+246} {hb-14} Z"
-    brim = (f"M {cx-268} {hb-18} H {cx+250} Q {cx+322} {hb-18} {cx+330} {hb+4} "
-            f"Q {cx+332} {hb+18} {cx+300} {hb+18} H {cx-268} A 18 18 0 0 1 {cx-268} {hb-18} Z")
+    hb = int(cy - ro + 74)   # brim crosses the G's crown, like a hat on a head
+    dome = f"M {cx-206} {hb-12} A 206 176 0 0 1 {cx+206} {hb-12} Z"
+    brim = (f"M {cx-236} {hb-20} H {cx+214} Q {cx+292} {hb-20} {cx+300} {hb+4} "
+            f"Q {cx+302} {hb+20} {cx+270} {hb+20} H {cx-236} A 20 20 0 0 1 {cx-236} {hb-20} Z")
     hat = f'''
-  <g transform="rotate(-9 {cx} {hb})">
+  <g transform="rotate(-5 {cx} {hb})">
     <clipPath id="dome"><path d="{dome}"/></clipPath>
-    <path d="{dome}" fill="{accent}"/>
+    <path d="{brim}" fill="{cut}" stroke="{cut}" stroke-width="40" stroke-linejoin="round"/>
+    <path d="{dome}" fill="{accent}" stroke="{cut}" stroke-width="40" paint-order="stroke"/>
     <g clip-path="url(#dome)" fill="none" stroke="{cut}" stroke-width="24" stroke-linecap="round">
-      <path d="M {cx-62} {hb-230} Q {cx-112} {hb-120} {cx-104} {hb-26}"/>
-      <path d="M {cx+50} {hb-230} Q {cx+96} {hb-120} {cx+92} {hb-26}"/>
+      <path d="M {cx-52} {hb-200} Q {cx-96} {hb-110} {cx-88} {hb-24}"/>
+      <path d="M {cx+44} {hb-200} Q {cx+84} {hb-110} {cx+78} {hb-24}"/>
     </g>
     <path d="{brim}" fill="{accent}"/>
   </g>'''
     # gap under the brim cut out of the G
-    gapcut = f'<rect x="0" y="0" width="1024" height="{hb+44}" transform="rotate(-9 {cx} {hb})"/>'
-    return f'''<defs><mask id="m"><rect width="1024" height="1024" fill="#fff"/><g fill="#000">{gapcut}</g></mask></defs>
-  <g fill="{fg}" mask="url(#m)"><path d="{bowl}"/>{cross}<path d="{tail}" stroke="{fg}" stroke-width="10" stroke-linejoin="round"/></g>
+    return f'''<g fill="{fg}"><path d="{bowl}"/>{cross}<path d="{tail}" stroke="{fg}" stroke-width="10" stroke-linejoin="round"/></g>
   <g fill="{accent}">{''.join(bars)}</g>{hat}'''
 def svg(bg=INK, fg=WHITE, accent=AMB, cut=None, rounded=False, scale=1.0):
     cut = cut or (bg if bg!='none' else INK)
@@ -48,7 +47,7 @@ def svg(bg=INK, fg=WHITE, accent=AMB, cut=None, rounded=False, scale=1.0):
     t = '' if scale==1 else f' transform="translate({512*(1-scale):.1f} {512*(1-scale):.1f}) scale({scale})"'
     # vertical optical centring: art spans ~y 80..960 → shift up slightly
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  {bgel}<g{t}><g transform="translate(520 518) scale(0.84) translate(-540 -515)">{mark(fg,accent,cut)}</g></g>
+  {bgel}<g{t}><g transform="translate(512 512) scale(0.9) translate(-528 -568)">{mark(fg,accent,cut)}</g></g>
 </svg>'''
 import os
 out=os.path.dirname(os.path.abspath(__file__))+"/"

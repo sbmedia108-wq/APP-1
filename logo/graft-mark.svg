@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <g><g transform="translate(520 518) scale(0.84) translate(-540 -515)"><defs><mask id="m"><rect width="1024" height="1024" fill="#fff"/><g fill="#000"><rect x="0" y="0" width="1024" height="331" transform="rotate(-9 512 287)"/></g></mask></defs>
-  <g fill="#FFFFFF" mask="url(#m)"><path d="M 753.9 411.0 A 307.0 307.0 0 1 0 819.0 600.0 L 685.0 600.0 A 173.0 173.0 0 1 1 648.3 493.5 Z"/><rect x="604" y="486" width="215.0" height="116" rx="0"/><path d="M 412.0 847.6 L 223.0 971.0 L 249.1 646.4 Z" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/></g>
-  <g fill="#FFB020"><rect x="344.0" y="568.0" width="28" height="64" rx="14.0"/><rect x="390.0" y="536.0" width="28" height="128" rx="14.0"/><rect x="436.0" y="502.0" width="28" height="196" rx="14.0"/><rect x="482.0" y="536.0" width="28" height="128" rx="14.0"/><rect x="528.0" y="568.0" width="28" height="64" rx="14.0"/></g>
-  <g transform="rotate(-9 512 287)">
-    <clipPath id="dome"><path d="M 266 273 A 246 196 0 0 1 758 273 Z"/></clipPath>
-    <path d="M 266 273 A 246 196 0 0 1 758 273 Z" fill="#FFB020"/>
+  <g><g transform="translate(512 512) scale(0.9) translate(-528 -568)"><g fill="#FFFFFF"><path d="M 753.9 411.0 A 307.0 307.0 0 1 0 819.0 600.0 L 685.0 600.0 A 173.0 173.0 0 1 1 648.3 493.5 Z"/><rect x="604" y="486" width="215.0" height="116" rx="0"/><path d="M 412.0 847.6 L 223.0 971.0 L 249.1 646.4 Z" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/></g>
+  <g fill="#FFB020"><rect x="383.0" y="580.0" width="22" height="40" rx="11.0"/><rect x="419.0" y="559.0" width="22" height="82" rx="11.0"/><rect x="455.0" y="537.0" width="22" height="126" rx="11.0"/><rect x="491.0" y="559.0" width="22" height="82" rx="11.0"/><rect x="527.0" y="580.0" width="22" height="40" rx="11.0"/></g>
+  <g transform="rotate(-5 512 367)">
+    <clipPath id="dome"><path d="M 306 355 A 206 176 0 0 1 718 355 Z"/></clipPath>
+    <path d="M 276 347 H 726 Q 804 347 812 371 Q 814 387 782 387 H 276 A 20 20 0 0 1 276 347 Z" fill="#0B1726" stroke="#0B1726" stroke-width="40" stroke-linejoin="round"/>
+    <path d="M 306 355 A 206 176 0 0 1 718 355 Z" fill="#FFB020" stroke="#0B1726" stroke-width="40" paint-order="stroke"/>
     <g clip-path="url(#dome)" fill="none" stroke="#0B1726" stroke-width="24" stroke-linecap="round">
-      <path d="M 450 57 Q 400 167 408 261"/>
-      <path d="M 562 57 Q 608 167 604 261"/>
+      <path d="M 460 167 Q 416 257 424 343"/>
+      <path d="M 556 167 Q 596 257 590 343"/>
     </g>
-    <path d="M 244 269 H 762 Q 834 269 842 291 Q 844 305 812 305 H 244 A 18 18 0 0 1 244 269 Z" fill="#FFB020"/>
+    <path d="M 276 347 H 726 Q 804 347 812 371 Q 814 387 782 387 H 276 A 20 20 0 0 1 276 347 Z" fill="#FFB020"/>
   </g></g></g>
 </svg>
