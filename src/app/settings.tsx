@@ -1,8 +1,9 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Alert, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
-import { Button, Card, Field, Icon, Label } from '@/components/ui';
+import { Button, Card, Chip, Field, Icon, Label } from '@/components/ui';
 import { pickBackup, shareBackup } from '@/lib/files';
+import { PRICING_MODES } from '@/lib/labour';
 import { aiConfigured } from '@/lib/ai';
 import { useStore } from '@/lib/store';
 import { colors, space } from '@/theme';
@@ -50,10 +51,18 @@ export default function Settings() {
 
       <Label style={st.label}>Your rates</Label>
       <Card style={st.card}>
+        <Label>How you price labour</Label>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          {PRICING_MODES.map((m) => (
+            <Chip key={m.id} label={m.label} active={p.pricingMode === m.id} onPress={() => set({ pricingMode: m.id })} />
+          ))}
+        </View>
+        <Text style={{ color: colors.muted, marginTop: -4 }}>{PRICING_MODES.find((m) => m.id === p.pricingMode)?.hint}</Text>
         <View style={st.row}>
-          <Field style={{ flex: 1 }} label="Day rate £" value={String(p.dayRate)} onChangeText={(t) => set({ dayRate: num(t) })} keyboardType="decimal-pad" />
+          <Field style={{ flex: 1 }} label={p.pricingMode === 'job' ? 'Your day is worth £' : 'Day rate £'} value={String(p.dayRate)} onChangeText={(t) => set({ dayRate: num(t) })} keyboardType="decimal-pad" />
           <Field style={{ flex: 1 }} label="Hourly £" value={String(p.hourlyRate)} onChangeText={(t) => set({ hourlyRate: num(t) })} keyboardType="decimal-pad" />
         </View>
+        {p.pricingMode === 'job' && <Text style={{ color: colors.faint, fontSize: 12, marginTop: -4 }}>Only used to estimate the labour price. Clients never see a rate.</Text>}
         <View style={st.row}>
           <Field style={{ flex: 1 }} label="Materials markup %" value={String(p.markupPct)} onChangeText={(t) => set({ markupPct: num(t) })} keyboardType="decimal-pad" />
           <Field style={{ flex: 1 }} label="Default deposit %" value={String(p.defaultDepositPct)} onChangeText={(t) => set({ defaultDepositPct: Math.min(100, num(t)) })} keyboardType="decimal-pad" />

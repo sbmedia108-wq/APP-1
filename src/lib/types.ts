@@ -43,6 +43,9 @@ export interface Quote {
   example?: boolean;
 }
 
+/** How the user prices labour: day rate, hourly rate, or one price for the job (price work). */
+export type PricingMode = 'day' | 'hour' | 'job';
+
 export interface BusinessProfile {
   businessName: string;
   ownerName: string;
@@ -50,6 +53,8 @@ export interface BusinessProfile {
   phone: string;
   email: string;
   postcode: string;
+  pricingMode: PricingMode;
+  /** Day rate. In 'job' mode it's only used to estimate labour, never shown. */
   dayRate: number;
   hourlyRate: number;
   markupPct: number;

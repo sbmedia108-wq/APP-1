@@ -82,11 +82,12 @@ export function Field({ label, style, ...rest }: TextInputProps & { label: strin
   );
 }
 
-export function Chip({ label, active, onPress, icon }: { label: string; active?: boolean; onPress: () => void; icon?: IconName }) {
+export function Chip({ label, active, onPress, icon, onDark }: { label: string; active?: boolean; onPress: () => void; icon?: IconName; onDark?: boolean }) {
+  const on = onDark ? { bg: colors.amber, fg: colors.ink } : { bg: colors.ink, fg: colors.white };
   return (
-    <Pressable onPress={() => { tap(); onPress(); }} style={[s.chip, active && { backgroundColor: colors.ink, borderColor: colors.ink }]}>
-      {icon ? <Icon name={icon} size={15} color={active ? colors.white : colors.muted} /> : null}
-      <Text style={[s.chipText, active && { color: colors.white }]}>{label}</Text>
+    <Pressable accessibilityRole="button" accessibilityState={{ selected: !!active }} onPress={() => { tap(); onPress(); }} style={[s.chip, active && { backgroundColor: on.bg, borderColor: on.bg }]}>
+      {icon ? <Icon name={icon} size={15} color={active ? on.fg : colors.muted} /> : null}
+      <Text style={[s.chipText, active && { color: on.fg }]}>{label}</Text>
     </Pressable>
   );
 }

@@ -104,3 +104,19 @@ test('price book overrides catalogue prices before markup', () => {
   const d = parseTranscriptOffline('need 10 bags of postcrete', { priceBook: { postcrete: 6 }, markupPct: 10 });
   assert.equal(d.items.find((i) => /postcrete/i.test(i.description))?.unitPrice, 6.6);
 });
+
+test('labour follows the pricing mode', async () => {
+  const { applyPricingMode } = await import('../parser.ts');
+  const base = parseTranscriptOffline('20 metres of fencing, two days with a labourer', { dayRate: 240 });
+  const hour = applyPricingMode(base.items, { pricingMode: 'hour', dayRate: 240, hourlyRate: 30 });
+  assert.equal(hour[0]?.unit, 'hour');
+  assert.equal(hour[0]?.qty, 16);
+  assert.equal(hour[0]?.unitPrice, 30);
+  assert.equal(hour[1]?.unitPrice, 18); // labourer at 60%
+  const job = applyPricingMode(base.items, { pricingMode: 'job', dayRate: 240 });
+  const labour = job.filter((i) => i.kind === 'labour');
+  assert.equal(labour.length, 1);
+  assert.equal(labour[0]?.unit, 'job');
+  assert.equal(labour[0]?.unitPrice, 2 * 240 + 2 * 144);
+  assert.equal(job.length, base.items.length - 1);
+});

@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Chip, Icon, Label, SectionHeader, s as ui } from '@/components/ui';
 import { CALCULATORS } from '@/lib/calculators';
 import { uid } from '@/lib/id';
+import { labourLine } from '@/lib/labour';
 import { lookupPrices, MATERIAL_BY_ID, searchMaterials, type Material, type PriceQuote } from '@/lib/materials';
 import { formatGBP } from '@/lib/money';
 import { useStore } from '@/lib/store';
@@ -72,13 +73,13 @@ export default function Materials() {
     const q = createQuote({
       title: calc.name,
       items: [
-        { id: uid(), kind: 'labour', description: 'Labour', qty: 1, unit: 'day', unitPrice: profile.dayRate },
+        labourLine(profile),
         ...calcLines.map((l) => {
           const m = MATERIAL_BY_ID[l.materialId]!;
           return { id: uid(), kind: 'material' as const, description: m.name, qty: l.qty, unit: m.unit, unitPrice: Math.round((profile.priceBook[m.id] ?? m.price) * (1 + profile.markupPct / 100) * 100) / 100 };
         }),
       ],
-      assumptions: ['Labour set to 1 day — adjust to suit.'],
+      assumptions: ['Labour is a placeholder — set it to suit the job.'],
     });
     router.push(`/quote/${q.id}`);
   };

@@ -7,6 +7,7 @@ export const DEFAULT_PROFILE: BusinessProfile = {
   phone: '',
   email: '',
   postcode: '',
+  pricingMode: 'day',
   dayRate: 240,
   hourlyRate: 35,
   markupPct: 10,

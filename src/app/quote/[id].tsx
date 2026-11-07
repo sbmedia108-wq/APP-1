@@ -5,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Chip, Field, Icon, Label, StatusPill, s as ui, type IconName } from '@/components/ui';
 import { addPhoto, deletePhoto } from '@/lib/files';
 import { uid } from '@/lib/id';
+import { labourLine } from '@/lib/labour';
 import { calcTotals, formatGBP, lineTotal } from '@/lib/money';
 import { shareQuotePdf } from '@/lib/pdf';
 import { useStore } from '@/lib/store';
@@ -67,7 +68,7 @@ export default function QuoteScreen() {
       items: [
         ...q.items,
         kind === 'labour'
-          ? { id: uid(), kind, description: 'Labour', qty: 1, unit: 'day', unitPrice: profile.dayRate }
+          ? labourLine(profile)
           : { id: uid(), kind, description: '', qty: 1, unit: kind === 'material' ? 'each' : 'job', unitPrice: 0 },
       ],
     });

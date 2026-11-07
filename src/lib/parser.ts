@@ -12,10 +12,11 @@
 import { CALCULATORS } from './calculators.ts';
 import { MATERIAL_BY_ID, matchMaterial } from './materials.ts';
 import { uid } from './id.ts';
-import type { LineItem } from './types.ts';
+import type { LineItem, PricingMode } from './types.ts';
 
 export interface ParseProfile {
   trade?: string;
+  pricingMode?: PricingMode;
   dayRate?: number;
   hourlyRate?: number;
   markupPct?: number;
@@ -212,4 +213,35 @@ export function parseTranscriptOffline(transcript: string, profile: ParseProfile
       : `Supply and fit as described. Price includes all labour and materials listed${items.some((i) => /waste|skip/i.test(i.description)) ? ' and removal of waste' : ''}.`;
 
   return { title, trade, client: { name: '', phone: '', address: '' }, items, estimatedDays, notes, assumptions: assumptions.slice(0, 5) };
+}
+
+/**
+ * Re-expresses labour lines the way the user prices:
+ *  - 'day'  : as estimated (days at day rate)
+ *  - 'hour' : days become hours (8h day) at the hourly rate
+ *  - 'job'  : all labour becomes one fixed-price "Labour" line, so the client sees a job price, not a rate
+ */
+export function applyPricingMode(items: LineItem[], p: ParseProfile): LineItem[] {
+  const mode = p.pricingMode ?? 'day';
+  if (mode === 'day') return items;
+  const labour = items.filter((i) => i.kind === 'labour');
+  const rest = items.filter((i) => i.kind !== 'labour');
+  if (!labour.length) return items;
+  if (mode === 'hour') {
+    const hourly = p.hourlyRate ?? 35;
+    return [
+      ...labour.map((i) => {
+        if (i.unit !== 'day') return i;
+        const ratio = p.dayRate ? i.unitPrice / p.dayRate : 1; // labourer is a fraction of your rate
+        return { ...i, qty: Math.round(i.qty * 8 * 2) / 2, unit: 'hour', unitPrice: Math.round(hourly * ratio * 100) / 100 };
+      }),
+      ...rest,
+    ];
+  }
+  const sum = labour.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+  const withHelp = labour.length > 1 || labour.some((i) => /labourer/i.test(i.description));
+  return [
+    { id: labour[0]!.id, kind: 'labour', description: withHelp ? 'Labour (incl. labourer)' : 'Labour', qty: 1, unit: 'job', unitPrice: Math.round(sum) },
+    ...rest,
+  ];
 }
