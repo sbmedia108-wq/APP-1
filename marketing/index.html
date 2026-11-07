@@ -1,0 +1,379 @@
+<title>Graft for Trades</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Graft turns a two-minute voice note into a priced, itemised quote and sends it on WhatsApp. Built for UK tradespeople doing private work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: van-livery bands. Ink hero with hi-vis chevron tape, then light "worksheet" sections, ink footer CTA. */
+:root {
+  --ink: #0B1726;
+  --ink-2: #14253A;
+  --amber: #FFB020;
+  --amber-deep: #C27A00;
+  --bg: #F3F4F6;
+  --surface: #FFFFFF;
+  --fg: #0B1726;
+  --muted: #4F5D70;
+  --line: #DCE1E8;
+  --wa: #1FAF55;
+  --wa-bubble: #DCF8C6;
+  --wa-ground: #ECE5DD;
+  --on-ink: #FFFFFF;
+  --on-ink-muted: rgba(255,255,255,.66);
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1C2D; --surface: #16273D; --fg: #EEF2F7; --muted: #A3B0C2; --line: #26394F;
+    --amber-deep: #FFB020; --wa-bubble: #1F4D36; --wa-ground: #0D1824; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1C2D; --surface: #16273D; --fg: #EEF2F7; --muted: #A3B0C2; --line: #26394F;
+  --amber-deep: #FFB020; --wa-bubble: #1F4D36; --wa-ground: #0D1824; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; margin: 0; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-stretch: 78%; line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1 { font-size: clamp(44px, 7.4vw, 92px); font-weight: 900; text-transform: uppercase; }
+h2 { font-size: clamp(34px, 4.8vw, 58px); font-weight: 900; text-transform: uppercase; }
+h3 { font-size: 24px; font-weight: 800; font-stretch: 90%; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--on-ink); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+  background: repeating-linear-gradient(-45deg, var(--amber) 0 22px, var(--ink) 22px 44px); }
+.nav { display: flex; align-items: center; justify-content: space-between; padding-block: 22px; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 900; font-size: 26px; font-stretch: 85%; text-decoration: none; }
+.logo b { width: 38px; height: 38px; border-radius: 11px; background: var(--amber); color: var(--ink); display: grid; place-items: center; font-size: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 22px; border-radius: 14px; font-weight: 700; font-size: 17px; text-decoration: none; border: 1.5px solid transparent; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn-amber { background: var(--amber); color: var(--ink); }
+.btn-line { border-color: rgba(255,255,255,.28); color: var(--on-ink); }
+.btn-line:hover { background: rgba(255,255,255,.06); }
+.btn small { display: block; font-size: 11px; font-weight: 600; opacity: .7; line-height: 1; letter-spacing: .04em; text-transform: uppercase; }
+.btn span { line-height: 1.1; }
+.nav .btn { height: 44px; font-size: 15px; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding-block: 36px 96px; }
+.hero-grid > * { min-width: 0; }
+.hero h1 em { font-style: normal; color: var(--amber); }
+.lede { color: var(--on-ink-muted); font-size: 20px; max-width: 34ch; margin-top: 22px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.receipt { margin-top: 34px; display: flex; gap: 0; border: 1px dashed rgba(255,255,255,.22); border-radius: 14px; max-width: 520px; }
+.receipt div { flex: 1; padding: 14px 18px; }
+.receipt div + div { border-left: 1px dashed rgba(255,255,255,.22); }
+.receipt .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--on-ink-muted); }
+.receipt .v { font-family: var(--display); font-stretch: 80%; font-weight: 800; font-size: 28px; line-height: 1.1; margin-top: 4px; }
+.receipt .v s { color: var(--on-ink-muted); font-weight: 600; font-size: 20px; }
+
+.phones { position: relative; height: 640px; }
+.phone { position: absolute; width: 290px; border-radius: 44px; background: #05090F; padding: 10px; box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 0 0 1.5px rgba(255,255,255,.12); }
+.phone img { display: block; width: 100%; border-radius: 34px; }
+.phone.a { right: 120px; top: 0; z-index: 2; }
+.phone.b { right: 0; top: 70px; transform: rotate(5deg); opacity: .96; }
+
+/* Sections */
+section { padding-block: 96px; }
+.head { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 48px; }
+.head > * { min-width: 0; }
+.head p { color: var(--muted); font-size: 19px; max-width: 46ch; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+.step .n { font-family: var(--mono); font-weight: 600; font-size: 13px; color: var(--amber-deep); letter-spacing: .1em; }
+.step p { color: var(--muted); }
+.step .time { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line); font-family: var(--mono); font-size: 13px; color: var(--fg); }
+
+.wa-demo { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; margin-top: 72px; }
+.wa-demo > * { min-width: 0; }
+.chat { background: var(--wa-ground); border-radius: 26px; padding: 22px; border: 1px solid var(--line); }
+.chat-top { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+.chat-top i { width: 40px; height: 40px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; color: #fff; font-style: normal; font-weight: 700; }
+.chat-top b { display: block; }
+.chat-top span { font-size: 13px; color: var(--muted); }
+.bubble { background: var(--wa-bubble); color: var(--fg); border-radius: 14px 4px 14px 14px; padding: 14px 16px; font-size: 15px; line-height: 1.5; margin-left: 28px; white-space: pre-line; font-family: var(--body); }
+.bubble .meta { display: block; text-align: right; font-size: 11px; color: var(--muted); margin-top: 6px; }
+.bubble .row { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+.wa-copy p { color: var(--muted); font-size: 19px; margin-top: 18px; max-width: 44ch; }
+.wa-copy ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.wa-copy li { display: flex; gap: 12px; align-items: baseline; }
+.wa-copy li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--amber); transform: translateY(-1px); }
+
+.features { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+.f { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.f p { color: var(--muted); }
+.f .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; }
+.f.wide { grid-column: span 7; }
+.f.narrow { grid-column: span 5; }
+.f.third { grid-column: span 4; }
+.f.shot { flex-direction: row; gap: 24px; align-items: center; overflow: hidden; padding-bottom: 0; }
+.f.shot .txt { flex: 1; min-width: 0; padding-bottom: 28px; align-self: center; display: flex; flex-direction: column; gap: 10px; }
+.f.shot img { width: 210px; flex: none; border-radius: 26px 26px 0 0; border: 8px solid #05090F; border-bottom: 0; align-self: flex-end; }
+.memory { margin-top: 8px; background: var(--ink); color: var(--on-ink); border-radius: 14px; padding: 16px; font-size: 15px; }
+.memory .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--amber); }
+.memory .m { display: flex; justify-content: space-between; gap: 10px; margin-top: 8px; padding: 12px; border: 1px solid rgba(255,176,32,.35); border-radius: 10px; }
+.memory .m small { display: block; color: var(--on-ink-muted); }
+.memory .m b { font-variant-numeric: tabular-nums; }
+
+.trades { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.trades span { border: 1.5px solid var(--line); background: var(--surface); padding: 8px 16px; border-radius: 999px; font-weight: 600; }
+
+.pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px; display: flex; flex-direction: column; gap: 14px; }
+.plan.pro { background: var(--ink); color: var(--on-ink); border-color: var(--ink); position: relative; }
+.plan.pro::before { content: "MOST TRADES PICK THIS"; position: absolute; top: -12px; left: 30px; background: var(--amber); color: var(--ink); font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; padding: 4px 10px; border-radius: 6px; }
+.price { font-family: var(--display); font-stretch: 78%; font-weight: 900; font-size: 54px; line-height: 1; }
+.price small { font-family: var(--body); font-size: 16px; font-weight: 500; opacity: .7; }
+.plan ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.plan li { padding-left: 24px; position: relative; }
+.plan li::before { content: "✓"; position: absolute; left: 0; color: var(--amber-deep); font-weight: 700; }
+.plan.pro li::before { color: var(--amber); }
+.plan .muted { color: var(--muted); }
+.plan.pro .muted { color: var(--on-ink-muted); }
+
+.cta { background: var(--ink); color: var(--on-ink); position: relative; }
+.cta::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px; background: repeating-linear-gradient(-45deg, var(--amber) 0 14px, var(--ink) 14px 28px); }
+.cta .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
+.cta .wrap > * { min-width: 0; }
+.cta p { color: var(--on-ink-muted); font-size: 19px; margin-top: 18px; max-width: 42ch; }
+footer { background: var(--ink); color: var(--on-ink-muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px; }
+
+@media (max-width: 900px) {
+  .hero-grid, .head, .wa-demo, .cta .wrap { grid-template-columns: 1fr; }
+  .phones { height: 520px; max-width: 420px; }
+  .phone { width: 230px; }
+  .phone.a { right: auto; left: 0; }
+  .phone.b { right: 0; }
+  .steps, .pricing { grid-template-columns: 1fr; }
+  .f.wide, .f.narrow, .f.third { grid-column: span 12; }
+  section { padding-block: 72px; }
+}
+@media (max-width: 520px) {
+  .f.shot { flex-direction: column; align-items: stretch; }
+  .f.shot img { width: 200px; align-self: center; }
+  .phones { height: 440px; }
+  .phone { width: 196px; border-radius: 34px; padding: 8px; }
+  .phone img { border-radius: 27px; }
+  .receipt .v { font-size: 22px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .phone.a { animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
+  .phone.b { animation: rise2 1.1s .1s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes rise { from { transform: translateY(24px); } to { transform: none; } }
+  @keyframes rise2 { from { transform: translateY(36px) rotate(5deg); } to { transform: rotate(5deg); } }
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="#top" aria-label="Graft home"><b>G</b>Graft</a>
+      <a class="btn btn-amber" href="#download">Get the app</a>
+    </nav>
+    <div class="hero-grid" id="top">
+      <div>
+        <p class="eyebrow" style="color:var(--amber)">For UK trades doing private work</p>
+        <h1 style="margin-top:14px">Price it on the drive. <em>Send it</em> before the van door shuts.</h1>
+        <p class="lede">Talk through the job for two minutes. Graft writes the itemised quote, works out the materials, and sends it to your client on WhatsApp.</p>
+        <div class="ctas" id="download">
+          <a class="btn btn-amber" href="#pricing"><span><small>Download on the</small>App Store</span></a>
+          <a class="btn btn-line" href="#pricing"><span><small>Get it on</small>Google Play</span></a>
+        </div>
+        <div class="receipt" aria-label="Time saved per quote">
+          <div><p class="k">Kitchen table</p><p class="v"><s>90 min</s></p></div>
+          <div><p class="k">With Graft</p><p class="v">3 min</p></div>
+          <div><p class="k">Pen &amp; paper</p><p class="v">None</p></div>
+        </div>
+      </div>
+      <div class="phones" aria-hidden="true">
+        <div class="phone b"><img src="screens/talk.png" alt=""></div>
+        <div class="phone a"><img src="screens/home.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2 style="margin-top:12px">Walk it. Talk it. Send it.</h2>
+        </div>
+        <p>No forms, no spreadsheets, no evenings at the kitchen table. Say it the way you’d tell your labourer and Graft does the sums.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <p class="n">STEP 1 · TALK</p>
+          <h3>Say what the job is</h3>
+          <p>“Twenty metres of closeboard down the side, concrete posts and gravel boards, old fence to the tip, two and a half days with a labourer.”</p>
+          <p class="time">~ 90 seconds, stood on the drive</p>
+        </article>
+        <article class="step">
+          <p class="n">STEP 2 · CHECK</p>
+          <h3>Graft prices it up</h3>
+          <p>Labour at your day rate, posts, rails, featheredge and postcrete counted with waste, your markup applied. It flags anything it had to guess.</p>
+          <p class="time">~ 60 seconds to tweak a line or two</p>
+        </article>
+        <article class="step">
+          <p class="n">STEP 3 · SEND</p>
+          <h3>One tap to WhatsApp</h3>
+          <p>A clean, itemised quote lands in your client’s WhatsApp with the deposit to book in. PDF too, if they want one for the file.</p>
+          <p class="time">~ 10 seconds. On to the next one.</p>
+        </article>
+      </div>
+
+      <div class="wa-demo">
+        <div class="chat" aria-label="Example WhatsApp quote message">
+          <div class="chat-top"><i>SC</i><div><b>Sarah Collins</b><span>8 Beech Road, Bristol</span></div></div>
+          <div class="bubble">Hi Sarah,
+
+Thanks for having me round. Here’s your quote for the <b>closeboard fence – 20m</b>:
+
+<span class="row"><span>• Labour · 2.5 days</span><span>£600.00</span></span><span class="row"><span>• Labourer · 2.5 days</span><span>£360.00</span></span><span class="row"><span>• Concrete posts · 9</span><span>£211.50</span></span><span class="row"><span>• Arris rails, featheredge, gravel boards, postcrete</span><span>£864.70</span></span><span class="row"><span>• Waste removal &amp; disposal</span><span>£120.00</span></span>
+<b>Total: £2,156.20</b> (no VAT)
+Deposit to book in: £539.05 (25%)
+Time on site: about 2.5 days
+
+Just reply here to book in.
+<span class="meta">14:32 ✓✓</span></div>
+        </div>
+        <div class="wa-copy">
+          <p class="eyebrow">Where your clients already are</p>
+          <h2 style="margin-top:12px">Quotes that land in their chats, not their spam.</h2>
+          <p>Homeowners don’t open emailed PDFs from numbers they don’t know. They do open WhatsApp. Graft writes the message for you, with your name on it.</p>
+          <ul>
+            <li>Itemised so it looks fair, not plucked out of the air</li>
+            <li>Deposit and time on site spelled out up front</li>
+            <li>VAT added automatically if you’re registered</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Everything in the van</p>
+          <h2 style="margin-top:12px">The rest of the job, sorted.</h2>
+        </div>
+        <p>Quoting is the start. Graft also remembers your pricing, finds your materials cheapest and makes sure the kit comes home with you.</p>
+      </div>
+      <div class="features">
+        <article class="f wide">
+          <p class="tag">Job memory</p>
+          <h3>It remembers what you charged last time</h3>
+          <p>Start talking and Graft pulls up similar jobs you’ve done before, with what you charged. Tap one to start from it. Your own prices beat any guide price.</p>
+          <div class="memory">
+            <p class="k">YOU’VE DONE THIS BEFORE</p>
+            <div class="m"><span>Closeboard fence – 22m<small>Margaret Ellis · Sept</small></span><b>£2,448</b></div>
+          </div>
+        </article>
+        <article class="f narrow">
+          <p class="tag">Chase-ups</p>
+          <h3>Never let a quote go cold</h3>
+          <p>Three days after you send it, Graft reminds you and writes a friendly nudge. One tap sends it on WhatsApp.</p>
+          <p class="tag" style="margin-top:auto;color:var(--muted)">Win rate &amp; work out for quote on your home screen</p>
+        </article>
+        <article class="f wide shot">
+          <div class="txt">
+            <p class="tag">Materials finder</p>
+            <h3>“Twelve 4x4 eight-foot posts.” Cheapest near you.</h3>
+            <p>Say or type what you need. Graft compares Screwfix, Toolstation, Travis Perkins, Jewson, Selco, Wickes and B&amp;Q near your postcode and opens the merchant to check stock.</p>
+          </div>
+          <img src="screens/materials.png" alt="Graft materials screen comparing merchant prices for a 4x4 8ft post">
+        </article>
+        <article class="f narrow shot">
+          <div class="txt">
+            <p class="tag">Van check</p>
+            <h3>All the kit, every time</h3>
+            <p>Tick-list per kit before you leave site. Track who’s borrowed your multi-tool, and for how long.</p>
+          </div>
+          <img src="screens/vancheck.png" alt="Graft van check screen with tools ticked off">
+        </article>
+        <article class="f third">
+          <p class="tag">Calculators</p>
+          <h3>How much do I need?</h3>
+          <p>Panel and closeboard fencing, decking, patios, board &amp; skim, paint and turf. Straight into a quote.</p>
+        </article>
+        <article class="f third">
+          <p class="tag">Works with one bar</p>
+          <h3>No signal? Still quotes.</h3>
+          <p>An on-device engine builds the draft when you’re out in the sticks. The AI tidies messy speech when you’re back online.</p>
+        </article>
+        <article class="f third">
+          <p class="tag">Quote → invoice</p>
+          <h3>Won it? Invoice it.</h3>
+          <p>Turn an accepted quote into an invoice with your bank details in one tap. Track Sent, Won, Invoiced, Paid.</p>
+        </article>
+      </div>
+
+      <div class="trades" aria-label="Trades Graft is built for">
+        <span>Fencers</span><span>Landscapers</span><span>Plasterers</span><span>Decorators</span><span>Joiners</span><span>Tilers</span><span>Bricklayers</span><span>Roofers</span><span>Plumbers</span><span>Electricians</span><span>Handymen</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Pricing</p>
+          <h2 style="margin-top:12px">Pays for itself on the first job.</h2>
+        </div>
+        <p>Prices exclude VAT. Cancel any time from your phone. No contracts, no setup fees.</p>
+      </div>
+      <div class="pricing">
+        <article class="plan">
+          <h3>Starter</h3>
+          <p class="price">£0</p>
+          <p class="muted">Try it on your next few jobs.</p>
+          <ul><li>5 voice quotes a month</li><li>WhatsApp &amp; PDF sending</li><li>Van check</li></ul>
+        </article>
+        <article class="plan pro">
+          <h3>Pro</h3>
+          <p class="price">£12.99<small> / month</small></p>
+          <p class="muted">For the self-employed tradesperson.</p>
+          <ul><li>Unlimited voice quotes</li><li>Job memory &amp; your own price book</li><li>Materials finder &amp; calculators</li><li>Chase-ups and invoices</li></ul>
+        </article>
+        <article class="plan">
+          <h3>Crew</h3>
+          <p class="price">£29.99<small> / month</small></p>
+          <p class="muted">Up to 3 vans on one account.</p>
+          <ul><li>Everything in Pro</li><li>Shared price book &amp; job history</li><li>Shared kit and loan tracking</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--amber)">Coming to iPhone and Android</p>
+      <h2 style="margin-top:12px">Get your evenings back.</h2>
+      <p>Quote on site, send before you leave, and spend the evening off the tools instead of at the kitchen table with a calculator.</p>
+    </div>
+    <div class="ctas" style="margin-top:0">
+      <a class="btn btn-amber" href="#top"><span><small>Download on the</small>App Store</span></a>
+      <a class="btn btn-line" href="#top"><span><small>Get it on</small>Google Play</span></a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap"><span>Graft · Made in the UK for UK trades</span><span>Your quotes stay on your phone.</span></div>
+</footer>

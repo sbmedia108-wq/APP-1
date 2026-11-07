@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Graft",
+    "slug": "graft",
+    "scheme": "graft",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#0B1726",
+    "primaryColor": "#FFB020",
+    "description": "Talk through the job, get a priced quote, send it on WhatsApp. Built for UK tradespeople.",
+    "ios": {
+      "bundleIdentifier": "uk.co.graftapp",
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Graft listens while you talk through a job so it can write the quote for you.",
+        "NSSpeechRecognitionUsageDescription": "Graft turns what you say into a priced quote.",
+        "NSLocationWhenInUseUsageDescription": "Graft uses your location to find the cheapest materials at merchants near you.",
+        "LSApplicationQueriesSchemes": ["whatsapp"],
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "uk.co.graftapp",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B1726",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": ["RECORD_AUDIO", "ACCESS_COARSE_LOCATION"],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-sharing",
+      [
+        "expo-splash-screen",
+        { "image": "./assets/splash-icon.png", "imageWidth": 160, "backgroundColor": "#0B1726" }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Graft listens while you talk through a job so it can write the quote for you.",
+          "speechRecognitionPermission": "Graft turns what you say into a priced quote.",
+          "androidSpeechServicePackages": ["com.google.android.googlequicksearchbox", "com.google.android.as"]
+        }
+      ],
+      [
+        "expo-location",
+        { "locationWhenInUsePermission": "Graft uses your location to find the cheapest materials at merchants near you." }
+      ]
+    ],
+    "experiments": { "typedRoutes": true }
+  }
+}

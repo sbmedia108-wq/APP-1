@@ -1,0 +1,22 @@
+{
+  "name": "graft-quote-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Turns a tradesperson's spoken job description into a structured quote using Claude.",
+  "scripts": {
+    "start": "node --experimental-strip-types src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
