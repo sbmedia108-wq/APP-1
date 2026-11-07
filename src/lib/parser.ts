@@ -19,6 +19,8 @@ export interface ParseProfile {
   dayRate?: number;
   hourlyRate?: number;
   markupPct?: number;
+  /** User's own cost prices by material id. */
+  priceBook?: Record<string, number>;
 }
 
 export interface ParsedDraft {
@@ -107,7 +109,7 @@ function materialItem(materialId: string, qty: number, p: ParseProfile, note?: s
     description: note ? `${m.name} (${note})` : m.name,
     qty,
     unit: m.unit,
-    unitPrice: markup(m.price, p.markupPct),
+    unitPrice: markup(p.priceBook?.[materialId] ?? m.price, p.markupPct),
   };
 }
 

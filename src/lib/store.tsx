@@ -32,6 +32,10 @@ interface Store extends State {
   upsertTool: (t: Tool) => void;
   deleteTool: (id: string) => void;
   setOnboarded: () => void;
+  clearExamples: () => void;
+  /** Replaces everything with a backup. Returns false if the data isn't a Graft backup. */
+  restore: (data: unknown) => boolean;
+  snapshot: () => object;
 }
 
 const Ctx = createContext<Store | null>(null);
@@ -45,7 +49,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     AsyncStorage.getItem(KEY)
       .then((raw) => {
-        if (raw) setState({ ...initial, ...(JSON.parse(raw) as Partial<State>) });
+        if (raw) {
+          const saved = JSON.parse(raw) as Partial<State>;
+          setState({ ...initial, ...saved, profile: { ...DEFAULT_PROFILE, ...saved.profile } });
+        }
       })
       .catch(() => {})
       .finally(() => setReady(true));
@@ -116,10 +123,20 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   );
   const deleteTool = useCallback((id: string) => setState((s) => ({ ...s, tools: s.tools.filter((t) => t.id !== id) })), []);
   const setOnboarded = useCallback(() => setState((s) => ({ ...s, onboarded: true })), []);
+  const clearExamples = useCallback(() => setState((s) => ({ ...s, quotes: s.quotes.filter((q) => !q.example) })), []);
+  const snapshot = useCallback(() => ({ app: 'graft', version: 1, exportedAt: new Date().toISOString(), state: stateRef.current }), []);
+  const restore = useCallback((data: unknown) => {
+    const d = data as { app?: string; state?: Partial<State> };
+    if (!d || d.app !== 'graft' || !d.state || !Array.isArray(d.state.quotes)) return false;
+    const next: State = { ...initial, ...d.state, profile: { ...DEFAULT_PROFILE, ...d.state.profile }, onboarded: true };
+    stateRef.current = next;
+    setState(next);
+    return true;
+  }, []);
 
   const value = useMemo<Store>(
-    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded }),
-    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded],
+    () => ({ ...state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot }),
+    [state, ready, updateProfile, createQuote, updateQuote, deleteQuote, duplicateQuote, upsertTool, deleteTool, setOnboarded, clearExamples, restore, snapshot],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

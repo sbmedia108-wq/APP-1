@@ -1,6 +1,8 @@
 import { router } from 'expo-router';
-import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
-import { Button, Card, Field, Label } from '@/components/ui';
+import { useState } from 'react';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Button, Card, Field, Icon, Label } from '@/components/ui';
+import { pickBackup, shareBackup } from '@/lib/files';
 import { aiConfigured } from '@/lib/ai';
 import { useStore } from '@/lib/store';
 import { colors, space } from '@/theme';
@@ -8,7 +10,30 @@ import { colors, space } from '@/theme';
 const num = (t: string) => Number(t.replace(/[^0-9.]/g, '')) || 0;
 
 export default function Settings() {
-  const { profile: p, updateProfile: set } = useStore();
+  const { profile: p, updateProfile: set, quotes, clearExamples, snapshot, restore } = useStore();
+  const [msg, setMsg] = useState<string>();
+  const examples = quotes.filter((q) => q.example).length;
+  const realQuotes = quotes.length - examples;
+
+  const backup = async () => {
+    try {
+      await shareBackup(snapshot());
+      setMsg('Backup ready. Save it somewhere safe, like Google Drive or an email to yourself.');
+    } catch (e) {
+      setMsg(e instanceof Error ? e.message : String(e));
+    }
+  };
+  const doRestore = async () => {
+    try {
+      const data = await pickBackup();
+      if (data === undefined) return;
+      const apply = () => setMsg(restore(data) ? 'Backup restored.' : 'That file isn’t a Graft backup.');
+      if (Platform.OS === 'web') apply();
+      else Alert.alert('Restore this backup?', 'It replaces everything on this phone with what’s in the backup.', [{ text: 'Cancel', style: 'cancel' }, { text: 'Restore', style: 'destructive', onPress: apply }]);
+    } catch {
+      setMsg('Couldn’t read that file. Pick the .json backup Graft made.');
+    }
+  };
   return (
     <ScrollView contentContainerStyle={{ padding: space(4), paddingBottom: 60 }} keyboardShouldPersistTaps="handled">
       <Text style={{ color: colors.muted, lineHeight: 21 }}>This goes on every quote. Your rates are used when Graft prices up a job, so get them right once and forget about it.</Text>
@@ -54,6 +79,32 @@ export default function Settings() {
         </View>
       </Card>
 
+      <Label style={st.label}>My prices</Label>
+      <Card onPress={() => router.push('/prices')} style={st.linkRow}>
+        <Icon name="book-open-variant" color={colors.amberDeep} />
+        <View style={{ flex: 1 }}>
+          <Text style={st.rowTitle}>What you pay your merchant</Text>
+          <Text style={st.rowSub}>{Object.keys(p.priceBook).length ? `${Object.keys(p.priceBook).length} saved · used instead of guide prices` : 'Use your real trade prices on every quote'}</Text>
+        </View>
+        <Icon name="chevron-right" color={colors.faint} />
+      </Card>
+
+      <Label style={st.label}>Backup</Label>
+      <Card style={st.card}>
+        <Text style={{ color: colors.muted, lineHeight: 20 }}>Your quotes live on this phone. Back them up now and then so a lost or broken phone doesn’t lose your work. {realQuotes} quote{realQuotes === 1 ? '' : 's'} so far.</Text>
+        <View style={st.row}>
+          <Button small variant="dark" icon="cloud-upload-outline" title="Back up now" onPress={backup} style={{ flex: 1 }} />
+          <Button small variant="ghost" icon="backup-restore" title="Restore" onPress={doRestore} style={{ flex: 1 }} />
+        </View>
+        {msg ? <Text style={{ color: colors.text, fontWeight: '600' }}>{msg}</Text> : null}
+      </Card>
+
+      {examples > 0 && (
+        <Pressable onPress={clearExamples} style={{ marginTop: space(5), alignSelf: 'center' }} hitSlop={10}>
+          <Text style={{ color: colors.red, fontWeight: '700' }}>Remove the {examples} example jobs</Text>
+        </Pressable>
+      )}
+
       <Text style={{ color: colors.faint, fontSize: 12, marginTop: space(5), textAlign: 'center' }}>
         Quote engine: {aiConfigured ? 'Graft AI (online) with on-device fallback' : 'On-device'} · Your data stays on this phone
       </Text>
@@ -66,4 +117,7 @@ const st = StyleSheet.create({
   label: { marginTop: space(6), marginBottom: space(2) },
   card: { gap: space(3.5) },
   row: { flexDirection: 'row', gap: space(3) },
+  linkRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  rowTitle: { fontSize: 15, fontWeight: '700', color: colors.text },
+  rowSub: { color: colors.muted, marginTop: 2 },
 });

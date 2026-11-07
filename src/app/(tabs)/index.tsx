@@ -1,4 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { useEffect } from 'react';
 import { router } from 'expo-router';
 import { Image, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -16,7 +17,10 @@ function greeting() {
 
 export default function Home() {
   const insets = useSafeAreaInsets();
-  const { quotes, profile, tools, updateQuote } = useStore();
+  const { quotes, profile, tools, updateQuote, ready, onboarded } = useStore();
+  useEffect(() => {
+    if (ready && !onboarded) router.push('/welcome');
+  }, [ready, onboarded]);
   const stats = pipelineStats(quotes, profile.vatRegistered);
   const recent = quotes.slice(0, 4);
   const lent = tools.filter((t) => t.lentTo);
@@ -89,7 +93,7 @@ export default function Home() {
                   {q.title}
                 </Text>
                 <Text style={{ color: colors.muted, marginTop: 3 }} numberOfLines={1}>
-                  {q.client.name || 'No client yet'} · {q.number}
+                  {q.client.name || 'No client yet'} · {q.number}{q.example ? ' · Example' : ''}
                 </Text>
               </View>
               <Text style={[type.h3, type.money]}>{formatGBP0(calcTotals(q.items, profile.vatRegistered).total)}</Text>

@@ -99,3 +99,8 @@ test('closeboard with concrete posts does not add stray single items', () => {
   assert.equal(d.items.find((i) => /concrete post/i.test(i.description))?.qty, 9);
   assert.ok(!d.assumptions.some((a) => a.startsWith('Assumed 1')));
 });
+
+test('price book overrides catalogue prices before markup', () => {
+  const d = parseTranscriptOffline('need 10 bags of postcrete', { priceBook: { postcrete: 6 }, markupPct: 10 });
+  assert.equal(d.items.find((i) => /postcrete/i.test(i.description))?.unitPrice, 6.6);
+});

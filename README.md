@@ -18,6 +18,10 @@ One codebase for **iOS and Android** (Expo / React Native), plus a small AI serv
 | **Calculators** | Panel fence, closeboard, decking, patio, board & skim, paint, turf. One tap turns the take-off into a quote. |
 | **Van check** | Tick-list per kit before you leave site; lend tools and see who's had what for how long. |
 | **Pipeline** | Draft → Sent → Won → Invoiced → Paid, chase-up reminders with a pre-written nudge, win rate and work out for quote on the home screen. |
+| **Site photos** | Take or pick photos on the quote; they're kept privately and added to the PDF. |
+| **My prices** | Enter what you actually pay your merchant; used instead of guide prices everywhere, before your markup. |
+| **Backup & restore** | One tap saves a backup file to Google Drive, email or WhatsApp; restore it on a new phone. |
+| **First-time setup** | Name, trade, day rate and mobile in 30 seconds; example jobs are labelled and removable. |
 | **UK business setup** | VAT (20%) toggle and number, deposit %, payment terms, bank details, quote numbering. |
 
 ## Run it
@@ -41,6 +45,14 @@ ANTHROPIC_API_KEY=sk-ant-... npm start        # listens on :8787
 ```
 
 Then point the app at it: copy `.env.example` to `.env` and set `EXPO_PUBLIC_QUOTE_API_URL`. Set `GRAFT_APP_TOKEN` on the server and `EXPO_PUBLIC_QUOTE_API_TOKEN` in the app to require a shared token. The API key stays on the server, never in the app. The server uses Claude structured outputs so the response always matches the quote schema, with server-side model fallback enabled.
+
+### Android test build (no store needed)
+
+```bash
+npm run build:android:test   # builds an installable .apk on Expo's servers and prints a download link
+```
+
+Open the link on your Android phone to install. Needs a free expo.dev account (`npx eas-cli@latest login`).
 
 ### Ship to the stores
 
@@ -68,5 +80,6 @@ marketing/          landing page, store copy, screenshots
 
 - **Live material prices.** `src/lib/materials.ts` ships with guide trade prices and deep links into each merchant's search. UK merchants don't offer open price APIs, so real-time prices need a trade-account integration or a price-data partner. Plug it in with `setPriceProvider()`; the UI already labels prices as guide or live.
 - **App icon & splash.** `assets/` has a simple amber "G" on ink generated in code. Get a designer to produce the final mark.
-- **Accounts & sync.** Data is stored on the device (AsyncStorage). The Crew plan on the landing page needs a backend for shared price books.
+- **Privacy policy.** Draft in `marketing/privacy.html`. Fill in the bracketed details and host it before submitting.
+- **Accounts & sync.** Data is stored on the device (AsyncStorage), with manual backup files. The Crew plan on the landing page needs a backend for shared price books.
 - **Pricing.** The plans on the landing page (£0 / £12.99 / £29.99) are suggestions.

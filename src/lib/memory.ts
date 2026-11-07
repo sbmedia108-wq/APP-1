@@ -109,6 +109,7 @@ export function pipelineStats(quotes: Quote[], vatRegistered: boolean, now = new
   let won = 0;
   const chase: Quote[] = [];
   for (const q of quotes) {
+    if (q.example) continue;
     const t = calcTotals(q.items, vatRegistered).total;
     if (q.status === 'sent') {
       outstanding += t;

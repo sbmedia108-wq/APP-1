@@ -56,7 +56,7 @@ export default function Quotes() {
                   {item.title}
                 </Text>
                 <Text style={{ color: colors.muted, marginTop: 3 }} numberOfLines={1}>
-                  {item.client.name || 'No client yet'}
+                  {item.client.name || 'No client yet'}{item.example ? ' · Example' : ''}
                   {item.client.address ? ` · ${item.client.address}` : ''}
                 </Text>
               </View>

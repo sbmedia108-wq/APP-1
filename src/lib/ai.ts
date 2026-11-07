@@ -19,7 +19,7 @@ export interface DraftResult extends ParsedDraft {
 }
 
 export async function draftQuote(transcript: string, profile: BusinessProfile, history: Quote[]): Promise<DraftResult> {
-  const p = { trade: profile.trade, dayRate: profile.dayRate, hourlyRate: profile.hourlyRate, markupPct: profile.markupPct };
+  const p = { trade: profile.trade, dayRate: profile.dayRate, hourlyRate: profile.hourlyRate, markupPct: profile.markupPct, priceBook: profile.priceBook };
   if (API_URL) {
     try {
       const similar = findSimilarJobs(transcript, history, profile.vatRegistered, 3).map((s) => ({

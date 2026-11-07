@@ -17,8 +17,12 @@
         "NSMicrophoneUsageDescription": "Graft listens while you talk through a job so it can write the quote for you.",
         "NSSpeechRecognitionUsageDescription": "Graft turns what you say into a priced quote.",
         "NSLocationWhenInUseUsageDescription": "Graft uses your location to find the cheapest materials at merchants near you.",
-        "LSApplicationQueriesSchemes": ["whatsapp"],
-        "ITSAppUsesNonExemptEncryption": false
+        "LSApplicationQueriesSchemes": [
+          "whatsapp"
+        ],
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "Graft uses the camera to add site photos to your quotes.",
+        "NSPhotoLibraryUsageDescription": "Graft lets you add site photos from your gallery to your quotes."
       }
     },
     "android": {
@@ -28,7 +32,11 @@
         "foregroundImage": "./assets/android-icon-foreground.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "permissions": ["RECORD_AUDIO", "ACCESS_COARSE_LOCATION"],
+      "permissions": [
+        "RECORD_AUDIO",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -41,21 +49,39 @@
       "expo-sharing",
       [
         "expo-splash-screen",
-        { "image": "./assets/splash-icon.png", "imageWidth": 160, "backgroundColor": "#0B1726" }
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#0B1726"
+        }
       ],
       [
         "expo-speech-recognition",
         {
           "microphonePermission": "Graft listens while you talk through a job so it can write the quote for you.",
           "speechRecognitionPermission": "Graft turns what you say into a priced quote.",
-          "androidSpeechServicePackages": ["com.google.android.googlequicksearchbox", "com.google.android.as"]
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox",
+            "com.google.android.as"
+          ]
         }
       ],
       [
         "expo-location",
-        { "locationWhenInUsePermission": "Graft uses your location to find the cheapest materials at merchants near you." }
+        {
+          "locationWhenInUsePermission": "Graft uses your location to find the cheapest materials at merchants near you."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Graft uses the camera to add site photos to your quotes.",
+          "photosPermission": "Graft lets you add site photos from your gallery to your quotes."
+        }
       ]
     ],
-    "experiments": { "typedRoutes": true }
+    "experiments": {
+      "typedRoutes": true
+    }
   }
 }

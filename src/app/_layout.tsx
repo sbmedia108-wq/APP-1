@@ -23,6 +23,8 @@ export default function RootLayout() {
           <Stack.Screen name="new" options={{ presentation: 'fullScreenModal', headerShown: false, contentStyle: { backgroundColor: colors.ink } }} />
           <Stack.Screen name="quote/[id]" options={{ title: '' }} />
           <Stack.Screen name="settings" options={{ title: 'Your business', presentation: 'modal' }} />
+          <Stack.Screen name="prices" options={{ title: 'My prices' }} />
+          <Stack.Screen name="welcome" options={{ presentation: 'fullScreenModal', headerShown: false, contentStyle: { backgroundColor: colors.ink } }} />
         </Stack>
       </StoreProvider>
     </SafeAreaProvider>

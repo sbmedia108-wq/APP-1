@@ -1,12 +1,13 @@
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { Platform } from 'react-native';
+import { photoDataUri } from './files';
 import { calcTotals, formatGBP } from './money';
 import type { BusinessProfile, Quote } from './types';
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-export function quoteHtml(q: Quote, p: BusinessProfile, kind: 'Quote' | 'Invoice' = 'Quote'): string {
+export function quoteHtml(q: Quote, p: BusinessProfile, kind: 'Quote' | 'Invoice' = 'Quote', photos: string[] = []): string {
   const t = calcTotals(q.items, p.vatRegistered, q.depositPct);
   const date = new Date(q.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   const rows = q.items
@@ -22,6 +23,7 @@ export function quoteHtml(q: Quote, p: BusinessProfile, kind: 'Quote' | 'Invoice
   table{width:100%;border-collapse:collapse;margin-top:8px}th{text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#5B6B7F;border-bottom:1px solid #E4E7EC;padding:8px 0}
   td{padding:10px 0;border-bottom:1px solid #F0F2F5;vertical-align:top}.r{text-align:right}.b{font-weight:700}.k{font-size:10px;color:#98A2B3;text-transform:capitalize}
   .tot{margin-left:auto;width:280px;margin-top:16px}.tot div{display:flex;justify-content:space-between;padding:4px 0}.grand{font-size:20px;font-weight:800;border-top:2px solid #0B1726;margin-top:6px;padding-top:10px!important}
+  .ph{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.ph img{width:160px;height:120px;object-fit:cover;border-radius:8px}
   .notes{background:#F4F5F7;border-radius:10px;padding:16px;margin-top:24px;line-height:1.5}.foot{margin-top:28px;font-size:11px;color:#5B6B7F;line-height:1.6}
   </style></head><body>
   <div class="top"><div><h1>${esc(p.businessName || p.ownerName || 'Your Business')}</h1><div class="muted">${esc([p.phone, p.email].filter(Boolean).join(' · '))}</div>${p.vatRegistered && p.vatNumber ? `<div class="muted">VAT ${esc(p.vatNumber)}</div>` : ''}</div><span class="tag">${kind.toUpperCase()}</span></div>
@@ -32,12 +34,14 @@ export function quoteHtml(q: Quote, p: BusinessProfile, kind: 'Quote' | 'Invoice
   <div class="tot"><div><span>Subtotal</span><span>${formatGBP(t.subtotal)}</span></div>${p.vatRegistered ? `<div><span>VAT 20%</span><span>${formatGBP(t.vat)}</span></div>` : ''}
   <div class="grand"><span>Total</span><span>${formatGBP(t.total)}</span></div>${q.depositPct ? `<div class="muted"><span>Deposit (${q.depositPct}%)</span><span>${formatGBP(t.deposit)}</span></div>` : ''}</div>
   ${q.notes ? `<div class="notes">${esc(q.notes)}</div>` : ''}
+  ${photos.length ? `<div class="lbl" style="margin-top:24px">Site photos</div><div class="ph">${photos.map((src) => `<img src="${src}">`).join('')}</div>` : ''}
   <div class="foot">${kind === 'Quote' ? `This quote is valid for ${q.validDays} days. ` : ''}${esc(p.paymentTerms)}${p.bankDetails ? `<br><b>Bank:</b> ${esc(p.bankDetails)}` : ''}</div>
   </body></html>`;
 }
 
 export async function shareQuotePdf(q: Quote, p: BusinessProfile, kind: 'Quote' | 'Invoice' = 'Quote') {
-  const html = quoteHtml(q, p, kind);
+  const photos = (await Promise.all((q.photos ?? []).slice(0, 8).map(photoDataUri))).filter((x): x is string => Boolean(x));
+  const html = quoteHtml(q, p, kind, photos);
   if (Platform.OS === 'web') {
     await Print.printAsync({ html });
     return;

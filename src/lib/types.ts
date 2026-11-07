@@ -37,6 +37,10 @@ export interface Quote {
   sentAt?: string;
   /** When to nudge the user to chase the client. */
   followUpAt?: string;
+  /** Local file URIs of site photos. */
+  photos?: string[];
+  /** Sample job shipped with the app, not the user's own. */
+  example?: boolean;
 }
 
 export interface BusinessProfile {
@@ -57,6 +61,8 @@ export interface BusinessProfile {
   quotePrefix: string;
   nextQuoteNumber: number;
   followUpDays: number;
+  /** User's own cost prices by catalogue material id (ex-VAT, before markup). */
+  priceBook: Record<string, number>;
 }
 
 export interface Tool {

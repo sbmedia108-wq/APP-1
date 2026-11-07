@@ -1,8 +1,9 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Image, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Chip, Field, Icon, Label, StatusPill, s as ui, type IconName } from '@/components/ui';
+import { addPhoto, deletePhoto } from '@/lib/files';
 import { uid } from '@/lib/id';
 import { calcTotals, formatGBP, lineTotal } from '@/lib/money';
 import { shareQuotePdf } from '@/lib/pdf';
@@ -72,6 +73,19 @@ export default function QuoteScreen() {
     });
   const removeItem = (itemId: string) => set({ items: q.items.filter((i) => i.id !== itemId) });
   const setStatus = (status: QuoteStatus) => set({ status });
+  const photos = q.photos ?? [];
+  const takePhoto = async (source: 'camera' | 'library') => {
+    try {
+      const uri = await addPhoto(source);
+      if (uri) set({ photos: [...photos, uri] });
+    } catch (e) {
+      Alert.alert('Couldn’t add photo', e instanceof Error ? e.message : String(e));
+    }
+  };
+  const removePhoto = (uri: string) => {
+    deletePhoto(uri);
+    set({ photos: photos.filter((p) => p !== uri) });
+  };
 
   const sendWhatsApp = async () => {
     if (!q.client.phone.trim()) {
@@ -112,7 +126,7 @@ export default function QuoteScreen() {
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }} keyboardVerticalOffset={90}>
-      <Stack.Screen options={{ title: q.number, headerRight: () => <StatusPill status={q.status} /> }} />
+      <Stack.Screen options={{ title: q.example ? `${q.number} · Example` : q.number, headerRight: () => <StatusPill status={q.status} /> }} />
       <ScrollView contentContainerStyle={{ padding: space(4), paddingBottom: 160 }} keyboardShouldPersistTaps="handled">
         <TextInput value={q.title} onChangeText={(title) => set({ title })} style={st.title} multiline={Platform.OS !== 'web'} placeholder="Job title" />
         <Text style={{ color: colors.muted, marginTop: 4 }}>
@@ -142,6 +156,34 @@ export default function QuoteScreen() {
           <Field label="Mobile (for WhatsApp)" value={q.client.phone} onChangeText={(phone) => set({ client: { ...q.client, phone } })} placeholder="07700 900123" keyboardType="phone-pad" />
           <Field label="Address" value={q.client.address} onChangeText={(address) => set({ client: { ...q.client, address } })} placeholder="12 High Street, Bath" />
         </Card>
+
+        <View style={st.groupHead}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Icon name="camera-outline" size={18} color={colors.muted} />
+            <Label>Site photos</Label>
+          </View>
+          <Text style={{ color: colors.faint, fontSize: 12 }}>Added to the PDF</Text>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 10 }}>
+          {photos.map((uri) => (
+            <View key={uri}>
+              <Image source={{ uri }} style={st.photo} />
+              <Pressable onPress={() => removePhoto(uri)} style={st.photoX} hitSlop={8} accessibilityLabel="Remove photo">
+                <Icon name="close" size={14} color={colors.white} />
+              </Pressable>
+            </View>
+          ))}
+          {Platform.OS !== 'web' && (
+            <Pressable onPress={() => takePhoto('camera')} style={st.photoAdd} accessibilityLabel="Take a photo">
+              <Icon name="camera-plus-outline" size={26} color={colors.amberDeep} />
+              <Text style={st.photoAddText}>Take photo</Text>
+            </Pressable>
+          )}
+          <Pressable onPress={() => takePhoto('library')} style={st.photoAdd} accessibilityLabel="Choose a photo">
+            <Icon name="image-plus" size={26} color={colors.amberDeep} />
+            <Text style={st.photoAddText}>From gallery</Text>
+          </Pressable>
+        </ScrollView>
 
         {groups.map(({ kind, items }) => (
           <View key={kind}>
@@ -274,5 +316,9 @@ const st = StyleSheet.create({
   termLabel: { fontSize: 15, color: colors.text, fontWeight: '500' },
   totals: { backgroundColor: colors.ink, borderColor: colors.ink, marginTop: space(6), padding: space(5) },
   totalLine: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.12)', marginTop: 8, paddingTop: 12, paddingBottom: 4 },
+  photo: { width: 104, height: 104, borderRadius: radius.md, backgroundColor: colors.line },
+  photoX: { position: 'absolute', top: 6, right: 6, width: 24, height: 24, borderRadius: 12, backgroundColor: 'rgba(11,23,38,0.7)', alignItems: 'center', justifyContent: 'center' },
+  photoAdd: { width: 104, height: 104, borderRadius: radius.md, borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#F5C46B', backgroundColor: colors.amberSoft, alignItems: 'center', justifyContent: 'center', gap: 6 },
+  photoAddText: { color: colors.amberDeep, fontWeight: '700', fontSize: 12 },
   bar: { position: 'absolute', left: 0, right: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', gap: space(4), paddingHorizontal: space(4), paddingTop: space(3), backgroundColor: colors.card, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.line },
 });

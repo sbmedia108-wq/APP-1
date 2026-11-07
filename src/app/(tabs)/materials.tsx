@@ -66,7 +66,7 @@ export default function Materials() {
   const calc = CALCULATORS.find((c) => c.id === calcId)!;
   const calcInput = Object.fromEntries(calc.fields.map((f) => [f.key, Number(calcVals[`${calc.id}.${f.key}`] ?? f.default) || 0]));
   const calcLines = calc.run(calcInput).filter((l) => l.qty > 0);
-  const calcTotal = calcLines.reduce((s, l) => s + (MATERIAL_BY_ID[l.materialId]?.price ?? 0) * l.qty, 0);
+  const calcTotal = calcLines.reduce((s, l) => s + (profile.priceBook[l.materialId] ?? MATERIAL_BY_ID[l.materialId]?.price ?? 0) * l.qty, 0);
 
   const quoteFromCalc = () => {
     const q = createQuote({
@@ -75,7 +75,7 @@ export default function Materials() {
         { id: uid(), kind: 'labour', description: 'Labour', qty: 1, unit: 'day', unitPrice: profile.dayRate },
         ...calcLines.map((l) => {
           const m = MATERIAL_BY_ID[l.materialId]!;
-          return { id: uid(), kind: 'material' as const, description: m.name, qty: l.qty, unit: m.unit, unitPrice: Math.round(m.price * (1 + profile.markupPct / 100) * 100) / 100 };
+          return { id: uid(), kind: 'material' as const, description: m.name, qty: l.qty, unit: m.unit, unitPrice: Math.round((profile.priceBook[m.id] ?? m.price) * (1 + profile.markupPct / 100) * 100) / 100 };
         }),
       ],
       assumptions: ['Labour set to 1 day — adjust to suit.'],
@@ -173,6 +173,13 @@ export default function Materials() {
               <Text style={{ color: colors.amberDeep, fontWeight: '700' }}>Change</Text>
             </Pressable>
           </View>
+          {profile.priceBook[picked.id] !== undefined && (
+            <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10, backgroundColor: colors.amberSoft, borderColor: '#F5C46B' }}>
+              <Icon name="book-open-variant" color={colors.amberDeep} />
+              <Text style={{ flex: 1, fontWeight: '700', color: colors.text }}>Your price</Text>
+              <Text style={[{ fontWeight: '800', fontSize: 17, color: colors.text }, type.money]}>{formatGBP(profile.priceBook[picked.id]! * quantity)}</Text>
+            </Card>
+          )}
           <Card style={{ padding: 0 }}>
             {prices.map((p, i) => (
               <Pressable key={p.merchant.id} onPress={() => Linking.openURL(p.url)} style={({ pressed }) => [st.priceRow, i > 0 && st.rowLine, pressed && { backgroundColor: colors.bg }]}>
@@ -202,6 +209,8 @@ export default function Materials() {
           ) : null}
         </View>
       )}
+
+      <Button small variant="ghost" icon="book-open-variant" title="My prices — what you pay your merchant" onPress={() => router.push('/prices')} style={{ marginTop: space(4), alignSelf: 'flex-start' }} />
 
       <SectionHeader title="How much do I need?" />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: space(3) }}>

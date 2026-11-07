@@ -18,6 +18,7 @@ export const DEFAULT_PROFILE: BusinessProfile = {
   quotePrefix: 'Q',
   nextQuoteNumber: 1001,
   followUpDays: 3,
+  priceBook: {},
 };
 
 export const DEFAULT_KITS: Kit[] = [
@@ -59,7 +60,7 @@ const days = (n: number) => new Date(Date.now() - n * 86400000).toISOString();
 export function sampleQuotes(): Quote[] {
   return [
     {
-      id: 'sample-1', number: 'Q-0998', createdAt: days(40), updatedAt: days(36), status: 'paid',
+      id: 'sample-1', number: 'Q-0998', createdAt: days(40), updatedAt: days(36), status: 'paid', example: true,
       title: 'Closeboard fence – 22m', trade: 'Fencing',
       client: { name: 'Margaret Ellis', phone: '07700 900412', address: '14 Orchard Way, Keynsham' },
       transcript: 'Twenty two metres of closeboard fence down the left boundary, concrete posts and gravel boards, old fence to the tip, two and a half days with a labourer',
@@ -76,7 +77,7 @@ export function sampleQuotes(): Quote[] {
       assumptions: [], estimatedDays: 2.5, depositPct: 25, validDays: 30, sentAt: days(40),
     },
     {
-      id: 'sample-2', number: 'Q-0999', createdAt: days(20), updatedAt: days(18), status: 'accepted',
+      id: 'sample-2', number: 'Q-0999', createdAt: days(20), updatedAt: days(18), status: 'accepted', example: true,
       title: 'Indian sandstone patio – 24m²', trade: 'Landscaping',
       client: { name: 'Tom Briggs', phone: '07700 900733', address: '3 Mill Lane, Saltford' },
       transcript: 'Twenty four square metres of Indian sandstone patio, dig out, type one, full mortar bed, four days with a labourer and a skip',
@@ -93,7 +94,7 @@ export function sampleQuotes(): Quote[] {
       assumptions: [], estimatedDays: 4, depositPct: 25, validDays: 30, sentAt: days(20),
     },
     {
-      id: 'sample-3', number: 'Q-1000', createdAt: days(5), updatedAt: days(5), status: 'sent',
+      id: 'sample-3', number: 'Q-1000', createdAt: days(5), updatedAt: days(5), status: 'sent', example: true,
       title: 'Fence panels – 6 replaced', trade: 'Fencing',
       client: { name: 'Priya Shah', phone: '07700 900215', address: '27 Wellsway, Bath' },
       transcript: 'Replace six overlap panels blown down in the wind, reuse the concrete posts, one day',
