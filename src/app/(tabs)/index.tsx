@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Icon, SectionHeader, StatusPill } from '@/components/ui';
 import { pipelineStats } from '@/lib/memory';
@@ -27,9 +27,7 @@ export default function Home() {
       <LinearGradient colors={[colors.ink, colors.ink2]} style={[st.hero, { paddingTop: insets.top + space(4) }]}>
         <View style={st.topRow}>
           <View style={st.brand}>
-            <View style={st.logo}>
-              <Text style={st.logoText}>G</Text>
-            </View>
+            <Image source={require('../../../assets/logo-mark.png')} style={st.logo} accessibilityIgnoresInvertColors />
             <Text style={st.brandText}>Graft</Text>
           </View>
           <Pressable onPress={() => router.push('/settings')} hitSlop={12} style={st.iconBtn} accessibilityLabel="Business settings">
@@ -135,8 +133,7 @@ const st = StyleSheet.create({
   hero: { paddingHorizontal: space(5), paddingBottom: space(6), borderBottomLeftRadius: radius.xl, borderBottomRightRadius: radius.xl },
   topRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: space(7) },
   brand: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  logo: { width: 34, height: 34, borderRadius: 10, backgroundColor: colors.amber, alignItems: 'center', justifyContent: 'center' },
-  logoText: { color: colors.ink, fontWeight: '900', fontSize: 20 },
+  logo: { width: 44, height: 44, marginLeft: -4 },
   brandText: { color: colors.white, fontSize: 20, fontWeight: '800', letterSpacing: -0.4 },
   iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.08)', alignItems: 'center', justifyContent: 'center' },
   hello: { color: colors.amber, fontWeight: '700', fontSize: 15 },
