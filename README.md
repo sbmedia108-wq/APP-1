@@ -12,7 +12,9 @@ They tap one big button and **say what's wrong in their own words**. The app wor
 4. **One step at a time.** Big text, a progress bar, a "Done – next step" button that stays at the bottom of the screen, "Read it to me again", and "Go back a step".
 5. **Did that fix it?** If yes, they get a "Well done!". If no, the app says who to contact, for example the broadband company, and shows a **Call [name]** button for a family member they've saved in Settings.
 
-**Built-in guides:** 15 common problems are built into the app, in two groups. *At home* covers TV, remote, Wi-Fi, frozen phone, charging, no sound, scams, printer, passwords, video calls, small text and smart speakers. *Out and about* covers ordering screens (like the ones in McDonald's), self-checkouts, and parking and ticket machines. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+**Built-in guides:** 16 common problems are built into the app, in two groups. *At home* covers TV, remote, Wi-Fi, frozen phone, charging, no sound, scams, printer, passwords, video calls, small text, smart speakers and ordering a takeaway to your home. *Out and about* covers ordering screens (like the ones in McDonald's), self-checkouts, and parking and ticket machines. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+
+**Practice mode:** a pretend takeaway ordering screen ("Corner Grill", a made-up takeaway) with a coach at the top that says what to touch next and highlights it. People can practise ordering a cheeseburger and a cup of tea, paying by card, and getting an order number, at home with no queue and no pressure. See `demo/practice-mode.png`.
 
 **Settings:** text size (Big, Bigger, Biggest), reading aloud on or off, and a helper's name and phone number.
 
@@ -23,7 +25,8 @@ app/      Expo (React Native) phone app – iOS, Android and web
   App.tsx              All screens (home, confirm, guide, settings…)
   src/useVoice.ts      Speech-to-text (expo-speech-recognition)
   src/api.ts           Calls the server, falls back to built-in guides
-  src/offlineGuides.ts 15 hand-written guides + keyword matching
+  src/offlineGuides.ts 16 hand-written guides + keyword matching
+  src/PracticeKiosk.tsx Pretend takeaway ordering screen with a coach
   src/ui.tsx           Big buttons, high-contrast colours, scalable text
 server/   Small Node server that calls the Claude API
   src/server.ts        POST /api/help  { problem } -> { guide }

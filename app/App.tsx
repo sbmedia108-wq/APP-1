@@ -16,6 +16,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { getHelp } from "./src/api";
 import { OFFLINE_GUIDES, type OfflineGuide } from "./src/offlineGuides";
 import type { Guide, Settings } from "./src/types";
+import { PracticeKiosk } from "./src/PracticeKiosk";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
 import { useSettings } from "./src/useSettings";
 import { useVoice } from "./src/useVoice";
@@ -28,7 +29,8 @@ type Screen =
   | { name: "guide"; guide: Guide; offline: boolean }
   | { name: "fixed" }
   | { name: "notFixed"; guide: Guide }
-  | { name: "settings" };
+  | { name: "settings" }
+  | { name: "practice" };
 
 function say(text: string, enabled: boolean) {
   Speech.stop();
@@ -97,8 +99,11 @@ function Main({
             setScreen({ name: "guide", guide: g, offline: true })
           }
           onSettings={() => setScreen({ name: "settings" })}
+          onPractice={() => setScreen({ name: "practice" })}
         />
       );
+    case "practice":
+      return <PracticeKiosk onExit={goHome} readAloud={settings.readAloud} />;
     case "confirm":
       return (
         <ConfirmScreen
@@ -151,6 +156,7 @@ function Main({
           }
           onAskAgain={goHome}
           onHome={goHome}
+          onPractice={() => setScreen({ name: "practice" })}
         />
       );
     case "fixed":
@@ -214,11 +220,13 @@ function HomeScreen({
   onSubmitText,
   onPickGuide,
   onSettings,
+  onPractice,
 }: {
   voice: ReturnType<typeof useVoice>;
   onSubmitText: (t: string) => void;
   onPickGuide: (g: Guide) => void;
   onSettings: () => void;
+  onPractice: () => void;
 }) {
   const [typed, setTyped] = useState("");
   const scale = useScale();
@@ -329,6 +337,13 @@ function HomeScreen({
         guides={OFFLINE_GUIDES.filter((g) => g.place === "out")}
         onPick={onPickGuide}
       />
+      <BigButton
+        label="Practise ordering on a pretend screen"
+        icon="🎓"
+        variant="secondary"
+        onPress={onPractice}
+        style={{ marginTop: 12 }}
+      />
     </ScrollView>
   );
 }
@@ -435,6 +450,7 @@ function GuideScreen({
   onNotFixed,
   onAskAgain,
   onHome,
+  onPractice,
 }: {
   guide: Guide;
   offline: boolean;
@@ -443,6 +459,7 @@ function GuideScreen({
   onNotFixed: () => void;
   onAskAgain: () => void;
   onHome: () => void;
+  onPractice: () => void;
 }) {
   // -1 = intro page, 0..n-1 = steps, n = "did it work?"
   const [index, setIndex] = useState(-1);
@@ -558,6 +575,14 @@ function GuideScreen({
               icon="▶️"
               onPress={() => setIndex(0)}
             />
+            {(guide as OfflineGuide).id === "order-kiosk" && (
+              <BigButton
+                label="Practise first, at home"
+                icon="🎓"
+                variant="secondary"
+                onPress={onPractice}
+              />
+            )}
           </>
         )}
 

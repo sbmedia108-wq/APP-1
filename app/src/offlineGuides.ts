@@ -11,6 +11,8 @@ export type OfflineGuide = Guide & {
   keywords: string[];
   /** "out" = machines in shops, restaurants and car parks. Default is at home. */
   place?: "home" | "out";
+  /** Words that strongly point to this guide (a shop name, "delivered"...). */
+  boost?: string[];
 };
 
 const step = (instruction: string, lookFor = "") => ({ instruction, lookFor });
@@ -575,8 +577,98 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
       "If it still won't work, check the internet is working (try another device). If the internet is fine, contact the speaker's maker.",
   },
   {
+    id: "takeaway-delivery",
+    emoji: "🥡",
+    shortLabel: "Order a takeaway",
+    keywords: [
+      "takeaway",
+      "take away",
+      "take out",
+      "deliveroo",
+      "just eat",
+      "uber eats",
+      "delivery",
+      "deliver",
+      "delivered",
+      "order food",
+      "food app",
+      "order a takeaway",
+      "chinese",
+      "indian",
+      "pizza",
+      "fish and chips",
+      "curry",
+    ],
+    boost: [
+      "deliver",
+      "delivery",
+      "delivered",
+      "deliveroo",
+      "just eat",
+      "uber eats",
+      "to my house",
+      "at home",
+      "app",
+    ],
+    understood: true,
+    title: "Ordering a takeaway to your home",
+    reassurance:
+      "Lots of people find takeaway apps fiddly. The simplest way is still to phone the takeaway. They are always happy to take orders over the phone.",
+    device: "Phone",
+    clarifyingQuestion: "",
+    safetyWarning:
+      "Only pay inside the app, or to the takeaway itself. Never give your card details to someone who texts or rings you about a delivery.",
+    steps: [
+      step(
+        "The easy way: find the takeaway's phone number on a menu leaflet, or ask someone to write it down for you. Ring them and say what you'd like, and your address.",
+        "They tell you the price and how long it will be. You can pay the driver when the food comes.",
+      ),
+      step(
+        "If you'd like to use an app instead: find the takeaway app on your phone and touch it once to open it.",
+        "Pictures of food and restaurants.",
+      ),
+      step(
+        "Check the address at the top of the screen is your home. If it isn't, touch it and choose your address.",
+        "Your street is shown at the top.",
+      ),
+      step(
+        "Touch the search box near the top. It has a little magnifying glass. Type the food you fancy, like “fish and chips” or “Chinese”.",
+        "A list of places near you.",
+      ),
+      step(
+        "Touch a place to see its menu. Next to the food you want, touch “Add” or the + sign.",
+        "A bar at the bottom shows your basket and the price.",
+      ),
+      step(
+        "Touch the button at the bottom that says “View basket” or “Checkout”.",
+        "Your food and the total price, including delivery.",
+      ),
+      step(
+        "Check your food and your address are right. Then touch “Place order” or “Pay”.",
+        "A message saying your order is on its way.",
+      ),
+      step(
+        "The app shows when your food will arrive. Keep your phone close by, as the driver may ring you.",
+        "",
+      ),
+    ],
+    whenToGetHelp:
+      "If the app gets confusing, close it and phone the takeaway instead. That always works.",
+  },
+  {
     id: "order-kiosk",
     place: "out",
+    boost: [
+      "kiosk",
+      "mcdonald",
+      "maccies",
+      "burger king",
+      "kfc",
+      "restaurant",
+      "cafe",
+      "screen",
+      "in the shop",
+    ],
     emoji: "🍔",
     shortLabel: "Ordering screen",
     keywords: [
@@ -650,6 +742,19 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
   {
     id: "self-checkout",
     place: "out",
+    boost: [
+      "self checkout",
+      "self service",
+      "bagging",
+      "supermarket",
+      "tesco",
+      "sainsbury",
+      "asda",
+      "aldi",
+      "lidl",
+      "morrisons",
+      "waitrose",
+    ],
     emoji: "🛒",
     shortLabel: "Self-checkout",
     keywords: [
@@ -714,6 +819,7 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
   {
     id: "ticket-machine",
     place: "out",
+    boost: ["car park", "parking", "station", "ticket machine"],
     emoji: "🅿️",
     shortLabel: "Parking/ticket machine",
     keywords: [
@@ -792,8 +898,12 @@ export function findOfflineGuide(problem: string): OfflineGuide | null {
     }
     // Scams always win if mentioned; safety first.
     if (guide.id === "scam" && score > 0) score += 3;
-    // Naming a shop, restaurant or car park is a strong clue they're out, not at home.
-    if (guide.place === "out" && score > 0) score += 3;
+    // Strong clues, like naming a shop, a car park or "delivered", win ties.
+    if (
+      score > 0 &&
+      guide.boost?.some((kw) => text.includes(` ${normalise(kw)}`))
+    )
+      score += 3;
     if (score > bestScore) {
       best = guide;
       bestScore = score;
