@@ -1,0 +1,617 @@
+<title>Graft Launch Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a site "job sheet" — ink bands for the big statements, light worksheet sections, hi-vis tape between stages. */
+:root {
+  --ink: #0B1726;
+  --ink-2: #14253A;
+  --amber: #FFB020;
+  --amber-text: #B86E00;
+  --bg: #F3F4F6;
+  --surface: #FFFFFF;
+  --fg: #0B1726;
+  --muted: #4F5D70;
+  --line: #DCE1E8;
+  --done: #15803D;
+  --done-bg: #E5F6EC;
+  --doing: #B45309;
+  --doing-bg: #FEF3DC;
+  --todo: #64748B;
+  --todo-bg: #EEF1F5;
+  --wa: #1FAF55;
+  --wa-bubble: #DCF8C6;
+  --on-ink: #FFFFFF;
+  --on-ink-muted: rgba(255,255,255,.68);
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Barlow", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1A2A; --surface: #15263B; --fg: #EEF2F7; --muted: #A5B2C4; --line: #263A51;
+    --amber-text: #FFB020; --done: #4ADE80; --done-bg: #12321F; --doing: #FBBF24; --doing-bg: #3A2A0B; --todo: #A5B2C4; --todo-bg: #1E2F45;
+    --wa-bubble: #1F4D36; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1A2A; --surface: #15263B; --fg: #EEF2F7; --muted: #A5B2C4; --line: #263A51;
+  --amber-text: #FFB020; --done: #4ADE80; --done-bg: #12321F; --doing: #FBBF24; --doing-bg: #3A2A0B; --todo: #A5B2C4; --todo-bg: #1E2F45;
+  --wa-bubble: #1F4D36; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; margin: 0; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(42px, 7vw, 86px); font-weight: 900; font-stretch: 76%; text-transform: uppercase; line-height: .96; }
+h2 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 900; font-stretch: 78%; text-transform: uppercase; line-height: 1; }
+h3 { font-size: 22px; font-weight: 800; font-stretch: 90%; line-height: 1.15; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--amber-text); }
+.muted { color: var(--muted); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+section { padding-block: 80px; }
+.head { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 40px; }
+.head > * { min-width: 0; }
+.head p { color: var(--muted); font-size: 19px; max-width: 48ch; }
+.tape { height: 16px; background: repeating-linear-gradient(-45deg, var(--amber) 0 16px, var(--ink) 16px 32px); }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--on-ink); }
+.hero .wrap { padding-block: 40px 64px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 56px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 900; font-stretch: 85%; font-size: 24px; }
+.brand img { width: 48px; height: 48px; margin: -6px -4px -6px -8px; }
+.stamp { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; border: 1.5px solid var(--amber); color: var(--amber); padding: 6px 10px; border-radius: 6px; transform: rotate(-2deg); white-space: nowrap; }
+.hero h1 em { font-style: normal; color: var(--amber); }
+.hero .lede { color: var(--on-ink-muted); font-size: 20px; max-width: 46ch; margin-top: 22px; }
+.gauge { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px dashed rgba(255,255,255,.22); border-radius: 14px; }
+.gauge > div { padding: 16px 18px; min-width: 0; }
+.gauge > div + div { border-left: 1px dashed rgba(255,255,255,.22); }
+.gauge .k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--on-ink-muted); }
+.gauge .v { font-family: var(--display); font-stretch: 80%; font-weight: 800; font-size: 30px; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.bar { height: 8px; background: rgba(255,255,255,.12); border-radius: 4px; margin-top: 10px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--amber); border-radius: 4px; }
+
+/* Big idea */
+.idea { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+.idea > * { min-width: 0; }
+.quote { font-family: var(--display); font-stretch: 78%; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 4.6vw, 56px); line-height: 1; }
+.quote em { font-style: normal; color: var(--amber-text); }
+.pillars { display: grid; gap: 14px; }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; }
+.pillar .eyebrow { margin-bottom: 6px; display: block; }
+.pillar p { color: var(--muted); margin-top: 6px; }
+
+/* Voice */
+.voice { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.voice > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; min-width: 0; }
+.voice ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 12px; }
+.voice li { padding-left: 28px; position: relative; }
+.voice li::before { position: absolute; left: 0; top: 0; font-weight: 800; }
+.say li::before { content: "✓"; color: var(--done); }
+.avoid li::before { content: "✗"; color: #DC2626; }
+.avoid li { color: var(--muted); }
+
+/* Line bank */
+.lines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.line { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.line b { font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: 22px; line-height: 1.15; }
+.line span { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: auto; }
+
+/* Creative mockups */
+.creative { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+.creative > * { min-width: 0; }
+.cap { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+.ad { grid-column: span 4; }
+.adcard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.adhead { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+.adhead img { width: 36px; height: 36px; background: var(--ink); border-radius: 50%; padding: 3px; }
+.adhead b { display: block; font-size: 15px; }
+.adhead small { color: var(--muted); font-size: 12px; }
+.adtext { padding: 0 14px 12px; font-size: 15px; }
+.adimg { background: var(--ink); color: var(--on-ink); aspect-ratio: 1 / 1; max-width: 100%; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 22px; }
+.adimg .h { font-family: var(--display); font-stretch: 76%; font-weight: 900; text-transform: uppercase; font-size: clamp(26px, 3vw, 32px); line-height: .95; position: relative; z-index: 1; }
+.adimg.withphone .h { max-width: 52%; }
+.adimg .h em { font-style: normal; color: var(--amber); }
+.adimg .phone { position: absolute; right: -14px; bottom: -80px; width: 48%; border-radius: 22px; border: 6px solid #05090F; transform: rotate(-6deg); }
+.adimg.alt { background: var(--amber); color: var(--ink); }
+.adimg.alt .h em { color: var(--ink); text-decoration: underline; text-decoration-thickness: 5px; text-underline-offset: 4px; }
+.adimg .tapeband { position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: repeating-linear-gradient(-45deg, var(--amber) 0 12px, var(--ink) 12px 24px); }
+.adcta { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; border-top: 1px solid var(--line); font-size: 14px; }
+.adcta button { font: inherit; font-weight: 700; background: var(--todo-bg); color: var(--fg); border: 0; border-radius: 8px; padding: 8px 12px; }
+
+.poster { grid-column: span 5; }
+.posterbox { background: var(--ink); color: var(--on-ink); aspect-ratio: 1 / 1.414; max-width: 100%; border-radius: 6px; padding: 9% 9% 0; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(11,23,38,.25); }
+.posterbox .eyebrow { color: var(--amber); }
+.posterbox h3 { font-stretch: 74%; font-weight: 900; text-transform: uppercase; font-size: clamp(34px, 4.6vw, 54px); line-height: .92; margin-top: 12px; }
+.posterbox h3 em { font-style: normal; color: var(--amber); }
+.posterbox p { color: var(--on-ink-muted); margin-top: 14px; font-size: 16px; max-width: 30ch; }
+.qr { margin-top: auto; margin-bottom: 26%; display: flex; align-items: center; gap: 14px; }
+.qr .code { width: 84px; height: 84px; background: #fff; border-radius: 8px; padding: 8px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.qr .code i { background: var(--ink); border-radius: 1px; }
+.qr .code i.o { background: transparent; }
+.qr span { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--on-ink-muted); }
+.posterbox .ptape { position: absolute; left: 0; right: 0; bottom: 0; height: 20%; background: repeating-linear-gradient(-45deg, var(--amber) 0 24px, var(--ink) 24px 48px); }
+.posterbox .ptape b { position: absolute; left: 9%; top: 26%; background: var(--ink); color: var(--amber); font-family: var(--display); font-stretch: 85%; font-weight: 900; font-size: 22px; padding: 6px 12px; border-radius: 6px; }
+
+.stack { grid-column: span 7; display: grid; gap: 20px; align-content: start; }
+.sticker { background: var(--ink); color: var(--on-ink); border-radius: 999px; padding: 18px 28px 18px 18px; display: flex; align-items: center; gap: 16px; border: 4px solid var(--amber); }
+.sticker img { width: 64px; height: 64px; flex: none; }
+.sticker b { font-family: var(--display); font-stretch: 80%; font-weight: 900; text-transform: uppercase; font-size: clamp(20px, 2.6vw, 28px); line-height: 1; display: block; }
+.sticker small { color: var(--on-ink-muted); font-size: 15px; }
+.chat { background: #ECE5DD; border-radius: 18px; padding: 16px; border: 1px solid var(--line); }
+:root[data-theme="dark"] .chat { background: #0D1824; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chat { background: #0D1824; } }
+.bubble { background: var(--wa-bubble); color: var(--fg); border-radius: 12px 4px 12px 12px; padding: 12px 14px; margin-left: 30px; font-size: 15px; line-height: 1.45; }
+.bubble + .bubble { margin-top: 8px; }
+.bubble.them { background: var(--surface); border-radius: 4px 12px 12px 12px; margin: 0 30px 8px 0; }
+.bubble small { display: block; text-align: right; color: var(--muted); font-size: 11px; margin-top: 4px; }
+
+/* Store strip */
+.strip { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; }
+.strip img { height: 420px; width: auto; max-width: none; border-radius: 12px; scroll-snap-align: start; box-shadow: 0 10px 30px rgba(11,23,38,.18); }
+.feature { width: 100%; border-radius: 12px; display: block; margin-bottom: 18px; box-shadow: 0 10px 30px rgba(11,23,38,.18); }
+
+/* Scripts */
+.scripts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.script { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.script ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: s; }
+.script li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; font-size: 15px; }
+.script li time { font-family: var(--mono); font-size: 12px; color: var(--amber-text); font-weight: 600; padding-top: 2px; }
+.script .end { font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: 18px; border-top: 1px dashed var(--line); padding-top: 12px; }
+
+/* Flow */
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+.stage { padding: 22px 18px; border-left: 1px dashed var(--line); min-width: 0; position: relative; }
+.stage:first-child { border-left: 0; padding-left: 0; }
+.stage .n { font-family: var(--mono); font-size: 12px; color: var(--amber-text); font-weight: 600; letter-spacing: .1em; }
+.stage h3 { margin-top: 6px; }
+.stage p { color: var(--muted); font-size: 15px; margin-top: 8px; }
+.stage .gate { margin-top: 12px; font-size: 14px; background: var(--todo-bg); border-radius: 8px; padding: 8px 10px; }
+.stage .gate b { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.funnel { margin-top: 36px; display: grid; gap: 8px; }
+.frow { display: grid; grid-template-columns: 180px 1fr 70px; gap: 14px; align-items: center; font-size: 15px; }
+.frow .track { height: 26px; background: var(--todo-bg); border-radius: 6px; overflow: hidden; }
+.frow .track i { display: block; height: 100%; background: var(--ink); border-radius: 6px; }
+:root[data-theme="dark"] .frow .track i { background: var(--amber); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .frow .track i { background: var(--amber); } }
+.frow b { font-variant-numeric: tabular-nums; text-align: right; }
+
+/* Gates */
+.gates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gategroup { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; min-width: 0; }
+.gategroup h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.gategroup h3 small { font-family: var(--mono); font-size: 12px; color: var(--muted); font-weight: 600; }
+.gategroup ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+.gategroup li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; font-size: 15px; }
+.gategroup li small { display: block; color: var(--muted); font-size: 13px; }
+.pill { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.done { color: var(--done); background: var(--done-bg); }
+.pill.doing { color: var(--doing); background: var(--doing-bg); }
+.pill.todo { color: var(--todo); background: var(--todo-bg); }
+
+/* Timeline */
+.timeline { overflow-x: auto; }
+.tl { min-width: 720px; display: grid; grid-template-columns: 200px repeat(6, 1fr); gap: 6px 0; font-size: 14px; }
+.tl .wk { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); text-align: center; padding-bottom: 6px; }
+.tl .lbl { padding-right: 12px; font-weight: 600; align-self: center; }
+.tl .blk { height: 30px; border-radius: 6px; align-self: center; display: flex; align-items: center; padding: 0 10px; font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; }
+.b-ink { background: var(--ink); color: var(--on-ink); }
+.b-amb { background: var(--amber); color: var(--ink); }
+.b-soft { background: var(--todo-bg); color: var(--fg); }
+
+/* Budget + KPIs */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.two > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; min-width: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+td { padding: 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:last-child { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; padding-left: 12px; }
+tr.total td { border-bottom: 0; border-top: 2px solid var(--fg); font-weight: 800; font-size: 17px; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.kpi { border: 1px dashed var(--line); border-radius: 12px; padding: 14px; }
+.kpi b { font-family: var(--display); font-stretch: 80%; font-weight: 900; font-size: 34px; line-height: 1; display: block; font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--muted); font-size: 14px; }
+
+/* Next */
+.next { background: var(--ink); color: var(--on-ink); }
+.next .wrap { padding-block: 64px; }
+.next ol { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: n; }
+.next li { border: 1px solid rgba(255,255,255,.14); border-radius: var(--r); padding: 22px; counter-increment: n; min-width: 0; }
+.next li::before { content: "0" counter(n); font-family: var(--mono); color: var(--amber); font-weight: 600; font-size: 13px; letter-spacing: .1em; display: block; margin-bottom: 8px; }
+.next li b { font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: 20px; display: block; }
+.next li p { color: var(--on-ink-muted); margin-top: 6px; font-size: 15px; }
+footer { background: var(--ink); color: var(--on-ink-muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,.08); }
+footer .wrap { padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 900px) {
+  .head, .idea, .voice, .two { grid-template-columns: 1fr; }
+  .lines, .scripts, .gates, .next ol { grid-template-columns: 1fr; }
+  .ad, .poster, .stack { grid-column: span 12; }
+  .flow { grid-template-columns: 1fr; }
+  .stage { border-left: 0; border-top: 1px dashed var(--line); padding-left: 0; }
+  .stage:first-child { border-top: 0; }
+  .gauge { grid-template-columns: 1fr 1fr; }
+  .gauge > div:nth-child(3) { border-left: 0; }
+  .gauge > div:nth-child(n+3) { border-top: 1px dashed rgba(255,255,255,.22); }
+  .frow { grid-template-columns: 120px 1fr 56px; }
+  section { padding-block: 60px; }
+  .strip img { height: 340px; }
+}
+@media (min-width: 901px) and (max-width: 1100px) { .ad { grid-column: span 6; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><img src="logo/graft-mark.svg" alt="">Graft</div>
+      <span class="stamp">PRE-RELEASE · INTERNAL</span>
+    </div>
+    <p class="eyebrow" style="color:var(--amber)">Campaign: Get Your Evenings Back</p>
+    <h1 style="margin-top:14px">Your kitchen table called. <em>It wants its evenings back.</em></h1>
+    <p class="lede">How Graft goes from a test app on one phone to the quoting app every tradesperson's mate won't shut up about. The campaign, the creative, and the gates that have to go green before anyone outside the Founding 50 gets it.</p>
+    <div class="gauge" aria-label="Launch readiness">
+      <div><p class="k">Release gates</p><p class="v">7 / 24</p><div class="bar"><i style="width:29%"></i></div></div>
+      <div><p class="k">Launch window</p><p class="v">6 weeks</p></div>
+      <div><p class="k">Founding testers</p><p class="v">0 / 50</p></div>
+      <div><p class="k">Launch budget</p><p class="v">~£650</p></div>
+    </div>
+  </div>
+</header>
+<div class="tape" aria-hidden="true"></div>
+
+<main>
+  <section>
+    <div class="wrap idea">
+      <div>
+        <p class="eyebrow">The big idea</p>
+        <p class="quote" style="margin-top:14px">Every trade has said <em>“I’ll send the price over tonight.”</em> Graft makes it true before the van door shuts.</p>
+        <p class="muted" style="margin-top:20px;font-size:19px;max-width:52ch">The enemy isn't a competitor app. It's the 9pm kitchen table: receipts, a calculator, a cold brew and a quote that should have gone out four hours ago. We sell the evening back.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><span class="eyebrow">Time</span><h3>Quote on the drive</h3><p>Talk for two minutes, send before you leave. The quote's done while the client's still waving you off.</p></div>
+        <div class="pillar"><span class="eyebrow">Money</span><h3>First price in, first to be booked</h3><p>Homeowners ask three trades. The one who replies tonight looks keen. The one who replies Thursday looks busy.</p></div>
+        <div class="pillar"><span class="eyebrow">Sanity</span><h3>The boring bits, sorted</h3><p>Receipts for the accountant, the kit in the van, the job in the calendar. Fewer “where's my drill” moments.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Tone of voice</p><h2 style="margin-top:12px">Talk like the trade. Not like a bank.</h2></div>
+        <p>Warm, quick, a bit cheeky. We laugh with tradespeople, never at them. If it wouldn't land in the merchant queue at 7am, rewrite it.</p>
+      </div>
+      <div class="voice">
+        <div class="say"><h3>Say</h3><ul>
+          <li>“Got a job to price?”</li>
+          <li>“Done before the kettle's boiled.”</li>
+          <li>“Your prices, not some made-up average.”</li>
+          <li>“Nudge them on WhatsApp.”</li>
+          <li>Plain numbers: £12.99 a month, 14 days free.</li>
+        </ul></div>
+        <div class="avoid"><h3>Avoid</h3><ul>
+          <li>“Leverage AI-powered estimation workflows.”</li>
+          <li>“Streamline your business operations.”</li>
+          <li>Jokes about clients, cowboys or other trades.</li>
+          <li>Anything that sounds like a parking fine.</li>
+          <li>Claims we can't back up (“save 10 hours a week!”) until testers prove it.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Line bank</p><h2 style="margin-top:12px">Twelve lines, ready to go</h2></div>
+        <p>Pick one per ad, video or poster. Tested ones stay; flat ones get binned. The channel tag is where each line works hardest.</p>
+      </div>
+      <div class="lines">
+        <div class="line"><b>Quote it on the drive. Home for tea.</b><span>Hero · store · everywhere</span></div>
+        <div class="line"><b>“I’ll send the price over tonight.” Now you actually will.</b><span>Social · video hook</span></div>
+        <div class="line"><b>Pen. Paper. Calculator. Back of a fag packet. Retired.</b><span>Social carousel</span></div>
+        <div class="line"><b>The only app that knows what a 4x4 is.</b><span>Facebook groups</span></div>
+        <div class="line"><b>Postcrete maths, done for you.</b><span>Fencing audience</span></div>
+        <div class="line"><b>Faster than a client saying “ballpark?”</b><span>Video hook</span></div>
+        <div class="line"><b>Quote before you load the van.</b><span>Merchant counter</span></div>
+        <div class="line"><b>Don’t be the lad who left the drill.</b><span>Van check · social</span></div>
+        <div class="line"><b>Receipts sorted. Accountant stunned.</b><span>Jan / tax season</span></div>
+        <div class="line"><b>Grass up a mate. Get a month free.</b><span>Referral</span></div>
+        <div class="line"><b>Quoted by Graft. Probably before you finished your brew.</b><span>Van sticker</span></div>
+        <div class="line"><b>Built for private work. Not 40-page tenders.</b><span>Positioning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Creative</p><h2 style="margin-top:12px">What people will actually see</h2></div>
+        <p>Three paid social ads, a merchant-counter poster, a van sticker and the referral message. All built from the same parts: ink, hi-vis amber, the hazard tape, real app screens.</p>
+      </div>
+      <div class="creative">
+        <figure class="ad" style="margin:0">
+          <div class="adcard">
+            <div class="adhead"><img src="logo/graft-mark.svg" alt=""><div><b>Graft</b><small>Sponsored</small></div></div>
+            <p class="adtext">Twenty metres of closeboard. Ninety seconds of talking. Quote sent before you’d found your keys. 🔨</p>
+            <div class="adimg withphone"><p class="h">Price it on the drive.<br><em>Home for tea.</em></p><img class="phone" src="screens/05-quote-total.png" alt=""><div class="tapeband"></div></div>
+            <div class="adcta"><span class="muted">Free for 14 days</span><button type="button">Learn more</button></div>
+          </div>
+          <figcaption class="cap">Ad A · the promise · 25–55, trades interests</figcaption>
+        </figure>
+        <figure class="ad" style="margin:0">
+          <div class="adcard">
+            <div class="adhead"><img src="logo/graft-mark.svg" alt=""><div><b>Graft</b><small>Sponsored</small></div></div>
+            <p class="adtext">Be honest. How many quotes are sat in your notes app saying “do tonight”?</p>
+            <div class="adimg alt"><p class="h">“I’ll send the price over <em>tonight</em>.”</p><p style="margin-top:auto;font-weight:700;font-size:17px;position:relative;z-index:1">Every tradesman. Every job. Since forever.</p></div>
+            <div class="adcta"><span class="muted">Graft sends it now</span><button type="button">Install</button></div>
+          </div>
+          <figcaption class="cap">Ad B · the confession · retargeting</figcaption>
+        </figure>
+        <figure class="ad" style="margin:0">
+          <div class="adcard">
+            <div class="adhead"><img src="logo/graft-mark.svg" alt=""><div><b>Graft</b><small>Sponsored</small></div></div>
+            <p class="adtext">Say “twelve 4x4 eight foot posts”. Graft finds the cheapest near you. Go on, try saying that to Google.</p>
+            <div class="adimg withphone"><p class="h">The only app that knows what a <em>4x4</em> is.</p><img class="phone" src="screens/09-materials.png" alt=""><div class="tapeband"></div></div>
+            <div class="adcta"><span class="muted">Fencers, this one’s for you</span><button type="button">Learn more</button></div>
+          </div>
+          <figcaption class="cap">Ad C · trade-specific · fencing &amp; landscaping groups</figcaption>
+        </figure>
+
+        <figure class="poster" style="margin:0">
+          <div class="posterbox">
+            <p class="eyebrow">Stuck in the queue?</p>
+            <h3>Quote before you <em>load the van.</em></h3>
+            <p>Talk the job, Graft prices it with your own merchant prices, WhatsApp sends it. Done before the lad finds the postcrete.</p>
+            <div class="qr" aria-label="QR code placeholder"><div class="code" id="qr"></div><span>SCAN · 14 DAYS FREE<br>graft.app</span></div>
+            <div class="ptape"><b>Graft</b></div>
+          </div>
+          <figcaption class="cap">A4 merchant-counter poster · QR to the waitlist (placeholder code)</figcaption>
+        </figure>
+
+        <div class="stack">
+          <figure style="margin:0">
+            <div class="sticker"><img src="logo/graft-mark.svg" alt=""><div><b>Quoted by Graft.</b><small>Probably before you finished your brew.</small></div></div>
+            <figcaption class="cap">Van sticker · rear window, 300mm · free to every Founding 50 member</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div class="chat" aria-label="Referral message example">
+              <div class="bubble them">Mate how are you getting quotes out so quick now 😂</div>
+              <div class="bubble">Graft. Talk into it on the drive, sends on WhatsApp. Here's my link, we both get a month free 👇<br><b>graft.app/r/DAN-HART</b><small>17:42 ✓✓</small></div>
+            </div>
+            <figcaption class="cap">Referral · “Grass up a mate” · one tap from the app</figcaption>
+          </figure>
+          <figure style="margin:0">
+            <div class="chat" aria-label="Founding 50 invite example">
+              <div class="bubble">You’re in the Founding 50 🦺 Free Pro for life of the beta, a Graft van sticker, and a direct line to the people building it. Install link below. Tell us what’s rubbish.<small>09:05 ✓✓</small></div>
+            </div>
+            <figcaption class="cap">Founding 50 invite · sent by WhatsApp from the waitlist</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Google Play listing</p><h2 style="margin-top:12px">Store assets, done</h2></div>
+        <p>Feature graphic at 1024×500 and seven phone screenshots at 1080×1920, ready to upload. Swipe through them below. Files are in the repo under marketing/store.</p>
+      </div>
+      <img class="feature" src="store/feature-graphic.png" alt="Graft feature graphic: Quote it on the drive. Home for tea.">
+      <div class="strip" tabindex="0" aria-label="Store screenshots">
+        <img src="store/screenshot-01.png" alt="Talk the job. Done.">
+        <img src="store/screenshot-02.png" alt="Priced before the kettle's boiled.">
+        <img src="store/screenshot-03.png" alt="Sent on WhatsApp. Not by pigeon.">
+        <img src="store/screenshot-04.png" alt="Cheapest 4x4s near you.">
+        <img src="store/screenshot-05.png" alt="Booked in. Calendar sorted.">
+        <img src="store/screenshot-06.png" alt="Don't be the lad who left the drill.">
+        <img src="store/screenshot-07.png" alt="Receipts sorted. Accountant happy.">
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Short video · TikTok, Reels, Facebook</p><h2 style="margin-top:12px">Three 30-second scripts</h2></div>
+        <p>Shot on a phone, on a real drive, with a real tradesperson. No actors, no voiceover man. Subtitles burned in because half of them are watching on mute in the van.</p>
+      </div>
+      <div class="scripts">
+        <article class="script">
+          <p class="eyebrow">01 · The Kitchen Table</p>
+          <h3>Same job. 87 minutes earlier.</h3>
+          <ol>
+            <li><time>0–4s</time><span>9:47pm. Kitchen table. Receipts everywhere, calculator, cold brew. Text: “Every tradesman at 9:47pm”.</span></li>
+            <li><time>4–8s</time><span>He rubs his eyes. Phone buzzes: “Any update on that price? 😊”</span></li>
+            <li><time>8–10s</time><span>Hard cut. Rewind sound. Daylight, client's drive, same lad.</span></li>
+            <li><time>10–22s</time><span>Talks into Graft for real. Quote builds on screen. Taps Send on WhatsApp.</span></li>
+            <li><time>22–27s</time><span>Client at the door, phone pings: “Brilliant, when can you start?”</span></li>
+            <li><time>27–30s</time><span>He gets in the van. Text: “Quote it on the drive. Home for tea.”</span></li>
+          </ol>
+          <p class="end">CTA: 14 days free · link in bio</p>
+        </article>
+        <article class="script">
+          <p class="eyebrow">02 · The Ballpark</p>
+          <h3>Faster than “ballpark?”</h3>
+          <ol>
+            <li><time>0–3s</time><span>Homeowner, arms folded: “Can you just give us a rough ballpark?”</span></li>
+            <li><time>3–5s</time><span>Tradesman, deadpan, to camera: “I can do better than a ballpark.”</span></li>
+            <li><time>5–17s</time><span>Walks the garden talking into the phone: metres, posts, gravel boards, two days.</span></li>
+            <li><time>17–24s</time><span>Homeowner's phone pings. Itemised quote on WhatsApp. Eyebrows up.</span></li>
+            <li><time>24–30s</time><span>Homeowner: “...is that the actual price?” Tradesman: “That's the actual park.” Logo.</span></li>
+          </ol>
+          <p class="end">CTA: “Your prices. Not a guess.”</p>
+        </article>
+        <article class="script">
+          <p class="eyebrow">03 · The Drill</p>
+          <h3>Don't be the lad who left the drill.</h3>
+          <ol>
+            <li><time>0–5s</time><span>7am, site. Lad opens the van. Empty space where the drill should be. Long silence.</span></li>
+            <li><time>5–9s</time><span>Text: “Day 1 of the job.” Boss's face. Seagull noise.</span></li>
+            <li><time>9–20s</time><span>Rewind. Night before. Graft van check: tick, tick, tick, “All loaded. Off you go.”</span></li>
+            <li><time>20–26s</time><span>Morning, van opens, drill there. He kisses it. (Optional. Funnier.)</span></li>
+            <li><time>26–30s</time><span>Text: “Graft. Quotes, receipts, and the kit you'd forget.”</span></li>
+          </ol>
+          <p class="end">CTA: “Free van check inside. No, really.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">The flow</p><h2 style="margin-top:12px">From one phone to everyone’s</h2></div>
+        <p>Five stages. Nobody moves to the next one until its gate is met. That's how we avoid launching to 5,000 people with a bug that 50 would have spotted.</p>
+      </div>
+      <div class="flow">
+        <div class="stage"><p class="n">STAGE 0</p><h3>Get it ready</h3><p>AI server live, accounts and backup, subscriptions, store listing, privacy policy.</p><div class="gate"><b>Gate</b>Every product and store item below is green</div></div>
+        <div class="stage"><p class="n">STAGE 1</p><h3>Waitlist</h3><p>Landing page with sign-up. Seed it from your own contacts, trade Facebook groups and merchant posters.</p><div class="gate"><b>Gate</b>300+ on the list, at least 8 different trades</div></div>
+        <div class="stage"><p class="n">STAGE 2</p><h3>Founding 50</h3><p>Hand-picked from the list. Google Play closed test. Weekly WhatsApp check-in. Fix what they moan about.</p><div class="gate"><b>Gate</b>12+ testers active for 14 days (Google's rule) and 30+ real quotes sent</div></div>
+        <div class="stage"><p class="n">STAGE 3</p><h3>Launch week</h3><p>Production release on Google Play. Waitlist gets the link first. Videos go out, ads switch on at £10 a day.</p><div class="gate"><b>Gate</b>Crash-free rate above 99% in week one</div></div>
+        <div class="stage"><p class="n">STAGE 4</p><h3>Grow</h3><p>Referrals, merchant counters, trade groups. iPhone version once Android pays its way.</p><div class="gate"><b>Gate</b>100 paying, then build for iPhone</div></div>
+      </div>
+      <div class="funnel" aria-label="Target funnel for the first 90 days">
+        <p class="eyebrow" style="margin-bottom:6px">90-day target funnel</p>
+        <div class="frow"><span>See an ad or post</span><div class="track"><i style="width:100%"></i></div><b>25,000</b></div>
+        <div class="frow"><span>Visit the page</span><div class="track"><i style="width:40%"></i></div><b>2,500</b></div>
+        <div class="frow"><span>Install &amp; start trial</span><div class="track"><i style="width:16%"></i></div><b>600</b></div>
+        <div class="frow"><span>Send a real quote</span><div class="track"><i style="width:10%"></i></div><b>360</b></div>
+        <div class="frow"><span>Pay for Pro</span><div class="track"><i style="width:4%"></i></div><b>100</b></div>
+      </div>
+      <p class="muted" style="margin-top:12px;font-size:14px">Targets, not forecasts. We replace them with real numbers from the Founding 50 before spending on ads.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Release gates</p><h2 style="margin-top:12px">Nothing ships until this is all green</h2></div>
+        <p>Status as of today. Green is done, amber is started, grey is still to do. When the last grey goes green, we press the button.</p>
+      </div>
+      <div class="gates">
+        <div class="gategroup">
+          <h3>Product <small>4 / 10</small></h3>
+          <ul>
+            <li><span>Core app: voice quotes, WhatsApp, PDFs, memory</span><span class="pill done">DONE</span></li>
+            <li><span>Receipts, materials import, calendar booking</span><span class="pill done">DONE</span></li>
+            <li><span>Logo and app icons</span><span class="pill done">DONE</span></li>
+            <li><span>Automated tests (42 checks)</span><span class="pill done">DONE</span></li>
+            <li><span>AI server live<small>Anthropic key + Render</small></span><span class="pill doing">STARTED</span></li>
+            <li><span>Real-world test: 20 jobs on your phone</span><span class="pill doing">STARTED</span></li>
+            <li><span>Accounts and cloud backup</span><span class="pill todo">TO DO</span></li>
+            <li><span>Subscriptions + 14-day trial<small>Google Play Billing</small></span><span class="pill todo">TO DO</span></li>
+            <li><span>Referral links</span><span class="pill todo">TO DO</span></li>
+            <li><span>Crash reporting</span><span class="pill todo">TO DO</span></li>
+          </ul>
+        </div>
+        <div class="gategroup">
+          <h3>Store &amp; legal <small>1 / 8</small></h3>
+          <ul>
+            <li><span>Store screenshots, banner and copy</span><span class="pill done">DONE</span></li>
+            <li><span>Privacy policy<small>Draft written, needs your details and hosting</small></span><span class="pill doing">STARTED</span></li>
+            <li><span>Name check<small>“Graft” on Play Store and UK trademarks</small></span><span class="pill todo">TO DO</span></li>
+            <li><span>Google Play developer account (£20)</span><span class="pill todo">TO DO</span></li>
+            <li><span>Data safety and content rating forms</span><span class="pill todo">TO DO</span></li>
+            <li><span>Terms of use</span><span class="pill todo">TO DO</span></li>
+            <li><span>ICO registration</span><span class="pill todo">TO DO</span></li>
+            <li><span>Closed test: 12+ testers for 14 days</span><span class="pill todo">TO DO</span></li>
+          </ul>
+        </div>
+        <div class="gategroup">
+          <h3>Marketing <small>2 / 6</small></h3>
+          <ul>
+            <li><span>Landing page</span><span class="pill done">DONE</span></li>
+            <li><span>Campaign, lines and creative (this page)</span><span class="pill done">DONE</span></li>
+            <li><span>Waitlist sign-up on the landing page</span><span class="pill todo">TO DO</span></li>
+            <li><span>Social accounts: TikTok, Instagram, Facebook</span><span class="pill todo">TO DO</span></li>
+            <li><span>Film the three videos</span><span class="pill todo">TO DO</span></li>
+            <li><span>Print posters and van stickers</span><span class="pill todo">TO DO</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="eyebrow">Timeline</p><h2 style="margin-top:12px">Six weeks to launch</h2></div>
+        <p>Weeks 3–4 are fixed by Google: the closed test has to run for 14 days in a row. Everything else fits around it.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl" role="table" aria-label="Six week launch timeline">
+          <span></span><span class="wk">WK 1</span><span class="wk">WK 2</span><span class="wk">WK 3</span><span class="wk">WK 4</span><span class="wk">WK 5</span><span class="wk">WK 6</span>
+          <span class="lbl">AI server &amp; real-world testing</span><span class="blk b-ink" style="grid-column:2 / span 2">You + 5 mates</span><span style="grid-column:4 / span 4"></span>
+          <span class="lbl">Accounts, billing, referrals</span><span class="blk b-ink" style="grid-column:2 / span 2">Build</span><span style="grid-column:4 / span 4"></span>
+          <span class="lbl">Waitlist &amp; socials</span><span class="blk b-soft" style="grid-column:2 / span 6">Collecting sign-ups the whole way</span>
+          <span class="lbl">Founding 50 closed test</span><span style="grid-column:2 / span 2"></span><span class="blk b-amb" style="grid-column:4 / span 2">14 days, 12+ active</span><span style="grid-column:6 / span 2"></span>
+          <span class="lbl">Film videos, print posters</span><span style="grid-column:2 / span 2"></span><span class="blk b-soft" style="grid-column:4 / span 2">Shoot with testers</span><span style="grid-column:6 / span 2"></span>
+          <span class="lbl">Store review &amp; launch</span><span style="grid-column:2 / span 4"></span><span class="blk b-ink" style="grid-column:6">Review</span><span class="blk b-amb" style="grid-column:7">Launch 🚀</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap two">
+      <div>
+        <p class="eyebrow">Budget to launch</p>
+        <table style="margin-top:12px">
+          <tr><td>Google Play developer account</td><td>£20</td></tr>
+          <tr><td>UK trademark, one class</td><td>£170</td></tr>
+          <tr><td>Domain + email</td><td>£15</td></tr>
+          <tr><td>Server + AI for 2 months</td><td>£55</td></tr>
+          <tr><td>Posters (50) and van stickers (60)</td><td>£90</td></tr>
+          <tr><td>Paid social test, 4 weeks</td><td>£300</td></tr>
+          <tr class="total"><td>Total</td><td>~£650</td></tr>
+        </table>
+        <p class="muted" style="margin-top:12px;font-size:14px">The ad spend only starts once Founding 50 numbers say it's worth it. Without it, launch costs about £350.</p>
+      </div>
+      <div>
+        <p class="eyebrow">How we'll know it's working</p>
+        <div class="kpis">
+          <div class="kpi"><b>3 min</b><span>Median time from opening Graft to quote sent</span></div>
+          <div class="kpi"><b>40%</b><span>Testers still quoting in week 3</span></div>
+          <div class="kpi"><b>1 in 3</b><span>Members who refer a mate</span></div>
+          <div class="kpi"><b>20%</b><span>Trials that turn into Pro</span></div>
+        </div>
+        <p class="muted" style="margin-top:12px;font-size:14px">Targets to beat. We measure them from the Founding 50 before the public launch.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="next">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--amber)">This week</p>
+    <h2 style="margin-top:12px">Three things to do next</h2>
+    <ol>
+      <li><b>Switch the AI on</b><p>Anthropic key and Render, as set out earlier. It powers voice quotes and receipt reading, which every video depends on.</p></li>
+      <li><b>Check the name</b><p>Search “Graft” on Google Play and the UK trademark register. If it's taken, we rename now, before printing a single sticker.</p></li>
+      <li><b>Line up your first 10</b><p>Tradespeople you know who'd try it and moan honestly. They're the start of the Founding 50.</p></li>
+    </ol>
+  </div>
+</section>
+<footer><div class="wrap"><span>Graft launch playbook · internal</span><span>Made in the UK for UK trades</span></div></footer>
+
+<script>
+// Decorative placeholder QR pattern (not a real code): finder squares plus a fixed scatter.
+(function () {
+  var el = document.getElementById('qr'); if (!el) return;
+  var on = '1111111 1000001 1011101 1011101 1011101 1000001 1111111'.split(' ');
+  var mid = [0,1,0,1,1,0,1, 1,0,1,0,0,1,0, 0,1,1,0,1,0,1];
+  for (var r = 0; r < 7; r++) for (var c = 0; c < 7; c++) {
+    var i = document.createElement('i');
+    var filled = (r < 7 && on[r][c] === '1' && (c < 3 || r < 3)) ? true : mid[(r * 7 + c) % mid.length] === 1;
+    if (!filled) i.className = 'o';
+    el.appendChild(i);
+  }
+})();
+</script>
