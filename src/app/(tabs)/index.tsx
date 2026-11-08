@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Icon, SectionHeader, StatusPill } from '@/components/ui';
 import { pipelineStats } from '@/lib/memory';
 import { monthKey, summarise } from '@/lib/receipts';
+import { formatBooking, fromKey, toKey, upcoming } from '@/lib/schedule';
 import { calcTotals, formatGBP0 } from '@/lib/money';
 import { useStore } from '@/lib/store';
 import { chaseMessage, whatsAppUrl } from '@/lib/whatsapp';
@@ -26,6 +27,8 @@ export default function Home() {
   }, [ready, onboarded]);
   const stats = pipelineStats(quotes, profile.vatRegistered);
   const recent = quotes.slice(0, 4);
+  const coming = upcoming(quotes).slice(0, 4);
+  const todayKey = toKey(new Date());
   const lent = tools.filter((t) => t.lentTo);
   const name = profile.ownerName.split(' ')[0];
 
@@ -84,6 +87,35 @@ export default function Home() {
                 />
               </Card>
             ))}
+          </>
+        )}
+
+        {coming.length > 0 && (
+          <>
+            <SectionHeader title="Coming up" />
+            <Card style={{ padding: 0 }}>
+              {coming.map(({ quote: q, dates }, i) => {
+                const on = dates.includes(todayKey);
+                const d = fromKey(dates[0]!);
+                return (
+                  <Pressable key={q.id} onPress={() => router.push(`/quote/${q.id}`)} style={[st.comingRow, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.line }]}>
+                    <View style={[st.dateTile, on && { backgroundColor: colors.amber }]}>
+                      <Text style={[st.dateMon, on && { color: colors.ink }]}>{on ? 'NOW' : d.toLocaleDateString('en-GB', { month: 'short' }).toUpperCase()}</Text>
+                      <Text style={[st.dateNum, on && { color: colors.ink }]}>{d.getDate()}</Text>
+                    </View>
+                    <View style={{ flex: 1 }}>
+                      <Text style={type.h3} numberOfLines={1}>
+                        {q.title}
+                      </Text>
+                      <Text style={{ color: colors.muted, marginTop: 2 }} numberOfLines={1}>
+                        {formatBooking(q.booking!)}
+                        {q.client.address ? ` · ${q.client.address}` : ''}
+                      </Text>
+                    </View>
+                  </Pressable>
+                );
+              })}
+            </Card>
           </>
         )}
 
@@ -164,5 +196,9 @@ const st = StyleSheet.create({
   statValue: { color: colors.white, fontSize: 20, fontWeight: '800' },
   statLabel: { color: 'rgba(255,255,255,0.55)', fontSize: 12, marginTop: 2, fontWeight: '600' },
   divider: { width: 1, backgroundColor: 'rgba(255,255,255,0.1)', marginHorizontal: space(3) },
+  comingRow: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: space(4) },
+  dateTile: { width: 48, height: 52, borderRadius: 12, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
+  dateMon: { color: colors.amber, fontSize: 10, fontWeight: '800', letterSpacing: 0.8 },
+  dateNum: { color: colors.white, fontSize: 20, fontWeight: '800', marginTop: -2 },
   round: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
 });

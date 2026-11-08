@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { Alert, Image, Keyboard, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Chip, Field, Icon, Label, StatusPill, s as ui, type IconName } from '@/components/ui';
+import { removeFromCalendar } from '@/lib/calendar';
 import { addPhoto, deletePhoto } from '@/lib/files';
+import { formatBooking } from '@/lib/schedule';
 import { uid } from '@/lib/id';
 import { labourLine } from '@/lib/labour';
 import { calcTotals, formatGBP, lineTotal } from '@/lib/money';
@@ -83,7 +85,11 @@ export default function QuoteScreen() {
       ],
     });
   const removeItem = (itemId: string) => set({ items: q.items.filter((i) => i.id !== itemId) });
-  const setStatus = (status: QuoteStatus) => set({ status });
+  const setStatus = (status: QuoteStatus) => {
+    set({ status });
+    // Won it? Straight to booking it in.
+    if (status === 'accepted' && !q.booking) router.push({ pathname: '/book/[id]', params: { id: q.id } });
+  };
   const photos = q.photos ?? [];
   const takePhoto = async (source: 'camera' | 'library') => {
     try {
@@ -126,6 +132,7 @@ export default function QuoteScreen() {
 
   const confirmDelete = () => {
     const go = () => {
+      removeFromCalendar(q.booking?.eventIds ?? []);
       deleteQuote(q.id);
       router.back();
     };
@@ -143,6 +150,23 @@ export default function QuoteScreen() {
         <Text style={{ color: colors.muted, marginTop: 4 }}>
           {q.trade} · created {new Date(q.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
         </Text>
+
+        {q.booking ? (
+          <Pressable onPress={() => router.push({ pathname: '/book/[id]', params: { id: q.id } })} style={st.booked} accessibilityLabel="Change booking">
+            <Icon name="calendar-check" color={colors.green} size={22} />
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontWeight: '800', color: colors.ink, fontSize: 15 }}>Booked in: {formatBooking(q.booking)}</Text>
+              <Text style={{ color: colors.muted, marginTop: 2 }}>{q.booking.eventIds.length ? 'In your phone’s calendar' : 'Saved in Graft'} · tap to change</Text>
+            </View>
+            <Icon name="chevron-right" color={colors.faint} />
+          </Pressable>
+        ) : ['accepted', 'invoiced'].includes(q.status) ? (
+          <Pressable onPress={() => router.push({ pathname: '/book/[id]', params: { id: q.id } })} style={st.bookIt} accessibilityLabel="Book it in">
+            <Icon name="calendar-plus" color={colors.ink} size={22} />
+            <Text style={{ flex: 1, fontWeight: '800', color: colors.ink, fontSize: 15 }}>Won it? Book it in</Text>
+            <Icon name="chevron-right" color={colors.ink} />
+          </Pressable>
+        ) : null}
 
         {q.assumptions.length > 0 && q.status === 'draft' && (
           <View style={st.assume}>
@@ -331,5 +355,7 @@ const st = StyleSheet.create({
   photoX: { position: 'absolute', top: 6, right: 6, width: 24, height: 24, borderRadius: 12, backgroundColor: 'rgba(11,23,38,0.7)', alignItems: 'center', justifyContent: 'center' },
   photoAdd: { width: 104, height: 104, borderRadius: radius.md, borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#F5C46B', backgroundColor: colors.amberSoft, alignItems: 'center', justifyContent: 'center', gap: 6 },
   photoAddText: { color: colors.amberDeep, fontWeight: '700', fontSize: 12 },
+  booked: { flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.greenSoft, borderColor: '#BBE5CB', borderWidth: 1, borderRadius: radius.md, padding: space(4), marginTop: space(5) },
+  bookIt: { flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.amber, borderRadius: radius.md, padding: space(4), marginTop: space(5) },
   bar: { position: 'absolute', left: 0, right: 0, bottom: 0, flexDirection: 'row', alignItems: 'center', gap: space(4), paddingHorizontal: space(4), paddingTop: space(3), backgroundColor: colors.card, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.line },
 });

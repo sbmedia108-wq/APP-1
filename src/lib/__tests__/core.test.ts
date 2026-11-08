@@ -214,3 +214,20 @@ test('picks up client details, skips and a lad from speech', async () => {
   assert.equal(f.client.phone, '07700 900123');
   assert.ok(!f.items.some((i) => i.qty === 7700 || i.qty === 900123));
 });
+
+test('booking dates skip weekends and group into runs', async () => {
+  const s = await import('../schedule.ts');
+  // Thu 27 Nov 2026, 3 days, no weekends -> Thu, Fri, Mon
+  assert.deepEqual(s.workDates('2026-11-26', 3, false), ['2026-11-26', '2026-11-27', '2026-11-30']);
+  assert.deepEqual(s.runs(s.workDates('2026-11-26', 3, false)), [{ start: '2026-11-26', end: '2026-11-27' }, { start: '2026-11-30', end: '2026-11-30' }]);
+  assert.deepEqual(s.workDates('2026-11-28', 2, true), ['2026-11-28', '2026-11-29']);
+  assert.deepEqual(s.workDates('2026-11-28', 1, false), ['2026-11-30']); // Saturday start rolls to Monday
+  assert.equal(s.workDates('2026-11-16', 2.5, false).length, 3); // half days round up
+  assert.equal(s.formatBooking({ start: '2026-11-16', days: 3, weekends: false }), 'Mon 16 – Wed 18 Nov');
+  assert.equal(s.longDate('2026-11-02'), 'Monday 2nd November');
+  assert.equal(s.nextWorkingDay(new Date(2026, 10, 13)), '2026-11-16'); // Fri -> Mon
+  const q = { ...mkQuote('Fence', ''), id: 'q1', booking: { start: '2026-11-16', days: 2, weekends: false, eventIds: [], reminder: true } };
+  assert.deepEqual([...s.busyDates([q]).keys()], ['2026-11-16', '2026-11-17']);
+  assert.equal(s.upcoming([q], '2026-11-17').length, 1);
+  assert.equal(s.upcoming([q], '2026-11-18').length, 0);
+});

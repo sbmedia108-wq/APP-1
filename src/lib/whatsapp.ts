@@ -54,3 +54,19 @@ export function whatsAppUrl(phone: string, text: string): string {
   const n = toWhatsAppNumber(phone);
   return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
 }
+
+/** "You're booked in" message for the client, with dates and deposit. */
+export function bookingMessage(q: Quote, p: BusinessProfile, dates: string[], longDate: (k: string) => string): string {
+  const first = q.client.name.trim().split(/\s+/)[0];
+  const t = calcTotals(q.items, p.vatRegistered, q.depositPct);
+  const when = dates.length === 1 ? `on ${longDate(dates[0]!)}` : `from ${longDate(dates[0]!)}, for about ${dates.length} days`;
+  const lines = [
+    `${first ? `Hi ${first}` : 'Hi'}, great news — you're booked in for the ${q.title.toLowerCase()} ${when}.`,
+    '',
+    q.depositPct > 0 ? `To secure the date, the deposit is ${formatGBP(t.deposit)}.${p.bankDetails ? ` Bank details: ${p.bankDetails}` : ''}` : '',
+    'I’ll message the day before to confirm a start time. Any questions, just give me a shout.',
+    '',
+    p.ownerName || p.businessName,
+  ];
+  return lines.filter((l, i) => l !== '' || lines[i - 1] !== '').join('\n').trim();
+}

@@ -51,7 +51,10 @@ const results = []; const ok = (name, cond, extra='') => { results.push(`${cond 
     ok('C1 total updates when hours change (+£150)', before && after && Math.abs(parseFloat(after.replace(/,/g,'')) - parseFloat(before.replace(/,/g,'')) - 150) < 0.01, `${before} -> ${after}`);
     await p.getByPlaceholder('07700 900123').fill('07700 900215');
     await p.getByPlaceholder('Sue Jones').fill('Priya Shah');
-    await p.getByText('Won', { exact: true }).click(); await p.waitForTimeout(200);
+    await p.getByText('Won', { exact: true }).click(); await p.waitForTimeout(800);
+    ok('C2a marking Won opens Book it in', p.url().includes('/book/'));
+    await p.getByText('Book it in', { exact: true }).last().click(); await p.waitForTimeout(800);
+    ok('C2b booked card on quote', /Booked in: /.test(await text()));
     ok('C2 status chip changes header pill', (await text()).includes('Send invoice'));
     const lines = await p.getByLabel('Remove line').count();
     await p.getByLabel('Remove line').last().click(); await p.waitForTimeout(200);
@@ -162,6 +165,10 @@ const results = []; const ok = (name, cond, extra='') => { results.push(`${cond 
     const after = (await text()).match(/Q-\d{4}/g)?.length;
     ok('K1 quotes survive restart', before && before === after, `${before} vs ${after}`);
     await go('/'); ok('K2 welcome not shown again', !(await text()).includes('Let’s get you set up'));
+  });
+
+  await step('M coming up', async () => {
+    await go('/'); ok('M1 booked job on home', (await text()).includes('Coming up'));
   });
 
   await step('L navigation', async () => {

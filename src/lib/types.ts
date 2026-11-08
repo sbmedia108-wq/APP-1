@@ -41,6 +41,8 @@ export interface Quote {
   photos?: string[];
   /** Sample job shipped with the app, not the user's own. */
   example?: boolean;
+  /** When the job is booked in, if it is. */
+  booking?: Booking;
 }
 
 /** How the user prices labour: day rate, hourly rate, or one price for the job (price work). */
@@ -127,4 +129,15 @@ export interface Purchase {
   notes: string;
   /** Things the reader couldn't make out, for the user to check. */
   unreadable: string[];
+}
+
+export interface Booking {
+  /** First day on site, YYYY-MM-DD. */
+  start: string;
+  /** Working days on site. */
+  days: number;
+  weekends: boolean;
+  /** Phone-calendar event ids, one per run of consecutive days. */
+  eventIds: string[];
+  reminder: boolean;
 }
