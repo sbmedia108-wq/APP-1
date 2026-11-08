@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Easy Tech Help",
+    "slug": "easy-tech-help",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.easytechhelp.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.easytechhelp.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Easy Tech Help listens when you tap the big button, so you can tell it what is wrong.",
+          "speechRecognitionPermission": "Easy Tech Help turns what you say into words so it can help you."
+        }
+      ]
+    ]
+  }
+}

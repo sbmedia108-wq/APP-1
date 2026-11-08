@@ -1,1 +1,71 @@
-# APP-1
+# Easy Tech Help
+
+A phone app for older people who get stuck with technology at home: the TV, the remote, Wi-Fi, phones and tablets, printers, smart speakers, video calls, scams.
+
+They tap one big button and **say what's wrong in their own words**. The app works out the problem and walks them through the fix **one small step at a time**, in plain language, with large text, and reads every step out loud. Nobody has to phone a grandchild and feel silly.
+
+## How it works
+
+1. **Tap and tell me.** A big microphone button turns speech into text, using the phone's own speech recogniser. There's also a box to type in, and picture buttons for common problems.
+2. **"Is this right?"** The app shows what it heard, so they can check it or change it.
+3. **Working it out.** The text goes to a small server, which asks Claude to turn it into a very simple guide: short steps, one action each, what you should see after each one, and a warning if something looks dangerous or like a scam.
+4. **One step at a time.** Big text, a progress bar, a "Done – next step" button that stays at the bottom of the screen, "Read it to me again", and "Go back a step".
+5. **Did that fix it?** If yes, they get a "Well done!". If no, the app says who to contact, for example the broadband company, and shows a **Call [name]** button for a family member they've saved in Settings.
+
+**Built-in guides:** 12 common problems are built into the app. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+
+**Settings:** text size (Big, Bigger, Biggest), reading aloud on or off, and a helper's name and phone number.
+
+## Project layout
+
+```
+app/      Expo (React Native) phone app – iOS, Android and web
+  App.tsx              All screens (home, confirm, guide, settings…)
+  src/useVoice.ts      Speech-to-text (expo-speech-recognition)
+  src/api.ts           Calls the server, falls back to built-in guides
+  src/offlineGuides.ts 12 hand-written guides + keyword matching
+  src/ui.tsx           Big buttons, high-contrast colours, scalable text
+server/   Small Node server that calls the Claude API
+  src/server.ts        POST /api/help  { problem } -> { guide }
+```
+
+The Anthropic API key stays on the server and is never put inside the phone app.
+
+## Running it
+
+### 1. Start the server
+
+```bash
+cd server
+npm install
+export ANTHROPIC_API_KEY=sk-ant-...      # from console.anthropic.com
+npm start                                # listens on http://localhost:8787
+```
+
+### 2. Start the app
+
+```bash
+cd app
+npm install
+# Use your computer's local IP address so a real phone can reach the server:
+EXPO_PUBLIC_API_URL=http://192.168.1.20:8787 npx expo start
+```
+
+**Voice input needs a development build.** Expo Go doesn't include the speech recognition module. Build one with:
+
+```bash
+npx expo run:ios        # or: npx expo run:android
+# or with EAS: npx eas build --profile development
+```
+
+In Expo Go the app still works: the big button shows a message, and people can type, or use the microphone key on the phone's keyboard.
+
+You can also try it in a web browser with `npx expo start --web`. Voice works in Chrome.
+
+## Ideas for next steps
+
+- Let them **take a photo** of the screen or error message and send it with their question.
+- Allow **follow-up questions** at any step ("I can't find that button").
+- **Remember their devices** (for example "Samsung TV, BT broadband") so the steps are more specific.
+- Send a **"Mum needed help with the TV"** text to a family member, if they turn that on.
+- Deploy the server (Render, Fly.io, Railway, etc.), add rate limiting, and publish with EAS.
