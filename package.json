@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types src/lib/__tests__/*.test.ts",
-    "build:android:test": "npx eas-cli@latest build --platform android --profile preview"
+    "build:android:test": "npx eas-cli@latest build --platform android --profile preview",
+    "e2e": "node e2e/web-flows.cjs   # needs `npm run web` running on :8081"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",

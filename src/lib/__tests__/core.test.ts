@@ -171,3 +171,46 @@ test('receipts: totals, grouping and turning lines into materials', async () => 
   assert.equal(mats[0]!.price, 6.4);
   assert.equal(mats[0]!.category, 'From Screwfix');
 });
+
+test('waste removal phrasings', () => {
+  for (const t of ['take the old ones away', 'take it all away', 'get rid of the old fence', 'rip out the old fence and dispose of it', 'clear it away after', 'the old panels to the tip']) {
+    const d = parseTranscriptOffline(`replace six panels, ${t}, one day`, {});
+    assert.ok(d.items.some((i) => /waste/i.test(i.description)), t);
+  }
+  const none = parseTranscriptOffline('replace six panels, one day', {});
+  assert.ok(!none.items.some((i) => /waste/i.test(i.description)));
+});
+
+test('number words inside other words are left alone', () => {
+  assert.equal(normaliseNumbers('the old ones and the tenant'), 'the old ones and the tenant');
+  assert.match(normaliseNumbers('twenty-two panels'), /22 panels/);
+});
+
+test('reused / existing items are not added', () => {
+  const d = parseTranscriptOffline('Replace six overlap panels, reuse the concrete posts, take the old ones away, about five hours', {});
+  assert.ok(!d.items.some((i) => /concrete post/i.test(i.description)));
+  assert.ok(d.items.some((i) => /overlap/i.test(i.description)));
+  assert.ok(d.items.some((i) => /waste/i.test(i.description)));
+});
+
+test('own prices beat remembered prices from old quotes', async () => {
+  const { applyRememberedPrices } = await import('../memory.ts');
+  const hist = [{ ...mkQuote('Old', ''), items: [{ id: 'x', kind: 'material' as const, description: 'Postcrete 20kg', qty: 1, unit: 'bag', unitPrice: 9 }] }];
+  const items = [{ id: 'y', kind: 'material' as const, description: 'Postcrete 20kg', qty: 1, unit: 'bag', unitPrice: 6.6 }];
+  assert.equal(applyRememberedPrices(items, hist)[0]!.unitPrice, 9);
+  assert.equal(applyRememberedPrices(items, hist, ['Postcrete 20kg'])[0]!.unitPrice, 6.6);
+});
+
+test('picks up client details, skips and a lad from speech', async () => {
+  const { extractClient } = await import('../parser.ts');
+  assert.deepEqual(extractClient('twenty two metres of closeboard, Mrs Jones on 07700 900123'), { name: 'Mrs Jones', phone: '07700 900123', address: '' });
+  assert.equal(extractClient("client's Dave Smith, number 07700-900-456").name, 'Dave Smith');
+  assert.equal(extractClient('about two days').phone, '');
+  const d = parseTranscriptOffline('back bedroom ceiling, board and skim, about 12 square metres, a day, need a skip', {});
+  assert.ok(d.items.some((i) => /skip/i.test(i.description)));
+  const e = parseTranscriptOffline('decking out the back, 18 square metres, three days, me and the lad', {});
+  assert.ok(e.items.some((i) => i.description === 'Labourer'));
+  const f = parseTranscriptOffline('six panels, one day, Mrs Jones on 07700 900123', {});
+  assert.equal(f.client.phone, '07700 900123');
+  assert.ok(!f.items.some((i) => i.qty === 7700 || i.qty === 900123));
+});

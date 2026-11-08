@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppState } from 'react-native';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { DEFAULT_KITS, DEFAULT_PROFILE, DEFAULT_TOOLS, sampleQuotes } from './seed';
 import { uid } from './id';
@@ -74,11 +75,31 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       .finally(() => setReady(true));
   }, []);
 
+  // Save shortly after each change, and straight away when the app goes to the background,
+  // so an edit made just before Android kills the app isn't lost.
+  const dirty = useRef(false);
+  const flush = useCallback(() => {
+    if (!dirty.current) return;
+    dirty.current = false;
+    AsyncStorage.setItem(KEY, JSON.stringify(stateRef.current)).catch(() => {});
+  }, []);
   useEffect(() => {
     if (!ready) return;
-    const t = setTimeout(() => AsyncStorage.setItem(KEY, JSON.stringify(state)).catch(() => {}), 250);
+    dirty.current = true;
+    const t = setTimeout(flush, 250);
     return () => clearTimeout(t);
-  }, [state, ready]);
+  }, [state, ready, flush]);
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (s) => {
+      if (s !== 'active') flush();
+    });
+    const onHide = () => flush();
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') window.addEventListener('pagehide', onHide);
+    return () => {
+      sub.remove();
+      if (typeof window !== 'undefined' && typeof window.removeEventListener === 'function') window.removeEventListener('pagehide', onHide);
+    };
+  }, [flush]);
 
   const updateProfile = useCallback((p: Partial<BusinessProfile>) => setState((s) => ({ ...s, profile: { ...s.profile, ...p } })), []);
 

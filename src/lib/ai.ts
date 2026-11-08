@@ -4,6 +4,7 @@
  * when offline, unconfigured, or the request fails — the user always gets a draft.
  */
 import { applyRememberedPrices, findSimilarJobs } from './memory';
+import { allMaterials, MATERIAL_BY_ID } from './materials';
 import { applyPricingMode, parseTranscriptOffline, type ParsedDraft } from './parser';
 import { uid } from './id';
 import { calcTotals } from './money';
@@ -47,7 +48,8 @@ export async function draftQuote(transcript: string, profile: BusinessProfile, h
     }
   }
   const d = parseTranscriptOffline(transcript, p);
-  return { ...d, items: applyPricingMode(applyRememberedPrices(d.items, history), p), source: 'offline' };
+  const pinned = [...Object.keys(profile.priceBook ?? {}).map((id) => MATERIAL_BY_ID[id]?.name), ...allMaterials().filter((m) => m.custom).map((m) => m.name)].filter((x): x is string => Boolean(x));
+  return { ...d, items: applyPricingMode(applyRememberedPrices(d.items, history, pinned), p), source: 'offline' };
 }
 
 export class NoServerError extends Error {}

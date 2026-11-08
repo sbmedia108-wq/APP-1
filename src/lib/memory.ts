@@ -92,9 +92,11 @@ export function rememberedPrice(description: string, history: Quote[]): number |
 }
 
 /** Applies remembered prices to freshly parsed lines (user's own prices win). */
-export function applyRememberedPrices(items: LineItem[], history: Quote[]): LineItem[] {
+export function applyRememberedPrices(items: LineItem[], history: Quote[], pinned: string[] = []): LineItem[] {
   return items.map((i) => {
     if (i.kind === 'labour') return i; // labour follows the rates in Settings
+    // Prices the user has set themselves (My prices, own materials) always win over past quotes
+    if (pinned.some((name) => i.description.startsWith(name))) return i;
     const p = rememberedPrice(i.description, history);
     return p !== undefined ? { ...i, unitPrice: p } : i;
   });

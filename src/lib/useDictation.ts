@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ExpoSpeechRecognitionModule, useSpeechRecognitionEvent } from 'expo-speech-recognition';
 
 /** Trade vocabulary to bias the recogniser (iOS contextualStrings / Android biasing). */
@@ -22,6 +22,20 @@ export function useDictation(initial = '') {
   const committed = useRef(initial);
   // The recogniser is a device-wide singleton; only the screen that started it handles its events.
   const owner = useRef(false);
+
+  // Leaving the screen mid-sentence must not leave the mic running.
+  useEffect(
+    () => () => {
+      if (!owner.current) return;
+      owner.current = false;
+      try {
+        ExpoSpeechRecognitionModule.abort();
+      } catch {
+        // already stopped
+      }
+    },
+    [],
+  );
 
   useSpeechRecognitionEvent('start', () => owner.current && setState('listening'));
   useSpeechRecognitionEvent('end', () => {

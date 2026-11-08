@@ -1,6 +1,6 @@
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Alert, Image, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Image, Keyboard, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, Card, Chip, Field, Icon, Label, StatusPill, s as ui, type IconName } from '@/components/ui';
 import { addPhoto, deletePhoto } from '@/lib/files';
@@ -51,6 +51,16 @@ export default function QuoteScreen() {
   const { quotes, profile, updateQuote, deleteQuote, duplicateQuote } = useStore();
   const q = quotes.find((x) => x.id === id);
   const [sharing, setSharing] = useState(false);
+  // Hide the send bar while typing so it never sits on top of the field being edited.
+  const [typing, setTyping] = useState(false);
+  useEffect(() => {
+    const a = Keyboard.addListener('keyboardDidShow', () => setTyping(true));
+    const b = Keyboard.addListener('keyboardDidHide', () => setTyping(false));
+    return () => {
+      a.remove();
+      b.remove();
+    };
+  }, []);
 
   if (!q) {
     return (
@@ -209,11 +219,11 @@ export default function QuoteScreen() {
                       </Pressable>
                     </View>
                     <View style={st.itemRow}>
-                      <NumInput value={i.qty} onChange={(qty) => setItem(i.id, { qty })} style={{ width: 72 }} />
+                      <NumInput value={i.qty} onChange={(qty) => setItem(i.id, { qty })} style={{ width: 62 }} />
                       <TextInput value={i.unit} onChangeText={(unit) => setItem(i.id, { unit })} style={st.unit} placeholder="unit" />
                       <Text style={{ color: colors.faint }}>×</Text>
-                      <NumInput value={i.unitPrice} onChange={(unitPrice) => setItem(i.id, { unitPrice })} prefix="£" style={{ width: 100 }} />
-                      <Text style={[st.lineTotal, type.money]}>{formatGBP(lineTotal(i))}</Text>
+                      <NumInput value={i.unitPrice} onChange={(unitPrice) => setItem(i.id, { unitPrice })} prefix="£" style={{ width: 86 }} />
+                      <Text style={[st.lineTotal, type.money]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.75}>{formatGBP(lineTotal(i))}</Text>
                     </View>
                   </View>
                 ))}
@@ -281,12 +291,12 @@ export default function QuoteScreen() {
         ) : null}
       </ScrollView>
 
-      <View style={[st.bar, { paddingBottom: insets.bottom + space(3) }]}>
+      <View style={[st.bar, { paddingBottom: insets.bottom + space(3) }, typing && { display: 'none' }]}>
         <View style={{ flex: 1 }}>
           <Text style={{ color: colors.muted, fontSize: 12, fontWeight: '600' }}>Total</Text>
-          <Text style={[{ fontSize: 22, fontWeight: '800', color: colors.ink }, type.money]}>{formatGBP(t.total)}</Text>
+          <Text style={[{ fontSize: 22, fontWeight: '800', color: colors.ink }, type.money]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>{formatGBP(t.total)}</Text>
         </View>
-        <Button variant="whatsapp" icon="whatsapp" title={q.status === 'draft' ? 'Send on WhatsApp' : 'Resend'} onPress={sendWhatsApp} style={{ flex: 1.6 }} />
+        <Button variant="whatsapp" icon="whatsapp" title={q.status === 'draft' ? 'Send on WhatsApp' : 'Resend'} onPress={sendWhatsApp} style={{ flex: 1.5, paddingHorizontal: 12 }} />
       </View>
     </KeyboardAvoidingView>
   );
@@ -308,11 +318,11 @@ const st = StyleSheet.create({
   groupHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: space(7), marginBottom: space(2) },
   item: { padding: space(4), gap: 10 },
   desc: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text, padding: 0 },
-  itemRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  itemRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   num: { flexDirection: 'row', alignItems: 'center', gap: 2, ...ui.input, paddingVertical: 8, paddingHorizontal: 10 },
   numInput: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text, padding: 0, minWidth: 30 },
-  unit: { width: 64, fontSize: 14, color: colors.muted, padding: 0 },
-  lineTotal: { flex: 1, textAlign: 'right', fontWeight: '700', color: colors.text },
+  unit: { width: 48, fontSize: 14, color: colors.muted, padding: 0 },
+  lineTotal: { flex: 1, minWidth: 0, textAlign: 'right', fontWeight: '700', color: colors.text },
   termRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   termLabel: { fontSize: 15, color: colors.text, fontWeight: '500' },
   totals: { backgroundColor: colors.ink, borderColor: colors.ink, marginTop: space(6), padding: space(5) },

@@ -59,7 +59,7 @@ export function normaliseNumbers(text: string): string {
   s = s.replace(/\bhalf a\b/g, '0.5');
 
   // compound words: "twenty two" -> 22, "one hundred and fifty" -> 150
-  s = s.replace(/\b((?:(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|dozen|couple)(?:\s+and\s+|\s+|-)?)+)/g, (m) => {
+  s = s.replace(/\b((?:(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|dozen|couple)(?![a-z])(?:\s+and\s+|\s+|-)?)+)/g, (m) => {
     const words = m.trim().split(/\s+and\s+|\s+|-/).filter(Boolean);
     let total = 0;
     let cur = 0;
@@ -74,6 +74,17 @@ export function normaliseNumbers(text: string): string {
     return ` ${total} `;
   });
   return s.replace(/\s+/g, ' ').trim();
+}
+
+const PHONE_RE = /(?:\+44\s?7\d{3}|\b07\d{3}|\b0[123]\d{2,3})[\s-]?\d{3}[\s-]?\d{3,4}\b/g;
+
+/** Pulls a UK phone number and a name out of the dictation, if they were said. */
+export function extractClient(transcript: string): { name: string; phone: string; address: string } {
+  const phone = (transcript.match(PHONE_RE)?.[0] ?? '').replace(/[\s-]+/g, ' ').trim();
+  const titled = transcript.match(/\b(Mr|Mrs|Ms|Miss|Dr)\.?\s+([A-Z][a-zA-Z'-]+)/);
+  const named = transcript.match(/\b(?:client(?:'s| is)?|customer(?:'s| is)?|her name(?:'s| is)|his name(?:'s| is)|it's for|quote for|for)\s+([A-Z][a-z'-]+(?:\s+[A-Z][a-z'-]+)?)/);
+  const name = titled ? `${titled[1]} ${titled[2]}` : named && !/^(The|A|An|About|Two|Three|Four|Five)$/.test(named[1]!.split(' ')[0]!) ? named[1]! : '';
+  return { name, phone, address: '' };
 }
 
 const TITLE_WORDS: [RegExp, string, string][] = [
@@ -115,7 +126,9 @@ function materialItem(materialId: string, qty: number, p: ParseProfile, note?: s
 }
 
 export function parseTranscriptOffline(transcript: string, profile: ParseProfile = {}): ParsedDraft {
-  const text = normaliseNumbers(transcript);
+  // Client details said out loud: "Mrs Jones on 07700 900123", "client's Dave Smith"
+  const client = extractClient(transcript);
+  const text = normaliseNumbers(transcript.replace(PHONE_RE, ' '));
   const items: LineItem[] = [];
   const assumptions: string[] = [];
   const used = new Set<string>();
@@ -170,18 +183,21 @@ export function parseTranscriptOffline(transcript: string, profile: ParseProfile
     if (!clause) continue;
     const m = matchMaterial(clause);
     if (!m || used.has(m.id)) continue;
+    // "reuse the concrete posts", "keep the existing gate" — nothing to buy
+    if (/\b(reuse|re-use|reusing|existing|keep|keeping|already (got|have|there|on site)|leave|leaving|client'?s? (own|supplying)|supplied by)\b/.test(clause)) continue;
     // first number that isn't part of a dimension like 4x4 / 8ft
     const qtyMatch = clause.replace(/\d+x\d+/g, ' ').replace(/\d+(\.\d+)?\s*(ft|m|mm)\b/g, ' ').match(/(\d+(?:\.\d+)?)/);
     // A calculator already did the take-off — only add extras the user actually counted.
-    if (calcUsed && !qtyMatch) continue;
+    const article = /\b(a|an)\s/.test(clause);
+    if (calcUsed && !qtyMatch && !article) continue;
     const qty = qtyMatch ? Number(qtyMatch[1]) : 1;
-    if (!qtyMatch) assumptions.push(`Assumed 1 × ${m.name.toLowerCase()}.`);
+    if (!qtyMatch && !article) assumptions.push(`Assumed 1 × ${m.name.toLowerCase()}.`);
     items.push(materialItem(m.id, qty, profile));
     used.add(m.id);
   }
 
   // Waste removal
-  if (/\b(tip|waste|rubbish|take away|muck away|clear(ing)? away)\b/.test(text) && !used.has('skip-6')) {
+  if (/\b(tip|dump|waste|rubbish|muck away|clear(ing)? (it |them |everything )?away|take (it |them |everything |the old \w+( \w+)? |all the \w+ )?(all )?away|get rid|dispos(e|al)|remove the old|strip out|rip out)\b/.test(text) && !used.has('skip-6')) {
     items.push({ id: uid(), kind: 'other', description: 'Waste removal & disposal', qty: 1, unit: 'job', unitPrice: 120 });
   }
 
@@ -201,7 +217,7 @@ export function parseTranscriptOffline(transcript: string, profile: ParseProfile
     assumptions.push(`Labour estimated at ${estimatedDays} day${estimatedDays === 1 ? '' : 's'} — you didn't say how long.`);
   }
   // A second pair of hands
-  if (/\b(labourer|my lad|2 man|two man|2 of us|with a mate|plus a labourer)\b/.test(text)) {
+  if (/\b(labourer|lad|my son|my boy|2 man|two man|2 of us|me and (a|my) (mate|apprentice)|with a mate|apprentice|plus 1|extra pair of hands)\b/.test(text)) {
     items.splice(1, 0, { id: uid(), kind: 'labour', description: 'Labourer', qty: estimatedDays, unit: 'day', unitPrice: Math.round((profile.dayRate ?? 220) * 0.6) });
   }
 
@@ -212,7 +228,7 @@ export function parseTranscriptOffline(transcript: string, profile: ParseProfile
       ? 'Price includes labour and materials as listed.'
       : `Supply and fit as described. Price includes all labour and materials listed${items.some((i) => /waste|skip/i.test(i.description)) ? ' and removal of waste' : ''}.`;
 
-  return { title, trade, client: { name: '', phone: '', address: '' }, items, estimatedDays, notes, assumptions: assumptions.slice(0, 5) };
+  return { title, trade, client, items, estimatedDays, notes, assumptions: assumptions.slice(0, 5) };
 }
 
 /**
