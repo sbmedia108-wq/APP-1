@@ -89,3 +89,13 @@ You can also try it in a web browser with `npx expo start --web`. Voice works in
 - **Remember their devices** (for example "Samsung TV, BT broadband") so the steps are more specific.
 - Send a **"Mum needed help with the TV"** text to a family member, if they turn that on.
 - Deploy the server (Render, Fly.io, Railway, etc.), add rate limiting, and publish with EAS.
+
+## Demo videos
+
+In `demo/`:
+
+- `ask-mavis-explainer.mp4`: a 70-second narrated explainer (widescreen).
+- `ask-mavis-ad-older.mp4`: a 27-second Facebook ad for older people (4:5).
+- `ask-mavis-ad-family.mp4`: a 28-second Facebook ad for their grown-up children (4:5).
+
+The voiceover lines are in `demo/voiceover-scripts.json`. The voice is "Jenny (Dioco)", a British Piper text-to-speech voice whose licence allows commercial use.

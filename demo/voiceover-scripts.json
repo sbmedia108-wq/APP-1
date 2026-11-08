@@ -1,0 +1,29 @@
+{
+ "explainer": [
+  ["intro", "Meet Ask Mavis. Friendly help with your phone, your telly, and more."],
+  ["tap", "When something stops working, you don't need to know what it's called. Just tap the big blue button, and say what's wrong, in your own words."],
+  ["check", "Mavis shows you what she heard, so you can check it."],
+  ["intro2", "Then she explains the fix, calmly, with no jargon."],
+  ["steps", "One small step at a time, in big writing, and read out loud. The green button is always at the bottom, so you never lose your place."],
+  ["oneword", "Fed up? Just say one word, like Netflix, and pick from big, simple buttons."],
+  ["services", "There's help with booking the doctor, repeat prescriptions, banking, WhatsApp and photos."],
+  ["safety", "And Mavis always puts your safety first, with clear warnings about scams."],
+  ["practice", "You can even practise using a takeaway ordering screen at home, with no queue, and nobody watching."],
+  ["outro", "Ask Mavis. Free to download, made in the UK, with no adverts. Help, whenever you need it."]
+ ],
+ "ad_older": [
+  ["hook", "Telly playing up? Phone gone funny? Ask Mavis."],
+  ["say", "Just tap the button, and say what's wrong."],
+  ["pick", "Mavis asks a simple question, with big buttons."],
+  ["steps", "Then she shows you what to do, one small step at a time."],
+  ["nofuss", "No jargon. No fuss. Nobody to bother."],
+  ["cta", "Ask Mavis. Free to download. Tap learn more to try it."]
+ ],
+ "ad_family": [
+  ["hook", "Does your mum ring you every time the telly goes funny?"],
+  ["what", "Ask Mavis is a simple helper app, made for older people."],
+  ["say", "She just says what's wrong, and Mavis shows her how to fix it, one step at a time, read out loud."],
+  ["call", "If she's still stuck, there's a button to ring you."],
+  ["cta", "Give your mum a bit of independence. Ask Mavis. Free to download."]
+ ]
+}
