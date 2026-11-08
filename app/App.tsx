@@ -358,7 +358,7 @@ function HomeScreen({
       <GuideTiles
         heading="🏠 At home"
         tiles={[
-          ...["tv", "tv-apps", "phone"]
+          ...["tv", "tv-apps", "phone", "messages", "health", "money"]
             .map((id) => TRIAGES.find((t) => t.id === id)!)
             .map((t) => ({
               key: t.id,

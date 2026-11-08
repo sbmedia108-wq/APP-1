@@ -14,7 +14,17 @@ They tap one big button and **say what's wrong in their own words**. The app wor
 
 **"What's happening?" picker:** people often just shout one word when they're fed up, like "Netflix!" or "The telly!". The app doesn't guess. It says *"No problem, let's sort it out. What's happening with Netflix?"* and shows a few huge picture buttons, like "I can't find it on the TV", "It's stuck or keeps loading" or "Words at the bottom of the screen". One tap opens the right guide. There are pickers for the TV, Netflix and other TV apps (BBC iPlayer, ITVX, YouTube, Prime Video...), and phones and tablets. The Claude helper does the same: for vague messages it asks one question with tap-able choices.
 
-**Built-in guides:** 21 common problems are built into the app. *At home*: TV no picture, no sound, remote, Netflix and TV apps (getting to them, stuck or loading, passwords and payments, finding a programme, subtitles), Wi-Fi, frozen phone, charging, scams, printer, passwords, video calls, small text, smart speakers, and ordering a takeaway to your home. *Out and about*: ordering screens (like the ones in McDonald's), self-checkouts, and parking and ticket machines. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+**Built-in guides:** 35 common problems are built into the app. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+
+- *TV:* no picture, no sound, the remote, and Netflix and other TV apps (getting to them, stuck or loading, passwords and payments, finding a programme, subtitles).
+- *Phone or tablet:* frozen, won't charge, not ringing, answering and returning calls, saving a number, small writing, pop-ups (updates, storage full, fake virus warnings), forgotten passwords.
+- *Messages and photos:* WhatsApp messages and voice notes, taking and sending a photo, video calls, sending an email, codes sent by text.
+- *Doctor and prescriptions:* booking a GP appointment, ordering a repeat prescription, and getting help quickly (999 or 111).
+- *Money and banking:* checking the banking app, codes sent by text, cash machines, and calls or messages about your bank.
+- *Also at home:* Wi-Fi, scams, printers, smart speakers, ordering a takeaway.
+- *Out and about:* ordering screens (like the ones in McDonald's), self-checkouts, parking and ticket machines, parking by app, QR codes, and cash machines.
+
+Guides for services that have moved online always give the non-digital route as well: ring the surgery, use the paper prescription slip, ring the number on the parking sign. These topics come from Age UK research showing that older people are increasingly shut out of GP appointments, banking and paying for parking as these move online.
 
 **Practice mode:** a pretend takeaway ordering screen ("Corner Grill", a made-up takeaway) with a coach at the top that says what to touch next and highlights it. People can practise ordering a cheeseburger and a cup of tea, paying by card, and getting an order number, at home with no queue and no pressure. See `demo/practice-mode.png`.
 
@@ -29,6 +39,7 @@ app/      Expo (React Native) phone app – iOS, Android and web
   src/api.ts           Calls the server, falls back to built-in guides
   src/offlineGuides.ts Hand-written guides + keyword matching
   src/tvAppGuides.ts   Netflix and TV app guides
+  src/everydayGuides.ts GP, prescriptions, banking, WhatsApp, photos, calls, parking apps…
   src/triage.ts        "What's happening?" picker for one-word problems
   src/PracticeKiosk.tsx Pretend takeaway ordering screen with a coach
   src/ui.tsx           Big buttons, high-contrast colours, scalable text

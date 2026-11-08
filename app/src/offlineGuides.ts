@@ -3,6 +3,7 @@
 // or the person taps one of the picture buttons on the home screen.
 
 import type { Guide } from "./types";
+import { EVERYDAY_GUIDES } from "./everydayGuides";
 import { TV_APP_GUIDES } from "./tvAppGuides";
 
 export type OfflineGuide = Guide & {
@@ -308,6 +309,13 @@ const BASE_GUIDES: OfflineGuide[] = [
     emoji: "⚠️",
     shortLabel: "Suspicious call/message",
     keywords: [
+      "click the link",
+      "click on the link",
+      "press the link",
+      "account is locked",
+      "account locked",
+      "account suspended",
+      "account has been suspended",
       "scam",
       "virus",
       "hacked",
@@ -881,6 +889,7 @@ const BASE_GUIDES: OfflineGuide[] = [
 export const OFFLINE_GUIDES: OfflineGuide[] = [
   ...BASE_GUIDES,
   ...TV_APP_GUIDES,
+  ...EVERYDAY_GUIDES,
 ];
 
 export const guideById = (id: string) =>
