@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Easy Tech Help",
-    "slug": "easy-tech-help",
+    "name": "Ask Mavis",
+    "slug": "ask-mavis",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.easytechhelp.app"
+      "bundleIdentifier": "com.askmavis.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.easytechhelp.app"
+      "package": "com.askmavis.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -27,8 +27,8 @@
       [
         "expo-speech-recognition",
         {
-          "microphonePermission": "Easy Tech Help listens when you tap the big button, so you can tell it what is wrong.",
-          "speechRecognitionPermission": "Easy Tech Help turns what you say into words so it can help you."
+          "microphonePermission": "Ask Mavis listens when you tap the big button, so you can tell it what is wrong.",
+          "speechRecognitionPermission": "Ask Mavis turns what you say into words so it can help you."
         }
       ]
     ]

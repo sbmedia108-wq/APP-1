@@ -1,6 +1,8 @@
-# Easy Tech Help
+# Ask Mavis
 
 A phone app for older people who get stuck with technology, at home and when out and about: the TV, the remote, Wi-Fi, phones and tablets, printers, smart speakers, video calls, scams, and the touch-screen machines in restaurants, shops and car parks.
+
+The app is called **Ask Mavis**: a friendly computer helper with a warm, familiar name. (It is upfront that Mavis is not a real person.) The name lives in one place, `app/src/brand.ts`, plus `app/app.json` and `HELPER_NAME` on the server, so it is easy to change.
 
 They tap one big button and **say what's wrong in their own words**. The app works out the problem and walks them through the fix **one small step at a time**, in plain language, with large text, and reads every step out loud. Nobody has to phone a grandchild and feel silly.
 

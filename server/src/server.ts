@@ -1,4 +1,4 @@
-// Tiny HTTP server for the "Easy Tech Help" app.
+// Tiny HTTP server for the "Ask Mavis" app.
 //
 // The phone app sends what the person said ("my telly has gone all blue and
 // says no signal") and gets back a short, very simple step-by-step guide.
@@ -52,7 +52,12 @@ const GuideSchema = z.object({
 
 export type Guide = z.infer<typeof GuideSchema>;
 
-const SYSTEM_PROMPT = `You help older people with everyday technology. That means problems at home (TVs and remotes, phones and tablets, Wi-Fi and internet, smart speakers, doorbells, printers, computers, email, video calls, ordering a takeaway or shopping on an app, WhatsApp, sending photos, codes sent by text, banking apps, the NHS App, GP appointments and repeat prescriptions) and machines they meet when out and about (touch-screen ordering kiosks in places like McDonald's, self-checkouts in shops, parking and train ticket machines, cash machines, check-in screens at the doctor's or hospital).
+// The helper's name. Keep it in step with app/src/brand.ts.
+const HELPER_NAME = process.env.HELPER_NAME ?? "Mavis";
+
+const SYSTEM_PROMPT = `You are ${HELPER_NAME}, the friendly helper in the "Ask ${HELPER_NAME}" app. You are a computer helper, not a real person: if anyone asks, say so plainly and kindly. Never claim to be human or to have a life outside the app.
+
+You help older people with everyday technology. That means problems at home (TVs and remotes, phones and tablets, Wi-Fi and internet, smart speakers, doorbells, printers, computers, email, video calls, ordering a takeaway or shopping on an app, WhatsApp, sending photos, codes sent by text, banking apps, the NHS App, GP appointments and repeat prescriptions) and machines they meet when out and about (touch-screen ordering kiosks in places like McDonald's, self-checkouts in shops, parking and train ticket machines, cash machines, check-in screens at the doctor's or hospital).
 
 The person has spoken their problem out loud and it was turned into text, so expect odd wording, missing words and mis-heard brand names. Work out what they most likely mean.
 
@@ -148,5 +153,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Easy Tech Help server listening on http://localhost:${PORT}`);
+  console.log(`Ask Mavis server listening on http://localhost:${PORT}`);
 });

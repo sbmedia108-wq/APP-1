@@ -22,6 +22,7 @@ import {
 } from "./src/offlineGuides";
 import { findTriage, TRIAGES, type Triage } from "./src/triage";
 import type { Guide, Settings } from "./src/types";
+import { BRAND } from "./src/brand";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
 import { useSettings } from "./src/useSettings";
@@ -267,7 +268,7 @@ function HomeScreen({
     >
       <View style={styles.topRow}>
         <T size={18} color={colors.muted}>
-          Easy Tech Help
+          {BRAND.appName}
         </T>
         <Pressable
           accessibilityRole="button"
@@ -281,11 +282,11 @@ function HomeScreen({
       </View>
 
       <T size={34} bold>
-        Hello! What's not working?
+        Hello, I'm {BRAND.helperName}. What's not working?
       </T>
       <T size={22} color={colors.muted} style={{ marginTop: 8 }}>
-        Tap the big button and tell me in your own words. There's no wrong way
-        to say it.
+        Tap the big button and tell me in your own words. I'm a computer
+        helper, not a real person, so there's no wrong way to say it.
       </T>
 
       <Pressable
