@@ -14,7 +14,13 @@ import {
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { getHelp } from "./src/api";
-import { OFFLINE_GUIDES, type OfflineGuide } from "./src/offlineGuides";
+import {
+  findOfflineGuide,
+  guideById,
+  OFFLINE_GUIDES,
+  type OfflineGuide,
+} from "./src/offlineGuides";
+import { findTriage, TRIAGES, type Triage } from "./src/triage";
 import type { Guide, Settings } from "./src/types";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
@@ -30,7 +36,8 @@ type Screen =
   | { name: "fixed" }
   | { name: "notFixed"; guide: Guide }
   | { name: "settings" }
-  | { name: "practice" };
+  | { name: "practice" }
+  | { name: "triage"; triage: Triage };
 
 function say(text: string, enabled: boolean) {
   Speech.stop();
@@ -67,8 +74,14 @@ function Main({
     setScreen({ name: "home" });
   };
 
+  const showGuide = (g: Guide) =>
+    setScreen({ name: "guide", guide: g, offline: true });
+
   const askForHelp = async (problem: string) => {
     if (!problem.trim()) return;
+    // Just "Netflix!" or "The TV!"? Don't guess: ask what's happening.
+    const triage = findTriage(problem, !!findOfflineGuide(problem));
+    if (triage) return setScreen({ name: "triage", triage });
     setScreen({ name: "loading" });
     const result = await getHelp(problem);
     if (!result) return setScreen({ name: "notFound" });
@@ -100,6 +113,19 @@ function Main({
           }
           onSettings={() => setScreen({ name: "settings" })}
           onPractice={() => setScreen({ name: "practice" })}
+          onPickTriage={(triage) => setScreen({ name: "triage", triage })}
+        />
+      );
+    case "triage":
+      return (
+        <TriageScreen
+          triage={screen.triage}
+          readAloud={settings.readAloud}
+          onPick={(id) => {
+            const g = guideById(id);
+            if (g) showGuide(g);
+          }}
+          onSomethingElse={goHome}
         />
       );
     case "practice":
@@ -157,6 +183,7 @@ function Main({
           onAskAgain={goHome}
           onHome={goHome}
           onPractice={() => setScreen({ name: "practice" })}
+          onChoose={(choice) => askForHelp(`${voice.transcript}. ${choice}`)}
         />
       );
     case "fixed":
@@ -221,12 +248,14 @@ function HomeScreen({
   onPickGuide,
   onSettings,
   onPractice,
+  onPickTriage,
 }: {
   voice: ReturnType<typeof useVoice>;
   onSubmitText: (t: string) => void;
   onPickGuide: (g: Guide) => void;
   onSettings: () => void;
   onPractice: () => void;
+  onPickTriage: (t: Triage) => void;
 }) {
   const [typed, setTyped] = useState("");
   const scale = useScale();
@@ -328,14 +357,26 @@ function HomeScreen({
       </T>
       <GuideTiles
         heading="🏠 At home"
-        guides={OFFLINE_GUIDES.filter((g) => g.place !== "out")}
-        onPick={onPickGuide}
+        tiles={[
+          ...["tv", "tv-apps", "phone"]
+            .map((id) => TRIAGES.find((t) => t.id === id)!)
+            .map((t) => ({
+              key: t.id,
+              emoji: t.emoji,
+              label: t.tileLabel,
+              onPress: () => onPickTriage(t),
+            })),
+          ...OFFLINE_GUIDES.filter(
+            (g) => g.place !== "out" && !g.hidden && !IN_PICKERS.has(g.id),
+          ).map(toTile(onPickGuide)),
+        ]}
       />
       <GuideTiles
         heading="🛍️ Out and about"
         subheading="Ordering screens, self-checkouts and ticket machines"
-        guides={OFFLINE_GUIDES.filter((g) => g.place === "out")}
-        onPick={onPickGuide}
+        tiles={OFFLINE_GUIDES.filter((g) => g.place === "out").map(
+          toTile(onPickGuide),
+        )}
       />
       <BigButton
         label="Practise ordering on a pretend screen"
@@ -348,16 +389,32 @@ function HomeScreen({
   );
 }
 
+// Guides already reachable from the TV and phone pickers (scams stay visible).
+const IN_PICKERS = new Set(
+  TRIAGES.flatMap((t) => t.options.map((o) => o.guideId)).filter(
+    (id) => id !== "scam",
+  ),
+);
+
+type Tile = { key: string; emoji: string; label: string; onPress: () => void };
+
+const toTile =
+  (onPick: (g: Guide) => void) =>
+  (g: OfflineGuide): Tile => ({
+    key: g.id,
+    emoji: g.emoji,
+    label: g.shortLabel,
+    onPress: () => onPick(g),
+  });
+
 function GuideTiles({
   heading,
   subheading,
-  guides,
-  onPick,
+  tiles,
 }: {
   heading: string;
   subheading?: string;
-  guides: Guide[];
-  onPick: (g: Guide) => void;
+  tiles: Tile[];
 }) {
   return (
     <View style={{ marginTop: 16 }}>
@@ -370,24 +427,93 @@ function GuideTiles({
         </T>
       )}
       <View style={[styles.grid, { marginTop: 8 }]}>
-        {(guides as OfflineGuide[]).map((g) => (
+        {tiles.map((t) => (
           <Pressable
-            key={g.id}
+            key={t.key}
             accessibilityRole="button"
-            accessibilityLabel={g.shortLabel}
-            onPress={() => onPick(g)}
+            accessibilityLabel={t.label}
+            onPress={t.onPress}
             style={({ pressed }) => [styles.tile, pressed && { opacity: 0.7 }]}
           >
             <T size={34} center>
-              {g.emoji}
+              {t.emoji}
             </T>
             <T size={18} bold center>
-              {g.shortLabel}
+              {t.label}
             </T>
           </Pressable>
         ))}
       </View>
     </View>
+  );
+}
+
+/* ---------------- "What's happening?" picker ---------------- */
+
+function TriageScreen({
+  triage,
+  readAloud,
+  onPick,
+  onSomethingElse,
+}: {
+  triage: Triage;
+  readAloud: boolean;
+  onPick: (guideId: string) => void;
+  onSomethingElse: () => void;
+}) {
+  useEffect(() => {
+    say(
+      `No problem, let's sort it out. ${triage.question} Touch the one that matches.`,
+      readAloud,
+    );
+    return () => {
+      Speech.stop();
+    };
+  }, [triage.question, readAloud]);
+
+  return (
+    <ScrollView contentContainerStyle={styles.scroll}>
+      <View style={styles.topRow}>
+        <Pressable
+          accessibilityRole="button"
+          onPress={onSomethingElse}
+          style={styles.settingsLink}
+        >
+          <T size={18} color={colors.primary} bold>
+            ✕ Start over
+          </T>
+        </Pressable>
+      </View>
+      <T size={22} color={colors.muted}>
+        No problem, let's sort it out.
+      </T>
+      <T size={32} bold style={{ marginTop: 4, marginBottom: 12 }}>
+        {triage.question}
+      </T>
+      {triage.options.map((o) => (
+        <Pressable
+          key={o.guideId + o.label}
+          accessibilityRole="button"
+          accessibilityLabel={o.label}
+          onPress={() => onPick(o.guideId)}
+          style={({ pressed }) => [styles.option, pressed && { opacity: 0.75 }]}
+        >
+          <T size={34}>{o.emoji}</T>
+          <View style={{ flex: 1 }}>
+            <T size={22} bold>
+              {o.label}
+            </T>
+          </View>
+        </Pressable>
+      ))}
+      <BigButton
+        label="Something else"
+        icon="🎤"
+        variant="primary"
+        onPress={onSomethingElse}
+        style={{ marginTop: 12 }}
+      />
+    </ScrollView>
   );
 }
 
@@ -451,6 +577,7 @@ function GuideScreen({
   onAskAgain,
   onHome,
   onPractice,
+  onChoose,
 }: {
   guide: Guide;
   offline: boolean;
@@ -460,6 +587,7 @@ function GuideScreen({
   onAskAgain: () => void;
   onHome: () => void;
   onPractice: () => void;
+  onChoose: (choice: string) => void;
 }) {
   // -1 = intro page, 0..n-1 = steps, n = "did it work?"
   const [index, setIndex] = useState(-1);
@@ -494,8 +622,17 @@ function GuideScreen({
               "Which thing isn't working, and what is it doing?"}
           </T>
         </Card>
+        {(guide.choices ?? []).map((c) => (
+          <BigButton
+            key={c}
+            label={c}
+            variant="secondary"
+            onPress={() => onChoose(c)}
+            style={{ alignSelf: "stretch" }}
+          />
+        ))}
         <BigButton
-          label="Answer"
+          label={guide.choices?.length ? "Something else" : "Answer"}
           icon="🎤"
           onPress={onAskAgain}
           style={{ alignSelf: "stretch" }}
@@ -822,6 +959,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 12,
+  },
+  option: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+    backgroundColor: colors.card,
+    borderWidth: 3,
+    borderColor: colors.border,
+    borderRadius: 18,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    marginVertical: 6,
+    minHeight: 84,
   },
   progress: {
     flexDirection: "row",

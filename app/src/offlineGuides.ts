@@ -3,6 +3,7 @@
 // or the person taps one of the picture buttons on the home screen.
 
 import type { Guide } from "./types";
+import { TV_APP_GUIDES } from "./tvAppGuides";
 
 export type OfflineGuide = Guide & {
   id: string;
@@ -13,20 +14,23 @@ export type OfflineGuide = Guide & {
   place?: "home" | "out";
   /** Words that strongly point to this guide (a shop name, "delivered"...). */
   boost?: string[];
+  /** Reached through the "What's happening?" picker, not a home screen button. */
+  hidden?: boolean;
 };
 
 const step = (instruction: string, lookFor = "") => ({ instruction, lookFor });
 
-export const OFFLINE_GUIDES: OfflineGuide[] = [
+const BASE_GUIDES: OfflineGuide[] = [
   {
     id: "tv-no-signal",
     emoji: "📺",
-    shortLabel: "TV problem",
+    shortLabel: "No picture",
     keywords: [
-      "tv",
-      "telly",
-      "television",
       "no signal",
+      "black",
+      "gone black",
+      "nothing on the screen",
+      "no picture",
       "blank",
       "black screen",
       "blue screen",
@@ -873,6 +877,14 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
       "Most machines have a “Help” button or a phone number on them. At a station, staff at the ticket office can help.",
   },
 ];
+
+export const OFFLINE_GUIDES: OfflineGuide[] = [
+  ...BASE_GUIDES,
+  ...TV_APP_GUIDES,
+];
+
+export const guideById = (id: string) =>
+  OFFLINE_GUIDES.find((g) => g.id === id) ?? null;
 
 const normalise = (s: string) =>
   s

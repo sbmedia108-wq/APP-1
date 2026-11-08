@@ -13,6 +13,8 @@ export type Guide = {
   steps: Step[];
   safetyWarning: string;
   whenToGetHelp: string;
+  /** If the problem was too vague: short options to tap, e.g. "No sound". */
+  choices?: string[];
 };
 
 export type Settings = {

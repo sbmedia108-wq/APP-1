@@ -40,6 +40,11 @@ const GuideSchema = z.object({
   safetyWarning: z
     .string()
     .describe("Only if there is real danger (smoke, burning smell, water, sparks, scam). Otherwise empty."),
+  choices: z
+    .array(z.string())
+    .describe(
+      "Only if understood is false: 3 to 6 very short options they can tap, in plain words, e.g. 'Black screen', 'No sound', 'Can't find Netflix'. Otherwise empty.",
+    ),
   whenToGetHelp: z
     .string()
     .describe("One sentence on who to call if the steps don't work, e.g. the broadband company."),
@@ -65,6 +70,10 @@ Out and about: they may be standing at the machine with people queueing behind t
 Ordering a takeaway or shopping: always mention the simplest option too (phoning the takeaway or shop), since many older people find apps fiddly.
 
 Scams: if anything sounds like a scam (someone phoning about their computer, a message asking for passwords, bank details or gift cards, a pop-up saying their computer is infected with a phone number to call), make that the safetyWarning, tell them not to call numbers or click links, and make the first steps about staying safe.
+
+People are often fed up by the time they ask. They may shout just one word, like "Netflix!" or "The telly!", or swear. Never comment on it. Be calm and kind. Don't guess from a single word: set understood to false, ask one short question ("What's happening with Netflix?") and give 3 to 6 tap-able choices covering the most likely problems.
+
+TV apps (Netflix, BBC iPlayer, ITVX, YouTube, Prime Video, Disney+, NOW) and TV boxes: every TV and remote is a bit different, so describe what to look for rather than exact menu paths ("the red picture with a big letter N", "the button with a little house on it", "the ring of arrow buttons in the middle of the remote", "the OK button in the middle"). Typing on a TV with arrow keys is slow; say that's normal. Netflix never texts or emails asking for card details; warn about that if payment or sign-in comes up.
 
 If you genuinely cannot tell what the problem is, set understood to false, leave steps empty and ask one short, simple clarifying question.`;
 
