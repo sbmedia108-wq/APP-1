@@ -4,6 +4,7 @@ import * as Linking from "expo-linking";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Image,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -267,9 +268,16 @@ function HomeScreen({
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.topRow}>
-        <T size={18} color={colors.muted}>
-          {BRAND.appName}
-        </T>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+          <Image
+            source={require("./assets/logo.png")}
+            style={{ width: 36, height: 36 }}
+            accessibilityIgnoresInvertColors
+          />
+          <T size={20} bold color={colors.text}>
+            {BRAND.appName}
+          </T>
+        </View>
         <Pressable
           accessibilityRole="button"
           onPress={onSettings}
