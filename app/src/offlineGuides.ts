@@ -9,6 +9,8 @@ export type OfflineGuide = Guide & {
   emoji: string;
   shortLabel: string;
   keywords: string[];
+  /** "out" = machines in shops, restaurants and car parks. Default is at home. */
+  place?: "home" | "out";
 };
 
 const step = (instruction: string, lookFor = "") => ({ instruction, lookFor });
@@ -306,6 +308,18 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
       "pop up",
       "popup",
       "microsoft called",
+      "microsoft",
+      "someone rang",
+      "someone called",
+      "man rang",
+      "man called",
+      "woman rang",
+      "woman called",
+      "rang saying",
+      "called saying",
+      "cold call",
+      "bank details",
+      "remote access",
       "bank called",
       "gift card",
       "suspicious",
@@ -430,6 +444,10 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
     shortLabel: "Video calls",
     keywords: [
       "video call",
+      "can't hear her",
+      "can't hear him",
+      "can't see her",
+      "can't see him",
       "facetime",
       "zoom",
       "whatsapp",
@@ -556,6 +574,198 @@ export const OFFLINE_GUIDES: OfflineGuide[] = [
     whenToGetHelp:
       "If it still won't work, check the internet is working (try another device). If the internet is fine, contact the speaker's maker.",
   },
+  {
+    id: "order-kiosk",
+    place: "out",
+    emoji: "🍔",
+    shortLabel: "Ordering screen",
+    keywords: [
+      "kiosk",
+      "kiosks",
+      "order",
+      "ordering",
+      "mcdonald",
+      "mcdonalds",
+      "maccies",
+      "burger king",
+      "kfc",
+      "restaurant",
+      "fast food",
+      "cafe",
+      "big screen",
+      "screen to order",
+      "touch screen to order",
+      "order screen",
+      "ordering screen",
+      "food",
+    ],
+    understood: true,
+    title: "Ordering food on a big touch screen",
+    reassurance:
+      "These screens confuse lots of people, and you never have to use them. You can always order at the counter instead. Just say: “Can I order with you, please?”",
+    device: "Ordering screen",
+    clarifyingQuestion: "",
+    safetyWarning: "",
+    steps: [
+      step(
+        "Stand in front of the big screen. Touch it anywhere with one finger.",
+        "A start page with big buttons like “Eat in” and “Take away”.",
+      ),
+      step(
+        "Touch “Eat in” if you will eat there. Touch “Take away” if you are taking it with you.",
+        "Pictures of food appear.",
+      ),
+      step(
+        "Down the side or along the top are groups, like “Burgers”, “Drinks” and “Desserts”. Touch a group to see what's in it.",
+        "Pictures of the food in that group.",
+      ),
+      step(
+        "Touch the picture of what you want. If it asks about making it a meal or adding extras, you can touch “No thanks”.",
+        "Your choice is added. A small total appears at the bottom.",
+      ),
+      step(
+        "When you have everything, touch the button at the bottom that says “Checkout”, “Review order” or “Pay”.",
+        "A list of your food, with the price.",
+      ),
+      step(
+        "Check the list. If something is wrong, touch the bin picture or the minus sign next to it to remove it.",
+        "",
+      ),
+      step(
+        "Touch “Pay”. If you see “Pay at counter”, you can choose that and pay a person instead.",
+        "",
+      ),
+      step(
+        "To pay by card, hold your bank card flat against the card reader under the screen, where you see four curved lines. Keep it there until it beeps.",
+        "A beep, then a tick or “Approved”.",
+      ),
+      step(
+        "Take your receipt. It has your order number on it. Watch the screen above the counter until your number appears.",
+        "Your number shows on the screen. Go to the counter to collect your food.",
+      ),
+    ],
+    whenToGetHelp:
+      "If you get stuck, wave to a member of staff, or go to the counter. Helping people is part of their job. If the screen goes back to the start, that's fine: it does that if you wait. Just start again.",
+  },
+  {
+    id: "self-checkout",
+    place: "out",
+    emoji: "🛒",
+    shortLabel: "Self-checkout",
+    keywords: [
+      "self checkout",
+      "self service",
+      "self scan",
+      "checkout",
+      "till",
+      "tills",
+      "supermarket",
+      "unexpected item",
+      "bagging area",
+      "scan",
+      "scanner",
+      "tesco",
+      "sainsbury",
+      "asda",
+      "aldi",
+      "lidl",
+      "morrisons",
+      "waitrose",
+      "boots",
+    ],
+    understood: true,
+    title: "Using a self-checkout in a shop",
+    reassurance:
+      "Self-checkouts catch everyone out, especially the “unexpected item” message. You can always use a till with a person instead.",
+    device: "Self-checkout",
+    clarifyingQuestion: "",
+    safetyWarning: "",
+    steps: [
+      step(
+        "Touch “Start” on the screen. If it asks if you brought your own bags, touch “Yes” or “No”.",
+        "It asks you to scan your first item.",
+      ),
+      step(
+        "Find the stripy barcode on your item. Hold it flat, a hand's width above the glass, with the stripes facing down. Move it slowly until it beeps.",
+        "A beep. The item and price appear on the screen.",
+      ),
+      step(
+        "Put the item in the bagging area straight away, then scan the next one.",
+        "",
+      ),
+      step(
+        "For fruit and veg without a barcode, touch “Look up item” on the screen, then touch the picture of what you have.",
+        "It is added to your list.",
+      ),
+      step(
+        "If it says “Unexpected item in the bagging area”, don't worry. Don't move anything. A member of staff will come over, or you can wave to them.",
+        "A light flashes above the till. Staff are on their way.",
+      ),
+      step("When everything is scanned, touch “Finish and pay” or “Pay”.", ""),
+      step(
+        "Touch “Card”. Hold your bank card flat against the card reader until it beeps, or put it in and type your PIN. Cover the keypad with your other hand.",
+        "“Payment approved”.",
+      ),
+      step("Take your receipt and your bags.", ""),
+    ],
+    whenToGetHelp:
+      "If anything goes wrong, a member of staff watches the self-checkouts and is there to help. Just wave or call out “Excuse me”.",
+  },
+  {
+    id: "ticket-machine",
+    place: "out",
+    emoji: "🅿️",
+    shortLabel: "Parking/ticket machine",
+    keywords: [
+      "car park",
+      "parking",
+      "pay and display",
+      "parking machine",
+      "ticket machine",
+      "train ticket",
+      "train",
+      "station",
+      "parking ticket",
+      "pay machine",
+      "barrier",
+    ],
+    understood: true,
+    title: "Paying at a parking or ticket machine",
+    reassurance:
+      "These machines are all different, and lots of people find them confusing. Take your time. Nobody minds waiting.",
+    device: "Ticket machine",
+    clarifyingQuestion: "",
+    safetyWarning:
+      "Only pay at the machine itself. Be careful with QR code stickers on parking machines. Some are fake and are put there by scammers.",
+    steps: [
+      step(
+        "Read the big sign on or above the machine. It shows the prices and how long you can stay.",
+        "",
+      ),
+      step(
+        "If it asks for your car's number plate, type it in using the letter buttons, then press “OK” or the green button.",
+        "Your number plate shows on the screen.",
+      ),
+      step(
+        "Choose how long you want to stay, or where you want to go, by pressing the buttons next to the choices.",
+        "The price shows on the screen.",
+      ),
+      step(
+        "Pay. For card, hold it flat on the card reader where you see four curved lines until it beeps. For coins, put them in the coin slot.",
+        "A beep, or “Payment accepted”.",
+      ),
+      step(
+        "Take your ticket from the slot at the bottom.",
+        "A ticket comes out.",
+      ),
+      step(
+        "For a car park: put the ticket on your dashboard, face up, where it can be seen through the windscreen. For a train: keep it safe for the journey.",
+        "",
+      ),
+    ],
+    whenToGetHelp:
+      "Most machines have a “Help” button or a phone number on them. At a station, staff at the ticket office can help.",
+  },
 ];
 
 const normalise = (s: string) =>
@@ -582,6 +792,8 @@ export function findOfflineGuide(problem: string): OfflineGuide | null {
     }
     // Scams always win if mentioned; safety first.
     if (guide.id === "scam" && score > 0) score += 3;
+    // Naming a shop, restaurant or car park is a strong clue they're out, not at home.
+    if (guide.place === "out" && score > 0) score += 3;
     if (score > bestScore) {
       best = guide;
       bestScore = score;

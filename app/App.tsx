@@ -14,7 +14,7 @@ import {
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { getHelp } from "./src/api";
-import { OFFLINE_GUIDES } from "./src/offlineGuides";
+import { OFFLINE_GUIDES, type OfflineGuide } from "./src/offlineGuides";
 import type { Guide, Settings } from "./src/types";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
 import { useSettings } from "./src/useSettings";
@@ -315,16 +315,52 @@ function HomeScreen({
         disabled={!typed.trim()}
       />
 
-      <T size={22} bold style={{ marginTop: 24, marginBottom: 8 }}>
+      <T size={22} bold style={{ marginTop: 24 }}>
         Or pick a common problem:
       </T>
-      <View style={styles.grid}>
-        {OFFLINE_GUIDES.map((g) => (
+      <GuideTiles
+        heading="🏠 At home"
+        guides={OFFLINE_GUIDES.filter((g) => g.place !== "out")}
+        onPick={onPickGuide}
+      />
+      <GuideTiles
+        heading="🛍️ Out and about"
+        subheading="Ordering screens, self-checkouts and ticket machines"
+        guides={OFFLINE_GUIDES.filter((g) => g.place === "out")}
+        onPick={onPickGuide}
+      />
+    </ScrollView>
+  );
+}
+
+function GuideTiles({
+  heading,
+  subheading,
+  guides,
+  onPick,
+}: {
+  heading: string;
+  subheading?: string;
+  guides: Guide[];
+  onPick: (g: Guide) => void;
+}) {
+  return (
+    <View style={{ marginTop: 16 }}>
+      <T size={20} bold color={colors.muted}>
+        {heading}
+      </T>
+      {!!subheading && (
+        <T size={17} color={colors.muted}>
+          {subheading}
+        </T>
+      )}
+      <View style={[styles.grid, { marginTop: 8 }]}>
+        {(guides as OfflineGuide[]).map((g) => (
           <Pressable
             key={g.id}
             accessibilityRole="button"
             accessibilityLabel={g.shortLabel}
-            onPress={() => onPickGuide(g)}
+            onPress={() => onPick(g)}
             style={({ pressed }) => [styles.tile, pressed && { opacity: 0.7 }]}
           >
             <T size={34} center>
@@ -336,7 +372,7 @@ function HomeScreen({
           </Pressable>
         ))}
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
