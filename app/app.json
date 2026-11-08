@@ -8,7 +8,11 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.askmavis.app"
+      "bundleIdentifier": "com.askmavis.app",
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "Ask Mavis turns what you say into words so it can help you.",
+        "NSMicrophoneUsageDescription": "Ask Mavis listens when you tap the big button, so you can tell it what is wrong."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +22,11 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.askmavis.app"
+      "package": "com.askmavis.app",
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +39,12 @@
           "speechRecognitionPermission": "Ask Mavis turns what you say into words so it can help you."
         }
       ]
-    ]
+    ],
+    "owner": "samb123",
+    "extra": {
+      "eas": {
+        "projectId": "901bf451-30ee-4c28-af16-6ca0c5622e8f"
+      }
+    }
   }
 }
