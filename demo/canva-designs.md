@@ -13,3 +13,16 @@ Editable Facebook ad designs (4:5) made directly in the Canva account, each with
 | Leaflet, two pages (A4) | https://canva.link/mhdszcdclhhjnhi |
 
 Note: Canva's AI drew a cartoon "Mavis" lady in the telly and Netflix ads, and a made-up app screen in the Netflix ad. Mavis is presented in the app as a computer helper, not a real person, so swap that for a real app screenshot (in demo/ads/) or the logo.
+
+## More designs (added 9 November 2026)
+
+| Design | Format | Canva link |
+|---|---|---|
+| Free phone help session poster ("Come along for a free cuppa"), with Where/When to fill in | A4 poster | https://canva.link/b0qpgsuouix56wt |
+| Facebook page cover | Facebook cover | https://canva.link/zjazszilgvlipyz |
+| Spot the scam: the fake Royal Mail parcel text | 4:5 post | https://canva.link/4wc2qefe0a3go8b |
+| Telly gone funny? Story ad | 9:16 Story | https://canva.link/mi0b2s31wl2kdek |
+| Family gift card ("A little gift for you, Mum") | Postcard | https://canva.link/atg4knga8flpr9r |
+| Fed up being the family IT department? | 4:5 post | https://canva.link/x48epraqcpc3nur |
+
+The photo of the mum and daughter in the family ad was made by Canva's AI. Swap in a real photo (with permission) before running it as an ad.
