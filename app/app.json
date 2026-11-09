@@ -45,7 +45,8 @@
           "photosPermission": "Ask Mavis lets you choose a photo of a confusing screen so it can help you.",
           "cameraPermission": "Ask Mavis uses the camera when you take a photo of a confusing screen, so it can help you."
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "owner": "samb123",
     "extra": {

@@ -4,6 +4,7 @@
 // try one at home with no queue and no pressure. Nothing here is real: there
 // is no money and no food. The takeaway ("Corner Grill") is made up.
 
+import { playSound } from "./sounds";
 import { speak, stopSpeaking } from "./speech";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
@@ -324,9 +325,11 @@ export function PracticeKiosk({
   const tapReader = () => {
     if (paying) return;
     setPaying(true);
+    playSound("card_beep");
     setTimeout(() => {
       setPaying(false);
       setStage("done");
+      playSound("well_done");
     }, 1400);
   };
 

@@ -31,6 +31,7 @@ import { isWhatIsQuestion } from "./src/glossary";
 import { PhotoHelp } from "./src/PhotoHelp";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { ScamCheck } from "./src/ScamCheck";
+import { playSound, setSoundsEnabled } from "./src/sounds";
 import { setSpeechSpeed, speak, stopSpeaking } from "./src/speech";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
 import { useSettings } from "./src/useSettings";
@@ -82,6 +83,7 @@ function Main({
   const voice = useVoice();
 
   useEffect(() => setSpeechSpeed(settings.speechSpeed), [settings.speechSpeed]);
+  useEffect(() => setSoundsEnabled(settings.sounds), [settings.sounds]);
 
   const goHome = () => {
     stopSpeaking();
@@ -241,7 +243,10 @@ function Main({
           guide={screen.guide}
           offline={screen.offline}
           settings={settings}
-          onFixed={() => setScreen({ name: "fixed" })}
+          onFixed={() => {
+            playSound("well_done");
+            setScreen({ name: "fixed" });
+          }}
           onNotFixed={() =>
             setScreen({ name: "notFixed", guide: screen.guide })
           }
@@ -933,7 +938,10 @@ function GuideScreen({
             label={index === total - 1 ? "Done" : "Done – next step"}
             icon="✅"
             variant="success"
-            onPress={() => setIndex(index + 1)}
+            onPress={() => {
+              playSound("step");
+              setIndex(index + 1);
+            }}
           />
         </View>
       )}
@@ -989,6 +997,21 @@ function SettingsScreen({
         <Switch
           value={settings.readAloud}
           onValueChange={(v) => update({ readAloud: v })}
+          style={{ transform: [{ scale: 1.4 }] }}
+        />
+      </View>
+
+      <View style={[styles.topRow, { marginTop: 12 }]}>
+        <T size={22} bold style={{ flex: 1 }}>
+          Play cheerful sounds
+        </T>
+        <Switch
+          value={settings.sounds}
+          onValueChange={(v) => {
+            update({ sounds: v });
+            setSoundsEnabled(v);
+            if (v) playSound("correct");
+          }}
           style={{ transform: [{ scale: 1.4 }] }}
         />
       </View>

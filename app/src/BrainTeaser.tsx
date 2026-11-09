@@ -12,6 +12,7 @@ import {
   type QuizKind,
   type QuizProgress,
 } from "./dailyQuiz";
+import { playSound } from "./sounds";
 import { speak, stopSpeaking } from "./speech";
 import type { Settings } from "./types";
 import { BigButton, Card, colors, T } from "./ui";
@@ -80,7 +81,9 @@ export function BrainTeaser({
     const lead = right
       ? CHEERS[index % CHEERS.length]
       : KIND_WORDS[index % KIND_WORDS.length];
-    say(`${lead} ${current.explain}`);
+    playSound(right ? "correct" : "try_again");
+    // Let the chime finish before Mavis speaks.
+    setTimeout(() => say(`${lead} ${current.explain}`), 800);
   };
 
   const next = async () => {
@@ -91,6 +94,8 @@ export function BrainTeaser({
       const p = await recordDay(results);
       setProgress(p);
       const got = results.filter((r) => r.right).length;
+      playSound(got > 0 ? "well_done" : "step");
+      await new Promise((r) => setTimeout(r, 1200));
       say(
         `You got ${got} out of 3. ${p.streak > 1 ? `That's ${p.streak} days in a row!` : "Come back tomorrow for three new ones."}`,
       );
