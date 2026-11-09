@@ -4,7 +4,7 @@
 // try one at home with no queue and no pressure. Nothing here is real: there
 // is no money and no food. The takeaway ("Corner Grill") is made up.
 
-import * as Speech from "expo-speech";
+import { speak, stopSpeaking } from "./speech";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   Animated,
@@ -285,10 +285,10 @@ export function PracticeKiosk({
   const glow = (id: string) => coach.target === id;
 
   useEffect(() => {
-    Speech.stop();
-    if (readAloud) Speech.speak(coach.text, { rate: 0.9 });
+    if (readAloud) speak(coach.text);
+    else stopSpeaking();
   }, [coach.text, readAloud]);
-  useEffect(() => () => void Speech.stop(), []);
+  useEffect(() => () => stopSpeaking(), []);
 
   const total = useMemo(
     () => lines.reduce((s, l) => s + lineTotal(l), 0),
@@ -353,8 +353,7 @@ export function PracticeKiosk({
           <Pressable
             accessibilityRole="button"
             onPress={() => {
-              Speech.stop();
-              Speech.speak(coach.text, { rate: 0.9 });
+              speak(coach.text);
             }}
             style={styles.again}
           >

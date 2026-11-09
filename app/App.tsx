@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import * as Speech from "expo-speech";
 import * as Linking from "expo-linking";
 import { useEffect, useState } from "react";
 import {
@@ -24,7 +23,11 @@ import {
 import { findTriage, TRIAGES, type Triage } from "./src/triage";
 import type { Guide, Settings } from "./src/types";
 import { BRAND } from "./src/brand";
+import { ONLINE_HELP_AVAILABLE } from "./src/api";
+import { PhotoHelp } from "./src/PhotoHelp";
 import { PracticeKiosk } from "./src/PracticeKiosk";
+import { ScamCheck } from "./src/ScamCheck";
+import { setSpeechSpeed, speak, stopSpeaking } from "./src/speech";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
 import { useSettings } from "./src/useSettings";
 import { useVoice } from "./src/useVoice";
@@ -39,11 +42,13 @@ type Screen =
   | { name: "notFixed"; guide: Guide }
   | { name: "settings" }
   | { name: "practice" }
-  | { name: "triage"; triage: Triage };
+  | { name: "triage"; triage: Triage }
+  | { name: "scam" }
+  | { name: "photo" };
 
 function say(text: string, enabled: boolean) {
-  Speech.stop();
-  if (enabled && text) Speech.speak(text, { rate: 0.9 });
+  if (enabled && text) speak(text);
+  else stopSpeaking();
 }
 
 export default function App() {
@@ -70,8 +75,10 @@ function Main({
   const [screen, setScreen] = useState<Screen>({ name: "home" });
   const voice = useVoice();
 
+  useEffect(() => setSpeechSpeed(settings.speechSpeed), [settings.speechSpeed]);
+
   const goHome = () => {
-    Speech.stop();
+    stopSpeaking();
     voice.setTranscript("");
     setScreen({ name: "home" });
   };
@@ -116,6 +123,34 @@ function Main({
           onSettings={() => setScreen({ name: "settings" })}
           onPractice={() => setScreen({ name: "practice" })}
           onPickTriage={(triage) => setScreen({ name: "triage", triage })}
+          onScam={() => {
+            voice.setTranscript("");
+            setScreen({ name: "scam" });
+          }}
+          onPhoto={() => setScreen({ name: "photo" })}
+        />
+      );
+    case "scam":
+      return (
+        <ScamCheck
+          voice={voice}
+          settings={settings}
+          onHome={goHome}
+          helperButtons={
+            <HelperButtons
+              settings={settings}
+              about="a message I think might be a scam"
+            />
+          }
+        />
+      );
+    case "photo":
+      return (
+        <PhotoHelp
+          onHome={goHome}
+          onGuide={(g) =>
+            setScreen({ name: "guide", guide: g, offline: false })
+          }
         />
       );
     case "triage":
@@ -169,7 +204,10 @@ function Main({
             onPress={goHome}
             style={{ alignSelf: "stretch" }}
           />
-          <CallHelper settings={settings} />
+          <HelperButtons
+            settings={settings}
+            about="something on my phone or TV"
+          />
         </Centered>
       );
     case "guide":
@@ -228,7 +266,7 @@ function Main({
             onPress={goHome}
             style={{ alignSelf: "stretch" }}
           />
-          <CallHelper settings={settings} />
+          <HelperButtons settings={settings} about={screen.guide.title} />
         </Centered>
       );
     case "settings":
@@ -251,6 +289,8 @@ function HomeScreen({
   onSettings,
   onPractice,
   onPickTriage,
+  onScam,
+  onPhoto,
 }: {
   voice: ReturnType<typeof useVoice>;
   onSubmitText: (t: string) => void;
@@ -258,6 +298,8 @@ function HomeScreen({
   onSettings: () => void;
   onPractice: () => void;
   onPickTriage: (t: Triage) => void;
+  onScam: () => void;
+  onPhoto: () => void;
 }) {
   const [typed, setTyped] = useState("");
   const scale = useScale();
@@ -293,8 +335,8 @@ function HomeScreen({
         Hello, I'm {BRAND.helperName}. What's not working?
       </T>
       <T size={22} color={colors.muted} style={{ marginTop: 8 }}>
-        Tap the big button and tell me in your own words. I'm a computer
-        helper, not a real person, so there's no wrong way to say it.
+        Tap the big button and tell me in your own words. I'm a computer helper,
+        not a real person, so there's no wrong way to say it.
       </T>
 
       <Pressable
@@ -341,6 +383,22 @@ function HomeScreen({
         >
           <T size={22}>{voice.error}</T>
         </Card>
+      )}
+
+      <BigButton
+        label="Is this a scam? Check a message or call"
+        icon="🛡️"
+        variant="secondary"
+        onPress={onScam}
+        style={{ marginTop: 12 }}
+      />
+      {ONLINE_HELP_AVAILABLE && (
+        <BigButton
+          label="Show Mavis a photo of the screen"
+          icon="📷"
+          variant="secondary"
+          onPress={onPhoto}
+        />
       )}
 
       <T size={22} bold style={{ marginTop: 24 }}>
@@ -476,7 +534,7 @@ function TriageScreen({
       readAloud,
     );
     return () => {
-      Speech.stop();
+      stopSpeaking();
     };
   }, [triage.question, readAloud]);
 
@@ -614,7 +672,7 @@ function GuideScreen({
   useEffect(() => {
     say(spoken, settings.readAloud);
     return () => {
-      Speech.stop();
+      stopSpeaking();
     };
   }, [spoken, settings.readAloud]);
 
@@ -868,6 +926,30 @@ function SettingsScreen({
         />
       </View>
 
+      <T size={22} bold style={{ marginTop: 20 }}>
+        Reading speed
+      </T>
+      <View style={{ flexDirection: "row", gap: 8 }}>
+        {(
+          [
+            { label: "Normal", value: "normal" },
+            { label: "Slower", value: "slow" },
+          ] as const
+        ).map((o) => (
+          <BigButton
+            key={o.value}
+            label={o.label}
+            variant={settings.speechSpeed === o.value ? "primary" : "secondary"}
+            onPress={() => {
+              update({ speechSpeed: o.value });
+              setSpeechSpeed(o.value);
+              speak("This is how fast I'll read the steps to you.");
+            }}
+            style={{ flex: 1 }}
+          />
+        ))}
+      </View>
+
       <T size={22} bold style={{ marginTop: 24 }}>
         Someone to call if you're stuck
       </T>
@@ -897,19 +979,34 @@ function SettingsScreen({
 
 /* ---------------- Helpers ---------------- */
 
-function CallHelper({ settings }: { settings: Settings }) {
-  if (!settings.helperPhone.trim()) return null;
+function HelperButtons({
+  settings,
+  about,
+}: {
+  settings: Settings;
+  about: string;
+}) {
+  const phone = settings.helperPhone.replace(/[^\d+]/g, "");
+  if (!phone) return null;
   const name = settings.helperName.trim() || "my helper";
+  const message = `Hi${settings.helperName.trim() ? ` ${settings.helperName.trim()}` : ""}, I'm stuck with ${about}. Could you give me a ring when you have a minute? Thank you x`;
   return (
-    <BigButton
-      label={`Call ${name}`}
-      icon="📞"
-      variant="secondary"
-      onPress={() =>
-        Linking.openURL(`tel:${settings.helperPhone.replace(/[^\d+]/g, "")}`)
-      }
-      style={{ alignSelf: "stretch" }}
-    />
+    <View style={{ alignSelf: "stretch" }}>
+      <BigButton
+        label={`Call ${name}`}
+        icon="📞"
+        variant="secondary"
+        onPress={() => Linking.openURL(`tel:${phone}`)}
+      />
+      <BigButton
+        label={`Send ${name} a text`}
+        icon="💬"
+        variant="secondary"
+        onPress={() =>
+          Linking.openURL(`sms:${phone}?body=${encodeURIComponent(message)}`)
+        }
+      />
+    </View>
   );
 }
 

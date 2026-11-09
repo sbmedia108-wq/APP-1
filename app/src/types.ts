@@ -22,6 +22,7 @@ export type Settings = {
   helperPhone: string;
   textScale: 1 | 1.2 | 1.4;
   readAloud: boolean;
+  speechSpeed: "normal" | "slow";
 };
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -29,4 +30,5 @@ export const DEFAULT_SETTINGS: Settings = {
   helperPhone: "",
   textScale: 1.2,
   readAloud: true,
+  speechSpeed: "normal",
 };

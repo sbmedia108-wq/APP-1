@@ -86,7 +86,46 @@ If you genuinely cannot tell what the problem is, set understood to false, leave
 
 const client = new Anthropic();
 
-async function makeGuide(problem: string): Promise<Guide> {
+const ScamSchema = z.object({
+  level: z.enum(["high", "medium", "low"]).describe("high = looks like a scam; medium = warning signs; low = no usual signs (never 'safe')"),
+  headline: z.string().describe("One short line, e.g. 'This looks like a scam', 'Be careful: this has warning signs', or 'I can't see the usual warning signs'."),
+  reasons: z.array(z.string()).describe("1 to 4 plain-English reasons, each one sentence."),
+  whatToDo: z.array(z.string()).describe("3 to 6 short, specific actions."),
+});
+
+export type ScamResult = z.infer<typeof ScamSchema>;
+
+const SCAM_PROMPT = `You help older people in the UK decide whether a message, email or phone call is a scam. They will describe it in their own words, or paste it.
+
+Rules:
+- Never say something is definitely safe. If you see no warning signs, use level "low" and the headline "I can't see the usual warning signs", and say scams change all the time and to check another way if unsure.
+- Common UK scam signs: asking for codes, PINs or passwords; moving money to a "safe account"; gift cards or crypto; "Hi Mum, this is my new number"; fake parcel or delivery fees; fake HMRC, council, DVLA, TV licence or energy rebates; fake bank fraud teams; Microsoft or "your computer has a virus"; prizes they didn't enter; pressure to act fast; links in unexpected messages.
+- Plain, calm, kind words. Short sentences. Never make them feel silly: say scammers target everyone.
+- whatToDo must always include: don't tap links or ring numbers in the message; never share codes, PINs or passwords; to check with their bank, hang up and ring 159 from a phone they trust; forward scam texts to 7726 (free). If it sounds like they have already paid or shared details, put first: ring your bank on 159 straight away.`;
+
+async function checkScam(text: string): Promise<ScamResult> {
+  const response = await client.beta.messages.parse({
+    model: MODEL,
+    max_tokens: 3000,
+    output_config: { effort: "low", format: betaZodOutputFormat(ScamSchema) },
+    betas: ["server-side-fallback-2026-07-01"],
+    fallbacks: "default",
+    system: SCAM_PROMPT,
+    messages: [{ role: "user", content: `Here is the message or call they want checked:\n\n"${text}"` }],
+  });
+  if (response.stop_reason === "refusal" || !response.parsed_output) {
+    throw new Error(`No usable scam check (stop_reason=${response.stop_reason})`);
+  }
+  return response.parsed_output;
+}
+
+type Photo = { mediaType: "image/jpeg" | "image/png"; data: string };
+const MAX_PHOTO_BASE64 = 7_000_000; // about 5 MB of image
+
+async function makeGuide(problem: string, photo?: Photo): Promise<Guide> {
+  const text = photo
+    ? `They sent a photo of their screen or a message. Read any error message or text in it, work out what it means, and help. They said:\n\n"${problem}"`
+    : `Here is what they said:\n\n"${problem}"`;
   const response = await client.beta.messages.parse({
     model: MODEL,
     max_tokens: 4000,
@@ -96,7 +135,17 @@ async function makeGuide(problem: string): Promise<Guide> {
     betas: ["server-side-fallback-2026-07-01"],
     fallbacks: "default",
     system: SYSTEM_PROMPT,
-    messages: [{ role: "user", content: `Here is what they said:\n\n"${problem}"` }],
+    messages: [
+      {
+        role: "user",
+        content: photo
+          ? [
+              { type: "image", source: { type: "base64", media_type: photo.mediaType, data: photo.data } },
+              { type: "text", text },
+            ]
+          : text,
+      },
+    ],
   });
 
   if (response.stop_reason === "refusal" || !response.parsed_output) {
@@ -115,13 +164,25 @@ function send(res: http.ServerResponse, status: number, body: unknown) {
   res.end(JSON.stringify(body));
 }
 
-async function readBody(req: http.IncomingMessage): Promise<string> {
+async function readBody(req: http.IncomingMessage, limit = 20_000): Promise<string> {
   let data = "";
   for await (const chunk of req) {
     data += chunk;
-    if (data.length > 20_000) throw new Error("Body too large");
+    if (data.length > limit) throw new Error("Body too large");
   }
   return data;
+}
+
+function sendError(res: http.ServerResponse, err: unknown) {
+  if (err instanceof Anthropic.RateLimitError) {
+    return send(res, 429, { error: "Busy right now, please try again in a minute." });
+  }
+  if (err instanceof Anthropic.APIError) {
+    console.error("Anthropic API error", err.status, err.message);
+    return send(res, 502, { error: "Could not reach the helper service." });
+  }
+  console.error(err);
+  return send(res, 500, { error: "Something went wrong." });
 }
 
 const server = http.createServer(async (req, res) => {
@@ -130,22 +191,38 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === "POST" && req.url === "/api/help") {
     try {
-      const { problem } = JSON.parse(await readBody(req)) as { problem?: unknown };
+      const { problem, photo } = JSON.parse(await readBody(req, MAX_PHOTO_BASE64 + 20_000)) as {
+        problem?: unknown;
+        photo?: Partial<Photo>;
+      };
       if (typeof problem !== "string" || !problem.trim()) {
         return send(res, 400, { error: "Please describe the problem." });
       }
-      const guide = await makeGuide(problem.trim().slice(0, MAX_PROBLEM_CHARS));
+      let image: Photo | undefined;
+      if (photo) {
+        const okType = photo.mediaType === "image/jpeg" || photo.mediaType === "image/png";
+        if (!okType || typeof photo.data !== "string" || !photo.data || photo.data.length > MAX_PHOTO_BASE64) {
+          return send(res, 400, { error: "That photo couldn't be used. Please try a smaller one." });
+        }
+        image = { mediaType: photo.mediaType as Photo["mediaType"], data: photo.data };
+      }
+      const guide = await makeGuide(problem.trim().slice(0, MAX_PROBLEM_CHARS), image);
       return send(res, 200, { guide });
     } catch (err) {
-      if (err instanceof Anthropic.RateLimitError) {
-        return send(res, 429, { error: "Busy right now, please try again in a minute." });
+      return sendError(res, err);
+    }
+  }
+
+  if (req.method === "POST" && req.url === "/api/scam-check") {
+    try {
+      const { text } = JSON.parse(await readBody(req)) as { text?: unknown };
+      if (typeof text !== "string" || !text.trim()) {
+        return send(res, 400, { error: "Please say what the message or call said." });
       }
-      if (err instanceof Anthropic.APIError) {
-        console.error("Anthropic API error", err.status, err.message);
-        return send(res, 502, { error: "Could not reach the helper service." });
-      }
-      console.error(err);
-      return send(res, 500, { error: "Something went wrong." });
+      const result = await checkScam(text.trim().slice(0, MAX_PROBLEM_CHARS));
+      return send(res, 200, { result });
+    } catch (err) {
+      return sendError(res, err);
     }
   }
 

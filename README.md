@@ -30,6 +30,12 @@ Guides for services that have moved online always give the non-digital route as 
 
 **Practice mode:** a pretend takeaway ordering screen ("Corner Grill", a made-up takeaway) with a coach at the top that says what to touch next and highlights it. People can practise ordering a cheeseburger and a cup of tea, paying by card, and getting an order number, at home with no queue and no pressure. See `demo/practice-mode.png`.
 
+**New safety and help features:**
+- **"Is this a scam?" checker.** Say, type or paste a suspicious message or call. Mavis shows a red, amber or grey result, explains the warning signs and what to do, and has a one-tap "Ring my bank safely (159)" button. It works offline with built-in checks, and the server gives a fuller answer when it's online. It never says a message is definitely safe.
+- **"Show Mavis a photo".** Take or choose a photo of a confusing screen or error message. This needs the server, so the button only appears when `EXPO_PUBLIC_API_URL` is set.
+- **Reading speed.** Normal or Slower, in Settings.
+- **"Send Sarah a text".** Next to the Call button, a ready-written "I'm stuck" text to the family helper.
+
 **Settings:** text size (Big, Bigger, Biggest), reading aloud on or off, and a helper's name and phone number.
 
 ## Project layout

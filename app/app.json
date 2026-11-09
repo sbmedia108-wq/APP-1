@@ -38,6 +38,13 @@
           "microphonePermission": "Ask Mavis listens when you tap the big button, so you can tell it what is wrong.",
           "speechRecognitionPermission": "Ask Mavis turns what you say into words so it can help you."
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Ask Mavis lets you choose a photo of a confusing screen so it can help you.",
+          "cameraPermission": "Ask Mavis uses the camera when you take a photo of a confusing screen, so it can help you."
+        }
       ]
     ],
     "owner": "samb123",
