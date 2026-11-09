@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Merriweather:wght@700;900&display=swap">
+<style>
+/* A5 leaflet with 3mm bleed on every edge: 154 x 216 mm. Keep text 8mm in from the trim. */
+@page { size: 154mm 216mm; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: "Atkinson Hyperlegible", Arial, sans-serif; color: #2A2522; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 154mm; height: 216mm; position: relative; overflow: hidden; page-break-after: always;
+  background: radial-gradient(120mm 110mm at 75% 70%, #FFE6A8 0%, #FDF3DF 60%, #F8EEDC 100%); }
+.safe { position: absolute; left: 11mm; right: 11mm; top: 11mm; bottom: 11mm; } /* 3mm bleed + 8mm margin */
+.brand { display: flex; align-items: center; gap: 3mm; font-size: 13pt; font-weight: 700; color: #5A4A3F; }
+.brand img { width: 11mm; height: 11mm; border-radius: 2.6mm; }
+h1 { font-family: Merriweather, Georgia, serif; font-weight: 900; font-size: 30pt; line-height: 1.08; margin: 5mm 0 0; }
+h1 .blue { color: #1F5FBF; }
+h2 { font-family: Merriweather, Georgia, serif; font-weight: 900; font-size: 19pt; line-height: 1.15; margin: 0 0 3mm; }
+p.lead { font-size: 14.5pt; line-height: 1.35; margin: 4mm 0 0; }
+.row { display: flex; gap: 5mm; margin-top: 6mm; align-items: flex-end; }
+.photo { flex: 1; height: 62mm; border: 0.8mm dashed #CDB487; border-radius: 6mm; background: rgba(255,255,255,.5);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #8A7458; font-size: 11pt; font-weight: 700; padding: 4mm; }
+.phone { width: 34mm; height: 70mm; padding: 1.4mm; border-radius: 6mm; background: #3B3B3B; }
+.phone img { width: 100%; height: 100%; border-radius: 4.8mm; object-fit: cover; object-position: top; display: block; }
+ul.ticks { list-style: none; padding: 0; margin: 6mm 0 0; display: grid; gap: 2.5mm; font-size: 14pt; font-weight: 700; }
+ul.ticks li::before { content: "✔"; color: #2E7D32; margin-right: 3mm; }
+.strip { position: absolute; left: 0; right: 0; bottom: 0; height: 16mm; padding-bottom: 3mm; background: #1F5FBF; color: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 5mm; font-size: 11.5pt; font-weight: 700; }
+.strip span::before { content: "✔ "; color: #FFD54F; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; }
+.tile { background: #fff; border: 0.5mm solid #E4D3B4; border-radius: 4mm; padding: 2.5mm 3mm; display: flex; align-items: center; gap: 2.5mm; font-size: 12pt; font-weight: 700; line-height: 1.2; min-height: 14mm; }
+.tile b { font-size: 17pt; }
+.scam { margin-top: 4mm; background: #FDECEA; border: 0.7mm solid #B3261E; border-radius: 4mm; padding: 3mm 4mm; font-size: 12.5pt; line-height: 1.3; }
+.scam strong { color: #B3261E; }
+.steps { display: grid; gap: 2.5mm; margin-top: 1mm; }
+.step { display: flex; align-items: center; gap: 3.5mm; font-size: 13pt; line-height: 1.25; }
+.num { flex: none; width: 10mm; height: 10mm; border-radius: 50%; background: #1F5FBF; color: #fff; font-family: Merriweather, serif; font-weight: 900; font-size: 15pt; display: grid; place-items: center; }
+.bottom { display: flex; gap: 4mm; align-items: center; margin-top: 4mm; }
+.qr { flex: none; width: 24mm; height: 24mm; border: 0.6mm dashed #8A7458; border-radius: 2mm; display: grid; place-items: center; text-align: center; font-size: 8.5pt; color: #8A7458; font-weight: 700; padding: 1.5mm; }
+.help { font-size: 12pt; line-height: 1.3; }
+.keep { position: absolute; left: 0; right: 0; bottom: 0; height: 14mm; padding-bottom: 3mm; background: #FFC845; display: flex; align-items: center; justify-content: center; font-family: Merriweather, serif; font-weight: 900; font-size: 13pt; }
+</style></head><body>
+
+<!-- FRONT -->
+<section class="page">
+  <div class="safe" style="bottom: 20mm">
+    <div class="brand"><img src="logo.png" alt="">Ask Mavis</div>
+    <h1>Stuck with your phone or telly?<br><span class="blue">Ask Mavis.</span></h1>
+    <p class="lead">Just say what's wrong in your own words. Mavis shows you how to fix it, one simple step at a time, and reads it out loud.</p>
+    <div class="row">
+      <div class="photo">Add a photo here<br><span style="font-weight:400;font-size:9pt">(your nan, or a stock photo)</span></div>
+      <div class="phone"><img src="shots/tv-step.png" alt=""></div>
+    </div>
+    <ul class="ticks">
+      <li>No jargon, no fuss</li>
+      <li>Help with scams, the GP and banking</li>
+      <li>Big writing, read out loud</li>
+    </ul>
+  </div>
+  <div class="strip"><span>Free to download</span><span>Made in the UK</span><span>No adverts</span></div>
+</section>
+
+<!-- BACK -->
+<section class="page">
+  <div class="safe" style="bottom: 18mm">
+    <h2>What Mavis helps with</h2>
+    <div class="grid">
+      <div class="tile"><b>📺</b>The TV and Netflix</div>
+      <div class="tile"><b>📱</b>Your phone or tablet</div>
+      <div class="tile"><b>💬</b>WhatsApp and photos</div>
+      <div class="tile"><b>🩺</b>The GP and prescriptions</div>
+      <div class="tile"><b>🏦</b>Banking and scams</div>
+      <div class="tile"><b>🍔</b>Ordering screens and parking</div>
+    </div>
+    <div class="scam"><strong>Worried about a call or text?</strong> Hang up and ring <strong>159</strong> to reach your bank safely. Mavis can check a message for warning signs too.</div>
+    <h2 style="margin-top:5mm">Getting started is easy</h2>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><span>Open the <b>Play Store</b> on your phone</span></div>
+      <div class="step"><span class="num">2</span><span>Search for <b>Ask Mavis</b></span></div>
+      <div class="step"><span class="num">3</span><span>Tap <b>Install</b>, then tap the big blue button and say what's wrong</span></div>
+    </div>
+    <div class="bottom">
+      <div class="qr">QR code to your website</div>
+      <div class="help">Ask a family member to help you set it up. It takes two minutes.<br><b>[your website address]</b></div>
+    </div>
+  </div>
+  <div class="keep">Keep this leaflet by your phone</div>
+</section>
+</body></html>

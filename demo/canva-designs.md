@@ -10,5 +10,6 @@ Editable Facebook ad designs (4:5) made directly in the Canva account, each with
 | Nervous of those big ordering screens? | https://canva.link/wim3j1k96bkg6b3 |
 | Just say “Netflix!” | https://canva.link/kwr5iq28sd4v0a6 |
 | A little brain teaser every day | https://canva.link/va6k9npk63q703e |
+| Leaflet, two pages (A4) | https://canva.link/mhdszcdclhhjnhi |
 
 Note: Canva's AI drew a cartoon "Mavis" lady in the telly and Netflix ads, and a made-up app screen in the Netflix ad. Mavis is presented in the app as a computer helper, not a real person, so swap that for a real app screenshot (in demo/ads/) or the logo.
