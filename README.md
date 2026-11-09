@@ -33,6 +33,8 @@ Guides for services that have moved online always give the non-digital route as 
 **New safety and help features:**
 - **"Is this a scam?" checker.** Say, type or paste a suspicious message or call. Mavis shows a red, amber or grey result, explains the warning signs and what to do, and has a one-tap "Ring my bank safely (159)" button. It works offline with built-in checks, and the server gives a fuller answer when it's online. It never says a message is definitely safe.
 - **"Show Mavis a photo".** Take or choose a photo of a confusing screen or error message. This needs the server, so the button only appears when `EXPO_PUBLIC_API_URL` is set.
+- **"What is…?" questions.** Ask what a tech word means ("What is AI?", "What's the cloud?") and get a short, friendly answer, read aloud. About 50 everyday words are built in, and anything else goes to the server (`/api/explain`). Asking a "what is" question through the main microphone button also works. "What's wrong with my telly?" still goes to the fix-it guides.
+- **Today's brain teaser.** Three questions a day: a tech tip, spot the scam, and a word puzzle. They're the same all day and new tomorrow. Right answers earn stars, and there's a day streak and six badges (First go, Three days running, Scam Spotter, Tech Whizz, Full week, Star collector). Every answer comes with a kind explanation, so it's about learning, not testing.
 - **Reading speed.** Normal or Slower, in Settings.
 - **"Send Sarah a text".** Next to the Call button, a ready-written "I'm stuck" text to the family helper.
 

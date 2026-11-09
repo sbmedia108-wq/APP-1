@@ -24,6 +24,10 @@ import { findTriage, TRIAGES, type Triage } from "./src/triage";
 import type { Guide, Settings } from "./src/types";
 import { BRAND } from "./src/brand";
 import { ONLINE_HELP_AVAILABLE } from "./src/api";
+import { AskQuestion } from "./src/AskQuestion";
+import { BrainTeaser } from "./src/BrainTeaser";
+import { loadProgress, todayKey, type QuizProgress } from "./src/dailyQuiz";
+import { isWhatIsQuestion } from "./src/glossary";
 import { PhotoHelp } from "./src/PhotoHelp";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { ScamCheck } from "./src/ScamCheck";
@@ -44,7 +48,9 @@ type Screen =
   | { name: "practice" }
   | { name: "triage"; triage: Triage }
   | { name: "scam" }
-  | { name: "photo" };
+  | { name: "photo" }
+  | { name: "ask"; question?: string }
+  | { name: "teaser" };
 
 function say(text: string, enabled: boolean) {
   if (enabled && text) speak(text);
@@ -88,6 +94,9 @@ function Main({
 
   const askForHelp = async (problem: string) => {
     if (!problem.trim()) return;
+    // "What is AI?" is a question to explain, not a problem to fix.
+    if (isWhatIsQuestion(problem))
+      return setScreen({ name: "ask", question: problem });
     // Just "Netflix!" or "The TV!"? Don't guess: ask what's happening.
     const triage = findTriage(problem, !!findOfflineGuide(problem));
     if (triage) return setScreen({ name: "triage", triage });
@@ -128,8 +137,24 @@ function Main({
             setScreen({ name: "scam" });
           }}
           onPhoto={() => setScreen({ name: "photo" })}
+          onAsk={() => {
+            voice.setTranscript("");
+            setScreen({ name: "ask" });
+          }}
+          onTeaser={() => setScreen({ name: "teaser" })}
         />
       );
+    case "ask":
+      return (
+        <AskQuestion
+          voice={voice}
+          settings={settings}
+          initialQuestion={screen.question}
+          onHome={goHome}
+        />
+      );
+    case "teaser":
+      return <BrainTeaser settings={settings} onHome={goHome} />;
     case "scam":
       return (
         <ScamCheck
@@ -291,6 +316,8 @@ function HomeScreen({
   onPickTriage,
   onScam,
   onPhoto,
+  onAsk,
+  onTeaser,
 }: {
   voice: ReturnType<typeof useVoice>;
   onSubmitText: (t: string) => void;
@@ -300,8 +327,15 @@ function HomeScreen({
   onPickTriage: (t: Triage) => void;
   onScam: () => void;
   onPhoto: () => void;
+  onAsk: () => void;
+  onTeaser: () => void;
 }) {
   const [typed, setTyped] = useState("");
+  const [quiz, setQuiz] = useState<QuizProgress | null>(null);
+  useEffect(() => {
+    loadProgress().then(setQuiz);
+  }, []);
+  const teaserDone = quiz?.lastPlayed === todayKey();
   const scale = useScale();
 
   return (
@@ -392,6 +426,39 @@ function HomeScreen({
         onPress={onScam}
         style={{ marginTop: 12 }}
       />
+      <BigButton
+        label="What is…? Ask me what something means"
+        icon="❓"
+        variant="secondary"
+        onPress={onAsk}
+      />
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Today's brain teaser"
+        onPress={onTeaser}
+        style={({ pressed }) => [styles.teaser, pressed && { opacity: 0.85 }]}
+      >
+        <T size={34}>🧠</T>
+        <View style={{ flex: 1 }}>
+          <T size={22} bold>
+            Today's brain teaser
+          </T>
+          <T size={18} color={colors.muted}>
+            {teaserDone
+              ? `Done for today${quiz && quiz.streak > 1 ? ` · 🔥 ${quiz.streak} days in a row` : ""}`
+              : quiz && quiz.streak > 0
+                ? `3 new questions · 🔥 ${quiz.streak}-day streak`
+                : "3 quick questions, new every day"}
+          </T>
+        </View>
+        {!teaserDone && (
+          <View style={styles.newBadge}>
+            <T size={15} bold color="#fff">
+              NEW
+            </T>
+          </View>
+        )}
+      </Pressable>
       {ONLINE_HELP_AVAILABLE && (
         <BigButton
           label="Show Mavis a photo of the screen"
@@ -1078,6 +1145,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     marginVertical: 6,
     minHeight: 84,
+  },
+  teaser: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+    backgroundColor: "#FFF4D6",
+    borderWidth: 3,
+    borderColor: "#F2C14E",
+    borderRadius: 18,
+    padding: 16,
+    marginVertical: 8,
+    minHeight: 84,
+  },
+  newBadge: {
+    backgroundColor: colors.success,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
   },
   progress: {
     flexDirection: "row",

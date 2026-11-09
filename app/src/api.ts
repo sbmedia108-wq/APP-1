@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { findExplanation } from "./glossary";
 import { findOfflineGuide } from "./offlineGuides";
 import { checkScamOffline, type ScamResult } from "./scamCheck";
 
@@ -68,5 +69,40 @@ export async function checkScam(text: string): Promise<ScamResult> {
   } catch (err) {
     console.warn("Online scam check unavailable, using built-in checks:", err);
     return checkScamOffline(text);
+  }
+}
+
+export type Answer = {
+  term: string;
+  emoji: string;
+  short: string;
+  more: string;
+  tip?: string;
+};
+
+/**
+ * Explain a tech word. Built-in answers come back instantly; anything else
+ * goes to the online helper. Returns null if neither knows.
+ */
+export async function explain(question: string): Promise<Answer | null> {
+  const known = findExplanation(question);
+  if (known)
+    return {
+      term: known.term,
+      emoji: known.emoji,
+      short: known.short,
+      more: known.more,
+      tip: known.tip,
+    };
+  try {
+    const { answer } = await post<{ answer: Answer }>(
+      "/api/explain",
+      { question },
+      30_000,
+    );
+    return answer;
+  } catch (err) {
+    console.warn("Online explanations unavailable:", err);
+    return null;
   }
 }
