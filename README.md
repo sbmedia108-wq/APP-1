@@ -106,4 +106,4 @@ In `demo/`:
 - `ask-mavis-ad-older.mp4`: a 27-second Facebook ad for older people (4:5).
 - `ask-mavis-ad-family.mp4`: a 28-second Facebook ad for their grown-up children (4:5).
 
-The voiceover lines are in `demo/voiceover-scripts.json`. The voice is "Jenny (Dioco)", a British Piper text-to-speech voice whose licence allows commercial use.
+The voiceover lines are in `demo/voiceover-scripts.json`. The voice is "Emma" (bf_emma), a British voice from the Kokoro-82M text-to-speech model (Apache-2.0, so commercial use is allowed). Samples of the other voices are in `demo/voice-samples/`.
