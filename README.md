@@ -107,4 +107,13 @@ In `demo/`:
 - `ask-mavis-ad-older.mp4`: a 27-second Facebook ad for older people (4:5).
 - `ask-mavis-ad-family.mp4`: a 28-second Facebook ad for their grown-up children (4:5).
 
+Four short vertical videos (9:16, 1080 × 1920) for Reels, TikTok, Stories and YouTube Shorts are in `demo/reels/`. Each one sells a single feature, and the headlines carry the message with the sound off:
+
+- `ask-mavis-reel-1-is-this-a-scam.mp4`: the scam checker and the "Ring my bank safely (159)" button (27 seconds).
+- `ask-mavis-reel-2-practise-ordering-screens.mp4`: practice mode with the pretend takeaway screen (29 seconds).
+- `ask-mavis-reel-3-daily-brain-teaser.mp4`: today's brain teaser, with stars, streaks and badges (29 seconds).
+- `ask-mavis-reel-4-everyday-life.mp4`: booking the doctor, prescriptions and parking, one step at a time (25 seconds).
+
+The files that make them are in `demo/reels/source/` (see `demo/reels/README.md`).
+
 The voiceover lines are in `demo/voiceover-scripts.json`. The voice is "Emma" (bf_emma), a British voice from the Kokoro-82M text-to-speech model (Apache-2.0, so commercial use is allowed). Samples of the other voices are in `demo/voice-samples/`.

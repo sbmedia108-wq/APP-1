@@ -1,0 +1,33 @@
+{
+ "reel_scam": [
+  ["hook", "A text says your parcel needs a fee. Is it real?"],
+  ["ask", "Don't guess. Ask Mavis. Just say, or type, what the message said."],
+  ["result", "Mavis checks it for warning signs, and tells you plainly. This looks like a scam."],
+  ["why", "She explains why, and what to do next."],
+  ["bank", "And there's one big button to ring your bank safely, on one five nine."],
+  ["cta", "Ask Mavis. Free to download. Feel safer today."]
+ ],
+ "reel_practice": [
+  ["hook", "Those ordering screens in takeaways. Do they make you nervous?"],
+  ["pretend", "With Ask Mavis, you can practise at home, on a pretend one. Nothing is real, so you can't get it wrong."],
+  ["coach", "Mavis tells you what to touch next, and lights it up."],
+  ["order", "Choose your food. Check your order. Then pay."],
+  ["done", "Well done! You ordered all by yourself."],
+  ["cta", "No queue. Nobody watching. Ask Mavis. Free to download."]
+ ],
+ "reel_teaser": [
+  ["hook", "Three little questions a day, to keep you sharp."],
+  ["kinds", "A tech tip, spot the scam, and a word puzzle."],
+  ["question", "Like this one. A text says, Hi Mum, I've broken my phone. Can you send two hundred pounds? What should you do?"],
+  ["answer", "Lovely, that's right! Always ring their usual number to check."],
+  ["stars", "Collect stars, keep your streak going, and earn badges."],
+  ["cta", "Today's brain teaser. Only in Ask Mavis. Free to download."]
+ ],
+ "reel_everyday": [
+  ["hook", "Booking the doctor. Ordering a prescription. Paying for parking. Has it all gone online?"],
+  ["say", "Just tell Mavis what you need to do."],
+  ["steps", "She walks you through it, one small step at a time, in big writing, and read out loud."],
+  ["other", "And she always shows you the other way too, like ringing the surgery."],
+  ["cta", "Everyday life, made easier. Ask Mavis. Free to download."]
+ ]
+}
