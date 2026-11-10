@@ -31,6 +31,8 @@ import { isWhatIsQuestion } from "./src/glossary";
 import { PhotoHelp } from "./src/PhotoHelp";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { ScamCheck } from "./src/ScamCheck";
+import { celebrate } from "./src/celebrate";
+import { Fireworks } from "./src/Fireworks";
 import { playSound, setSoundsEnabled } from "./src/sounds";
 import { setSpeechSpeed, speak, stopSpeaking } from "./src/speech";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
@@ -67,6 +69,7 @@ export default function App() {
           <StatusBar style="dark" />
           <Main settings={settings} updateSettings={updateSettings} />
         </SafeAreaView>
+        <Fireworks />
       </ScaleContext.Provider>
     </SafeAreaProvider>
   );
@@ -244,7 +247,7 @@ function Main({
           offline={screen.offline}
           settings={settings}
           onFixed={() => {
-            playSound("well_done");
+            celebrate("big");
             setScreen({ name: "fixed" });
           }}
           onNotFixed={() =>
