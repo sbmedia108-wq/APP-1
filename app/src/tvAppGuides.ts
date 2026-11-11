@@ -25,23 +25,10 @@ export const TV_APP_GUIDES: OfflineGuide[] = [
   {
     id: "tv-apps-open",
     hidden: true,
-    boost: TV_WORDS,
+    
     emoji: "🍿",
     shortLabel: "Get to Netflix",
-    keywords: [
-      "find netflix",
-      "get to netflix",
-      "open netflix",
-      "where is netflix",
-      "can t find netflix",
-      "get netflix on",
-      "apps",
-      "iplayer",
-      "youtube",
-      "itvx",
-      "prime video",
-      "disney",
-    ],
+    keywords: ["find netflix", "get to netflix", "open netflix", "where is netflix", "can t find netflix", "get netflix on", "iplayer", "youtube", "itvx", "prime video", "disney", "open iplayer"],
     understood: true,
     title: "Getting to Netflix on the TV",
     reassurance: `Lots of people get lost finding Netflix. It's hiding behind a button or two. ${OTHER_APPS}`,
@@ -84,7 +71,7 @@ export const TV_APP_GUIDES: OfflineGuide[] = [
   {
     id: "tv-apps-loading",
     hidden: true,
-    boost: TV_WORDS,
+    
     emoji: "⏳",
     shortLabel: "Netflix stuck",
     keywords: [
@@ -138,7 +125,7 @@ export const TV_APP_GUIDES: OfflineGuide[] = [
   {
     id: "tv-apps-signin",
     hidden: true,
-    boost: TV_WORDS,
+    
     emoji: "🔑",
     shortLabel: "Password or payment",
     keywords: [
@@ -190,7 +177,7 @@ export const TV_APP_GUIDES: OfflineGuide[] = [
   {
     id: "tv-find-show",
     hidden: true,
-    boost: TV_WORDS,
+    
     emoji: "🎬",
     shortLabel: "Find a programme",
     keywords: [
@@ -239,7 +226,7 @@ export const TV_APP_GUIDES: OfflineGuide[] = [
   {
     id: "subtitles",
     hidden: true,
-    boost: TV_WORDS,
+    
     emoji: "💬",
     shortLabel: "Words on the screen",
     keywords: [

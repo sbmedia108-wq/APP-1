@@ -15,7 +15,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { getHelp } from "./src/api";
 import {
-  findOfflineGuide,
+  decideGuide,
   guideById,
   OFFLINE_GUIDES,
   type OfflineGuide,
@@ -24,10 +24,9 @@ import { findTriage, TRIAGES, type Triage } from "./src/triage";
 import type { Guide, Settings } from "./src/types";
 import { BRAND } from "./src/brand";
 import { ONLINE_HELP_AVAILABLE } from "./src/api";
-import { AskQuestion } from "./src/AskQuestion";
+import { BrowseHelp } from "./src/BrowseHelp";
 import { BrainTeaser } from "./src/BrainTeaser";
 import { loadProgress, todayKey, type QuizProgress } from "./src/dailyQuiz";
-import { isWhatIsQuestion } from "./src/glossary";
 import { PhotoHelp } from "./src/PhotoHelp";
 import { PracticeKiosk } from "./src/PracticeKiosk";
 import { ScamCheck } from "./src/ScamCheck";
@@ -52,7 +51,7 @@ type Screen =
   | { name: "triage"; triage: Triage }
   | { name: "scam" }
   | { name: "photo" }
-  | { name: "ask"; question?: string }
+  | { name: "browse" }
   | { name: "teaser" };
 
 function say(text: string, enabled: boolean) {
@@ -99,12 +98,36 @@ function Main({
 
   const askForHelp = async (problem: string) => {
     if (!problem.trim()) return;
-    // "What is AI?" is a question to explain, not a problem to fix.
-    if (isWhatIsQuestion(problem))
-      return setScreen({ name: "ask", question: problem });
+    // What the built-in guides make of it, using the phone's other guesses
+    // at the words too.
+    const decision = decideGuide(problem, voice.alternatives);
     // Just "Netflix!" or "The TV!"? Don't guess: ask what's happening.
-    const triage = findTriage(problem, !!findOfflineGuide(problem));
+    const triage = findTriage(
+      problem,
+      !!(decision.guide ?? decision.choices[0]),
+    );
     if (triage) return setScreen({ name: "triage", triage });
+    if (!ONLINE_HELP_AVAILABLE) {
+      if (decision.guide) return showGuide(decision.guide);
+      // A few guides fit about equally: ask rather than guess.
+      if (decision.choices.length)
+        return setScreen({
+          name: "triage",
+          triage: {
+            id: "choices",
+            emoji: "🤔",
+            tileLabel: "",
+            question: "Is it one of these?",
+            words: [],
+            options: decision.choices.map((g) => ({
+              emoji: g.emoji,
+              label: g.title,
+              guideId: g.id,
+            })),
+          },
+        });
+      return setScreen({ name: "notFound" });
+    }
     setScreen({ name: "loading" });
     const result = await getHelp(problem);
     if (!result) return setScreen({ name: "notFound" });
@@ -142,22 +165,12 @@ function Main({
             setScreen({ name: "scam" });
           }}
           onPhoto={() => setScreen({ name: "photo" })}
-          onAsk={() => {
-            voice.setTranscript("");
-            setScreen({ name: "ask" });
-          }}
+          onBrowse={() => setScreen({ name: "browse" })}
           onTeaser={() => setScreen({ name: "teaser" })}
         />
       );
-    case "ask":
-      return (
-        <AskQuestion
-          voice={voice}
-          settings={settings}
-          initialQuestion={screen.question}
-          onHome={goHome}
-        />
-      );
+    case "browse":
+      return <BrowseHelp onPick={showGuide} onHome={goHome} />;
     case "teaser":
       return <BrainTeaser settings={settings} onHome={goHome} />;
     case "scam":
@@ -232,6 +245,13 @@ function Main({
             label="Try again"
             icon="🎤"
             onPress={goHome}
+            style={{ alignSelf: "stretch" }}
+          />
+          <BigButton
+            label="Browse all the help"
+            icon="📚"
+            variant="secondary"
+            onPress={() => setScreen({ name: "browse" })}
             style={{ alignSelf: "stretch" }}
           />
           <HelperButtons
@@ -324,7 +344,7 @@ function HomeScreen({
   onPickTriage,
   onScam,
   onPhoto,
-  onAsk,
+  onBrowse,
   onTeaser,
 }: {
   voice: ReturnType<typeof useVoice>;
@@ -335,7 +355,7 @@ function HomeScreen({
   onPickTriage: (t: Triage) => void;
   onScam: () => void;
   onPhoto: () => void;
-  onAsk: () => void;
+  onBrowse: () => void;
   onTeaser: () => void;
 }) {
   const [typed, setTyped] = useState("");
@@ -435,10 +455,10 @@ function HomeScreen({
         style={{ marginTop: 12 }}
       />
       <BigButton
-        label="What is…? Ask me what something means"
-        icon="❓"
+        label="Browse all the help"
+        icon="📚"
         variant="secondary"
-        onPress={onAsk}
+        onPress={onBrowse}
       />
       <Pressable
         accessibilityRole="button"
@@ -603,15 +623,19 @@ function TriageScreen({
   onPick: (guideId: string) => void;
   onSomethingElse: () => void;
 }) {
+  const intro =
+    triage.id === "choices"
+      ? "I want to be sure I've got this right."
+      : "No problem, let's sort it out.";
   useEffect(() => {
     say(
-      `No problem, let's sort it out. ${triage.question} Touch the one that matches.`,
+      `${intro} ${triage.question} Touch the one that matches.`,
       readAloud,
     );
     return () => {
       stopSpeaking();
     };
-  }, [triage.question, readAloud]);
+  }, [triage.question, readAloud, intro]);
 
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
@@ -627,7 +651,7 @@ function TriageScreen({
         </Pressable>
       </View>
       <T size={22} color={colors.muted}>
-        No problem, let's sort it out.
+        {intro}
       </T>
       <T size={32} bold style={{ marginTop: 4, marginBottom: 12 }}>
         {triage.question}

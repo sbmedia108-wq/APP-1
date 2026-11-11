@@ -16,15 +16,17 @@ They tap one big button and **say what's wrong in their own words**. The app wor
 
 **"What's happening?" picker:** people often just shout one word when they're fed up, like "Netflix!" or "The telly!". The app doesn't guess. It says *"No problem, let's sort it out. What's happening with Netflix?"* and shows a few huge picture buttons, like "I can't find it on the TV", "It's stuck or keeps loading" or "Words at the bottom of the screen". One tap opens the right guide. There are pickers for the TV, Netflix and other TV apps (BBC iPlayer, ITVX, YouTube, Prime Video...), and phones and tablets. The Claude helper does the same: for vague messages it asks one question with tap-able choices.
 
-**Built-in guides:** 35 common problems are built into the app. If the phone is offline or the server isn't set up, the app matches what they said against these guides, so it always has something to offer.
+**Built-in guides:** 156 step-by-step guides are built into the app, in 13 sections: the TV, phone and tablet basics, calls and contacts, texts and WhatsApp, email, photos and the camera, Wi-Fi and the internet, apps, passwords and accounts, scams and staying safe, banking and shopping, the GP and health, and out and about. Each one is specific: "open a picture someone emailed you" and "send a photo by email" are separate guides, and so are "my email won't send" and "an email hasn't arrived". Between them, the guides list about 1,400 ways people describe their problem. They work with no internet, and a "Browse all the help" button lists every guide by section.
 
-- *TV:* no picture, no sound, the remote, and Netflix and other TV apps (getting to them, stuck or loading, passwords and payments, finding a programme, subtitles).
-- *Phone or tablet:* frozen, won't charge, not ringing, answering and returning calls, saving a number, small writing, pop-ups (updates, storage full, fake virus warnings), forgotten passwords.
-- *Messages and photos:* WhatsApp messages and voice notes, taking and sending a photo, video calls, sending an email, codes sent by text.
-- *Doctor and prescriptions:* booking a GP appointment, ordering a repeat prescription, and getting help quickly (999 or 111).
-- *Money and banking:* checking the banking app, codes sent by text, cash machines, and calls or messages about your bank.
-- *Also at home:* Wi-Fi, scams, printers, smart speakers, ordering a takeaway.
-- *Out and about:* ordering screens (like the ones in McDonald's), self-checkouts, parking and ticket machines, parking by app, QR codes, and cash machines.
+**How it finds the right guide** (`app/src/matcher.ts`):
+
+- It fixes common speech mix-ups ("what's app" becomes WhatsApp, "net flicks" becomes Netflix) and treats words that mean the same as one word (picture, photo, pic and image).
+- Rare, telling words count for more than common ones, so "open a picture on an email" finds the attachment guide, not the general email guide.
+- It tells a problem from a how-to: "my email won't send" and "send an email" go to different guides.
+- When two or three guides fit about equally well, it doesn't guess. It asks "Is it one of these?" with big buttons.
+- It's checked against about 240 test phrases. In a 187-phrase test, 177 go straight to the right guide, 10 offer it as one of a few choices, and none go to the wrong guide.
+
+**Better listening:** British English speech recognition, a list of tech words for the phone to listen out for (WhatsApp, iPlayer, Freeview…), more time to pause mid-sentence, and the phone's second and third guesses at the words, used when the first guess doesn't match well.
 
 Guides for services that have moved online always give the non-digital route as well: ring the surgery, use the paper prescription slip, ring the number on the parking sign. These topics come from Age UK research showing that older people are increasingly shut out of GP appointments, banking and paying for parking as these move online.
 
@@ -33,7 +35,6 @@ Guides for services that have moved online always give the non-digital route as 
 **New safety and help features:**
 - **"Is this a scam?" checker.** Say, type or paste a suspicious message or call. Mavis shows a red, amber or grey result, explains the warning signs and what to do, and has a one-tap "Ring my bank safely (159)" button. It works offline with built-in checks, and the server gives a fuller answer when it's online. It never says a message is definitely safe.
 - **"Show Mavis a photo".** Take or choose a photo of a confusing screen or error message. This needs the server, so the button only appears when `EXPO_PUBLIC_API_URL` is set.
-- **"What is…?" questions.** Ask what a tech word means ("What is AI?", "What's the cloud?") and get a short, friendly answer, read aloud. About 50 everyday words are built in, and anything else goes to the server (`/api/explain`). Asking a "what is" question through the main microphone button also works. "What's wrong with my telly?" still goes to the fix-it guides.
 - **Today's brain teaser.** Three questions a day: a tech tip, spot the scam, and a word puzzle. They're the same all day and new tomorrow. Right answers earn stars, and there's a day streak and six badges (First go, Three days running, Scam Spotter, Tech Whizz, Full week, Star collector). Every answer comes with a kind explanation, so it's about learning, not testing.
 - **Cheerful sounds.** A rising chime for a right answer, a soft and kind "not quite", a happy "well done" for milestones (finishing the daily teaser, fixing a problem, ordering in practice mode), a gentle tick for each step, and a card-reader beep in practice mode. They're made for this app, so there's no licence, and kept below about 1 kHz, where older ears hear best (age-related hearing loss mostly affects sounds above 2 kHz). The voice waits for the chime to finish, the phone's silent switch is respected, and "Play cheerful sounds" in Settings turns them off. Listen in `demo/sound-samples/`.
 - **Fireworks.** When someone fixes a problem, finishes the daily teaser or completes a practice order, gentle fireworks go off with the "well done" chime. A right answer in the teaser gets a small sparkle. They fade smoothly with no flashing, last about two and a half seconds, stay clear of the words on screen and never block a tap. They still show when sounds are off, and are skipped when the phone's "Remove animations" (reduce motion) setting is on.
@@ -52,6 +53,9 @@ app/      Expo (React Native) phone app – iOS, Android and web
   src/offlineGuides.ts Hand-written guides + keyword matching
   src/tvAppGuides.ts   Netflix and TV app guides
   src/everydayGuides.ts GP, prescriptions, banking, WhatsApp, photos, calls, parking apps…
+  src/guides/          The rest of the 156 guides, one file per section
+  src/matcher.ts       Works out which guide fits what someone said
+  src/BrowseHelp.tsx   "Browse all the help" screen
   src/triage.ts        "What's happening?" picker for one-word problems
   src/PracticeKiosk.tsx Pretend takeaway ordering screen with a coach
   src/ui.tsx           Big buttons, high-contrast colours, scalable text

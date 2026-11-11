@@ -1,0 +1,78 @@
+import { g } from "../guideKit";
+
+export const MONEY_GUIDES = [
+  g({
+    id: "money-pay-phone",
+    cat: "money",
+    emoji: "📳",
+    label: "Pay with your phone",
+    title: "Pay in shops by tapping your phone (Google Wallet)",
+    words: ["pay with phone", "google pay", "google wallet", "samsung pay", "contactless phone", "tap phone to pay", "add card to phone", "apple pay"],
+    steps: [
+      ["Open the Google Wallet app (or Samsung Wallet). If you haven't got it, get it from the Play Store.", ""],
+      ["Touch “Add to Wallet”, then “Payment card”.", ""],
+      ["Point the camera at your bank card, or type the numbers. Your bank will send a code to check it's you.", ""],
+      ["To pay: unlock your phone and hold the back of it near the card reader.", "A tick and a beep."],
+    ],
+    warn: "Your bank will never ask you to read out a Wallet code on the phone. Only type it in yourself.",
+  }),
+  g({
+    id: "money-shopping-order",
+    cat: "money",
+    emoji: "📦",
+    label: "Where's my parcel?",
+    title: "Track something you ordered online",
+    words: ["where is my parcel", "track order", "track parcel", "amazon order", "delivery tracking", "parcel not arrived", "my order", "when will it come"],
+    steps: [
+      ["Open the shop's app or website, for example Amazon, and sign in.", ""],
+      ["Touch “Your orders”, “My orders” or “Account”, then the item.", ""],
+      ["Touch “Track package” or “Track delivery”.", "Where it is and when it should arrive."],
+      ["If it says delivered but you haven't got it, check with neighbours and around the house, then use the shop's “Problem with order” or “Help” button.", ""],
+    ],
+    warn: "Texts saying “we missed your parcel, pay a small fee” are usually scams. Check in the shop's own app instead.",
+  }),
+  g({
+    id: "money-send",
+    cat: "money",
+    emoji: "💷",
+    label: "Send money safely",
+    title: "Send money to someone with your banking app",
+    words: ["send money", "bank transfer", "pay someone", "transfer money", "pay my grandson", "pay a builder", "pay a bill online", "pay someone by bank"],
+    steps: [
+      ["Open your banking app and sign in.", ""],
+      ["Touch “Payments”, “Pay” or “Move money”, then “Pay someone new” (or choose someone you've paid before).", ""],
+      ["Type their name, sort code and account number exactly. The app will check the name matches: if it says “No match”, stop and check with them.", ""],
+      ["Type the amount and a short reference, then confirm.", ""],
+    ],
+    warn: "If someone asks you to send money urgently, or to move money to a “safe account”, it's a scam. Ring the person (or your bank on 159) on a number you already know first.",
+  }),
+  g({
+    id: "money-card-declined",
+    cat: "money",
+    emoji: "❌",
+    label: "Card declined",
+    title: "Your card was declined",
+    words: ["card declined", "card not working", "payment failed", "card refused", "payment declined", "card blocked", "card won't work online"],
+    steps: [
+      ["Check the card hasn't expired (the date on the front) and you typed the numbers right.", ""],
+      ["Open your banking app: there may be a message asking “Was this you?”. Touch “Yes” if it was.", ""],
+      ["Check you have enough money in the account.", ""],
+      ["Ring the number on the back of the card if it's still refused.", ""],
+    ],
+  }),
+  g({
+    id: "money-online-shop",
+    cat: "money",
+    emoji: "🛒",
+    label: "Buy something online",
+    title: "Buy something online, step by step",
+    words: ["buy online", "order online", "shop online", "how do i buy on amazon", "online shopping", "add to basket", "checkout online", "order from website"],
+    steps: [
+      ["Open the shop's app or website and search for what you want.", ""],
+      ["Touch the item, choose the size or colour, and touch “Add to basket”.", ""],
+      ["Touch the basket 🛒 (top right), then “Checkout” or “Proceed to checkout”.", ""],
+      ["Type your address and card details, check the total, then touch “Place order” or “Pay”.", "A confirmation page, and an email."],
+    ],
+    warn: "Only shop on websites you know or have checked. Never pay a shop by bank transfer.",
+  }),
+];

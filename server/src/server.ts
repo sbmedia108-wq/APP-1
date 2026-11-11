@@ -119,35 +119,6 @@ async function checkScam(text: string): Promise<ScamResult> {
   return response.parsed_output;
 }
 
-const AnswerSchema = z.object({
-  term: z.string().describe("The thing being explained, e.g. 'Bluetooth'"),
-  emoji: z.string().describe("One fitting emoji"),
-  short: z.string().describe("1-2 short sentences: what it is, in everyday words, no jargon"),
-  more: z.string().describe("1-2 short sentences: what people use it for, or an everyday comparison"),
-  tip: z.string().describe("An optional safety tip if relevant (scams, privacy), otherwise empty"),
-});
-
-const EXPLAIN_PROMPT = `You are ${HELPER_NAME}, explaining technology words to older people in the UK who are new to it. They may ask "what is AI?", "what's the cloud?", "what does streaming mean?".
-
-Explain like a kind, patient grandchild: plain words, short sentences, an everyday comparison where it helps, never condescending. British spelling and examples (BBC iPlayer, NHS, Royal Mail). Be accurate and brief. Add a safety tip only if it genuinely helps (for example about scams or sharing details). If the question isn't about technology, still answer briefly and kindly.`;
-
-async function explainTerm(question: string) {
-  const response = await client.beta.messages.parse({
-    model: MODEL,
-    max_tokens: 2000,
-    output_config: { effort: "low", format: betaZodOutputFormat(AnswerSchema) },
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
-    system: EXPLAIN_PROMPT,
-    messages: [{ role: "user", content: question }],
-  });
-  if (response.stop_reason === "refusal" || !response.parsed_output) {
-    throw new Error(`No usable explanation (stop_reason=${response.stop_reason})`);
-  }
-  const a = response.parsed_output;
-  return { ...a, tip: a.tip || undefined };
-}
-
 type Photo = { mediaType: "image/jpeg" | "image/png"; data: string };
 const MAX_PHOTO_BASE64 = 7_000_000; // about 5 MB of image
 
@@ -237,19 +208,6 @@ const server = http.createServer(async (req, res) => {
       }
       const guide = await makeGuide(problem.trim().slice(0, MAX_PROBLEM_CHARS), image);
       return send(res, 200, { guide });
-    } catch (err) {
-      return sendError(res, err);
-    }
-  }
-
-  if (req.method === "POST" && req.url === "/api/explain") {
-    try {
-      const { question } = JSON.parse(await readBody(req)) as { question?: unknown };
-      if (typeof question !== "string" || !question.trim()) {
-        return send(res, 400, { error: "Please ask a question." });
-      }
-      const answer = await explainTerm(question.trim().slice(0, 500));
-      return send(res, 200, { answer });
     } catch (err) {
       return sendError(res, err);
     }

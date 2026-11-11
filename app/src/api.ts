@@ -1,6 +1,5 @@
 import type { Guide } from "./types";
-import { findExplanation } from "./glossary";
-import { findOfflineGuide } from "./offlineGuides";
+import { decideGuide } from "./offlineGuides";
 import { checkScamOffline, type ScamResult } from "./scamCheck";
 
 // Set this when you run or build the app, e.g.
@@ -52,7 +51,8 @@ export async function getHelp(
     return { guide, source: "online" };
   } catch (err) {
     console.warn("Online help unavailable, using built-in guides:", err);
-    const offline = findOfflineGuide(problem);
+    const d = decideGuide(problem);
+    const offline = d.guide ?? d.choices[0] ?? null;
     return offline ? { guide: offline, source: "offline" } : null;
   }
 }
@@ -69,40 +69,5 @@ export async function checkScam(text: string): Promise<ScamResult> {
   } catch (err) {
     console.warn("Online scam check unavailable, using built-in checks:", err);
     return checkScamOffline(text);
-  }
-}
-
-export type Answer = {
-  term: string;
-  emoji: string;
-  short: string;
-  more: string;
-  tip?: string;
-};
-
-/**
- * Explain a tech word. Built-in answers come back instantly; anything else
- * goes to the online helper. Returns null if neither knows.
- */
-export async function explain(question: string): Promise<Answer | null> {
-  const known = findExplanation(question);
-  if (known)
-    return {
-      term: known.term,
-      emoji: known.emoji,
-      short: known.short,
-      more: known.more,
-      tip: known.tip,
-    };
-  try {
-    const { answer } = await post<{ answer: Answer }>(
-      "/api/explain",
-      { question },
-      30_000,
-    );
-    return answer;
-  } catch (err) {
-    console.warn("Online explanations unavailable:", err);
-    return null;
   }
 }

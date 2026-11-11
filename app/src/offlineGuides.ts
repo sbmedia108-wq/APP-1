@@ -5,6 +5,21 @@
 import type { Guide } from "./types";
 import { EVERYDAY_GUIDES } from "./everydayGuides";
 import { TV_APP_GUIDES } from "./tvAppGuides";
+import type { Category } from "./guideKit";
+import { buildMatcher } from "./matcher";
+import { EMAIL_GUIDES } from "./guides/email";
+import { PHOTO_GUIDES } from "./guides/photos";
+import { PHONE_GUIDES } from "./guides/phone";
+import { CALL_GUIDES } from "./guides/calls";
+import { MESSAGE_GUIDES } from "./guides/messages";
+import { INTERNET_GUIDES } from "./guides/internet";
+import { APP_GUIDES } from "./guides/apps";
+import { ACCOUNT_GUIDES } from "./guides/accounts";
+import { TV_GUIDES } from "./guides/tv";
+import { SAFETY_GUIDES } from "./guides/safety";
+import { MONEY_GUIDES } from "./guides/money";
+import { HEALTH_GUIDES } from "./guides/health";
+import { VIDEO_GUIDES } from "./guides/video";
 
 export type OfflineGuide = Guide & {
   id: string;
@@ -15,8 +30,12 @@ export type OfflineGuide = Guide & {
   place?: "home" | "out";
   /** Words that strongly point to this guide (a shop name, "delivered"...). */
   boost?: string[];
+  /** Words that mean it's NOT this guide. */
+  unless?: string[];
   /** Reached through the "What's happening?" picker, not a home screen button. */
   hidden?: boolean;
+  /** Which "Browse all help" section it belongs in. */
+  category?: Category;
 };
 
 const step = (instruction: string, lookFor = "") => ({ instruction, lookFor });
@@ -611,17 +630,7 @@ const BASE_GUIDES: OfflineGuide[] = [
       "fish and chips",
       "curry",
     ],
-    boost: [
-      "deliver",
-      "delivery",
-      "delivered",
-      "deliveroo",
-      "just eat",
-      "uber eats",
-      "to my house",
-      "at home",
-      "app",
-    ],
+    boost: ["deliver", "delivery", "delivered", "deliveroo", "just eat", "uber eats", "to my house"],
     understood: true,
     title: "Ordering a takeaway to your home",
     reassurance:
@@ -832,6 +841,7 @@ const BASE_GUIDES: OfflineGuide[] = [
     id: "ticket-machine",
     place: "out",
     boost: ["car park", "parking", "station", "ticket machine"],
+    unless: ["broken machine", "pay by phone", "parking app", "ringgo"],
     emoji: "🅿️",
     shortLabel: "Parking/ticket machine",
     keywords: [
@@ -886,49 +896,62 @@ const BASE_GUIDES: OfflineGuide[] = [
   },
 ];
 
+// Sections for the guides written before categories existed.
+const EARLIER: Record<string, Category> = {
+  "tv-no-signal": "tv", remote: "tv", "tv-sound": "tv", subtitles: "tv", "tv-apps-open": "tv",
+  "tv-apps-loading": "tv", "tv-apps-signin": "tv", "tv-find-show": "tv", "smart-speaker": "apps",
+  wifi: "internet", frozen: "phone", charging: "phone", "text-size": "phone", "phone-silent": "phone",
+  "phone-popups": "phone", printer: "apps", password: "accounts", "verification-code": "accounts",
+  scam: "safety", "video-call": "calls", "answer-call": "calls", "add-contact": "calls",
+  "whatsapp-message": "messages", "send-photo": "photos", "email-send": "email",
+  "gp-appointment": "health", "repeat-prescription": "health", "urgent-help": "health",
+  "banking-app": "money", "cash-machine": "money", "takeaway-delivery": "money",
+  "order-kiosk": "out", "self-checkout": "out", "ticket-machine": "out", "parking-app": "out", "qr-code": "out",
+};
+
 export const OFFLINE_GUIDES: OfflineGuide[] = [
   ...BASE_GUIDES,
   ...TV_APP_GUIDES,
   ...EVERYDAY_GUIDES,
+].map((g) => ({ ...g, category: g.category ?? EARLIER[g.id] ?? (g.place === "out" ? "out" : "phone") }));
+
+/** Every guide, including the many reached only by asking or browsing. */
+export const ALL_GUIDES: OfflineGuide[] = [
+  ...OFFLINE_GUIDES,
+  ...EMAIL_GUIDES,
+  ...PHOTO_GUIDES,
+  ...PHONE_GUIDES,
+  ...CALL_GUIDES,
+  ...VIDEO_GUIDES,
+  ...MESSAGE_GUIDES,
+  ...INTERNET_GUIDES,
+  ...APP_GUIDES,
+  ...ACCOUNT_GUIDES,
+  ...TV_GUIDES,
+  ...SAFETY_GUIDES,
+  ...MONEY_GUIDES,
+  ...HEALTH_GUIDES,
 ];
 
 export const guideById = (id: string) =>
-  OFFLINE_GUIDES.find((g) => g.id === id) ?? null;
+  ALL_GUIDES.find((g) => g.id === id) ?? null;
 
-const normalise = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, " ")
-    .replace(/\s+/g, " ");
+const matcher = buildMatcher(ALL_GUIDES);
 
-/** Pick the best built-in guide for what the person said, or null if nothing fits. */
-export function findOfflineGuide(problem: string): OfflineGuide | null {
-  const text = ` ${normalise(problem)} `;
-  let best: OfflineGuide | null = null;
-  let bestScore = 0;
-  for (const guide of OFFLINE_GUIDES) {
-    let score = 0;
-    for (const kw of guide.keywords) {
-      // Longer, more specific phrases count for more.
-      if (
-        text.includes(` ${normalise(kw)} `) ||
-        text.includes(` ${normalise(kw)}`)
-      ) {
-        score += kw.split(" ").length + 1;
-      }
-    }
-    // Scams always win if mentioned; safety first.
-    if (guide.id === "scam" && score > 0) score += 3;
-    // Strong clues, like naming a shop, a car park or "delivered", win ties.
-    if (
-      score > 0 &&
-      guide.boost?.some((kw) => text.includes(` ${normalise(kw)}`))
-    )
-      score += 3;
-    if (score > bestScore) {
-      best = guide;
-      bestScore = score;
-    }
-  }
-  return best;
+/**
+ * What to show for what the person said: a clear `guide`, or a few close
+ * `choices` to pick from ("Is it one of these?"), or neither.
+ * `alternatives` are the phone's other guesses at what was said.
+ */
+export function decideGuide(problem: string, alternatives: string[] = []) {
+  return matcher.decide(problem, alternatives);
 }
+
+/** The best built-in guide for what the person said, or null if nothing fits. */
+export function findOfflineGuide(problem: string): OfflineGuide | null {
+  const d = matcher.decide(problem);
+  return d.guide ?? d.choices[0] ?? null;
+}
+
+/** Ranked list, for testing and for "more like this". */
+export const rankGuides = (problem: string) => matcher.rank(problem);
