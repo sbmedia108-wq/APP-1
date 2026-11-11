@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boundary Boys – pop culture drafts</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root { --y:#FFD84A; --k:#0b0b0b; --w:#fff; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#333; display:flex; flex-wrap:wrap; gap:40px; padding:40px; font-family:Oswald,sans-serif; }
+.p { position:relative; width:1080px; height:1350px; overflow:hidden; color:var(--w); flex:none;
+     background:radial-gradient(120% 80% at 50% 35%, #232323 0%, #0b0b0b 70%); }
+h1 { font-family:Anton,sans-serif; font-weight:400; text-transform:uppercase; line-height:1.02; letter-spacing:1px; }
+.y { color:var(--y); }
+.head { position:absolute; left:60px; right:60px; top:60px; z-index:5; }
+.kicker { font:700 30px Oswald; letter-spacing:6px; text-transform:uppercase; color:var(--y); margin-bottom:18px; }
+.sub { font:500 38px/1.2 Oswald; text-transform:uppercase; letter-spacing:1px; margin-top:22px; }
+.tape { position:absolute; left:-10%; width:120%; bottom:40px; transform:rotate(-5deg); background:var(--y); color:var(--k);
+        text-align:center; padding:22px 0 20px; z-index:8; box-shadow:0 10px 40px rgba(0,0,0,.6); }
+.tape b { display:block; font:400 66px/1.05 Anton; letter-spacing:1px; text-transform:uppercase; }
+.tape span { display:block; font:700 30px Oswald; letter-spacing:4px; text-transform:uppercase; margin-top:6px; }
+.under { position:absolute; left:0; right:0; bottom:0; height:120px; background:var(--k); z-index:7; }
+.fence { position:absolute; display:flex; gap:6px; z-index:2; }
+.fence i { display:block; width:74px; height:100%; background:linear-gradient(90deg,#6b4a2b,#8a6238 45%,#5c3f24); border-radius:4px 4px 0 0;
+           box-shadow:inset 0 0 0 2px rgba(0,0,0,.25); flex:none; }
+.fence.picket i { clip-path:polygon(0 12%,50% 0,100% 12%,100% 100%,0 100%); border-radius:0; }
+.fence i.x { visibility:hidden; }
+.snow { position:absolute; inset:0; z-index:1; opacity:.5;
+  background-image:radial-gradient(#fff 3px,transparent 4px),radial-gradient(#fff 2px,transparent 3px),radial-gradient(#fff 4px,transparent 5px);
+  background-size:170px 190px,110px 130px,260px 240px; background-position:20px 40px,70px 10px,130px 120px; }
+.marker { font-family:'Permanent Marker',cursive; text-transform:none; letter-spacing:0; }
+/* where the cut-out of the lads goes: only shown in the guide exports */
+.zone { position:absolute; z-index:6; border:5px dashed #fff; color:#fff; display:none; align-items:center; justify-content:center;
+        text-align:center; font:700 34px/1.3 Oswald; letter-spacing:3px; text-transform:uppercase; background:rgba(255,255,255,.08); }
+body.guide .zone { display:flex; }
+body.tapeonly { background:transparent; }
+body.tapeonly .p { background:transparent !important; }
+body.tapeonly .p > *:not(.tape):not(.under) { visibility:hidden; }
+</style>
+</head>
+<body>
+
+<!-- 08 I'm a Celebrity -->
+<div class="p" id="08-im-a-fence" style="background:radial-gradient(120% 80% at 50% 30%,#1f4a2a 0%,#07130a 72%)">
+  <div class="head">
+    <div class="kicker">Bushtucker trial: one windy night</div>
+    <h1 style="font-size:176px">I'm a fence…</h1>
+    <h1 class="y" style="font-size:128px;margin-top:10px">Get me out of here!</h1>
+    <div class="sub">Vote it out. We'll do the rest.</div>
+  </div>
+  <div class="fence" style="left:40px;bottom:210px;height:400px;transform:rotate(-20deg);transform-origin:bottom left"><i></i><i></i><i></i><i></i></div>
+  <div class="zone" style="right:30px;bottom:170px;width:560px;height:600px">You + Craig<br>here</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Free quotes · Southampton</span></div>
+</div>
+
+<!-- 09 Black Friday -->
+<div class="p" id="09-black-friday" style="background:#000">
+  <div class="head">
+    <div class="kicker">No gimmicks. Just fences.</div>
+    <h1 style="font-size:200px">Black Friday?</h1>
+    <h1 class="y" style="font-size:84px;margin-top:14px">Your fence has been 50% off since the last storm.</h1>
+  </div>
+  <div class="fence" style="left:0;bottom:170px;height:420px"><i></i><i class="x"></i><i></i><i class="x"></i><i class="x"></i><i></i><i></i></div>
+  <div style="position:absolute;left:290px;bottom:330px;width:210px;height:210px;border-radius:50%;background:#d81f2a;z-index:3;transform:rotate(-12deg);display:flex;align-items:center;justify-content:center;text-align:center;font:400 54px/1 Anton">50%<br>OFF</div>
+  <div class="zone" style="right:30px;bottom:170px;width:500px;height:600px">You + Craig<br>here</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>We'll put the other half back</span></div>
+</div>
+
+<!-- 10 Home Alone -->
+<div class="p" id="10-home-alone" style="background:radial-gradient(110% 60% at 50% 20%,#14422a 0%,#06120b 72%)">
+  <div class="snow"></div>
+  <div class="head">
+    <div class="kicker">Home alone this Christmas?</div>
+    <h1 style="font-size:150px">Keep the wet bandits</h1>
+    <h1 class="y" style="font-size:230px">out.</h1>
+    <div class="sub">Side gates that actually lock.</div>
+  </div>
+  <div class="fence" style="left:40px;bottom:170px;height:440px"><i></i><i></i><i></i><i></i><i></i></div>
+  <!-- padlock -->
+  <div style="position:absolute;left:176px;bottom:330px;z-index:3">
+    <div style="width:70px;height:60px;border:14px solid #c9c9c9;border-bottom:0;border-radius:40px 40px 0 0;margin:0 auto"></div>
+    <div style="width:124px;height:96px;background:var(--y);border-radius:12px"></div>
+  </div>
+  <div class="zone" style="right:30px;bottom:170px;width:560px;height:560px">You + Craig<br>here<br>(hands on cheeks)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Gates · Fencing · Repairs</span></div>
+</div>
+
+<!-- 11 Die Hard -->
+<div class="p" id="11-now-i-have-a-nail-gun" style="background:radial-gradient(110% 60% at 50% 20%,#1c2a44 0%,#070a12 72%)">
+  <div class="head" style="text-align:center">
+    <div class="kicker">Yes, it's a Christmas film</div>
+    <h1 style="font-size:150px">Now I have<br>a nail gun.</h1>
+    <h1 class="marker" style="font-size:150px;color:#e0262f;margin-top:6px;transform:rotate(-3deg)">Ho. Ho. Ho.</h1>
+  </div>
+  <div class="zone" style="left:190px;bottom:170px;width:700px;height:560px">You + Craig here<br>(nail guns up, vests optional)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Yippee-ki-yay, rotten fence posts</span></div>
+</div>
+
+<!-- 12 Love Actually cue cards -->
+<div class="p" id="12-to-me-you-are-perfect" style="background:radial-gradient(110% 60% at 50% 25%,#3a1418 0%,#0c0506 72%)">
+  <div class="snow"></div>
+  <div class="head" style="text-align:center"><div class="kicker">Say it's carol singers</div></div>
+  <div style="position:absolute;left:110px;top:140px;width:860px;height:560px;background:#f6f1e6;color:#161616;z-index:4;transform:rotate(-2deg);padding:50px 56px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.6)">
+    <div class="marker" style="font-size:86px;line-height:1.12">With any luck, by next year…</div>
+    <div class="marker" style="font-size:86px;line-height:1.12;margin-top:26px;color:#c8102e">your fence will still be standing.</div>
+  </div>
+  <div class="zone" style="left:240px;bottom:170px;width:600px;height:460px">You or Craig here<br>(holding the card)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>To us, your fence is perfect</span></div>
+</div>
+
+<!-- 13 Auld Lang Syne -->
+<div class="p" id="13-should-old-fence-posts-be-forgot">
+  <div class="snow" style="background-image:radial-gradient(#FFD84A 3px,transparent 4px),radial-gradient(#fff 2px,transparent 3px),radial-gradient(#FFD84A 4px,transparent 5px)"></div>
+  <div class="head">
+    <div class="kicker">New year, new fence</div>
+    <h1 style="font-size:140px">Should old fence posts be forgot?</h1>
+    <h1 class="y" style="font-size:230px;margin-top:6px">Yes.</h1>
+    <div class="sub">We'll even take them away.</div>
+  </div>
+  <div class="zone" style="right:30px;bottom:170px;width:600px;height:480px">You + Craig<br>here</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Now booking January</span></div>
+</div>
+
+<!-- 14 The Traitors -->
+<div class="p" id="14-your-fence-has-been-murdered" style="background:radial-gradient(110% 60% at 50% 22%,#143a3a 0%,#050d0d 72%)">
+  <div class="head">
+    <div class="kicker">By order of the traitors</div>
+    <h1 style="font-size:150px">Your fence has been</h1>
+    <h1 style="font-size:208px;color:#e0262f">murdered.</h1>
+    <div class="sub">It was the wind. It's always the wind.</div>
+  </div>
+  <!-- hooded figure -->
+  <svg viewBox="0 0 200 260" style="position:absolute;left:60px;bottom:160px;width:330px;z-index:2">
+    <path d="M100 6 C40 6 22 70 30 120 C10 160 6 220 4 260 L196 260 C194 220 190 160 170 120 C178 70 160 6 100 6 Z" fill="#0f2b2b"/>
+    <path d="M100 40 C66 40 54 80 60 112 C70 140 130 140 140 112 C146 80 134 40 100 40 Z" fill="#020606"/>
+  </svg>
+  <div class="zone" style="right:30px;bottom:170px;width:560px;height:520px">You + Craig<br>here<br>(cloaks if you've got them)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>100% faithful to proper concrete</span></div>
+</div>
+
+<!-- 15 You shall not pass -->
+<div class="p" id="15-you-shall-not-pass">
+  <div class="head">
+    <div class="kicker">Gates and fences, fitted properly</div>
+    <h1 class="y" style="font-size:236px;line-height:.98">You shall not pass.</h1>
+    <div class="sub">Footballs, next door's dog and Balrogs included.</div>
+  </div>
+  <div class="zone" style="left:240px;bottom:310px;width:600px;height:340px">You + Craig here<br>(one with a big stick)</div>
+  <div class="fence" style="left:-10px;bottom:150px;height:330px;z-index:4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Free quotes · Southampton</span></div>
+</div>
+
+<!-- 16 Wonderwall -->
+<div class="p" id="16-wonderwall" style="background:radial-gradient(110% 60% at 50% 22%,#1d3557 0%,#060b14 72%)">
+  <div class="head">
+    <div class="kicker">Blue Monday, sorted</div>
+    <h1 style="font-size:150px">Today is gonna be the day</h1>
+    <h1 class="y" style="font-size:120px;margin-top:10px">we build your wonderwall.</h1>
+    <div class="sub">Because maybe… you need a new fence.</div>
+  </div>
+  <div class="zone" style="left:240px;bottom:330px;width:600px;height:330px">You + Craig here<br>(parkas, hands behind back)</div>
+  <div class="fence" style="left:-10px;bottom:150px;height:330px;z-index:4"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Don't look back in anger. Call us.</span></div>
+</div>
+
+<!-- 17 Line of Duty -->
+<div class="p" id="17-mother-of-god">
+  <div class="head">
+    <div class="kicker">AC-12 · Anti-Collapse Unit</div>
+    <h1 style="font-size:206px">Mother of God.</h1>
+    <h1 class="y" style="font-size:104px;margin-top:10px">Look at the state of that fence.</h1>
+  </div>
+  <div class="fence" style="left:70px;bottom:190px;height:380px;transform:rotate(-28deg);transform-origin:bottom left"><i></i><i></i><i></i></div>
+  <div class="zone" style="right:30px;bottom:170px;width:540px;height:440px">You + Craig<br>here<br>(suits, lanyards)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Now we're sucking diesel</span></div>
+</div>
+
+<!-- 18 Who you gonna call -->
+<div class="p" id="18-who-you-gonna-call">
+  <div class="head">
+    <div class="kicker">Something strange in your neighbour's garden?</div>
+    <h1 style="font-size:190px">Who you gonna call?</h1>
+    <h1 class="y" style="font-size:118px;margin-top:10px">The Boundary Boys.</h1>
+  </div>
+  <!-- no-rotten-posts sign -->
+  <div style="position:absolute;left:70px;bottom:190px;width:400px;height:400px;border-radius:50%;border:38px solid #d81f2a;background:#fff;z-index:2;overflow:hidden">
+    <div style="position:absolute;left:128px;top:20px;width:68px;height:290px;background:linear-gradient(90deg,#6b4a2b,#8a6238 45%,#5c3f24);transform:rotate(14deg)"></div>
+    <div style="position:absolute;left:-40px;top:143px;width:420px;height:38px;background:#d81f2a;transform:rotate(45deg)"></div>
+  </div>
+  <div class="zone" style="right:30px;bottom:170px;width:520px;height:520px">You + Craig<br>here<br>(boiler suits)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>We ain't afraid of no post</span></div>
+</div>
+
+<!-- 19 Jurassic Park -->
+<div class="p" id="19-jurassic-fence-problems" style="background:radial-gradient(120% 80% at 50% 30%,#2c3a1a 0%,#0a0d06 72%)">
+  <div class="head">
+    <div class="kicker">Life finds a way. Through a bad fence.</div>
+    <h1 style="font-size:118px">Jurassic Park had<br>fence problems.</h1>
+    <h1 class="y" style="font-size:112px;margin-top:10px">You don't have to.</h1>
+  </div>
+  <div class="fence" style="left:0;bottom:170px;height:420px"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <!-- claw marks -->
+  <svg viewBox="0 0 300 300" style="position:absolute;left:90px;bottom:250px;width:300px;z-index:3">
+    <path d="M40 20 L120 280 M120 10 L200 290 M200 20 L270 270" stroke="#0a0d06" stroke-width="22" stroke-linecap="round" fill="none"/>
+  </svg>
+  <div class="zone" style="right:30px;bottom:170px;width:540px;height:500px">You + Craig<br>here<br>(looking up, terrified)</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Fences that hold. Whatever's behind them.</span></div>
+</div>
+
+</body>
+</html>

@@ -1,46 +1,126 @@
-# The Boundary Boys – content calendar
+# The Boundary Boys – marketing timeline and calendar
 
-Eight weeks, three posts a week, 16 November 2026 to 8 January 2027.
+16 November 2026 to 5 November 2027. Every hero post is a pop-culture gag about a fence.
 
-**The weekly rhythm**
+## How it runs
 
-- **Monday – the funny one.** A poster ad. This is what gets shared.
-- **Wednesday – the proof.** Real photos or video of real work. This is what gets you hired.
-- **Friday – the nudge.** A reason to get in touch now.
+**Three posts a week**
 
-**Storm rule:** the morning after any named storm or weather warning, drop whatever was planned and post *Blown Away* (ad 2) with a photo of local damage. Put £10–20 behind it for 48 hours.
+| Day | Post | Who makes it |
+|---|---|---|
+| Monday | **The hero.** A pop-culture poster. This is the one that gets shared. | Draft from this pack, you add yourself and Craig in Canva |
+| Wednesday | **The proof.** Real photos or video from that week's jobs. | Phone on site |
+| Friday | **The nudge.** A reason to call now: availability, a review, a quote offer. | Reuse an ad from set one, or text on yellow |
 
-| Date | Post | Format | Caption starter |
+**The make-by rule:** every hero is finished by the **Thursday before** it posts. That date is in the tables below.
+
+**Shoot days:** one a month. Get every cut-out for the next month's heroes in one go, against a plain wall, so you are not dressing up weekly. Each shoot list is below.
+
+**Storm rule:** the morning after a named storm, bump the planned post and run *Blown Away* (set one, ad 2) with a photo of local damage. Put £10–20 behind it for 48 hours.
+
+**Status key:** *Draft ready* means the background is in `graphics/exports/popculture/` waiting for your cut-outs. *Ready* means it can post as it is. *To make* means it needs designing from the brief line here.
+
+---
+
+## Phase 1: Christmas run-in (16 November to 28 December)
+
+**Shoot day 1 – by Fri 13 Nov.** Poses needed: nail guns up; both looking horrified at something; hands on cheeks, mouths open; one holding a blank A2 card at chest height; a plain "arms folded" shot for general use.
+
+| Posts | Make by | Hero | The gag | Status | Pose |
+|---|---|---|---|---|---|
+| Mon 16 Nov | Fri 13 Nov | **I'm a Fence… Get Me Out of Here!** | I'm a Celebrity is on. Your fence wants voting out. | Draft ready (08) | Horrified, or in jungle hats |
+| Mon 23 Nov | Thu 19 Nov | **Sitting on the fence?** | Free-quote ad to warm up before Black Friday. | Ready (set one, 05) | – |
+| Fri 27 Nov | Thu 26 Nov | **Black Friday** | "Your fence has been 50% off since the last storm." | Draft ready (09) | Arms folded, unimpressed |
+| Mon 30 Nov | Thu 26 Nov | **Home Alone** | "Keep the wet bandits out." Side gates that lock. | Draft ready (10) | Hands on cheeks |
+| Mon 7 Dec | Thu 3 Dec | **Die Hard** | "Now I have a nail gun. Ho. Ho. Ho." | Draft ready (11) | Nail guns up, vests |
+| Mon 14 Dec | Thu 10 Dec | **Love Actually cue cards** | "With any luck, by next year… your fence will still be standing." | Draft ready (12) | One of you holding the card |
+| Mon 21 Dec | Thu 17 Dec | **All I Want for Christmas** | "…is a fence that stands up." | Ready (set one, 03) | – |
+| Mon 28 Dec | Thu 17 Dec | **Auld Lang Syne** | "Should old fence posts be forgot? Yes." | Draft ready (13) | Arms folded |
+
+Fridays in this phase: 20 Nov nosy neighbours (set one, 01), 4 Dec December availability, 11 Dec a review, 18 Dec "now booking January", 25 Dec nothing.
+
+## Phase 2: New year (4 January to 22 February)
+
+**Shoot day 2 – by Fri 18 Dec** (before you break up). Poses: cloaks or hoods, deadly serious; one with a big stick, hand out in a "stop"; parkas, hands behind back, chin up; suits and lanyards, pointing at something off-camera.
+
+**Shoot day 3 – by Fri 22 Jan.** Poses: boiler suits with a hose or leaf blower as a proton pack; looking up, terrified; flat caps and waistcoats, walking towards camera; one holding a frying pan; one holding a single rose.
+
+| Posts | Make by | Hero | The gag | Status | Pose |
+|---|---|---|---|---|---|
+| Mon 4 Jan | Thu 17 Dec | **The Traitors** | "Your fence has been murdered. It was the wind. It's always the wind." | Draft ready (14) | Cloaks |
+| Mon 11 Jan | Thu 7 Jan | **Lord of the Rings** | "You shall not pass." Footballs, dogs and Balrogs included. | Draft ready (15) | Big stick |
+| Mon 18 Jan | Thu 14 Jan | **Oasis, for Blue Monday** | "Today is gonna be the day we build your Wonderwall." | Draft ready (16) | Parkas |
+| Mon 25 Jan | Thu 21 Jan | **Line of Duty** | "Mother of God. Look at the state of that fence." AC-12, Anti-Collapse Unit. | Draft ready (17) | Suits, lanyards |
+| Mon 1 Feb | Thu 28 Jan | **Ghostbusters** | "Who you gonna call? The Boundary Boys." | Draft ready (18) | Boiler suits |
+| Tue 9 Feb | Thu 4 Feb | **Pancake Day** | "Flat as a pancake? That'll be your fence." | To make | One with a frying pan |
+| Fri 12 Feb | Thu 4 Feb | **Valentine's** | "Roses are red, violets are blue, your fence is knackered, we'll build you a new one." It doesn't rhyme. That's the joke. | To make | One with a rose |
+| Mon 15 Feb | Thu 11 Feb | **Jurassic Park** | "Jurassic Park had fence problems. You don't have to." | Draft ready (19) | Looking up, terrified |
+| Mon 22 Feb | Thu 18 Feb | **Peaky Blinders** | "By order of the Boundary Boys." | To make | Flat caps, walking |
+
+Fridays in this phase: post-mortem (set one, 04), deeper than your ex's (set one, 06), the corrected neighbour ad (set one, 07), then availability and reviews in rotation.
+
+## Phase 3: Spring booking season (1 March to 31 May)
+
+This is when people look at the garden again. Push quotes hard.
+
+**Shoot day 4 – by Fri 19 Feb.** Furs and a sword; hard hats and a thumbs up; hi-vis in pink; standing in a paddling pool looking furious. **Shoot day 5 – by Fri 23 Apr.** Dressing gowns and a broom-handle lightsaber; sequins; sat on a sofa looking guilty.
+
+| Posts | Make by | Hero | The gag |
 |---|---|---|---|
-| Mon 16 Nov | **Sitting on the fence** (ad 5) | Poster | Been meaning to sort it since 2019? Free quotes, no pressure. |
-| Wed 18 Nov | Before and after of a recent job | 2-photo carousel | Monday morning vs Tuesday afternoon. |
-| Fri 20 Nov | "How to tell if your posts are rotten" – the wobble test | 20-second video | Give it a push. If it moves at the bottom, it's on borrowed time. |
-| Mon 23 Nov | **Nosy neighbours** (ad 1) | Poster | That's not a gap, that's a viewing gallery. |
-| Wed 25 Nov | Gate close-up: hinges, latch, it shutting first time | Short video | We fit gates that actually latch. Listen to that. |
-| Fri 27 Nov | Customer review screenshot | Image | Don't take our word for it. |
-| Mon 30 Nov | **Post-mortem** (ad 4) | Poster | Another one lost too soon. Cause of death: no concrete. |
-| Wed 2 Dec | Rotted posts you've pulled out this month | Photo carousel | The rogues' gallery. |
-| Fri 4 Dec | December availability | Text on yellow | X slots left before Christmas. Message us today. |
-| Mon 7 Dec | **All I want for Christmas** (ad 3) | Poster | Family coming round and the fence is held up by the wheelie bin? |
-| Wed 9 Dec | Time-lapse of a full day's install | Video | Eight hours in thirty seconds. |
-| Fri 11 Dec | Meet the Boys: who's who, how you started | Photo + story | The faces behind the nail guns. |
-| Mon 14 Dec | **Deeper than your ex's** (ad 6) | Poster | Deep. Solid. Still there in ten years. |
-| Wed 16 Dec | Concreting a post in, start to finish | Short video | This is the bit you never see, and the bit that matters. |
-| Fri 18 Dec | Now booking January | Ad 3 with new tape line | December's full. Get in the diary for January. |
-| Mon 21 Dec | Lads in Santa hats on site | Photo | Still grafting. Merry Christmas from the Boundary Boys. |
-| Wed 23 Dec | Thank-you post with the year's best jobs | Carousel | Every fence we put up this year. Thank you, Southampton. |
-| Fri 25 Dec | No post | – | – |
-| Mon 28 Dec | **Blown Away** (ad 2), or the storm post if weather hits | Poster | Christmas wind do a number on yours? |
-| Wed 30 Dec | 2026 in numbers: metres of fence, posts, gates | Text on yellow | Our year, counted in panels. |
-| Fri 1 Jan | "New year, new fence" | Text on yellow | The one resolution someone else does for you. |
-| Mon 4 Jan | **Neighbour gaps** (ad 7, corrected) | Landscape ad | Getting proper awkward? We'll sort it. |
-| Wed 6 Jan | Before and after: storm repair | 2-photo carousel | Flattened on Friday, standing by Monday. |
-| Fri 8 Jan | January and February availability | Text on yellow | Spring fills up fast. Book now, enjoy it by Easter. |
+| Mon 1 Mar | Thu 25 Feb | **Game of Thrones** | "Winter is going. The Wall needs work." |
+| Fri 5 Mar | Thu 25 Feb | **Mother's Day** (Sun 7 Mar) | "Get your mum what she really wants: a fence next door can't see over." |
+| Mon 15 Mar | Thu 11 Mar | **Bob the Builder** | "Can we fix it? Yes. Obviously. It's our job." |
+| Mon 22 Mar | Thu 18 Mar | **Clocks go forward** (Sun 28 Mar) | "Clocks spring forward. Your fence shouldn't." |
+| Thu 1 Apr | Thu 25 Mar | **April Fools** | "Introducing the invisible fence." A completely empty garden. Reveal in the comments. |
+| Mon 12 Apr | Thu 8 Apr | **Mean Girls** (post it on Wed 14 Apr) | "On Wednesdays we wear hi-vis." |
+| Mon 26 Apr | Thu 22 Apr | **Shrek** | "What are you doing in my swamp?" Privacy fencing. |
+| Tue 4 May | Thu 29 Apr | **Star Wars Day** | "May the fence be with you." |
+| Mid-May, check date | Thu before | **Eurovision** | "Nil points for that fence. Douze points for ours." |
+| Mon 24 May | Thu 20 May | **Friends**, before the bank holiday | "We were on a break! So was your fence panel." |
 
-## Getting more from each post
+## Phase 4: Summer (1 June to 30 August)
 
-- **Post where the jobs are.** Share every Monday poster to local Facebook community groups for the areas you want work in.
-- **Ask on the day.** When a customer is happy at handover, ask for a Google review and a photo. That feeds the Friday slot.
-- **Take three photos per job.** Before, during (posts in concrete) and after. That feeds every Wednesday.
-- **Reply quickly.** Answer every comment and message the same day. On Facebook that counts for as much as the ad.
-- **Spend where it converts.** If you put money behind anything, make it ad 5 and the storm post.
+Gardens are in use, so sell privacy, gates and "done before the BBQ".
+
+**Shoot day 6 – by Fri 28 May.** Swimwear over workwear holding a phone; tennis whites and headbands; wellies and bucket hats. **Shoot day 7 – by Fri 16 Jul.** On a boat or in a wheelbarrow looking out to sea; one in a cardboard space helmet, arm raised; aprons, holding a cake.
+
+| Posts | Make by | Hero | The gag |
+|---|---|---|---|
+| Early June, check start date | Thu before | **Love Island** | "I've got a text! Your fence is not my type on paper." |
+| Fri 18 Jun | Thu 10 Jun | **Father's Day** (Sun 20 Jun) | "Dad said he'd fix it in 2019. Let him off." |
+| Late June, check dates | Thu before | **Glastonbury** | "Glastonbury's got the only fence people queue to get behind. Ours is second." |
+| Late June, check start date | Thu before | **Wimbledon** | "New balls, please. And new panels: yours has had forty footballs through it." |
+| Mon 12 Jul | Thu 8 Jul | **Hot fence summer** | The two of you in sunglasses. No further explanation. |
+| Mon 26 Jul | Thu 22 Jul | **Jaws** | "You're gonna need a bigger fence." |
+| Mon 9 Aug | Thu 5 Aug | **Toy Story** | "To the boundary… and beyond!" |
+| Mon 23 Aug | Thu 19 Aug | **Bake Off**, check start date | "No soggy bottoms. Ask us about gravel boards." |
+
+## Phase 5: Storm season (6 September to 5 November)
+
+Back to where the work is: rot, wind and repairs.
+
+**Shoot day 8 – by Fri 27 Aug.** Sequins and a dance hold; on bikes with torches; dinner jackets, one eyebrow raised; an original spooky character of your own for Halloween.
+
+| Posts | Make by | Hero | The gag |
+|---|---|---|---|
+| Mon 6 Sep | Thu 2 Sep | **Back to school** | "Kids are back at school. Peace is restored. Now sort the fence." |
+| Mon 20 Sep | Thu 16 Sep | **Strictly**, check start date | "Seeeven! Ours get a ten." |
+| Mon 4 Oct | Thu 30 Sep | **James Bond** | "The name's Post. Fence Post." |
+| Mon 18 Oct | Thu 14 Oct | **Stranger Things** | "Something from the Upside Down came through your fence. It was next door's dog." |
+| Mon 25 Oct | Thu 21 Oct | **Halloween** (Sun 31 Oct) | "A nightmare on rotted posts", redone with your own monster. |
+| Fri 5 Nov | Thu 28 Oct | **Bonfire Night** | "Remember, remember, the fence of November." |
+
+---
+
+## Things to check before you post
+
+- **Dates marked "check".** TV and festival dates for 2027 are not announced yet, so those rows are placed by the usual time of year.
+- **Claims in the drafts.** "Free quotes", "we'll even take them away", "side gates that actually lock" and "now booking January". Change any that are not true for you.
+- **Keep it parody.** Use the line and the costume, not the show's logo, title lettering or stills. That is what keeps paid ads from being pulled.
+- **Paid budget.** If you boost anything, boost the storm post and the "sitting on the fence" quote ad. The pop-culture heroes are for reach and shares.
+
+## Putting yourself and Craig into a draft in Canva
+
+1. Upload the draft from `graphics/exports/popculture/` and set it as the background of a 1080 × 1350 design.
+2. Drop your cut-out where the matching file in `guides/` shows the dashed box.
+3. Upload the matching file from `tape/` and stretch it to the full page on top. It puts the yellow strip back over your boots, like your existing posters.
