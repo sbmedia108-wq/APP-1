@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Merriweather:wght@700;900&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; }
+body { font-family: "Atkinson Hyperlegible", Arial, sans-serif; color: #2A2522; background: #ddd; }
+.serif { font-family: Merriweather, Georgia, serif; font-weight: 900; }
+.blue { color: #1F5FBF; }
+.ticks span::before { content: "✔ "; color: #2E7D32; }
+.phone { padding: 14px; border-radius: 48px; background: #3B3B3B; box-shadow: 0 18px 40px rgba(90,74,63,.25); }
+.phone img { display: block; width: 100%; border-radius: 36px; }
+
+/* COVER: 1640 x 924. Facebook crops the sides on phones and the top and bottom
+   on computers, so everything that matters sits in the middle 1200 x 560. */
+#cover { width: 1640px; height: 924px; position: relative; overflow: hidden;
+  background: radial-gradient(900px 700px at 78% 55%, #FFE6A8 0%, #FDF3DF 55%, #F8EEDC 100%); }
+#cover .safe { position: absolute; left: 220px; right: 220px; top: 182px; height: 560px; display: flex; align-items: center; gap: 70px; }
+#cover .text { flex: 1; }
+#cover .brand { display: flex; align-items: center; gap: 24px; }
+#cover .brand img { width: 120px; height: 120px; border-radius: 28px; }
+#cover .brand .serif { font-size: 104px; line-height: 1; }
+#cover h2 { font-family: Merriweather, serif; font-weight: 700; font-size: 46px; line-height: 1.25; margin-top: 30px; }
+#cover .ticks { margin-top: 30px; font-size: 30px; font-weight: 700; display: flex; gap: 34px; color: #5A4A3F; }
+#cover .phone { width: 250px; transform: rotate(4deg); margin-top: 120px; }
+#cover .strip { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; background: #1F5FBF; }
+
+/* POST: 1080 x 1350 (4:5, the size Facebook and Instagram show biggest in the feed). */
+#post { width: 1080px; height: 1350px; position: relative; overflow: hidden;
+  background: radial-gradient(800px 900px at 70% 75%, #FFE6A8 0%, #FDF3DF 60%, #F8EEDC 100%); }
+#post .top { position: absolute; left: 70px; right: 70px; top: 64px; display: flex; align-items: center; gap: 18px; font-size: 38px; font-weight: 700; color: #5A4A3F; }
+#post .top img { width: 74px; height: 74px; border-radius: 18px; }
+#post .badge { margin-left: auto; background: #FFC845; color: #2A2522; font-size: 28px; padding: 10px 22px; border-radius: 30px; }
+#post h1 { position: absolute; left: 70px; right: 70px; top: 190px; font-size: 78px; line-height: 1.08; }
+#post .lead { position: absolute; left: 70px; width: 520px; top: 480px; font-size: 36px; line-height: 1.35; }
+#post .bubble { position: absolute; left: 70px; top: 760px; width: 500px; background: #fff; border: 4px solid #E4D3B4; border-radius: 30px; padding: 26px 30px; font-size: 34px; font-weight: 700; }
+#post .bubble small { display: block; font-size: 24px; font-weight: 400; color: #8A7458; margin-bottom: 6px; }
+#post .bubble::after { content: ""; position: absolute; left: 60px; bottom: -26px; border: 22px solid transparent; border-top-color: #E4D3B4; border-bottom: 0; }
+#post .ticks { position: absolute; left: 70px; top: 990px; display: grid; gap: 16px; font-size: 34px; font-weight: 700; }
+#post .phone { position: absolute; right: 70px; top: 470px; width: 360px; transform: rotate(3deg); }
+#post .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #1F5FBF; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 700; }
+#post .foot b { color: #FFD54F; margin-left: 12px; }
+</style></head><body>
+
+<section id="cover">
+  <div class="safe">
+    <div class="text">
+      <div class="brand"><img src="logo.png" alt=""><span class="serif">Ask Mavis</span></div>
+      <h2>Stuck with your phone or telly?<br><span class="blue">Just say what's wrong.</span></h2>
+      <div class="ticks"><span>Made in the UK</span><span>No adverts</span><span>No jargon</span></div>
+    </div>
+    <div class="phone"><img src="tv-step.png" alt=""></div>
+  </div>
+  <div class="strip"></div>
+</section>
+
+<section id="post">
+  <div class="top"><img src="logo.png" alt="">Ask Mavis<span class="badge">Coming soon</span></div>
+  <h1 class="serif">I'm building an app<br>for my <span class="blue">nan</span> 💛</h1>
+  <p class="lead">She couldn't work the big screen at McDonald's, and didn't want to ask anyone. So I'm making something that helps.</p>
+  <div class="bubble"><small>Just say what's wrong, like…</small>“The telly's got no sound”</div>
+  <div class="ticks"><span>One small step at a time</span><span>Big writing, read out loud</span><span>Free, no adverts</span></div>
+  <div class="phone"><img src="tv-step.png" alt=""></div>
+  <div class="foot">Follow along for scam alerts and tips<b>👍</b></div>
+</section>
+</body></html>
