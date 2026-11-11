@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Boundary Boys – ad set</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --y:#FFD84A; --k:#0b0b0b; --w:#fff; --lime:#B6F03C; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#333; display:flex; flex-wrap:wrap; gap:40px; padding:40px; font-family:Oswald,sans-serif; }
+.p { position:relative; width:1080px; height:1350px; overflow:hidden; color:var(--w);
+     background:radial-gradient(120% 80% at 50% 35%, #232323 0%, #0b0b0b 70%); flex:none; }
+.p.wide { width:1050px; height:600px; background:#000; }
+h1 { font-family:Anton,sans-serif; font-weight:400; text-transform:uppercase; line-height:1.02; letter-spacing:1px; }
+.y { color:var(--y); }
+.head { position:absolute; left:60px; right:60px; top:60px; z-index:5; }
+.kicker { font:700 30px Oswald; letter-spacing:6px; text-transform:uppercase; color:var(--y); margin-bottom:18px; }
+.sub { font:500 40px/1.2 Oswald; text-transform:uppercase; letter-spacing:1px; margin-top:22px; }
+.lads { position:absolute; mix-blend-mode:lighten; z-index:3; }
+.logo { position:absolute; z-index:6; width:150px; }
+/* slanted hazard-tape footer */
+.tape { position:absolute; left:-10%; width:120%; bottom:40px; transform:rotate(-5deg); background:var(--y); color:var(--k);
+        text-align:center; padding:22px 0 20px; z-index:8; box-shadow:0 10px 40px rgba(0,0,0,.6); }
+.tape b { display:block; font:400 66px/1.05 Anton; letter-spacing:1px; text-transform:uppercase; }
+.tape span { display:block; font:700 30px Oswald; letter-spacing:4px; text-transform:uppercase; margin-top:6px; }
+.under { position:absolute; left:0; right:0; bottom:0; height:120px; background:var(--k); z-index:7; }
+.stripe { position:absolute; left:0; right:0; height:26px; z-index:4;
+          background:repeating-linear-gradient(-45deg,var(--y) 0 26px,var(--k) 26px 52px); }
+.dnc { position:absolute; left:-10%; width:120%; background:var(--y); color:var(--k); font:700 26px Oswald; letter-spacing:8px;
+       white-space:nowrap; padding:8px 0; text-align:center; z-index:2; border-top:5px solid var(--k); border-bottom:5px solid var(--k); }
+/* drawn fence */
+.fence { position:absolute; display:flex; gap:6px; z-index:2; }
+.fence i { display:block; width:74px; height:100%; background:linear-gradient(90deg,#6b4a2b,#8a6238 45%,#5c3f24); border-radius:4px 4px 0 0;
+           box-shadow:inset 0 0 0 2px rgba(0,0,0,.25); }
+.fence.picket i { clip-path:polygon(0 12%,50% 0,100% 12%,100% 100%,0 100%); border-radius:0; }
+.fence i.gap { background:#000; position:relative; box-shadow:none; }
+.eye { position:absolute; left:10px; width:54px; height:34px; background:#fff; border-radius:50%; }
+.eye::after { content:""; position:absolute; left:26px; top:7px; width:20px; height:20px; background:#111; border-radius:50%; }
+.rain { position:absolute; inset:0; z-index:1; opacity:.25;
+        background:repeating-linear-gradient(105deg,transparent 0 38px,#9fb4c8 38px 40px,transparent 40px 90px); }
+.snow { position:absolute; inset:0; z-index:1;
+  background-image:radial-gradient(#fff 3px,transparent 4px),radial-gradient(#fff 2px,transparent 3px),radial-gradient(#fff 4px,transparent 5px);
+  background-size:170px 190px,110px 130px,260px 240px; background-position:20px 40px,70px 10px,130px 120px; opacity:.55; }
+.tag { position:absolute; z-index:4; background:#f3ead6; color:#1a1a1a; padding:44px 44px 40px 110px; width:640px; transform:rotate(-7deg);
+       clip-path:polygon(8% 0,100% 0,100% 100%,8% 100%,0 50%); font:500 34px/1.5 Oswald; text-transform:uppercase; }
+.tag u { text-decoration:none; border-bottom:3px solid #1a1a1a; font-weight:700; padding:0 6px; }
+.tag::before { content:""; position:absolute; left:52px; top:50%; width:26px; height:26px; margin-top:-13px; border-radius:50%; background:#111; }
+.tick { display:flex; align-items:center; gap:26px; font:700 25px Oswald; text-transform:uppercase; letter-spacing:1px; margin-top:26px; }
+.box { width:62px; height:62px; border:5px solid #fff; position:relative; flex:none; }
+.box.on::after { content:""; position:absolute; left:20px; top:-22px; width:24px; height:56px; border:solid var(--lime); border-width:0 10px 10px 0; transform:rotate(40deg); }
+</style>
+</head>
+<body>
+
+<!-- 1. Nosy neighbours (privacy) -->
+<div class="p" id="01-nosy-neighbours">
+  <div class="head">
+    <div class="kicker">Get your privacy back</div>
+    <h1 style="font-size:112px">Good fences make good neighbours.</h1>
+    <h1 class="y" style="font-size:112px;margin-top:14px">Yours makes them nosy.</h1>
+  </div>
+  <div class="fence" style="left:0;bottom:200px;height:430px">
+    <i></i><i></i><i class="gap"><b class="eye" style="top:120px"></b></i><i></i><i></i><i></i><i></i>
+  </div>
+  <img class="lads" src="assets/lads.png" style="right:-20px;bottom:150px;height:640px">
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Free quotes · Southampton</span></div>
+</div>
+
+<!-- 2. Storm repairs -->
+<div class="p" id="02-blown-away" style="background:radial-gradient(120% 80% at 50% 30%,#3a4450 0%,#0b0d10 72%)">
+  <div class="rain"></div>
+  <div class="head">
+    <div class="kicker">Storm damage repairs</div>
+    <h1 style="font-size:190px">Blown away?</h1>
+    <h1 class="y" style="font-size:118px;margin-top:10px">So was your fence.</h1>
+    <div class="sub">We'll have it back up — and staying up.</div>
+  </div>
+  <div class="fence" style="left:30px;bottom:230px;height:360px;transform:rotate(-24deg);transform-origin:bottom left"><i></i><i></i><i></i></div>
+  <div class="fence" style="left:330px;bottom:150px;height:360px;transform:rotate(58deg);transform-origin:bottom left"><i></i><i></i></div>
+  <img class="lads" src="assets/lads.png" style="right:-20px;bottom:150px;height:600px">
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Storm proof fencing done right</span></div>
+</div>
+
+<!-- 3. Christmas -->
+<div class="p" id="03-all-i-want-for-christmas" style="background:radial-gradient(110% 55% at 50% 18%,#6a1219 0%,#12060a 70%)">
+  <div class="snow"></div>
+  <div class="head" style="text-align:center">
+    <div class="kicker">Book in before the big day</div>
+    <h1 style="font-size:122px">All I want<br>for Christmas</h1>
+    <h1 class="y" style="font-size:92px;margin-top:14px">is a fence that<br>stands up.</h1>
+  </div>
+  <div style="position:absolute;left:223px;bottom:150px;width:633px;height:640px;mix-blend-mode:lighten">
+    <img src="assets/lads.png" style="width:100%">
+    <svg viewBox="0 0 120 100" style="position:absolute;left:159px;top:-24px;width:100px;transform:rotate(-8deg)"><path d="M12 78 C20 30 60 6 96 30 C80 34 96 60 104 78 Z" fill="#d81f2a"/><rect x="4" y="72" width="108" height="22" rx="11" fill="#fff"/><circle cx="100" cy="30" r="13" fill="#fff"/></svg>
+    <svg viewBox="0 0 120 100" style="position:absolute;left:368px;top:-11px;width:100px;transform:rotate(6deg) scaleX(-1)"><path d="M12 78 C20 30 60 6 96 30 C80 34 96 60 104 78 Z" fill="#d81f2a"/><rect x="4" y="72" width="108" height="22" rx="11" fill="#fff"/><circle cx="100" cy="30" r="13" fill="#fff"/></svg>
+  </div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Last few December slots · Southampton</span></div>
+</div>
+
+<!-- 4. Post-mortem -->
+<div class="p" id="04-post-mortem">
+  <div class="dnc" style="top:625px;transform:rotate(6deg)">DO NOT CROSS · DO NOT CROSS · DO NOT CROSS · DO NOT CROSS · DO NOT CROSS · DO NOT CROSS</div>
+  <div class="head">
+    <div class="kicker">CSI: Southampton · Case no. 2</div>
+    <h1 class="y" style="font-size:200px;line-height:.98">Post-<br>mortem.</h1>
+  </div>
+  <div class="tag" style="left:150px;top:730px;width:760px">
+    Victim: <u>Fence post, aged 6</u><br>
+    Cause of death: <u>No concrete</u><br>
+    Last seen: <u>Leaning on next door</u>
+  </div>
+  <div class="sub" style="position:absolute;left:60px;right:60px;top:1040px;z-index:5;text-align:center">Ours are concreted in and built to stay.</div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Storm proof fencing done right</span></div>
+</div>
+
+<!-- 5. Sitting on the fence (free quote) -->
+<div class="p" id="05-sitting-on-the-fence">
+  <div class="head">
+    <div class="kicker">Free, no-pressure quotes</div>
+    <h1 style="font-size:168px">Sitting on<br>the fence</h1>
+    <h1 class="y" style="font-size:118px;margin-top:12px">about a new one?</h1>
+  </div>
+  <img class="lads" src="assets/lads.png" style="left:260px;bottom:190px;height:560px">
+  <div class="fence picket" style="left:-10px;bottom:150px;height:300px;z-index:4">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>We'll measure up and price it — free</span></div>
+</div>
+
+<!-- 6. Deeper than your ex's (social only) -->
+<div class="p" id="06-deeper-than-your-exs">
+  <div class="head">
+    <div class="kicker">Fencing that commits</div>
+    <h1 style="font-size:150px">Our posts go deeper</h1>
+    <h1 class="y" style="font-size:150px;margin-top:12px">than your ex's.</h1>
+  </div>
+  <!-- cross-section: post set deep in concrete -->
+  <div style="position:absolute;left:60px;bottom:170px;width:430px;height:560px;z-index:2">
+    <div style="position:absolute;left:0;right:0;top:250px;bottom:0;background:#3b2a1c"></div>
+    <div style="position:absolute;left:0;right:0;top:238px;height:14px;background:#6fae3a"></div>
+    <div style="position:absolute;left:120px;width:190px;top:262px;bottom:40px;background:#9a9a9a;border-radius:10px"></div>
+    <div style="position:absolute;left:182px;width:66px;top:0;bottom:70px;background:linear-gradient(90deg,#6b4a2b,#8a6238 45%,#5c3f24)"></div>
+  </div>
+  <img class="lads" src="assets/lads.png" style="right:-30px;bottom:150px;height:600px">
+  <div class="under"></div>
+  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Concreted in. Built to stay.</span></div>
+</div>
+
+<!-- 7. Neighbour ad, corrected (landscape) -->
+<div class="p wide" id="07-neighbour-gaps-corrected">
+  <h1 style="position:absolute;left:42px;top:34px;font-size:92px;line-height:1.08;z-index:5">Is your neighbour looking<br>at you through the gaps?</h1>
+  <div style="position:absolute;left:42px;top:262px;z-index:5">
+    <div class="tick"><div class="box"></div>Yes, and it's getting proper awkward now.</div>
+    <div class="tick"><div class="box on"></div>No, because the Boundary Boys are gonna sort it!</div>
+  </div>
+  <div style="position:absolute;left:42px;bottom:38px;font:700 30px Oswald;letter-spacing:3px;color:var(--lime);z-index:5">GET YOUR PRIVACY BACK · 07542 666563</div>
+  <img class="lads" src="assets/lads.png" style="right:0;bottom:0;height:350px">
+</div>
+
+</body>
+</html>
