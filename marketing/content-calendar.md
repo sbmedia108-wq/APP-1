@@ -12,9 +12,11 @@ One gag, told in two lines. The **white line** is the line everyone already know
 |---|---|
 | Monday | The poster from the table below. |
 | Wednesday | Real photos or video from that week's jobs: before and after, posts going into concrete, a gate latching. |
-| Friday | One of the four yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
+| Friday | One of the yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
 
-**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "Last night's wind took a few fences with it. If yours is one of them, send us a photo. 07542 666563."
+**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "Last night's wind took a few fences with it. If yours is one of them, send us a photo. 07542 666563." In December use `storm-the-grinch-stole-christmas.png` instead. Caption: "One of them we can do something about. Send us a photo of the damage. 07542 666563."
+
+**December:** Christmas takes over. There is a Christmas poster every Monday, Wednesday and Friday from 30 November to Christmas Eve, so job photos move to Tuesdays and Thursdays. Fill in `friday-christmas-dates.png` with your last working day and your first day back, and post it around 14 December.
 
 ## Posters and captions
 
@@ -27,9 +29,17 @@ One gag, told in two lines. The **white line** is the line everyone already know
 | Mon 23 Nov 2026 | **Sitting on the fence?** Get a quote. It's free. | Been meaning to sort it for years? We'll come round, measure up and give you a price. No pressure. 07542 666563. | `2026-11-23-sitting-on-the-fence.png` |
 | Fri 27 Nov 2026 | **Black Friday: 50% off your fence.** Cheers, wind. | Half your fence missing since the last storm? That's not a deal. We'll put the other half back. 07542 666563. | `2026-11-27-black-friday.png` |
 | Mon 30 Nov 2026 | **Home alone?** Not with that gate, you're not. | If your side gate doesn't shut, anyone can wander in. We fit gates that close, latch and lock. 07542 666563. | `2026-11-30-home-alone.png` |
+| Wed 2 Dec 2026 | **It's beginning to look a lot like** you need a new fence. | Everywhere you go, there's a panel hanging off. If it's yours, give us a ring. 07542 666563. | `2026-12-02-beginning-to-look-a-lot-like.png` |
+| Fri 4 Dec 2026 | **He's making a list.** Your fence is on it. | Naughty: the fence. Nice: us, fixing it before Christmas. A few slots left. 07542 666563. | `2026-12-04-hes-making-a-list.png` |
 | Mon 7 Dec 2026 | **Now I have a nail gun.** Ho. Ho. Ho. | Yes, it's a Christmas film. And yes, we've still got a few slots before Christmas. 07542 666563. | `2026-12-07-now-i-have-a-nail-gun.png` |
+| Wed 9 Dec 2026 | **Elf on the shelf?** Fence on the floor. | One of these is meant to be lying about the house. The other one isn't. 07542 666563. | `2026-12-09-elf-on-the-shelf.png` |
+| Fri 11 Dec 2026 | **Last Christmas, I gave you a quote.** This year, book it. | Still thinking about it from last year? Save yourself from tears. Now booking January. 07542 666563. | `2026-12-11-last-christmas.png` |
 | Mon 14 Dec 2026 | **To me, you are perfect.** Your fence, not so much. | We think you're great. It's the fence we need to talk about. Now booking January. 07542 666563. | `2026-12-14-to-me-you-are-perfect.png` |
+| Wed 16 Dec 2026 | **Silent night?** Not with that gate banging. | All is calm, all is bright, apart from the side gate slamming at 3am. We'll sort it. 07542 666563. | `2026-12-16-silent-night.png` |
+| Fri 18 Dec 2026 | **Santa uses the chimney.** Everyone else uses your broken gate. | Only one visitor is welcome this Christmas. Keep the rest out with a gate that locks. 07542 666563. | `2026-12-18-santa-uses-the-chimney.png` |
 | Mon 21 Dec 2026 | **All I want for Christmas** is a fence that stands up. | Merry Christmas from the Boundary Boys. If the wind gets your fence over the break, you know where we are. 07542 666563. | `2026-12-21-all-i-want-for-christmas.png` |
+| Wed 23 Dec 2026 | **Driving home for Christmas?** Come home to a fence still standing. | Top to toe in tailbacks, then a panel on the lawn. Not this year. 07542 666563. | `2026-12-23-driving-home-for-christmas.png` |
+| Thu 24 Dec 2026 | **Merry Christmas** from the Boundary Boys. | Thank you to everyone who had us round this year. Have a good one. If the wind gets your fence over Christmas, message us and we'll be round in January. 07542 666563. | `2026-12-24-merry-christmas.png` |
 | Mon 28 Dec 2026 | **Should old fence posts be forgot?** Yes. We take them away. | New year, new fence. We take the old one down, take it away and put up one that lasts. 07542 666563. | `2026-12-28-should-old-fence-posts-be-forgot.png` |
 | Mon 4 Jan 2027 | **Your fence post is a traitor.** It let the whole panel down. | It only takes one rotten post to bring the lot down. We find the traitor and replace it. 07542 666563. | `2027-01-04-your-fence-post-is-a-traitor.png` |
 | Mon 11 Jan 2027 | **You shall not pass.** That's the whole point of a fence. | Next door's dog. Stray footballs. The lad who cuts through your garden. None shall pass. 07542 666563. | `2027-01-11-you-shall-not-pass.png` |

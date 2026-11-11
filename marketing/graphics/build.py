@@ -139,6 +139,29 @@ POSTS = [
   "Last night's wind took a few fences with it. If yours is one of them, send us a photo. 07542 666563."),
 ]
 
+# ---- Christmas run (added after the main list so existing posters keep their photo) ----
+XMAS = "Book now for January · Southampton"
+POSTS += [
+ ("2026-12-02", "beginning-to-look-a-lot-like", "It's beginning to<br>look a lot like", "you need a<br>new fence.", QUOTE, GREEN, "lean", "level", "hat snow",
+  "Everywhere you go, there's a panel hanging off. If it's yours, give us a ring. 07542 666563."),
+ ("2026-12-04", "hes-making-a-list", "He's making<br>a list.", "Your fence<br>is on it.", "Get it fixed before Christmas", RED, "lean", "nailgun", "hat snow",
+  "Naughty: the fence. Nice: us, fixing it before Christmas. A few slots left. 07542 666563."),
+ ("2026-12-09", "elf-on-the-shelf", "Elf on<br>the shelf?", "Fence on<br>the floor.", STORM, GREEN, "flat", "level", "hat snow",
+  "One of these is meant to be lying about the house. The other one isn't. 07542 666563."),
+ ("2026-12-11", "last-christmas", "Last Christmas,<br>I gave you a quote.", "This year,<br>book it.", XMAS, RED, "new", "nailgun", "hat snow",
+  "Still thinking about it from last year? Save yourself from tears. Now booking January. 07542 666563."),
+ ("2026-12-16", "silent-night", "Silent night?", "Not with that<br>gate banging.", "Gates fixed and fitted · Southampton", NAVY, "new", "level", "hat snow",
+  "All is calm, all is bright, apart from the side gate slamming at 3am. We'll sort it. 07542 666563."),
+ ("2026-12-18", "santa-uses-the-chimney", "Santa uses<br>the chimney.", "Everyone else uses<br>your broken gate.", "Secure side gates · Southampton", RED, "gaps", "nailgun", "hat snow",
+  "Only one visitor is welcome this Christmas. Keep the rest out with a gate that locks. 07542 666563."),
+ ("2026-12-23", "driving-home-for-christmas", "Driving home<br>for Christmas?", "Come home to a<br>fence still standing.", XMAS, GREEN, "new", "level", "hat snow",
+  "Top to toe in tailbacks, then a panel on the lawn. Not this year. 07542 666563."),
+ ("2026-12-24", "merry-christmas", "Merry<br>Christmas", "from the<br>Boundary Boys.", "See you in the new year", RED, "none", "nailgun", "hat snow",
+  "Thank you to everyone who had us round this year. Have a good one. If the wind gets your fence over Christmas, message us and we'll be round in January. 07542 666563."),
+ ("storm", "the-grinch-stole-christmas", "The Grinch<br>stole Christmas.", "The wind stole<br>your fence.", STORM, GREEN, "gaps", "level", "hat snow",
+  "One of them we can do something about. Send us a photo of the damage. 07542 666563."),
+]
+
 def poster(date, slug, white, yellow, tape, bg, prop, pose, extra, caption):
     layers = "".join(f'<div class="{c}"></div>' for c in ("snow", "rain") if c in extra)
     centre = prop in ("none", "row", "grass")
@@ -166,6 +189,10 @@ FRIDAY = f"""
   <div class="blank" style="left:90px;top:520px;width:900px;height:520px"></div>{FOOT.format(QUOTE)}</div>
 <div class="p yel" id="friday-now-booking"><div class="head"><h1 style="font-size:200px">Now booking:</h1></div>
   <div class="blank" style="left:140px;top:420px;width:800px;height:300px"></div>{SUB.format(790, "Call or message for a free quote.")}{FOOT.format(SVC)}</div>
+<div class="p yel" id="friday-christmas-dates"><div class="head"><h1 style="font-size:200px">Last day before<br>Christmas:</h1></div>
+  <div class="blank" style="left:140px;top:500px;width:800px;height:200px"></div>
+  <div style="position:absolute;left:60px;top:760px;font:400 150px/1 Anton;text-transform:uppercase">Back on:</div>
+  <div class="blank" style="left:140px;top:940px;width:800px;height:200px"></div>{FOOT.format("Merry Christmas · Southampton")}</div>
 <div class="p yel" id="friday-send-us-a-photo"><div class="head"><h1 style="font-size:200px">Send us a photo<br>of your fence.</h1>
   <h1 style="font-size:200px;margin-top:30px;color:#fff;-webkit-text-stroke:3px #0b0b0b">We'll send you<br>a price.</h1></div>{FOOT.format(QUOTE)}</div>"""
 
@@ -186,12 +213,13 @@ def when(d):
     return datetime.date.fromisoformat(d).strftime("%a %-d %b %Y")
 plain = lambda s: s.replace("<br>", " ")
 rows = []
-for d, slug, w, y, tape, bg, prop, pose, extra, cap in POSTS:
+for d, slug, w, y, tape, bg, prop, pose, extra, cap in sorted(POSTS, key=lambda p: p[0]):
     if d == "storm":
         continue
     note = " *(check date)*" if "check" in extra else ""
     rows.append(f"| {when(d)}{note} | **{plain(w)}** {plain(y)} | {cap} | `{d}-{slug}.png` |")
 
+CAP = {p[1]: p[9] for p in POSTS}
 md = f"""# The Boundary Boys – marketing calendar
 
 11 November 2026 to 5 November 2027. Every poster is made and sits in `graphics/exports/`, named by the date it posts.
@@ -206,9 +234,11 @@ One gag, told in two lines. The **white line** is the line everyone already know
 |---|---|
 | Monday | The poster from the table below. |
 | Wednesday | Real photos or video from that week's jobs: before and after, posts going into concrete, a gate latching. |
-| Friday | One of the four yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
+| Friday | One of the yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
 
-**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "{POSTS[-1][9]}"
+**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "{CAP['blown-away']}" In December use `storm-the-grinch-stole-christmas.png` instead. Caption: "{CAP['the-grinch-stole-christmas']}"
+
+**December:** Christmas takes over. There is a Christmas poster every Monday, Wednesday and Friday from 30 November to Christmas Eve, so job photos move to Tuesdays and Thursdays. Fill in `friday-christmas-dates.png` with your last working day and your first day back, and post it around 14 December.
 
 ## Posters and captions
 

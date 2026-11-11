@@ -89,6 +89,7 @@
     const centred = zone.offsetLeft + zone.offsetWidth / 2 < PW * .6 && zone.offsetLeft > PW * .12;
     let H = wide ? 420 : Math.max(600, Math.min(centred ? 780 : 860, PH - feet - headBottom - (centred ? 15 : -10)));
     if (p.dataset.personHeight) H = +p.dataset.personHeight;
+    if (p.dataset.hat !== undefined) H *= .9;   // leave room for the Santa hat under the headline
     const Wd = H * pose.ratio;
     let left = centred ? (PW - Wd) / 2 : PW - Wd - 10;
     const img = document.createElement('img');
