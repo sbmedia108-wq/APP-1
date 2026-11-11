@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Mavis – simple help with your phone and telly</title>
+<meta name="description" content="Ask Mavis is a UK phone app for anyone who gets stuck with technology. Just say what's wrong, and Mavis shows you how to fix it, one simple step at a time. Join the waitlist.">
+<meta property="og:title" content="Ask Mavis – just say what's wrong">
+<meta property="og:description" content="Simple, friendly help with your phone, tablet and telly, one step at a time. Join the waitlist for 3 months of Plus free.">
+<meta property="og:image" content="img/logo.png">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Merriweather:wght@700;900&display=swap">
+<style>
+  /*
+    ONE THING TO CHANGE: the waitlist form link.
+    Search this file for WAITLIST-LINK and replace both copies of
+    https://tally.so/r/YOUR-FORM with your own form's link.
+  */
+  :root {
+    --cream: #FDF6E8; --sun: #FFC845; --sun-soft: #FFE6A8; --ink: #2A2522; --brown: #5A4A3F;
+    --blue: #1F5FBF; --blue-dark: #174A96; --red: #B3261E; --red-soft: #FDECEA; --line: #E4D3B4; --green: #2E7D32;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Atkinson Hyperlegible", Arial, sans-serif; font-size: 21px; line-height: 1.5; }
+  a { color: var(--blue); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  header { padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 24px; color: var(--brown); text-decoration: none; }
+  .brand img { width: 48px; height: 48px; border-radius: 12px; }
+  h1, h2 { font-family: Merriweather, Georgia, serif; font-weight: 900; line-height: 1.15; margin: 0 0 16px; }
+  h1 { font-size: clamp(36px, 7vw, 56px); }
+  h1 .blue { color: var(--blue); }
+  h2 { font-size: clamp(28px, 5vw, 38px); }
+  .hero { background: radial-gradient(70% 90% at 80% 60%, var(--sun-soft) 0%, var(--cream) 70%); padding: 24px 0 48px; }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+  .lead { font-size: 24px; margin: 0 0 24px; }
+  .btn { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font-weight: 700; font-size: 24px; padding: 18px 30px; border-radius: 16px; box-shadow: 0 4px 0 var(--blue-dark); }
+  .btn:hover, .btn:focus-visible { background: var(--blue-dark); }
+  .btn:focus-visible { outline: 4px solid var(--sun); outline-offset: 3px; }
+  .small { font-size: 18px; color: var(--brown); margin-top: 14px; }
+  .phone { justify-self: center; width: min(280px, 70vw); padding: 10px; border-radius: 36px; background: #3B3B3B; }
+  .phone img { display: block; width: 100%; border-radius: 28px; }
+  .trust { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; font-weight: 700; font-size: 19px; }
+  .trust span::before { content: "✔ "; color: var(--green); }
+  section { padding: 48px 0; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
+  .step { background: #fff; border: 2px solid var(--line); border-radius: 20px; padding: 22px; }
+  .step .n { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; font-family: Merriweather, serif; font-size: 26px; margin-bottom: 12px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px 18px; font-weight: 700; display: flex; gap: 12px; align-items: center; }
+  .tile span { font-size: 32px; }
+  .band { background: var(--sun-soft); }
+  .offer { background: #fff; border: 3px solid var(--sun); border-radius: 24px; padding: 28px; text-align: center; }
+  .offer .big { font-family: Merriweather, serif; font-weight: 900; font-size: clamp(26px, 4.5vw, 34px); margin: 0 0 8px; }
+  .scam { background: var(--red-soft); border: 3px solid var(--red); border-radius: 20px; padding: 22px; }
+  .scam strong { color: var(--red); }
+  details { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px 20px; margin-bottom: 12px; }
+  summary { font-weight: 700; cursor: pointer; }
+  footer { background: var(--blue); color: #fff; padding: 28px 0; font-size: 18px; }
+  footer a { color: #fff; }
+  @media (max-width: 760px) {
+    body { font-size: 20px; }
+    .hero-grid, .steps, .tiles { grid-template-columns: 1fr; }
+    .phone { order: -1; width: min(220px, 60vw); }
+    .btn { display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <a class="brand" href="#top" id="top"><img src="img/logo.png" alt="">Ask Mavis</a>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Stuck with your phone or telly?<br><span class="blue">Ask Mavis.</span></h1>
+      <p class="lead">Just say what's wrong in your own words. Mavis shows you how to fix it, one simple step at a time, and reads it out loud.</p>
+      <!-- WAITLIST-LINK (1 of 2) -->
+      <a class="btn" href="https://tally.so/r/YOUR-FORM">Join the waitlist</a>
+      <p class="small">Coming soon to Android phones and tablets. The first 500 people get <b>3 months of Plus free</b>.</p>
+      <div class="trust"><span>Made in the UK</span><span>No adverts</span><span>No jargon</span></div>
+    </div>
+    <div class="phone"><img src="img/tv-step.jpg" alt="The Ask Mavis app showing step 1 of 4 for fixing the TV, in big clear writing"></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="n" aria-hidden="true">1</span>Tap the big blue button and say what's wrong, like <i>"the telly's got no sound"</i>.</div>
+      <div class="step"><span class="n" aria-hidden="true">2</span>Mavis shows one small step at a time, in big writing, and reads it out loud.</div>
+      <div class="step"><span class="n" aria-hidden="true">3</span>Tap <b>Done</b> when you're ready for the next step. No rush, and no one watching.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>What Mavis helps with</h2>
+    <div class="tiles">
+      <div class="tile"><span aria-hidden="true">📺</span>The telly and Netflix</div>
+      <div class="tile"><span aria-hidden="true">📱</span>Your phone or tablet</div>
+      <div class="tile"><span aria-hidden="true">💬</span>WhatsApp and photos</div>
+      <div class="tile"><span aria-hidden="true">🩺</span>The GP and prescriptions</div>
+      <div class="tile"><span aria-hidden="true">🏦</span>Banking and scams</div>
+      <div class="tile"><span aria-hidden="true">🍔</span>Ordering screens and parking</div>
+    </div>
+    <p class="small">There's also a practice mode, so you can try a takeaway ordering screen at home with no queue, and a little brain teaser every day.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="scam"><strong>Worried about a call or a text?</strong> Mavis can check a message for warning signs. And if anyone says they're from your bank, hang up and ring <strong>159</strong> to reach your bank safely.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>For sons and daughters</h2>
+    <p>Fed up being the family IT department? Ask Mavis gives Mum and Dad help they can actually use, any time of day, so they can do it themselves. You can add your name and number, so a big "Call" button is there if they still need you.</p>
+  </div>
+</section>
+
+<section class="band" id="join">
+  <div class="wrap">
+    <div class="offer">
+      <p class="big">Be one of the first</p>
+      <p>Leave your name and email and we'll let you know the day Ask Mavis is ready. The first 500 people get 3 months of Ask Mavis Plus free.</p>
+      <!-- WAITLIST-LINK (2 of 2) -->
+      <a class="btn" href="https://tally.so/r/YOUR-FORM">Join the waitlist</a>
+      <p class="small">Signing up for someone else? That's lovely. Just put your own email in, and we'll tell you when it's ready to set up for them.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Is Mavis a real person?</summary><p>No. Mavis is a friendly computer helper with a familiar name. She'll never pretend to be a person, and she'll never ask for your passwords, bank details or codes.</p></details>
+    <details><summary>How much will it cost?</summary><p>Ask Mavis is free to download, and all the built-in guides and scam warnings are free for good. Ask Mavis Plus, for unlimited "ask anything" help, will be £3.99 a month or £34.99 a year.</p></details>
+    <details><summary>Does it work on iPhone?</summary><p>Not at first. Ask Mavis is starting on Android phones and tablets. iPhone will follow, so join the waitlist and we'll tell you when.</p></details>
+    <details><summary>What do you do with my email?</summary><p>We only use it to tell you about Ask Mavis, and you can leave the list at any time. We never sell it or share it. See our <a href="privacy.html">privacy notice</a>.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0 0 8px"><b>Ask Mavis</b> · Made in the UK · <a href="privacy.html">Privacy</a></p>
+    <p style="margin:0">Questions? Email <a href="mailto:hello@example.com">hello@example.com</a></p>
+  </div>
+</footer>
+</body>
+</html>
