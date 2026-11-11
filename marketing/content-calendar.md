@@ -1,126 +1,74 @@
-# The Boundary Boys – marketing timeline and calendar
+# The Boundary Boys – marketing calendar
 
-16 November 2026 to 5 November 2027. Every hero post is a pop-culture gag about a fence.
+11 November 2026 to 5 November 2027. Every poster is made and sits in `graphics/exports/`, named by the date it posts.
 
-## How it runs
+## The rule for every poster
 
-**Three posts a week**
+One gag, told in two lines. The **white line** is the line everyone already knows. The **yellow line** is the fence punchline. The tape underneath is just the name, the number and what you do.
 
-| Day | Post | Who makes it |
-|---|---|---|
-| Monday | **The hero.** A pop-culture poster. This is the one that gets shared. | Draft from this pack, you add yourself and Craig in Canva |
-| Wednesday | **The proof.** Real photos or video from that week's jobs. | Phone on site |
-| Friday | **The nudge.** A reason to call now: availability, a review, a quote offer. | Reuse an ad from set one, or text on yellow |
+## The week
 
-**The make-by rule:** every hero is finished by the **Thursday before** it posts. That date is in the tables below.
+| Day | Post |
+|---|---|
+| Monday | The poster from the table below. |
+| Wednesday | Real photos or video from that week's jobs: before and after, posts going into concrete, a gate latching. |
+| Friday | One of the four yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
 
-**Shoot days:** one a month. Get every cut-out for the next month's heroes in one go, against a plain wall, so you are not dressing up weekly. Each shoot list is below.
+**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "Last night's wind took a few fences with it. If yours is one of them, send us a photo. 07542 666563."
 
-**Storm rule:** the morning after a named storm, bump the planned post and run *Blown Away* (set one, ad 2) with a photo of local damage. Put £10–20 behind it for 48 hours.
+## Posters and captions
 
-**Status key:** *Draft ready* means the background is in `graphics/exports/popculture/` waiting for your cut-outs. *Ready* means it can post as it is. Every hero now has a draft; the number in brackets or in the Draft column is the file number. Captions for all of them are in `captions.md`. The four Friday templates are files 47 to 50.
+| Posts | Poster | Caption | File |
+|---|---|---|---|
+| Wed 11 Nov 2026 | **I'm on the level.** Your fence isn't. | If your fence is leaning more than I am in this photo, give us a shout. Free quotes across Southampton. Call or message 07542 666563. | `2026-11-11-on-the-level.png` |
+| Fri 13 Nov 2026 | **The fence and the furious.** Fence down? Don't get mad. Get us. | Fence gone over in the wind and you're fuming? Fair enough. Send us a photo and we'll tell you what it needs. 07542 666563. | `2026-11-13-the-fence-and-the-furious.png` |
+| Mon 16 Nov 2026 | **I'm a fence…** Get me out of here! | Your fence has done its time. Vote it out. We take the old one away and put a proper one up. 07542 666563. | `2026-11-16-im-a-fence.png` |
+| Fri 20 Nov 2026 | **Love thy neighbour.** From behind a 6ft fence. | Lovely people, next door. You just don't need to see them every time you put the bins out. New fencing across Southampton. 07542 666563. | `2026-11-20-love-thy-neighbour.png` |
+| Mon 23 Nov 2026 | **Sitting on the fence?** Get a quote. It's free. | Been meaning to sort it for years? We'll come round, measure up and give you a price. No pressure. 07542 666563. | `2026-11-23-sitting-on-the-fence.png` |
+| Fri 27 Nov 2026 | **Black Friday: 50% off your fence.** Cheers, wind. | Half your fence missing since the last storm? That's not a deal. We'll put the other half back. 07542 666563. | `2026-11-27-black-friday.png` |
+| Mon 30 Nov 2026 | **Home alone?** Not with that gate, you're not. | If your side gate doesn't shut, anyone can wander in. We fit gates that close, latch and lock. 07542 666563. | `2026-11-30-home-alone.png` |
+| Mon 7 Dec 2026 | **Now I have a nail gun.** Ho. Ho. Ho. | Yes, it's a Christmas film. And yes, we've still got a few slots before Christmas. 07542 666563. | `2026-12-07-now-i-have-a-nail-gun.png` |
+| Mon 14 Dec 2026 | **To me, you are perfect.** Your fence, not so much. | We think you're great. It's the fence we need to talk about. Now booking January. 07542 666563. | `2026-12-14-to-me-you-are-perfect.png` |
+| Mon 21 Dec 2026 | **All I want for Christmas** is a fence that stands up. | Merry Christmas from the Boundary Boys. If the wind gets your fence over the break, you know where we are. 07542 666563. | `2026-12-21-all-i-want-for-christmas.png` |
+| Mon 28 Dec 2026 | **Should old fence posts be forgot?** Yes. We take them away. | New year, new fence. We take the old one down, take it away and put up one that lasts. 07542 666563. | `2026-12-28-should-old-fence-posts-be-forgot.png` |
+| Mon 4 Jan 2027 | **Your fence post is a traitor.** It let the whole panel down. | It only takes one rotten post to bring the lot down. We find the traitor and replace it. 07542 666563. | `2027-01-04-your-fence-post-is-a-traitor.png` |
+| Mon 11 Jan 2027 | **You shall not pass.** That's the whole point of a fence. | Next door's dog. Stray footballs. The lad who cuts through your garden. None shall pass. 07542 666563. | `2027-01-11-you-shall-not-pass.png` |
+| Fri 15 Jan 2027 | **Unlike your ex,** our posts stay put. | Reliable. Solid. Still there in ten years. Every post concreted in properly. 07542 666563. | `2027-01-15-unlike-your-ex.png` |
+| Mon 18 Jan 2027 | **Today is gonna be the day** you finally sort that fence. | Blue Monday. Cheer yourself up by getting one job off the list. Free quotes. 07542 666563. | `2027-01-18-today-is-gonna-be-the-day.png` |
+| Mon 25 Jan 2027 | **Mother of God.** Look at the state of that fence. | We're only interested in one thing, and that's catching bent fence posts. 07542 666563. | `2027-01-25-mother-of-god.png` |
+| Mon 1 Feb 2027 | **Fence down?** Who you gonna call? | Hint: it's us. Storm damage and fence repairs across Southampton. 07542 666563. | `2027-02-01-who-you-gonna-call.png` |
+| Fri 5 Feb 2027 | **Post-mortem.** Cause of death: no concrete. | When a post snaps at ground level, it was never set properly. Ours are concreted in. 07542 666563. | `2027-02-05-post-mortem.png` |
+| Tue 9 Feb 2027 | **Pancakes should be flat.** Fences shouldn't. | Happy Pancake Day. If your fence is flatter than your pancakes, give us a ring. 07542 666563. | `2027-02-09-pancakes-should-be-flat.png` |
+| Fri 12 Feb 2027 | **Roses are red, violets are blue,** your fence fell over, we'll fix it for you. | Who said romance was dead? Fence repairs and new fencing across Southampton. 07542 666563. | `2027-02-12-roses-are-red.png` |
+| Mon 15 Feb 2027 | **Jurassic Park had fence problems.** Don't be Jurassic Park. | They spared no expense. Except on the fencing. Get yours done properly. 07542 666563. | `2027-02-15-jurassic-park-had-fence-problems.png` |
+| Mon 22 Feb 2027 | **By order of the Boundary Boys,** that fence is coming down. | No fighting. Just fencing. Old one down, new one up. 07542 666563. | `2027-02-22-by-order-of-the-boundary-boys.png` |
+| Mon 1 Mar 2027 | **Spring has sprung.** So has your fence panel. | Garden season's coming. Get the fence sorted before the BBQ comes out. Spring slots go quickly. 07542 666563. | `2027-03-01-spring-has-sprung.png` |
+| Fri 5 Mar 2027 | **Your mum called.** She says sort the fence. | Happy Mother's Day for Sunday. Do what your mum says. 07542 666563. | `2027-03-05-your-mum-called.png` |
+| Mon 15 Mar 2027 | **Can we fix it?** Yes we can. | Broken panel, wobbly post, gate that won't shut. Yes we can. 07542 666563. | `2027-03-15-can-we-fix-it.png` |
+| Mon 22 Mar 2027 | **The clocks go forward.** Your fence shouldn't. | Clocks change this weekend. If your fence is already leaning forward, call us. 07542 666563. | `2027-03-22-clocks-go-forward.png` |
+| Thu 1 Apr 2027 | **New: the invisible fence.** Just kidding. Yours blew down. | April Fools. There's no such thing as an invisible fence, there's just the one that isn't there any more. 07542 666563. | `2027-04-01-the-invisible-fence.png` |
+| Mon 12 Apr 2027 | **Stop trying to make that old fence happen.** It's not going to happen. | You've patched it, propped it and tied it to the shed. It's time. 07542 666563. | `2027-04-12-its-not-going-to-happen.png` |
+| Mon 26 Apr 2027 | **What are you doing in my swamp?** Get a fence. Keep them out. | Your garden, your rules. Privacy fencing across Southampton. 07542 666563. | `2027-04-26-in-my-swamp.png` |
+| Tue 4 May 2027 | **May the fence be with you.** Ours will be. For years. | Happy Star Wars Day. Built properly, so it stays with you. 07542 666563. | `2027-05-04-may-the-fence-be-with-you.png` |
+| Mon 10 May 2027 | **I'll never let go.** Every post we concrete in. | Our posts don't let go. That's the concrete. 07542 666563. | `2027-05-10-ill-never-let-go.png` |
+| Mon 17 May 2027 *(check date)* | **Your fence: nil points.** Ours: douze points. | Good evening Europe, this is Southampton calling. 07542 666563. | `2027-05-17-nil-points.png` |
+| Mon 24 May 2027 | **We were on a break!** So is your fence panel. | Bank holiday BBQ this weekend and a broken panel? We'll get it fixed. 07542 666563. | `2027-05-24-we-were-on-a-break.png` |
+| Mon 7 Jun 2027 *(check date)* | **I've got a text!** It says your fence is down. | Send us a photo of your fence and we'll text you back a price. 07542 666563. | `2027-06-07-ive-got-a-text.png` |
+| Fri 18 Jun 2027 | **Dad said he'd fix it.** In 2019. | Happy Father's Day for Sunday. Let him off the hook. We'll do it. 07542 666563. | `2027-06-18-dad-said-hed-fix-it.png` |
+| Mon 28 Jun 2027 *(check date)* | **New balls, please.** And a fence that keeps them in. | Fed up of knocking next door to ask for the ball back? 07542 666563. | `2027-06-28-new-balls-please.png` |
+| Mon 12 Jul 2027 | **Your mission, should you choose to accept it:** stop ignoring that fence. | This message will not self-destruct. It'll just sit here until you ring us. 07542 666563. | `2027-07-12-your-mission.png` |
+| Mon 26 Jul 2027 | **You're gonna need** a bigger fence. | Just when you thought it was safe to go back in the garden. Taller fencing for more privacy. 07542 666563. | `2027-07-26-a-bigger-fence.png` |
+| Mon 9 Aug 2027 | **To the boundary…** and beyond! | From the front gate to the back fence and everything in between. 07542 666563. | `2027-08-09-to-the-boundary-and-beyond.png` |
+| Mon 23 Aug 2027 *(check date)* | **No soggy bottoms.** Gravel boards stop the rot. | Fences rot from the bottom up. A gravel board keeps the timber off the wet ground. 07542 666563. | `2027-08-23-no-soggy-bottoms.png` |
+| Mon 6 Sep 2027 | **Kids back at school?** Now sort the fence. | Peace and quiet at last. Time to get that job done. Free quotes. 07542 666563. | `2027-09-06-kids-back-at-school.png` |
+| Mon 20 Sep 2027 *(check date)* | **That fence gets a 2.** Ours get a 10. | A disaster, darling. Let us show you a ten. 07542 666563. | `2027-09-20-ours-get-a-ten.png` |
+| Mon 4 Oct 2027 | **The name's Post.** Fence Post. | Licensed to drill. 07542 666563. | `2027-10-04-the-names-post.png` |
+| Mon 18 Oct 2027 | **Winter is coming.** Is your fence ready? | Storm season starts now. If a post is wobbling in October, it won't be standing in January. 07542 666563. | `2027-10-18-winter-is-coming.png` |
+| Mon 25 Oct 2027 | **This Halloween** the scariest thing is your fence. | No costume needed. We'll make it less frightening. 07542 666563. | `2027-10-25-the-scariest-thing.png` |
+| Fri 5 Nov 2027 | **Remember, remember,** to fix it by December. | Old fence on the bonfire, new one up before the storms. 07542 666563. | `2027-11-05-remember-remember.png` |
 
----
+## Before you post
 
-## Phase 1: Christmas run-in (16 November to 28 December)
-
-**Shoot day 1 – by Fri 13 Nov.** Poses needed: nail guns up; both looking horrified at something; hands on cheeks, mouths open; one holding a blank A2 card at chest height; a plain "arms folded" shot for general use.
-
-| Posts | Make by | Hero | The gag | Status | Pose |
-|---|---|---|---|---|---|
-| Mon 16 Nov | Fri 13 Nov | **I'm a Fence… Get Me Out of Here!** | I'm a Celebrity is on. Your fence wants voting out. | Draft ready (08) | Horrified, or in jungle hats |
-| Mon 23 Nov | Thu 19 Nov | **Sitting on the fence?** | Free-quote ad to warm up before Black Friday. | Ready (set one, 05) | – |
-| Fri 27 Nov | Thu 26 Nov | **Black Friday** | "Your fence has been 50% off since the last storm." | Draft ready (09) | Arms folded, unimpressed |
-| Mon 30 Nov | Thu 26 Nov | **Home Alone** | "Keep the wet bandits out." Side gates that lock. | Draft ready (10) | Hands on cheeks |
-| Mon 7 Dec | Thu 3 Dec | **Die Hard** | "Now I have a nail gun. Ho. Ho. Ho." | Draft ready (11) | Nail guns up, vests |
-| Mon 14 Dec | Thu 10 Dec | **Love Actually cue cards** | "With any luck, by next year… your fence will still be standing." | Draft ready (12) | One of you holding the card |
-| Mon 21 Dec | Thu 17 Dec | **All I Want for Christmas** | "…is a fence that stands up." | Ready (set one, 03) | – |
-| Mon 28 Dec | Thu 17 Dec | **Auld Lang Syne** | "Should old fence posts be forgot? Yes." | Draft ready (13) | Arms folded |
-
-Fridays in this phase: 20 Nov nosy neighbours (set one, 01), 4 Dec December availability, 11 Dec a review, 18 Dec "now booking January", 25 Dec nothing.
-
-## Phase 2: New year (4 January to 22 February)
-
-**Shoot day 2 – by Fri 18 Dec** (before you break up). Poses: cloaks or hoods, deadly serious; one with a big stick, hand out in a "stop"; parkas, hands behind back, chin up; suits and lanyards, pointing at something off-camera.
-
-**Shoot day 3 – by Fri 22 Jan.** Poses: boiler suits with a hose or leaf blower as a proton pack; looking up, terrified; flat caps and waistcoats, walking towards camera; one holding a frying pan; one holding a single rose.
-
-| Posts | Make by | Hero | The gag | Status | Pose |
-|---|---|---|---|---|---|
-| Mon 4 Jan | Thu 17 Dec | **The Traitors** | "Your fence has been murdered. It was the wind. It's always the wind." | Draft ready (14) | Cloaks |
-| Mon 11 Jan | Thu 7 Jan | **Lord of the Rings** | "You shall not pass." Footballs, dogs and Balrogs included. | Draft ready (15) | Big stick |
-| Mon 18 Jan | Thu 14 Jan | **Oasis, for Blue Monday** | "Today is gonna be the day we build your Wonderwall." | Draft ready (16) | Parkas |
-| Mon 25 Jan | Thu 21 Jan | **Line of Duty** | "Mother of God. Look at the state of that fence." AC-12, Anti-Collapse Unit. | Draft ready (17) | Suits, lanyards |
-| Mon 1 Feb | Thu 28 Jan | **Ghostbusters** | "Who you gonna call? The Boundary Boys." | Draft ready (18) | Boiler suits |
-| Tue 9 Feb | Thu 4 Feb | **Pancake Day** | "Flat as a pancake? That'll be your fence." | Draft ready (20) | One with a frying pan |
-| Fri 12 Feb | Thu 4 Feb | **Valentine's** | "Roses are red, violets are blue, your fence is knackered, we'll build you a new one." It doesn't rhyme. That's the joke. | Draft ready (21) | One with a rose |
-| Mon 15 Feb | Thu 11 Feb | **Jurassic Park** | "Jurassic Park had fence problems. You don't have to." | Draft ready (19) | Looking up, terrified |
-| Mon 22 Feb | Thu 18 Feb | **Peaky Blinders** | "By order of the Boundary Boys." | Draft ready (22) | Flat caps, walking |
-
-Fridays in this phase: post-mortem (set one, 04), deeper than your ex's (set one, 06), the corrected neighbour ad (set one, 07), then availability and reviews in rotation.
-
-## Phase 3: Spring booking season (1 March to 31 May)
-
-This is when people look at the garden again. Push quotes hard.
-
-**Shoot day 4 – by Fri 19 Feb.** Furs and a sword; hard hats and a thumbs up; hi-vis in pink; standing in a paddling pool looking furious. **Shoot day 5 – by Fri 23 Apr.** Dressing gowns and a broom-handle lightsaber; sequins; sat on a sofa looking guilty.
-
-| Posts | Make by | Hero | The gag | Draft |
-|---|---|---|---|---|
-| Mon 1 Mar | Thu 25 Feb | **Game of Thrones** | "Winter is going. The Wall needs work." | 23 |
-| Fri 5 Mar | Thu 25 Feb | **Mother's Day** (Sun 7 Mar) | "Get your mum what she really wants: a fence next door can't see over." | 24 |
-| Mon 15 Mar | Thu 11 Mar | **Bob the Builder** | "Can we fix it? Yes. Obviously. It's our job." | 25 |
-| Mon 22 Mar | Thu 18 Mar | **Clocks go forward** (Sun 28 Mar) | "Clocks spring forward. Your fence shouldn't." | 26 |
-| Thu 1 Apr | Thu 25 Mar | **April Fools** | "Introducing the invisible fence." A completely empty garden. Reveal in the comments. | 27 |
-| Mon 12 Apr | Thu 8 Apr | **Mean Girls** (post it on Wed 14 Apr) | "On Wednesdays we wear hi-vis." | 28 |
-| Mon 26 Apr | Thu 22 Apr | **Shrek** | "What are you doing in my swamp?" Privacy fencing. | 29 |
-| Tue 4 May | Thu 29 Apr | **Star Wars Day** | "May the fence be with you." | 30 |
-| Mid-May, check date | Thu before | **Eurovision** | "Nil points for that fence. Douze points for ours." | 31 |
-| Mon 24 May | Thu 20 May | **Friends**, before the bank holiday | "We were on a break! So was your fence panel." | 32 |
-
-## Phase 4: Summer (1 June to 30 August)
-
-Gardens are in use, so sell privacy, gates and "done before the BBQ".
-
-**Shoot day 6 – by Fri 28 May.** Swimwear over workwear holding a phone; tennis whites and headbands; wellies and bucket hats. **Shoot day 7 – by Fri 16 Jul.** On a boat or in a wheelbarrow looking out to sea; one in a cardboard space helmet, arm raised; aprons, holding a cake.
-
-| Posts | Make by | Hero | The gag | Draft |
-|---|---|---|---|---|
-| Early June, check start date | Thu before | **Love Island** | "I've got a text! Your fence is not my type on paper." | 33 |
-| Fri 18 Jun | Thu 10 Jun | **Father's Day** (Sun 20 Jun) | "Dad said he'd fix it in 2019. Let him off." | 34 |
-| Late June, check dates | Thu before | **Glastonbury** | "Glastonbury's got the only fence people queue to get behind. Ours is second." | 35 |
-| Late June, check start date | Thu before | **Wimbledon** | "New balls, please. And new panels: yours has had forty footballs through it." | 36 |
-| Mon 12 Jul | Thu 8 Jul | **Hot fence summer** | The two of you in sunglasses. No further explanation. | 37 |
-| Mon 26 Jul | Thu 22 Jul | **Jaws** | "You're gonna need a bigger fence." | 38 |
-| Mon 9 Aug | Thu 5 Aug | **Toy Story** | "To the boundary… and beyond!" | 39 |
-| Mon 23 Aug | Thu 19 Aug | **Bake Off**, check start date | "No soggy bottoms. Ask us about gravel boards." | 40 |
-
-## Phase 5: Storm season (6 September to 5 November)
-
-Back to where the work is: rot, wind and repairs.
-
-**Shoot day 8 – by Fri 27 Aug.** Sequins and a dance hold; on bikes with torches; dinner jackets, one eyebrow raised; an original spooky character of your own for Halloween.
-
-| Posts | Make by | Hero | The gag | Draft |
-|---|---|---|---|---|
-| Mon 6 Sep | Thu 2 Sep | **Back to school** | "Kids are back at school. Peace is restored. Now sort the fence." | 41 |
-| Mon 20 Sep | Thu 16 Sep | **Strictly**, check start date | "Seeeven! Ours get a ten." | 42 |
-| Mon 4 Oct | Thu 30 Sep | **James Bond** | "The name's Post. Fence Post." | 43 |
-| Mon 18 Oct | Thu 14 Oct | **Stranger Things** | "Something from the Upside Down came through your fence. It was next door's dog." | 44 |
-| Mon 25 Oct | Thu 21 Oct | **Halloween** (Sun 31 Oct) | "A nightmare on rotted posts", redone with your own monster. | 45 |
-| Fri 5 Nov | Thu 28 Oct | **Bonfire Night** | "Remember, remember, the fence of November." | 46 |
-
----
-
-## Things to check before you post
-
-- **Dates marked "check".** TV and festival dates for 2027 are not announced yet, so those rows are placed by the usual time of year.
-- **Claims in the drafts.** "Free quotes", "we'll even take them away", "side gates that actually lock" and "now booking January". Change any that are not true for you.
-- **Keep it parody.** Use the line and the costume, not the show's logo, title lettering or stills. That is what keeps paid ads from being pulled.
-- **Paid budget.** If you boost anything, boost the storm post and the "sitting on the fence" quote ad. The pop-culture heroes are for reach and shares.
-
-## Putting yourself and Craig into a draft in Canva
-
-1. Upload the draft from `graphics/exports/popculture/` and set it as the background of a 1080 × 1350 design.
-2. Drop your cut-out where the matching file in `guides/` shows the dashed box.
-3. Upload the matching file from `tape/` and stretch it to the full page on top. It puts the yellow strip back over your boots, like your existing posters.
+- **Dates marked "check date"** follow TV shows whose 2027 dates are not announced yet (Eurovision, Love Island, Wimbledon, Bake Off, Strictly). Move the post to match.
+- **Claims to confirm:** free quotes, old fence taken away, posts concreted in, 6ft fencing, gravel boards, lockable side gates. Change any line that is not true for you.
+- **The white boxes** on three Friday templates are for you to fill in Canva: a number, a month, or a screenshot of a review.

@@ -1,0 +1,30 @@
+:root { --y:#FFD84A; --k:#0b0b0b; --w:#fff; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#333; display:flex; flex-wrap:wrap; gap:40px; padding:40px; font-family:Oswald,sans-serif; }
+.p { position:relative; width:1080px; height:1350px; overflow:hidden; color:var(--w); flex:none;
+     background:radial-gradient(120% 80% at 50% 35%, #232323 0%, #0b0b0b 70%); }
+h1 { font-family:Anton,sans-serif; font-weight:400; text-transform:uppercase; line-height:1.02; letter-spacing:1px; white-space:nowrap; }
+.y { color:var(--y); }
+.head { position:absolute; left:60px; right:60px; top:60px; z-index:5; }
+.kicker { font:700 30px Oswald; letter-spacing:6px; text-transform:uppercase; color:var(--y); margin-bottom:18px; }
+.sub { font:500 38px/1.2 Oswald; text-transform:uppercase; letter-spacing:1px; margin-top:22px; }
+.tape { position:absolute; left:-10%; width:120%; bottom:40px; transform:rotate(-5deg); background:var(--y); color:var(--k);
+        text-align:center; padding:22px 0 20px; z-index:8; box-shadow:0 10px 40px rgba(0,0,0,.6); }
+.tape b { display:block; font:400 66px/1.05 Anton; letter-spacing:1px; text-transform:uppercase; }
+.tape span { display:block; font:700 30px Oswald; letter-spacing:4px; text-transform:uppercase; margin-top:6px; }
+.under { position:absolute; left:0; right:0; bottom:0; height:120px; background:var(--k); z-index:7; }
+.fence { position:absolute; display:flex; z-index:2; }
+.fence i { display:block; width:74px; height:100%; flex:none; }
+.zone { position:absolute; visibility:hidden; }
+.streak { position:absolute; inset:0; z-index:1; opacity:.35;
+  background:repeating-linear-gradient(172deg,transparent 0 46px,rgba(255,160,40,.5) 46px 49px,transparent 49px 120px,rgba(60,200,220,.4) 120px 122px,transparent 122px 190px); }
+.snow { position:absolute; inset:0; z-index:1; opacity:.5;
+  background-image:radial-gradient(#fff 3px,transparent 4px),radial-gradient(#fff 2px,transparent 3px),radial-gradient(#fff 4px,transparent 5px);
+  background-size:170px 190px,110px 130px,260px 240px; background-position:20px 40px,70px 10px,130px 120px; }
+.rain { position:absolute; inset:0; z-index:1; opacity:.25;
+  background:repeating-linear-gradient(105deg,transparent 0 38px,#9fb4c8 38px 40px,transparent 40px 90px); }
+.p.yel { background:var(--y); color:var(--k); }
+.p.yel .foot { position:absolute; left:0; right:0; bottom:0; background:var(--k); color:var(--y); text-align:center; padding:34px 0 30px; }
+.p.yel .foot b { display:block; font:400 70px/1.05 Anton; letter-spacing:1px; text-transform:uppercase; }
+.p.yel .foot span { display:block; font:700 30px Oswald; letter-spacing:4px; text-transform:uppercase; margin-top:6px; color:#fff; }
+.blank { position:absolute; background:#fff; border:8px solid var(--k); }
