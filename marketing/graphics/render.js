@@ -28,13 +28,15 @@ async function shoot(page, outDir, opts = {}) {
   await open('posters.html');
   await shoot(page, path.join(__dirname, 'exports'));
 
-  await open('popculture.html');
   const out = path.join(__dirname, 'exports', 'popculture');
-  await shoot(page, out);
-  await page.evaluate(() => document.body.classList.add('guide'));
-  await shoot(page, path.join(out, 'guides'));
-  await page.evaluate(() => { document.body.classList.remove('guide'); document.body.classList.add('tapeonly'); });
-  await shoot(page, path.join(out, 'tape'), { omitBackground: true });
+  for (const file of ['popculture.html', 'set3.html']) {   // set3.html is built by build_set3.py
+    await open(file);
+    await shoot(page, out);
+    await page.evaluate(() => document.body.classList.add('guide'));
+    await shoot(page, path.join(out, 'guides'));
+    await page.evaluate(() => { document.body.classList.remove('guide'); document.body.classList.add('tapeonly'); });
+    await shoot(page, path.join(out, 'tape'), { omitBackground: true });
+  }
 
   await browser.close();
   console.log('done');

@@ -18,7 +18,7 @@
 
 **Storm rule:** the morning after a named storm, bump the planned post and run *Blown Away* (set one, ad 2) with a photo of local damage. Put £10–20 behind it for 48 hours.
 
-**Status key:** *Draft ready* means the background is in `graphics/exports/popculture/` waiting for your cut-outs. *Ready* means it can post as it is. *To make* means it needs designing from the brief line here.
+**Status key:** *Draft ready* means the background is in `graphics/exports/popculture/` waiting for your cut-outs. *Ready* means it can post as it is. Every hero now has a draft; the number in brackets or in the Draft column is the file number. Captions for all of them are in `captions.md`. The four Friday templates are files 47 to 50.
 
 ---
 
@@ -52,10 +52,10 @@ Fridays in this phase: 20 Nov nosy neighbours (set one, 01), 4 Dec December avai
 | Mon 18 Jan | Thu 14 Jan | **Oasis, for Blue Monday** | "Today is gonna be the day we build your Wonderwall." | Draft ready (16) | Parkas |
 | Mon 25 Jan | Thu 21 Jan | **Line of Duty** | "Mother of God. Look at the state of that fence." AC-12, Anti-Collapse Unit. | Draft ready (17) | Suits, lanyards |
 | Mon 1 Feb | Thu 28 Jan | **Ghostbusters** | "Who you gonna call? The Boundary Boys." | Draft ready (18) | Boiler suits |
-| Tue 9 Feb | Thu 4 Feb | **Pancake Day** | "Flat as a pancake? That'll be your fence." | To make | One with a frying pan |
-| Fri 12 Feb | Thu 4 Feb | **Valentine's** | "Roses are red, violets are blue, your fence is knackered, we'll build you a new one." It doesn't rhyme. That's the joke. | To make | One with a rose |
+| Tue 9 Feb | Thu 4 Feb | **Pancake Day** | "Flat as a pancake? That'll be your fence." | Draft ready (20) | One with a frying pan |
+| Fri 12 Feb | Thu 4 Feb | **Valentine's** | "Roses are red, violets are blue, your fence is knackered, we'll build you a new one." It doesn't rhyme. That's the joke. | Draft ready (21) | One with a rose |
 | Mon 15 Feb | Thu 11 Feb | **Jurassic Park** | "Jurassic Park had fence problems. You don't have to." | Draft ready (19) | Looking up, terrified |
-| Mon 22 Feb | Thu 18 Feb | **Peaky Blinders** | "By order of the Boundary Boys." | To make | Flat caps, walking |
+| Mon 22 Feb | Thu 18 Feb | **Peaky Blinders** | "By order of the Boundary Boys." | Draft ready (22) | Flat caps, walking |
 
 Fridays in this phase: post-mortem (set one, 04), deeper than your ex's (set one, 06), the corrected neighbour ad (set one, 07), then availability and reviews in rotation.
 
@@ -65,18 +65,18 @@ This is when people look at the garden again. Push quotes hard.
 
 **Shoot day 4 – by Fri 19 Feb.** Furs and a sword; hard hats and a thumbs up; hi-vis in pink; standing in a paddling pool looking furious. **Shoot day 5 – by Fri 23 Apr.** Dressing gowns and a broom-handle lightsaber; sequins; sat on a sofa looking guilty.
 
-| Posts | Make by | Hero | The gag |
-|---|---|---|---|
-| Mon 1 Mar | Thu 25 Feb | **Game of Thrones** | "Winter is going. The Wall needs work." |
-| Fri 5 Mar | Thu 25 Feb | **Mother's Day** (Sun 7 Mar) | "Get your mum what she really wants: a fence next door can't see over." |
-| Mon 15 Mar | Thu 11 Mar | **Bob the Builder** | "Can we fix it? Yes. Obviously. It's our job." |
-| Mon 22 Mar | Thu 18 Mar | **Clocks go forward** (Sun 28 Mar) | "Clocks spring forward. Your fence shouldn't." |
-| Thu 1 Apr | Thu 25 Mar | **April Fools** | "Introducing the invisible fence." A completely empty garden. Reveal in the comments. |
-| Mon 12 Apr | Thu 8 Apr | **Mean Girls** (post it on Wed 14 Apr) | "On Wednesdays we wear hi-vis." |
-| Mon 26 Apr | Thu 22 Apr | **Shrek** | "What are you doing in my swamp?" Privacy fencing. |
-| Tue 4 May | Thu 29 Apr | **Star Wars Day** | "May the fence be with you." |
-| Mid-May, check date | Thu before | **Eurovision** | "Nil points for that fence. Douze points for ours." |
-| Mon 24 May | Thu 20 May | **Friends**, before the bank holiday | "We were on a break! So was your fence panel." |
+| Posts | Make by | Hero | The gag | Draft |
+|---|---|---|---|---|
+| Mon 1 Mar | Thu 25 Feb | **Game of Thrones** | "Winter is going. The Wall needs work." | 23 |
+| Fri 5 Mar | Thu 25 Feb | **Mother's Day** (Sun 7 Mar) | "Get your mum what she really wants: a fence next door can't see over." | 24 |
+| Mon 15 Mar | Thu 11 Mar | **Bob the Builder** | "Can we fix it? Yes. Obviously. It's our job." | 25 |
+| Mon 22 Mar | Thu 18 Mar | **Clocks go forward** (Sun 28 Mar) | "Clocks spring forward. Your fence shouldn't." | 26 |
+| Thu 1 Apr | Thu 25 Mar | **April Fools** | "Introducing the invisible fence." A completely empty garden. Reveal in the comments. | 27 |
+| Mon 12 Apr | Thu 8 Apr | **Mean Girls** (post it on Wed 14 Apr) | "On Wednesdays we wear hi-vis." | 28 |
+| Mon 26 Apr | Thu 22 Apr | **Shrek** | "What are you doing in my swamp?" Privacy fencing. | 29 |
+| Tue 4 May | Thu 29 Apr | **Star Wars Day** | "May the fence be with you." | 30 |
+| Mid-May, check date | Thu before | **Eurovision** | "Nil points for that fence. Douze points for ours." | 31 |
+| Mon 24 May | Thu 20 May | **Friends**, before the bank holiday | "We were on a break! So was your fence panel." | 32 |
 
 ## Phase 4: Summer (1 June to 30 August)
 
@@ -84,16 +84,16 @@ Gardens are in use, so sell privacy, gates and "done before the BBQ".
 
 **Shoot day 6 – by Fri 28 May.** Swimwear over workwear holding a phone; tennis whites and headbands; wellies and bucket hats. **Shoot day 7 – by Fri 16 Jul.** On a boat or in a wheelbarrow looking out to sea; one in a cardboard space helmet, arm raised; aprons, holding a cake.
 
-| Posts | Make by | Hero | The gag |
-|---|---|---|---|
-| Early June, check start date | Thu before | **Love Island** | "I've got a text! Your fence is not my type on paper." |
-| Fri 18 Jun | Thu 10 Jun | **Father's Day** (Sun 20 Jun) | "Dad said he'd fix it in 2019. Let him off." |
-| Late June, check dates | Thu before | **Glastonbury** | "Glastonbury's got the only fence people queue to get behind. Ours is second." |
-| Late June, check start date | Thu before | **Wimbledon** | "New balls, please. And new panels: yours has had forty footballs through it." |
-| Mon 12 Jul | Thu 8 Jul | **Hot fence summer** | The two of you in sunglasses. No further explanation. |
-| Mon 26 Jul | Thu 22 Jul | **Jaws** | "You're gonna need a bigger fence." |
-| Mon 9 Aug | Thu 5 Aug | **Toy Story** | "To the boundary… and beyond!" |
-| Mon 23 Aug | Thu 19 Aug | **Bake Off**, check start date | "No soggy bottoms. Ask us about gravel boards." |
+| Posts | Make by | Hero | The gag | Draft |
+|---|---|---|---|---|
+| Early June, check start date | Thu before | **Love Island** | "I've got a text! Your fence is not my type on paper." | 33 |
+| Fri 18 Jun | Thu 10 Jun | **Father's Day** (Sun 20 Jun) | "Dad said he'd fix it in 2019. Let him off." | 34 |
+| Late June, check dates | Thu before | **Glastonbury** | "Glastonbury's got the only fence people queue to get behind. Ours is second." | 35 |
+| Late June, check start date | Thu before | **Wimbledon** | "New balls, please. And new panels: yours has had forty footballs through it." | 36 |
+| Mon 12 Jul | Thu 8 Jul | **Hot fence summer** | The two of you in sunglasses. No further explanation. | 37 |
+| Mon 26 Jul | Thu 22 Jul | **Jaws** | "You're gonna need a bigger fence." | 38 |
+| Mon 9 Aug | Thu 5 Aug | **Toy Story** | "To the boundary… and beyond!" | 39 |
+| Mon 23 Aug | Thu 19 Aug | **Bake Off**, check start date | "No soggy bottoms. Ask us about gravel boards." | 40 |
 
 ## Phase 5: Storm season (6 September to 5 November)
 
@@ -101,14 +101,14 @@ Back to where the work is: rot, wind and repairs.
 
 **Shoot day 8 – by Fri 27 Aug.** Sequins and a dance hold; on bikes with torches; dinner jackets, one eyebrow raised; an original spooky character of your own for Halloween.
 
-| Posts | Make by | Hero | The gag |
-|---|---|---|---|
-| Mon 6 Sep | Thu 2 Sep | **Back to school** | "Kids are back at school. Peace is restored. Now sort the fence." |
-| Mon 20 Sep | Thu 16 Sep | **Strictly**, check start date | "Seeeven! Ours get a ten." |
-| Mon 4 Oct | Thu 30 Sep | **James Bond** | "The name's Post. Fence Post." |
-| Mon 18 Oct | Thu 14 Oct | **Stranger Things** | "Something from the Upside Down came through your fence. It was next door's dog." |
-| Mon 25 Oct | Thu 21 Oct | **Halloween** (Sun 31 Oct) | "A nightmare on rotted posts", redone with your own monster. |
-| Fri 5 Nov | Thu 28 Oct | **Bonfire Night** | "Remember, remember, the fence of November." |
+| Posts | Make by | Hero | The gag | Draft |
+|---|---|---|---|---|
+| Mon 6 Sep | Thu 2 Sep | **Back to school** | "Kids are back at school. Peace is restored. Now sort the fence." | 41 |
+| Mon 20 Sep | Thu 16 Sep | **Strictly**, check start date | "Seeeven! Ours get a ten." | 42 |
+| Mon 4 Oct | Thu 30 Sep | **James Bond** | "The name's Post. Fence Post." | 43 |
+| Mon 18 Oct | Thu 14 Oct | **Stranger Things** | "Something from the Upside Down came through your fence. It was next door's dog." | 44 |
+| Mon 25 Oct | Thu 21 Oct | **Halloween** (Sun 31 Oct) | "A nightmare on rotted posts", redone with your own monster. | 45 |
+| Fri 5 Nov | Thu 28 Oct | **Bonfire Night** | "Remember, remember, the fence of November." | 46 |
 
 ---
 
