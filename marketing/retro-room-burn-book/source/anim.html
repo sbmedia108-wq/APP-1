@@ -35,7 +35,7 @@ for(let i=0;i<26;i++){const e=document.createElement('div');e.className='fx';
  const edge=rnd()<.5; const x=edge?(rnd()<.5?rnd()*150:930+rnd()*150):rnd()*1080, y=edge?rnd()*1350:(rnd()<.5?rnd()*130:1220+rnd()*130);
  const s=26+rnd()*50; e.style.cssText=`left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;filter:drop-shadow(0 0 6px #ff8cc6)`;
  e.innerHTML=star; $('fxl').appendChild(e); sp.push({e,ph:rnd()*10,sp:.9+rnd()*1.2});}
-for(let i=0;i<9;i++){const e=document.createElement('div');e.className='fx';
+for(let i=0;i<0;i++){const e=document.createElement('div');e.className='fx';
  const s=38+rnd()*40; e.style.width=s+'px';e.style.height=s*.9+'px';
  e.innerHTML=heart(['#ff2d8a','#ff7ab8','#e0116f'][i%3]); $('fxl').appendChild(e);
  hs.push({e,x:(i%2?40+rnd()*110:930+rnd()*110),t0:rnd()*DUR,life:4+rnd()*2.5,sw:rnd()*6,rot:-25+rnd()*50});}
