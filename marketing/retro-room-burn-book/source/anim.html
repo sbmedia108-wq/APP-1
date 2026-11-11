@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#e91e78;overflow:hidden}
+#stage{position:relative;width:1080px;height:1350px;overflow:hidden;perspective:2400px;perspective-origin:50% 50%;
+ background:radial-gradient(circle at 50% 45%,#ff5fa8,#d81b72 75%)}
+#book{position:absolute;inset:0;transform-style:preserve-3d}
+.page{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d}
+.face{position:absolute;inset:0;backface-visibility:hidden;background-size:cover}
+.back{transform:rotateY(180deg);background:
+ repeating-linear-gradient(#fff0 0 43px,#f7a8cb 43px 45px),linear-gradient(90deg,#ffe3ef,#ffd0e4)}
+.shade{position:absolute;inset:0;pointer-events:none}
+.fx{position:absolute;pointer-events:none}
+#shine{position:absolute;top:-20%;height:140%;width:260px;transform:skewX(-18deg);
+ background:linear-gradient(90deg,#fff0,#ffffffb0 50%,#fff0);mix-blend-mode:soft-light}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,#0000 62%,#7a003a38 100%)}
+</style></head><body><div id="stage">
+<div id="book">
+ <div class="page" id="p3"><div class="face" style="background-image:url(call.png)"></div><div class="shade" id="s3"></div></div>
+ <div class="page" id="p2"><div class="face" style="background-image:url(wed.png)"></div><div class="face back"></div><div class="shade" id="s2"></div></div>
+ <div class="page" id="p1"><div class="face" style="background-image:url(burn.png)"></div><div class="face back"></div><div class="shade" id="s1"></div></div>
+</div>
+<div id="fxl"></div><div id="shine"></div><div id="vig"></div><div id="flash"></div>
+</div><script>
+const DUR=14.5, F1=[4.9,6.0], F2=[9.3,10.4];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const io=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const outBack=x=>{const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const $=id=>document.getElementById(id);
+// sparkles + hearts, deterministic, kept to the margins
+let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+const star='<svg viewBox="0 0 100 100" width="100%" height="100%"><path d="M50 0C54 34 66 46 100 50C66 54 54 66 50 100C46 66 34 54 0 50C34 46 46 34 50 0Z" fill="#fff"/></svg>';
+const heart=c=>`<svg viewBox="0 0 100 90" width="100%" height="100%"><path d="M50 88C-30 40 8-14 50 20C92-14 130 40 50 88Z" fill="${c}" stroke="#fff" stroke-width="5"/></svg>`;
+const sp=[],hs=[];
+for(let i=0;i<26;i++){const e=document.createElement('div');e.className='fx';
+ const edge=rnd()<.5; const x=edge?(rnd()<.5?rnd()*150:930+rnd()*150):rnd()*1080, y=edge?rnd()*1350:(rnd()<.5?rnd()*130:1220+rnd()*130);
+ const s=26+rnd()*50; e.style.cssText=`left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;filter:drop-shadow(0 0 6px #ff8cc6)`;
+ e.innerHTML=star; $('fxl').appendChild(e); sp.push({e,ph:rnd()*10,sp:.9+rnd()*1.2});}
+for(let i=0;i<9;i++){const e=document.createElement('div');e.className='fx';
+ const s=38+rnd()*40; e.style.width=s+'px';e.style.height=s*.9+'px';
+ e.innerHTML=heart(['#ff2d8a','#ff7ab8','#e0116f'][i%3]); $('fxl').appendChild(e);
+ hs.push({e,x:(i%2?40+rnd()*110:930+rnd()*110),t0:rnd()*DUR,life:4+rnd()*2.5,sw:rnd()*6,rot:-25+rnd()*50});}
+function flip(p,s,under,t,[a,b]){
+ const k=io(cl((t-a)/(b-a))), ang=-180*k;
+ p.style.transform=`rotateY(${ang}deg)`; p.style.visibility=k>=1?'hidden':'visible';
+ const m=Math.sin(k*Math.PI);
+ s.style.background=`linear-gradient(90deg,rgba(90,0,45,${.55*m}),rgba(255,255,255,${.25*m}) 55%,rgba(90,0,45,${.35*m}))`;
+ s.style.transform=k>.5?'rotateY(180deg)':'';
+ if(under) under.style.background=k>0&&k<1?`linear-gradient(90deg,rgba(60,0,30,${.6*(1-k)}) 0%,rgba(60,0,30,${.25*(1-k)}) ${cl(100*Math.cos(k*Math.PI/2)+10,0,100)}%,rgba(60,0,30,0) 100%)`:'none';
+ return k;
+}
+window.render=t=>{
+ // slam-in
+ const i=cl(t/.75), e=outBack(i);
+ let sc=1.9-.9*e, rot=-9*(1-e), sh=t>.5&&t<.95?Math.sin((t-.5)*70)*7*(1-(t-.5)/.45):0;
+ // slow push between flips
+ const seg=t<F1[0]?t/F1[0]:t<F2[0]?(t-F1[1])/(F2[0]-F1[1]):(t-F2[1])/(DUR-F2[1]);
+ sc*=1+.022*cl(seg);
+ // end pulse
+ if(t>12.6){const u=(t-12.6);sc*=1+.018*Math.max(0,Math.sin(u*Math.PI*2/0.8))*cl(1-u/1.7)}
+ $('book').style.transform=`translate(${sh}px,${-sh*.6}px) scale(${sc}) rotate(${rot}deg)`;
+ $('book').style.opacity=cl(t/.2);
+ flip($('p1'),$('s1'),$('s2'),t,F1);
+ flip($('p2'),$('s2'),$('s3'),t,F2);
+ $('flash').style.opacity=t<.55?0:.55*cl(1-(t-.55)/.35);
+ // shine sweeps: after landing, and after each flip
+ let x=-400; for(const st of [1.0,F1[1]+.15,F2[1]+.15,12.4]){const u=(t-st)/.9; if(u>0&&u<1)x=-400+1700*io(u)}
+ $('shine').style.left=x+'px';
+ const g=cl((t-.7)/.5);
+ for(const s of sp){const v=Math.pow(Math.max(0,Math.sin(t*s.sp*2+s.ph)),3);
+  s.e.style.opacity=v*g; s.e.style.transform=`scale(${.4+.7*v}) rotate(${t*20*s.sp}deg)`}
+ for(const h of hs){const u=(((t-h.t0)%h.life)+h.life)%h.life/h.life;
+  h.e.style.left=(h.x+Math.sin(u*6+h.sw)*28)+'px'; h.e.style.top=(1380-u*900)+'px';
+  h.e.style.opacity=g*Math.sin(u*Math.PI)*.9; h.e.style.transform=`rotate(${h.rot+Math.sin(u*5)*12}deg) scale(${.7+.4*u})`}
+};
+render(0);
+</script></body></html>
