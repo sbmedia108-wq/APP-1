@@ -1,33 +1,47 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – hero layout</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – one-off posters</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&family=Creepster&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="base.css">
 <style>
-/* Layout matching the owner's Canva edit: real fence across the page, him large in front, tape over the bottom. */
-.hero .head { top:70px; }
-.hero h1 { font-size:140px; line-height:1.04; }
-.hero .fencephoto { position:absolute; left:0; right:0; top:640px; bottom:0; background:url(assets/real-fence.jpg) top center/1152px auto; z-index:2; }
-.hero .cap { position:absolute; left:0; right:0; top:628px; height:22px; background:linear-gradient(#e2bd84,#b98a4e); z-index:2; box-shadow:0 6px 10px rgba(0,0,0,.35); }
-.hero .me { position:absolute; z-index:3; filter:drop-shadow(0 12px 26px rgba(0,0,0,.55)); }
-.hero .tape { bottom:70px; padding:26px 0 24px; }
-.hero .under { display:none; }
+/* Friday the 13th: horror-film poster. Deliberately unlike the standard layout. */
+.f13 { background:radial-gradient(90% 60% at 72% 16%, #26345c 0%, #0b1022 45%, #030409 100%); text-align:center; }
+.f13 .moon { position:absolute; right:90px; top:70px; width:250px; height:250px; border-radius:50%; background:radial-gradient(circle at 40% 38%,#fffbe6,#e9dfae 60%,#c9bd86); box-shadow:0 0 90px 30px rgba(255,244,190,.28); z-index:1; }
+.f13 .n13 { position:absolute; left:0; right:0; top:250px; font:400 900px/1 Anton; color:#7a0d14; opacity:.55; z-index:1; letter-spacing:-20px; }
+.f13 .title { position:absolute; left:0; right:0; top:50px; z-index:6; font:400 172px/0.95 Creepster; color:#e0161f; text-shadow:0 0 30px rgba(224,22,31,.55), 0 6px 0 #4a0508; transform:rotate(-3deg); }
+.f13 .punch { position:absolute; left:0; right:0; top:392px; z-index:6; font:400 74px/1.05 Anton; text-transform:uppercase; letter-spacing:1px; }
+.f13 .punch span { color:var(--y); }
+.f13 .me { position:absolute; left:50%; bottom:150px; height:630px; transform:translateX(-50%); z-index:4; filter:saturate(.85) contrast(1.08) drop-shadow(0 0 40px rgba(224,22,31,.45)); }
+.f13 .sil { position:absolute; left:0; right:0; bottom:150px; z-index:3; }
+.f13 .fog { position:absolute; left:0; right:0; bottom:150px; height:260px; z-index:5; background:linear-gradient(transparent,rgba(170,185,215,.34)); }
+.f13 .bar { position:absolute; left:0; right:0; bottom:0; height:176px; background:#050505; z-index:8; border-top:26px solid transparent;
+            border-image:repeating-linear-gradient(-45deg,#FFD84A 0 26px,#050505 26px 52px) 26; }
+.f13 .bar b { display:block; font:400 70px/1.15 Anton; color:var(--y); text-transform:uppercase; letter-spacing:1px; margin-top:10px; }
+.f13 .bar i { display:block; font:700 27px Oswald; font-style:normal; letter-spacing:5px; text-transform:uppercase; color:#fff; }
 </style></head>
 <body>
-<div class="p hero" id="2026-11-13-friday-the-13th">
-  <div class="head">
-    <h1>Friday<br>the 13th.</h1>
-    <h1 class="y" style="margin-top:14px;font-size:96px">Unlucky for<br>dodgy fences.</h1>
-  </div>
-  <div class="cap"></div><div class="fencephoto"></div>
-  <!-- black cat on the fence -->
-  <svg viewBox="0 0 200 220" style="position:absolute;right:70px;top:440px;width:190px;z-index:3">
-    <path d="M52 210 C30 150 40 110 62 92 L52 52 L84 74 C96 70 108 70 120 74 L152 52 L142 92 C166 112 172 150 152 210 Z" fill="#070707"/>
-    <path d="M150 200 C190 190 196 150 176 132" stroke="#070707" stroke-width="16" fill="none" stroke-linecap="round"/>
-    <ellipse cx="84" cy="104" rx="10" ry="7" fill="#FFD84A"/><ellipse cx="122" cy="104" rx="10" ry="7" fill="#FFD84A"/>
-    <ellipse cx="84" cy="104" rx="3" ry="7" fill="#070707"/><ellipse cx="122" cy="104" rx="3" ry="7" fill="#070707"/>
+<div class="p f13" id="2026-11-13-friday-the-13th">
+  <div class="moon"></div>
+  <div class="n13">13</div>
+  <div class="title">Friday<br>the 13th</div>
+  <div class="punch">Unlucky for<br><span>dodgy fences.</span></div>
+  <!-- wrecked fence silhouette with a black cat on it -->
+  <svg class="sil" viewBox="0 0 1080 520" width="1080" height="520">
+    <g fill="#1b2547" stroke="#3a4a80" stroke-width="2">
+      <polygon points="0,520 0,150 60,130 66,520"/><polygon points="74,520 70,190 96,160 128,196 134,520"/>
+      <polygon points="142,520 150,120 204,128 200,520" transform="rotate(-7 170 520)"/>
+      <polygon points="214,520 214,230 240,250 262,222 276,520"/>
+      <polygon points="800,520 812,140 870,150 862,520" transform="rotate(9 830 520)"/>
+      <polygon points="880,520 880,210 906,180 940,214 944,520"/><polygon points="952,520 950,120 1010,112 1014,520"/>
+      <polygon points="1022,520 1022,170 1080,160 1080,520"/>
+      <rect x="0" y="300" width="290" height="26" transform="rotate(-3 0 300)"/><rect x="790" y="290" width="290" height="26" transform="rotate(4 1080 300)"/>
+      <path d="M940 112 C926 74 934 50 950 40 L944 12 L966 28 C974 25 982 25 990 28 L1012 12 L1006 40 C1022 52 1028 78 1016 112 Z"/>
+      <path d="M1014 104 C1046 96 1050 66 1034 52" stroke="#1b2547" stroke-width="12" fill="none" stroke-linecap="round"/>
+    </g>
+    <ellipse cx="964" cy="50" rx="7" ry="5" fill="#FFD84A"/><ellipse cx="990" cy="50" rx="7" ry="5" fill="#FFD84A"/>
   </svg>
-  <img class="me" src="assets/me-level.png" style="left:120px;top:585px;height:1180px">
-  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>Fencing · Gates · Repairs · Southampton</span></div>
+  <img class="me" src="assets/me-level.png">
+  <div class="fog"></div>
+  <div class="bar"><b>The Boundary Boys · 07542 666563</b><i>Fencing · Gates · Repairs · Southampton</i></div>
 </div>
 <script>document.fonts.ready.then(()=>document.body.dataset.ready='1')</script>
 </body></html>
