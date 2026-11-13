@@ -17,6 +17,25 @@
             border-image:repeating-linear-gradient(-45deg,#FFD84A 0 26px,#050505 26px 52px) 26; }
 .f13 .bar b { display:block; font:400 70px/1.15 Anton; color:var(--y); text-transform:uppercase; letter-spacing:1px; margin-top:10px; }
 .f13 .bar i { display:block; font:700 27px Oswald; font-style:normal; letter-spacing:5px; text-transform:uppercase; color:#fff; }
+
+/* Saturday Night Takeaway: game-show stage. */
+.snt { background:radial-gradient(80% 55% at 50% 100%, #ff4fa3 0%, #8a1f8f 38%, #2a0a4a 75%, #12052a 100%); text-align:center; }
+.snt .beams { position:absolute; inset:0; z-index:1; opacity:.5;
+  background:conic-gradient(from 150deg at 12% -5%, transparent 0 8deg, rgba(255,255,255,.35) 10deg 16deg, transparent 18deg 30deg, rgba(255,216,74,.3) 32deg 38deg, transparent 40deg 360deg),
+             conic-gradient(from 172deg at 88% -5%, transparent 0 8deg, rgba(255,255,255,.35) 10deg 16deg, transparent 18deg 30deg, rgba(255,216,74,.3) 32deg 38deg, transparent 40deg 360deg); }
+.snt .dots { position:absolute; inset:0; z-index:1; opacity:.5;
+  background-image:radial-gradient(#fff 3px,transparent 4px),radial-gradient(#FFD84A 4px,transparent 5px),radial-gradient(#fff 2px,transparent 3px);
+  background-size:190px 210px,260px 230px,120px 140px; background-position:30px 50px,140px 20px,80px 110px; }
+.snt .sign { position:absolute; left:70px; right:70px; top:56px; z-index:6; padding:26px 20px 22px; background:#12052a; border-radius:26px;
+  border:14px dotted #FFD84A; box-shadow:0 0 60px rgba(255,216,74,.55), inset 0 0 40px rgba(255,79,163,.5); transform:rotate(-2deg); }
+.snt .sign small { display:block; font:400 86px/1 Anton; color:#fff; text-transform:uppercase; letter-spacing:6px; }
+.snt .sign b { display:block; font:400 196px/1 Anton; color:#FFD84A; text-transform:uppercase; transform:skewX(-8deg); text-shadow:6px 6px 0 #ff4fa3; margin-top:6px; }
+.snt .punch { position:absolute; left:0; right:0; top:452px; z-index:6; font:400 72px/1.06 Anton; text-transform:uppercase; letter-spacing:1px; text-shadow:0 4px 18px rgba(0,0,0,.6); }
+.snt .punch span { color:var(--y); }
+.snt .me { position:absolute; left:50%; top:600px; height:900px; transform:translateX(-52%); z-index:4; filter:drop-shadow(0 0 50px rgba(255,216,74,.45)); }
+.snt .foot { position:absolute; left:0; right:0; bottom:0; height:180px; background:#FFD84A; color:#0b0b0b; z-index:8; box-shadow:0 -10px 40px rgba(0,0,0,.5); }
+.snt .foot b { display:block; font:400 72px/1.1 Anton; text-transform:uppercase; letter-spacing:1px; margin-top:24px; }
+.snt .foot i { display:block; font:700 27px Oswald; font-style:normal; letter-spacing:5px; text-transform:uppercase; }
 </style></head>
 <body>
 <div class="p f13" id="2026-11-13-friday-the-13th">
@@ -43,6 +62,14 @@
   <div class="fog"></div>
   <img src="assets/sb-media.png" alt="SB Media" style="position:absolute;left:-28px;top:640px;width:120px;transform:rotate(-90deg);opacity:.85;z-index:7">
   <div class="bar"><b>The Boundary Boys · 07542 666563</b><i>Fencing · Gates · Repairs · Southampton</i></div>
+</div>
+<div class="p snt" id="2026-11-14-saturday-night-takeaway">
+  <div class="beams"></div><div class="dots"></div>
+  <div class="sign"><small>Saturday Night</small><b>Takeaway</b></div>
+  <div class="punch">We take your<br><span>old fence away.</span></div>
+  <img class="me" src="assets/me-nailgun.png">
+  <img src="assets/sb-media.png" alt="SB Media" style="position:absolute;right:-28px;top:820px;width:120px;transform:rotate(-90deg);opacity:.9;z-index:7">
+  <div class="foot"><b>The Boundary Boys · 07542 666563</b><i>Fencing · Gates · Repairs · Southampton</i></div>
 </div>
 <script>document.fonts.ready.then(()=>document.body.dataset.ready='1')</script>
 </body></html>
