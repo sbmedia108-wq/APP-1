@@ -1,0 +1,73 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Merriweather:wght@700;900&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; }
+body { background: #ccc; font-family: "Atkinson Hyperlegible", Arial, sans-serif; }
+.serif { font-family: Merriweather, Georgia, serif; font-weight: 900; }
+
+/* 1080 x 1350: LinkedIn and Instagram portrait */
+#li3 { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: #1F5FBF; color: #fff; }
+/* big sunny circles for energy */
+#li3 .sun1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: #FFC845; right: -420px; top: 260px; opacity: .95; }
+#li3 .sun2 { position: absolute; width: 260px; height: 260px; border-radius: 50%; border: 22px solid rgba(255,200,69,.55); left: -90px; top: 900px; }
+#li3 .dots { position: absolute; left: 60px; top: 380px; width: 160px; height: 200px;
+  background-image: radial-gradient(rgba(255,255,255,.35) 3px, transparent 3.5px); background-size: 28px 28px; }
+
+#li3 h1 { position: absolute; left: 64px; right: 64px; top: 70px; font-size: 76px; line-height: 1.06; letter-spacing: -0.5px; }
+#li3 h1 .y { color: #FFC845; }
+#li3 .sub { position: absolute; left: 66px; top: 260px; font-size: 32px; font-weight: 700; opacity: .9; }
+
+/* the phone */
+#li3 .phone { position: absolute; left: 250px; top: 340px; width: 560px; height: 820px; border-radius: 72px; background: #111; padding: 16px;
+  transform: rotate(-5deg); box-shadow: 0 40px 80px rgba(0,0,0,.35); }
+#li3 .screen { width: 100%; height: 100%; border-radius: 58px; overflow: hidden; position: relative;
+  background: linear-gradient(160deg, #3a4a7a 0%, #6b4f8c 55%, #c8735a 100%); }
+#li3 .notch { position: absolute; left: 50%; top: 14px; width: 140px; height: 34px; margin-left: -70px; background: #111; border-radius: 20px; }
+#li3 .time { position: absolute; left: 0; right: 0; top: 70px; text-align: center; font-size: 120px; font-weight: 700; letter-spacing: -2px; }
+#li3 .date { position: absolute; left: 0; right: 0; top: 52px; text-align: center; font-size: 24px; font-weight: 700; opacity: .9; }
+#li3 .stack { position: absolute; left: 22px; right: 22px; top: 240px; display: grid; gap: 12px; }
+#li3 .n { background: rgba(255,255,255,.94); color: #2A2522; border-radius: 26px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+#li3 .n .av { flex: none; width: 52px; height: 52px; border-radius: 50%; background: #FFE6A8; display: grid; place-items: center; font-size: 30px; }
+#li3 .n .who { font-size: 20px; font-weight: 700; color: #6b5c50; display: flex; justify-content: space-between; }
+#li3 .n .who span { font-weight: 400; }
+#li3 .n .msg { font-size: 25px; font-weight: 700; line-height: 1.2; margin-top: 2px; }
+#li3 .n.call .msg { color: #C62828; }
+
+/* stickers */
+#li3 .badge { position: absolute; left: 720px; top: 330px; width: 150px; height: 150px; border-radius: 50%; background: #E53935; color: #fff;
+  display: grid; place-items: center; text-align: center; transform: rotate(12deg); box-shadow: 0 14px 30px rgba(0,0,0,.3); border: 6px solid #fff; }
+#li3 .badge b { display: block; font-family: Merriweather, serif; font-size: 58px; line-height: .9; }
+#li3 .badge small { font-size: 20px; font-weight: 700; line-height: 1.1; }
+
+/* the answer */
+#li3 .answer { position: absolute; left: 50px; right: 50px; bottom: 50px; height: 150px; background: #fff; color: #2A2522; border-radius: 34px;
+  display: flex; align-items: center; gap: 24px; padding: 0 34px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+#li3 .answer img { width: 96px; height: 96px; border-radius: 24px; }
+#li3 .answer .t { font-family: Merriweather, serif; font-weight: 900; font-size: 44px; line-height: 1.1; }
+#li3 .answer .t .b { color: #1F5FBF; }
+#li3 .answer small { display: block; font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 700; font-size: 24px; color: #6b5c50; margin-top: 6px; }
+#li3 .arrow { position: absolute; left: 92px; bottom: 196px; font-size: 64px; transform: rotate(-12deg); }
+</style></head><body>
+<section id="li3">
+  <div class="sun1"></div><div class="sun2"></div><div class="dots"></div>
+  <h1 class="serif">Every grandchild<br>knows <span class="y">this screen.</span></h1>
+  <p class="sub">7:42pm, any evening of the week 😅</p>
+
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="date">Tuesday 10 November</div>
+    <div class="time">7:42</div>
+    <div class="stack">
+      <div class="n call"><div class="av">👵</div><div style="flex:1"><div class="who">Nan <span>now</span></div><div class="msg">📞 Missed call (3)</div></div></div>
+      <div class="n"><div class="av">👵</div><div style="flex:1"><div class="who">Nan <span>2m</span></div><div class="msg">NETFLIX HAS GONE AGAIN</div></div></div>
+      <div class="n"><div class="av">👵</div><div style="flex:1"><div class="who">Nan <span>6m</span></div><div class="msg">The telly says no signal. I haven't touched anything!!</div></div></div>
+      <div class="n"><div class="av">👵</div><div style="flex:1"><div class="who">Nan <span>11m</span></div><div class="msg">How do I open the photo you sent?</div></div></div>
+      <div class="n"><div class="av">👵</div><div style="flex:1"><div class="who">Nan <span>15m</span></div><div class="msg">Is this text from the bank real??</div></div></div>
+    </div>
+  </div></div>
+
+  <div class="badge"><div><b>9</b><small>messages<br>from Nan</small></div></div>
+
+  <div class="answer"><img src="logo.png" alt=""><div class="t">Now she just <span class="b">Asks Mavis.</span><small>Say what's wrong, fix it step by step · Coming soon to Android</small></div></div>
+</section>
+</body></html>
