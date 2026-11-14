@@ -5,7 +5,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
-const OUT = { 'all.html': 'exports', 'hero.html': 'exports', 'styles.html': 'exports/styles', 'twenty.html': 'exports/twenty' };
+const OUT = { 'all.html': 'exports', 'hero.html': 'exports', 'styles.html': 'exports/styles', 'twenty.html': 'exports/twenty', 'daily.html': 'exports/daily' };
 
 (async () => {
   const only = process.argv.slice(2);
