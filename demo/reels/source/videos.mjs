@@ -224,4 +224,78 @@ export const videos = {
       { key: "cta", html: end("Everyday life,<br>made easier.", "Search “Ask Mavis” in your app store"), sfx: [["well_done", 0.1]] },
     ],
   },
+
+  /* ------------------------------------------------------------------ */
+  reel_whatis: {
+    title: "What is…?",
+    scenes: [
+      { key: "hook", html: scene(`${head("What do these words mean?", "")}
+        <div class="cards" style="top:600px">
+          <div class="big a pop" style="--d:.2"><span>☁️</span>“The cloud”</div>
+          <div class="big a pop" style="--d:1.3"><span>📶</span>“Wi-Fi”</div>
+          <div class="big a pop" style="--d:2.2"><span>🔲</span>“An app”</div>
+        </div>`) },
+      { key: "ask", html: scene(`${head("Just ask Mavis", "In your own words.")}
+        <div class="bubble a pop" style="--d:1.3"><b>👵 Margaret says:</b><i>“What is the cloud?”</i></div>
+        ${phone(`<div class="screen">
+          <div class="link">✕ Start over</div>
+          <div class="t1">What is…?</div>
+          <div class="muted" style="margin-top:10px">Ask me what something means, in your own words. Like “What is AI?” or “What's the cloud?” There are no silly questions.</div>
+          <div class="btn red">⏹ I'm listening… tap when finished</div>
+          <div class="input" style="min-height:120px"><span class="a fade" style="--d:2">What is the cloud?</span></div>
+          <div class="btn green">💡 Explain it to me</div>
+        </div>`)}`) },
+      { key: "answer", html: scene(`${head("A short, friendly answer", "In plain English, read out loud.")}
+        ${phone(`<div class="screen">
+          <div class="link">✕ Start over</div>
+          <div class="a pop" style="--d:.2; font-size:100px; line-height:1.1">☁️</div>
+          <div class="t1">The cloud</div>
+          <div class="card a" style="--d:.6; font-size:42px">“The cloud” just means storing your photos and files on the internet instead of only on your phone.</div>
+          <div class="card a" style="--d:2.2">It means your photos are safe even if you lose your phone. iCloud and Google Photos are examples.</div>
+          <div class="btn sec">🔊 Read it to me again</div>
+        </div>`)}`),
+        sfx: [["step", 0.5]] },
+      { key: "more", html: scene(`${head("About 50 everyday words", "And you can ask about anything else.")}
+        <div class="cards" style="top:640px; gap:26px">
+          <div class="big a pop" style="--d:.2; padding:32px 44px"><span>📶</span>Wi-Fi</div>
+          <div class="big a pop" style="--d:.7; padding:32px 44px"><span>📦</span>Router</div>
+          <div class="big a pop" style="--d:1.2; padding:32px 44px"><span>🧭</span>A web browser</div>
+          <div class="big a pop" style="--d:1.7; padding:32px 44px"><span>🔑</span>A password</div>
+          <div class="big a pop" style="--d:2.2; padding:32px 44px"><span>🔲</span>An app</div>
+        </div>`) },
+      { key: "cta", html: end("There are no<br>silly questions.", "Search “Ask Mavis” in your app store"), sfx: [["well_done", 0.1]] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  reel_himum: {
+    title: "The Hi Mum scam",
+    scenes: [
+      { key: "hook", html: scene(`${head("Got a text like this?", "")}
+        ${phone(`<div class="screen">
+          <div class="smshead"><b>07700 900456</b>Text message · Today 09:15</div>
+          <div class="sms a" style="--d:.3">Hi Mum 👋 I've broken my phone. This is my new number.</div>
+          <div class="sms a" style="--d:3.2">Can you send me some money? I'll pay you back x</div>
+        </div>`)}`) },
+      { key: "stop", html: scene(`${head("Stop.", "This is one of the most common scams.")}
+        ${phone(`<div class="screen">
+          <div class="smshead"><b>07700 900456</b>Text message · Today 09:15</div>
+          <div class="sms">Hi Mum 👋 I've broken my phone. This is my new number.</div>
+          <div class="sms">Can you send me some money? I'll pay you back x</div>
+          <div class="banner a pop" style="--d:.2; margin-top:40px"><b>🛑</b>This looks like a scam</div>
+        </div>`)}`),
+        sfx: [["try_again", 0.2]] },
+      { key: "do", html: scene(`${head("Ring their old number", "Don’t send anything until you’ve checked.")}
+        <div class="cards" style="top:660px">
+          <div class="big a pop" style="--d:.2"><span>🚫</span>Don’t send money</div>
+          <div class="big a pop" style="--d:1.4"><span>📞</span>Ring them on their old number</div>
+        </div>`) },
+      { key: "report", html: scene(`${head("Then forward it to 7726", "It’s free, and helps stop them.")}
+        <div class="cards" style="top:660px">
+          <div class="big a pop" style="--d:.6; justify-content:center; font-family:Merri,serif; font-size:230px; padding:70px 20px; color:#1F5FBF">7726</div>
+          <div class="big a pop" style="--d:2.6"><span>📲</span>Forward scam texts here, free</div>
+        </div>`) },
+      { key: "cta", html: end("Not sure about<br>a message?", "Mavis checks it for warning signs"), sfx: [["well_done", 0.1]] },
+    ],
+  },
 };

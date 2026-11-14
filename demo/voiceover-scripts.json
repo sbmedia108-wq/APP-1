@@ -56,5 +56,19 @@
   ["steps", "She walks you through it, one small step at a time, in big writing, and read out loud."],
   ["other", "And she always shows you the other way too, like ringing the surgery."],
   ["cta", "Everyday life, made easier. Ask Mavis. Free to download."]
+ ],
+ "reel_whatis": [
+  ["hook", "The cloud. Wi-Fi. An app. What do all these words actually mean?"],
+  ["ask", "Just ask Mavis. Say, what is the cloud?"],
+  ["answer", "She gives you a short, friendly answer, in plain English, and reads it out loud."],
+  ["more", "About fifty everyday words are built in, and you can ask about anything else."],
+  ["cta", "There are no silly questions. Ask Mavis. Free to download."]
+ ],
+ "reel_himum": [
+  ["hook", "Hi Mum. I've broken my phone. This is my new number. Can you send me some money?"],
+  ["stop", "Stop. This is one of the most common scams."],
+  ["do", "Don't send anything. Ring them on their old number to check."],
+  ["report", "Then forward the text to seven seven two six. It's free, and helps stop them."],
+  ["cta", "Not sure about a message? Ask Mavis. She'll check it for warning signs."]
  ]
 }
