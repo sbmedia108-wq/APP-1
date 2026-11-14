@@ -8,7 +8,8 @@ def load_voice(name):
     return np.frombuffer(z.read(data), dtype=np.float32).reshape(-1, 1, 256)
 np.savez(f"{HERE}/voices.npz", bf_emma=load_voice("bf_emma"))
 k = Kokoro(f"{HERE}/kokoro.onnx", f"{HERE}/voices.npz")
-V = load_voice("bf_emma")
+VOICE = sys.argv[3] if len(sys.argv) > 3 else "bf_emma"  # e.g. bf_lily
+V = load_voice(VOICE)
 scripts = json.load(open(sys.argv[1])); out = sys.argv[2]
 for vid, lines in scripts.items():
     for key, text in lines:
