@@ -120,4 +120,6 @@ The files that make them are in `demo/reels/source/` (see `demo/reels/README.md`
 
 A week of ready-to-post picture posts (4:5), with the words to post under each one, is in `demo/social-posts/` (start with its `README.md`).
 
+More graphics are in `demo/graphics/`: a "5 signs a message is a scam" carousel, Stories, Instagram highlight covers, a profile picture, a Facebook cover and the Google Play banner.
+
 The voiceover lines are in `demo/voiceover-scripts.json`. The voice is "Emma" (bf_emma), a British voice from the Kokoro-82M text-to-speech model (Apache-2.0, so commercial use is allowed). Samples of the other voices are in `demo/voice-samples/`.
