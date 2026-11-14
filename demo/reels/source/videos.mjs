@@ -15,6 +15,43 @@ const end = (tag, sub) => `<div class="scene end" style="--s:$S">
   <div class="sub a fade" style="--d:1.7">${sub}</div>
   ${band}</div>`;
 const ap = (inner, cls = "") => `<div class="scene ap ${cls}" style="--s:$S">${inner}</div>`;
+const pr = (inner) => `<div class="scene pr" style="--s:$S">${inner}</div>`;
+const mp = (screen, scale) => `<div class="mp" style="transform:scale(${scale}); width:780px; height:1500px"><div class="phone"><div class="screen">${screen}</div></div></div><div style="width:${780 * scale}px; height:${1500 * scale}px"></div>`;
+const dot = (pos) => `<div class="dot a pop" style="${pos}"><img src="logo.png"></div>`;
+const cap = (text, d, len) => `<div class="cap" style="--d:${d}; --len:${len}">${text}</div>`;
+// Phone screens used by the showcase promo (wording from the app).
+const S = {
+  home: `<div style="height:60px"></div><div class="t1">Hello, I'm Mavis. What's not working?</div>
+    <div class="muted" style="margin-top:12px">Tap the big button and tell me in your own words.</div>
+    <div class="btn" style="padding:70px 24px; font-size:50px">🎤<br>Tap and tell me</div><div class="btn sec">🛡️ Is this a scam?</div><div class="btn sec">🧠 Today's brain teaser</div>`,
+  step: `<div class="kind"><span style="color:#1F5FBF">✕ Start over</span> <span>Step 1 of 7</span></div>
+    <div class="prog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="t2" style="margin-top:0; line-height:1.3; font-size:46px">Turn the TV on with the red power button on the remote.</div>
+    <div class="hint"><b>👀 What you should see</b>A picture comes on the screen.</div>
+    <div class="btn sec">🔊 Read it to me again</div><div class="btn green">✅ Done – next step</div>`,
+  scam: `<div class="link">✕ Start over</div><div class="banner"><b>🛑</b>This looks like a scam</div><div class="t2">Why</div>
+    <div class="card">It wants you to tap a link. Links in unexpected messages often lead to fake websites.</div>
+    <div class="card">It's about a parcel or delivery fee. Fake delivery messages are very common.</div>`,
+  cloud: `<div class="link">✕ Start over</div><div style="font-size:100px; line-height:1.1">☁️</div><div class="t1">The cloud</div>
+    <div class="card" style="font-size:42px">“The cloud” just means storing your photos and files on the internet instead of only on your phone.</div>
+    <div class="btn sec">🔊 Read it to me again</div>`,
+  picker: `<div class="link">✕ Start over</div><div class="muted">No problem, let's sort it out.</div>
+    <div class="t1" style="font-size:50px">What's happening with Netflix?</div>
+    <div class="opt">🔍 I can't find it on the TV</div><div class="opt">⏳ It's stuck or keeps loading</div><div class="opt">🔑 It wants a password or payment</div>`,
+  teaser: `<div class="link">✕ Start over</div><div style="font-size:100px;line-height:1.1">🧠</div><div class="t1">Today's brain teaser</div>
+    <div class="muted" style="margin-top:10px">Three quick questions: a tech tip, spot the scam, and a word puzzle.</div>
+    <div class="stats"><div class="stat"><b>⭐ 12</b>stars</div><div class="stat"><b>🔥 4</b>day streak</div><div class="stat"><b>📅 6</b>days played</div></div>
+    <div class="btn green">▶️ Let's play</div>`,
+  gp: `<div class="kind"><span style="color:#1F5FBF">✕ Start over</span> <span>Step 1 of 6</span></div>
+    <div class="prog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="t2" style="margin-top:0; line-height:1.3">The easy way: ring your GP surgery. Most phone lines open at 8 in the morning, and that's when they're busiest.</div>
+    <div class="hint"><b>👀 What you should see</b>Someone answers and asks what the problem is.</div><div class="btn green">✅ Done – next step</div>`,
+  kiosk: `<div class="coach"><b>🎓 PRACTICE · nothing here is real</b>Today let's order a cheeseburger and a cup of tea. Touch the Cheeseburger.</div>
+    <div class="kiosk"><div class="kbar">☀ CORNER GRILL</div><div class="menu">
+      <div class="cats"><div class="on"><span>🍔</span>Burgers</div><div><span>🍗</span>Chicken</div><div><span>🍟</span>Sides</div><div><span>🥤</span>Drinks</div></div>
+      <div class="items"><div class="item" style="box-shadow:0 0 0 10px #F59E0B"><span>🍔</span>Cheeseburger<small>£2.49</small></div><div class="item"><span>🍔</span>Double Burger<small>£4.29</small></div>
+        <div class="item"><span>🥬</span>Veggie Burger<small>£3.79</small></div><div class="item"><span>🐟</span>Fish Burger<small>£3.49</small></div></div></div></div>`,
+};
 const scene = (inner) => `<div class="scene" style="--s:$S">${inner}${band}</div>`;
 
 const kbar = `<div class="kbar">☀ CORNER GRILL</div>`;
@@ -347,6 +384,64 @@ export const videos = {
       { key: "spotted", hold: 1.0, html: ap(`<div class="mid"><div class="hl xl grad a pop" style="--d:.1">Scams,<br>spotted.</div></div>`), sfx: [["well_done", 0.2]] },
       { key: "end", hold: 0.6, html: ap(`<div class="mid"><img class="logo a pop" style="--d:.1" src="logo.png"><div class="name a" style="--d:.3">Ask Mavis</div>
         <div class="sub a fade" style="--d:.8">Check any message for warning signs.<br>Free to download.</div></div>`) },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  /* Showcase promo: colour blobs, a tilted wall of phones, one phone with a
+     changing keyword, a fan of phones, a sliding row, bold word captions.   */
+  promo_showcase: {
+    title: "Ask Mavis showcase",
+    music: "music.wav",
+    scenes: [
+      { key: "intro", hold: 0.5, html: pr(`
+        <div class="blob a from" style="--fx:-300px; --fy:-300px; left:-330px; top:-420px; width:640px; height:640px"></div>
+        <div class="blob a from" style="--fx:400px; --fy:400px; --d:.1; right:-420px; bottom:-380px; width:1100px; height:1100px"></div>
+        <div class="tag a from" style="--fx:-200px; --d:.5; top:270px">Tech help<small>MADE SIMPLE</small></div>
+        <div style="position:absolute; left:790px; top:330px; transform:rotate(28deg); transform-origin: top left">
+          ${[[0, 0, S.home, "0, 900px", .2], [0, 700, S.picker, "0, 900px", .35], [0, 1400, S.teaser, "0, 900px", .5],
+             [400, -350, S.step, "0, -900px", .3], [400, 350, S.scam, "0, -900px", .45], [400, 1050, S.cloud, "0, -900px", .6]]
+            .map(([x, y, scr, f, d]) => `<div class="a from" style="--fx:${f.split(",")[0]}; --fy:${f.split(",")[1]}; --d:${d}; position:absolute; left:${x}px; top:${y}px">${mp(scr, .44)}</div>`).join("")}
+        </div>
+        ${dot("right:70px; top:150px")}
+        ${cap("Telly <em>playing up?</em>", .25, 1.45)}${cap("Phone <em>gone funny?</em>", 1.7, 3)}`) },
+      ...[["simple", "Simple", "home", "Ask Mavis is <em>simple</em>", "Just say <em>what’s wrong</em>", 1.5],
+         ["calm", "Calm", "step", "<em>Calm.</em>", "One small step <em>at a time</em>", .8],
+         ["safe", "Safe", "scam", "<em>Safe.</em>", "Mavis spots <em>the scams</em>", .8],
+         ["friendly", "Friendly", "cloud", "And <em>friendly</em>", "No <em>silly questions</em>", 1.2]]
+        .map(([key, word, scr, c1, c2, at]) => ({ key, html: pr(`
+        <div class="blob" style="right:-200px; top:-260px; width:680px; height:680px"></div>
+        <div class="blob" style="left:-620px; bottom:-1150px; width:1900px; height:1900px"></div>
+        ${dot("left:70px; top:150px")}
+        <div style="position:absolute; left:110px; top:470px">${mp(S[scr], .62)}</div>
+        <div class="kw a from" style="--fx:120px; --d:.15">${word}</div>
+        ${cap(c1, .25, at)}${cap(c2, at + .25, 3)}`) })),
+      { key: "fan", hold: 0.5, html: pr(`
+        <div class="a to" style="--tx:-210px; --ty:60px; --tr:-11deg; --d:1.1; position:absolute; left:306px; top:560px; transform-origin: 50% 80%">${mp(S.picker, .6)}</div>
+        <div class="a to" style="--tx:210px; --ty:60px; --tr:11deg; --d:1.1; position:absolute; left:306px; top:560px; transform-origin: 50% 80%">${mp(S.scam, .6)}</div>
+        <div class="a from" style="--fs:2.1; --fy:260px; --d:.1; animation-duration:1s; position:absolute; left:306px; top:520px; transform-origin: 234px 300px">${mp(S.step, .6)}</div>
+        ${cap("<em>Big</em> writing", .25, .95)}${cap("Read <em>out loud</em>", 1.2, 1)}${cap("No <em>jargon</em>", 2.2, 3)}`) },
+      { key: "logo", html: pr(`
+        <div class="cen" style="top:200px"><img class="a pop" style="--d:.1" src="logo.png"><div class="nm a" style="--d:.25">Ask Mavis</div>
+          <div class="a pop" style="--d:.6; margin-top:26px"><span class="pill2">Free to download</span></div></div>
+        <div style="position:absolute; left:96px; top:900px; transform:rotate(-11deg); transform-origin: 50% 80%">${mp(S.picker, .6)}</div>
+        <div style="position:absolute; left:516px; top:900px; transform:rotate(11deg); transform-origin: 50% 80%">${mp(S.scam, .6)}</div>
+        <div style="position:absolute; left:306px; top:840px">${mp(S.step, .6)}</div>
+        ${cap("Help, <em>whenever</em> you need it", 1.1, 3)}`) },
+      { key: "carousel", hold: 0.5, html: pr(`
+        ${dot("left:465px; top:130px")}
+        ${["The telly", "Scams", "The doctor", "Ordering screens", "Brain teasers"].map((l, i) => `<div class="plab a fade" style="--d:${i ? .75 + (i - 1) * .9 : 0}; animation-duration:.25s">${l}</div>`).join("")}
+        <div class="a to" style="--tx:-450px; --d:.6"><div class="a to" style="--tx:-450px; --d:1.5"><div class="a to" style="--tx:-450px; --d:2.4"><div class="a to" style="--tx:-450px; --d:3.3">
+          <div class="strip">${[S.step, S.scam, S.gp, S.kiosk, S.teaser, S.home].map((s, i) => `<div style="position:absolute; left:${i * 450}px; top:0">${mp(s, .5)}</div>`).join("")}</div>
+        </div></div></div></div>
+        ${cap("The telly. <em>Scams.</em>", .25, 1.6)}${cap("The doctor. <em>And more.</em>", 1.9, 4)}`) },
+      { key: "end", html: pr(`
+        <div class="blob a from" style="--fx:-300px; --fy:-300px; left:-260px; top:-300px; width:760px; height:760px"></div>
+        <div class="blob a from" style="--fx:400px; --fy:400px; right:-420px; bottom:-380px; width:1100px; height:1100px"></div>
+        <div class="cen" style="top:560px"><img class="a pop" style="--d:.1; width:320px; height:320px; border-radius:72px" src="logo.png">
+          <div class="nm a" style="--d:.3; font-size:150px">Ask Mavis</div>
+          <div class="a pop" style="--d:.9; margin-top:40px"><span class="pill2" style="font-size:58px; padding:30px 70px">Free to download</span></div></div>
+        ${cap("Try Ask Mavis <em>today</em>", .25, 8)}`) },
     ],
   },
 };

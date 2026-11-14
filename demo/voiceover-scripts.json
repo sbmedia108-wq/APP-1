@@ -85,5 +85,16 @@
   ["result", "This looks like a scam."],
   ["spotted", "Scams. Spotted."],
   ["end", "Ask Mavis. Free to download."]
+ ],
+ "promo_showcase": [
+  ["intro", "Telly playing up? Phone gone funny?"],
+  ["simple", "Ask Mavis is simple. Just say what's wrong."],
+  ["calm", "Calm. One small step at a time."],
+  ["safe", "Safe. Mavis spots the scams."],
+  ["friendly", "And friendly. There are no silly questions."],
+  ["fan", "Big writing. Read out loud. No jargon."],
+  ["logo", "Ask Mavis. Help, whenever you need it."],
+  ["carousel", "For the telly, scams, the doctor, ordering screens, and brain teasers."],
+  ["end", "Try Ask Mavis today. It's free to download."]
  ]
 }

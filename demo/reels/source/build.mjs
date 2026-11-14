@@ -34,6 +34,7 @@ for (const [name, v] of Object.entries(videos)) {
     t += LEAD + dur + (sc.hold || 0) + (i === v.scenes.length - 1 ? TAIL : GAP);
   }
   const total = t, frames = Math.round(total * FPS);
+  if (v.music) audio.unshift({ file: `${HERE}/${v.music}`, at: 0, vol: 0.14, fade: true });
 
   // 2. the page
   const html = `<!doctype html><meta charset="utf-8"><title>${v.title}</title><link rel="stylesheet" href="common.css"><body>
@@ -75,7 +76,7 @@ ${v.scenes.map((sc) => sc.html.replace("$S", sc.start.toFixed(3))).join("\n")}</
   // 4. sound: voice lines and app sounds placed on the timeline
   const args = ["-y", "-i", silent];
   audio.forEach((a) => args.push("-i", a.file));
-  const fc = audio.map((a, i) => `[${i + 1}:a]aresample=48000,volume=${a.vol},adelay=${Math.round(a.at * 1000)}:all=1[a${i}]`).join(";") +
+  const fc = audio.map((a, i) => `[${i + 1}:a]aresample=48000,volume=${a.vol},adelay=${Math.round(a.at * 1000)}:all=1${a.fade ? `,afade=t=out:st=${(total - 1.6).toFixed(2)}:d=1.6` : ""}[a${i}]`).join(";") +
     ";" + audio.map((_, i) => `[a${i}]`).join("") + `amix=inputs=${audio.length}:normalize=0,apad,atrim=0:${total.toFixed(3)},loudnorm=I=-16:TP=-1.5[out]`;
   args.push("-filter_complex", fc, "-map", "0:v", "-map", "[out]", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", `${HERE}/out/${name}.mp4`);
   sh("ffmpeg", args);

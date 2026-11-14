@@ -1,6 +1,6 @@
 # Ask Mavis short videos (9:16)
 
-Six vertical videos, 1080 × 1920, 30 frames a second, for Instagram and Facebook Reels, TikTok, Stories and YouTube Shorts.
+Seven vertical videos, 1080 × 1920, 30 frames a second, for Instagram and Facebook Reels, TikTok, Stories and YouTube Shorts.
 
 | File | What it sells | Length |
 |---|---|---|
@@ -10,6 +10,7 @@ Six vertical videos, 1080 × 1920, 30 frames a second, for Instagram and Faceboo
 | ask-mavis-reel-4-everyday-life.mp4 | Booking the doctor, prescriptions, parking | 25 s |
 | ask-mavis-reel-5-what-is.mp4 | "What is…?" plain-English explanations of tech words | 24 s |
 | ask-mavis-reel-6-hi-mum-scam.mp4 | A tip video: the "Hi Mum, new number" scam and what to do | 25 s |
+| ask-mavis-reel-7-showcase.mp4 | A fast app showcase: tilted wall of phones, one phone with changing keywords (Simple, Calm, Safe, Friendly), a fan and a sliding row of screens, bold word captions and a backing track | 34 s |
 
 Each scene has a big headline, so the videos still make sense with the sound off. The phone screens are drawn to match the app, and their wording is copied from the app's own screens. The voice is "Emma" (Kokoro-82M, Apache-2.0), and the chimes are the app's own sounds from `app/assets/sounds/`.
 
@@ -26,7 +27,9 @@ Everything is in `source/`:
 - `build.mjs`: draws every frame with Playwright and joins the frames, voice and sounds with ffmpeg. It needs `npm i @fontsource/merriweather` in the same folder, and the voice files in `wav/`.
 
 ```bash
-node build.mjs /path/to/APP-1            # all six
+node build.mjs /path/to/APP-1            # all of them
 node build.mjs /path/to/APP-1 reel_scam  # just one
 node build.mjs /path/to/APP-1 --still    # one picture per scene, to check the layout
 ```
+
+The showcase video (`promo_showcase` in `videos.mjs`) also uses `music.wav`, a simple backing track made by `source/make_music.py`. It is generated from scratch, so there is no licence to worry about.
