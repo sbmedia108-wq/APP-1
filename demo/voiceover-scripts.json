@@ -70,5 +70,20 @@
   ["do", "Don't send anything. Ring them on their old number to check."],
   ["report", "Then forward the text to seven seven two six. It's free, and helps stop them."],
   ["cta", "Not sure about a message? Ask Mavis. She'll check it for warning signs."]
+ ],
+ "min_sorted": [
+  ["funny", "The telly's gone funny."],
+  ["again", "Again."],
+  ["say", "So just say it."],
+  ["steps", "Mavis shows you what to do. One small step at a time."],
+  ["sorted", "Sorted."],
+  ["end", "Ask Mavis."]
+ ],
+ "min_scam": [
+  ["real", "A text about a parcel. Is it real?"],
+  ["ask", "Ask Mavis."],
+  ["result", "This looks like a scam."],
+  ["spotted", "Scams. Spotted."],
+  ["end", "Ask Mavis. Free to download."]
  ]
 }

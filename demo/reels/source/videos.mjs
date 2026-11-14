@@ -14,6 +14,7 @@ const end = (tag, sub) => `<div class="scene end" style="--s:$S">
   <div class="pill a pop" style="--d:1.3">Free to download</div>
   <div class="sub a fade" style="--d:1.7">${sub}</div>
   ${band}</div>`;
+const ap = (inner, cls = "") => `<div class="scene ap ${cls}" style="--s:$S">${inner}</div>`;
 const scene = (inner) => `<div class="scene" style="--s:$S">${inner}${band}</div>`;
 
 const kbar = `<div class="kbar">☀ CORNER GRILL</div>`;
@@ -296,6 +297,56 @@ export const videos = {
           <div class="big a pop" style="--d:2.6"><span>📲</span>Forward scam texts here, free</div>
         </div>`) },
       { key: "cta", html: end("Not sure about<br>a message?", "Mavis checks it for warning signs"), sfx: [["well_done", 0.1]] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ */
+  /* Minimal black-and-white ads: big type, one phone, very few words.  */
+  min_sorted: {
+    title: "Say it. Sorted.",
+    scenes: [
+      { key: "funny", hold: 0.5, html: ap(`<div class="mid"><div class="hl a" style="--d:.1">The telly’s<br>gone funny.</div></div>`) },
+      { key: "again", hold: 0.4, html: ap(`<div class="mid"><div class="hl xl a pop" style="--d:.1">Again.</div></div>`) },
+      { key: "say", hold: 1.3, html: ap(`<div class="top"><div class="hl a" style="--d:.1">Just say it.</div></div>
+        <div class="phone a rise" style="--d:.3"><div class="screen" style="padding-top:150px">
+          <div class="t1">Hello, I'm Mavis. What's not working?</div>
+          <div class="btn red" style="padding:60px 24px">⏹<br>I'm listening…<br>Tap here when you've finished</div>
+          <div class="card muted">I'm hearing:<br><b class="a fade" style="--d:1.5; color:#1A1A1A; display:block">The telly's gone funny</b></div>
+        </div></div>`) },
+      { key: "steps", hold: 1.0, html: ap(`<div class="top"><div class="hl a" style="--d:.1">One small step<br>at a time.</div></div>
+        <div class="phone"><div class="screen">
+          <div class="kind"><span style="color:#1F5FBF">✕ Start over</span> <span>Step 1 of 7</span></div>
+          <div class="prog"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="t2" style="margin-top:0; line-height:1.3; font-size:46px">Turn the TV on with the red power button on the remote.</div>
+          <div class="hint"><b>👀 What you should see</b>A picture comes on the screen.</div>
+          <div class="btn sec">🔊 Read it to me again</div>
+          <div class="btn green rel">✅ Done – next step<i class="tap" style="--d:3.6"></i></div>
+        </div></div>`, "light"), sfx: [["step", 3.9]] },
+      { key: "sorted", hold: 1.0, html: ap(`<div class="mid"><div class="hl xl grad a pop" style="--d:.1">Sorted.</div></div>`), sfx: [["well_done", 0.2]] },
+      { key: "end", hold: 0.8, html: ap(`<div class="mid"><img class="logo a pop" style="--d:.1" src="logo.png"><div class="name a" style="--d:.3">Ask Mavis</div>
+        <div class="sub a fade" style="--d:.8">Tech help, in your own words.<br>Free to download.</div></div>`) },
+    ],
+  },
+  min_scam: {
+    title: "Scams, spotted.",
+    scenes: [
+      { key: "real", hold: 0.8, html: ap(`<div class="mid"><div class="sms a" style="--d:.1">Your parcel could not be delivered. Pay the £1.99 fee today: <u>parcel-redeliver.example/pay</u></div>
+        <div class="hl xl a pop" style="--d:1.9">Real?</div></div>`) },
+      { key: "ask", hold: 1.6, html: ap(`<div class="top"><div class="hl a" style="--d:.1">Ask.</div></div>
+        <div class="phone a rise" style="--d:.3"><div class="screen">
+          <div class="link">✕ Start over</div>
+          <div class="t1">Is this a scam?</div>
+          <div class="muted" style="margin-top:10px">Tell me what the message or phone call said. You can say it, type it, or paste it in.</div>
+          <div class="btn">🎤 Tap and tell me</div>
+          <div class="input"><span class="a fade" style="--d:1">It says my parcel can't be delivered, and to tap a link to pay £1.99</span></div>
+          <div class="btn green rel">Check it<i class="tap" style="--d:2.2"></i></div>
+        </div></div>`, "light") },
+      { key: "result", hold: 1.2, html: ap(`<div class="mid"><div class="a pop" style="--d:.1; font-size:200px; line-height:1.2">🛑</div>
+        <div class="hl redbig a" style="--d:.3">This looks<br>like a scam.</div>
+        <div class="sub a fade" style="--d:1.3">It wants you to tap a link.<br>It’s about a parcel fee.</div></div>`), sfx: [["try_again", 0.1]] },
+      { key: "spotted", hold: 1.0, html: ap(`<div class="mid"><div class="hl xl grad a pop" style="--d:.1">Scams,<br>spotted.</div></div>`), sfx: [["well_done", 0.2]] },
+      { key: "end", hold: 0.6, html: ap(`<div class="mid"><img class="logo a pop" style="--d:.1" src="logo.png"><div class="name a" style="--d:.3">Ask Mavis</div>
+        <div class="sub a fade" style="--d:.8">Check any message for warning signs.<br>Free to download.</div></div>`) },
     ],
   },
 };

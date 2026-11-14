@@ -125,3 +125,23 @@ h1 small { display: block; font-family: Inter, sans-serif; font-weight: 500; fon
 .tight .opt { padding: 18px 26px; margin-top: 14px; font-size: 37px; }
 .tight .okcard { padding: 20px 26px; margin-top: 16px; font-size: 35px; }
 .tight .okcard b { font-size: 42px; }
+
+/* ---- minimal black-and-white ads (min_*) ---- */
+@keyframes rise { from { opacity: 0; transform: translateY(260px) } to { opacity: 1; transform: none } }
+.scene.ap { background: #000; color: #F5F5F7; font-family: "Inter Display", Inter, sans-serif; }
+.scene.ap.light { background: #F5F5F7; color: #1D1D1F; }
+.ap .mid { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 70px; }
+.ap .top { position: absolute; left: 60px; right: 60px; top: 250px; text-align: center; }
+.ap .hl { font-weight: 700; font-size: 136px; line-height: 1.04; letter-spacing: -5px; }
+.ap .hl.xl { font-size: 220px; letter-spacing: -9px; }
+.ap .sub { font-size: 52px; font-weight: 500; color: #86868B; margin-top: 30px; letter-spacing: -1px; line-height: 1.25; }
+.grad { background: linear-gradient(90deg, #5B9BFF 10%, #FFC845 90%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .08em; }
+.ap .phone { top: 720px; border-color: #1C1C1E; box-shadow: 0 0 0 3px #3A3A3C, 0 40px 140px rgba(60,130,255,.38); }
+.ap.light .phone { box-shadow: 0 40px 100px rgba(0,0,0,.22); }
+.a.rise { animation-name: rise; animation-duration: .9s; }
+.ap .sms { background: #26262A; color: #F5F5F7; max-width: 820px; text-align: left; font-size: 54px; margin: 0 0 70px; }
+.ap .logo { width: 260px; height: 260px; border-radius: 58px; }
+.ap .name { font-weight: 700; font-size: 150px; letter-spacing: -6px; margin-top: 50px; }
+.ap .redbig { color: #FF453A; }
+.ap .screen { color: #1A1A1A; font-family: Inter, sans-serif; text-align: left; }
+.ap .sms u { color: #5B9BFF; }

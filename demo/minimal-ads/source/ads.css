@@ -1,0 +1,14 @@
+/* Minimal still ads, 1080 x 1350. Phone screens reuse the video styles. */
+@import url("common.css");
+html, body { width: 1080px; height: 1350px; background: #000; color: #F5F5F7; font-family: "Inter Display", Inter, sans-serif; }
+body.light { background: #F5F5F7; color: #1D1D1F; }
+.brandline { position: absolute; top: 64px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 16px; font-weight: 600; font-size: 32px; letter-spacing: -.5px; }
+.brandline img { width: 48px; height: 48px; border-radius: 11px; }
+.hl { position: absolute; top: 150px; left: 40px; right: 40px; text-align: center; font-weight: 700; font-size: 128px; line-height: 1.03; letter-spacing: -5px; }
+.sub { position: absolute; top: var(--subtop, 420px); left: 60px; right: 60px; text-align: center; font-size: 42px; font-weight: 500; color: #86868B; letter-spacing: -.8px; line-height: 1.3; }
+.sub b { color: inherit; font-weight: 600; display: block; margin-top: 6px; color: #5B9BFF; }
+.light .sub b { color: #1F5FBF; }
+.grad { background: linear-gradient(90deg, #5B9BFF 10%, #FFC845 90%); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: .08em; }
+.phone { top: var(--ptop, 600px); left: 150px; transform: scale(.8); transform-origin: top center; border-color: #1C1C1E; box-shadow: 0 0 0 3px #3A3A3C, 0 40px 140px rgba(60,130,255,.4); }
+.light .phone { box-shadow: 0 40px 110px rgba(0,0,0,.24); }
+.screen { color: #1A1A1A; font-family: Inter, sans-serif; text-align: left; }
