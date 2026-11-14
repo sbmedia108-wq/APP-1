@@ -162,23 +162,61 @@ POSTS += [
   "One of them we can do something about. Send us a photo of the damage. 07542 666563."),
 ]
 
-def poster(date, slug, white, yellow, tape, bg, prop, pose, extra, caption):
+
+# ---------------------------------------------------------------------------
+# Poster layout: real fence photo, owner waist up, tight two-line headline.
+# ---------------------------------------------------------------------------
+from build_twenty import me, fence, foot, wm, RATIO, CSS as TCSS
+
+START = "2026-11-15"                      # first date still to post
+POSTS = [p for p in POSTS if p[0] == "storm" or p[0] >= START]
+OLD = "filter:grayscale(.55) sepia(.25) brightness(.72)"
+
+
+def props(prop):
+    band = fence(0, 900, 1080, 300)
+    right = fence(470, 900, 610, 300)
+    return {
+        "none": band, "row": band, "new": band,
+        "lean": fence(-60, 880, 330, 420, extra=f"transform:rotate(-16deg);transform-origin:right bottom;{OLD}", cap=False)
+                + fence(250, 860, 230, 440, extra=f"transform:rotate(11deg);transform-origin:left bottom;{OLD}", cap=False) + right,
+        "gaps": fence(0, 900, 150, 300, extra=OLD) + fence(230, 950, 110, 250, extra=f"transform:rotate(6deg);{OLD}", cap=False)
+                + fence(420, 900, 660, 300, extra=OLD),
+        "flat": fence(-20, 1060, 470, 140, extra=f"{OLD}", cap=False) + right,
+        "grass": fence(-20, 1060, 470, 140, extra=f"{OLD}", cap=False) + right,
+        "heart": band + '<svg viewBox="0 0 100 90" style="position:absolute;left:70px;top:610px;width:280px;z-index:3"><path d="M50 88 L8 44 C-8 24 12 -4 36 6 C44 10 48 16 50 22 C52 16 56 10 64 6 C88 -4 108 24 92 44 Z" fill="#e0262f"/></svg>',
+        "ball": fence(0, 900, 180, 300) + fence(300, 900, 780, 300)
+                + '<div class="abs" style="left:186px;top:760px;width:100px;height:100px;border-radius:50%;background:#d7f04a;z-index:3;box-shadow:inset -10px -10px 0 rgba(0,0,0,.15)"></div>',
+        "fin": band + '<svg viewBox="0 0 500 300" style="position:absolute;left:0;top:640px;width:460px;z-index:1"><path d="M190 210 C210 120 250 50 320 20 C300 90 310 160 340 210 Z" fill="#2b3640"/><path d="M0 210 C40 190 80 230 120 210 C160 190 200 230 240 210 C280 190 320 230 360 210 C400 190 440 230 500 210 L500 300 L0 300 Z" fill="#0d3a5c"/></svg>',
+    }[prop]
+
+
+HAT = '<svg viewBox="0 0 120 100" style="width:100%"><path d="M12 78 C20 30 60 6 96 30 C80 34 96 60 104 78 Z" fill="#d81f2a"/><rect x="4" y="72" width="108" height="22" rx="11" fill="#fff"/><circle cx="100" cy="30" r="13" fill="#fff"/></svg>'
+HEADX = {"level": .49, "nailgun": .63}
+
+
+def poster(i, date, slug, white, yellow, tape, bg, prop, pose, extra, caption):
+    pose = pose or ("level" if i % 2 else "nailgun")
+    centre = prop in ("none", "row", "new")
+    w = 560
+    left = 260 if centre else 490
+    full = w / RATIO[pose]
+    top = 1200 - full * .64
+    hat = ""
+    if "hat" in extra:
+        hw = full * .2
+        hat = (f'<div class="abs" style="left:{left + w * HEADX[pose] - hw / 2:.0f}px;top:{top + full * .012 - hw * .55:.0f}px;'
+               f'width:{hw:.0f}px;transform:rotate(-8deg);z-index:5">{HAT}</div>')
     layers = "".join(f'<div class="{c}"></div>' for c in ("snow", "rain") if c in extra)
-    centre = prop in ("none", "row", "grass")
-    attrs = (f' data-pose="{pose}"' if pose else "") + (" data-hat" if "hat" in extra else "")
-    zone = "left:190px;bottom:170px;width:700px;height:540px" if centre else "right:30px;bottom:170px;width:540px;height:520px"
     return f"""
-<div class="p" id="{date}-{slug}"{attrs} style="{bg}">
-  {layers}
-  <div class="head"{' style="text-align:center"' if centre else ''}>
-    <h1 style="font-size:200px">{white}</h1>
-    <h1 class="y" style="font-size:200px;margin-top:12px">{yellow}</h1>
-  </div>
-  {PROPS[prop]}
-  <div class="zone" style="{zone}"></div>
-  <div class="under"></div>
-  <div class="tape"><b>The Boundary Boys · 07542 666563</b><span>{tape}</span></div>
+<div class="p" id="{date}-{slug}" style="{bg}">{layers}
+  <div class="hd" data-max="{top - 90:.0f}" style="text-align:{'center' if centre else 'left'}"><h1>{white}</h1><h1 class="yl">{yellow}</h1></div>
+  {props(prop)}
+  {me(pose, left, w, z=4)}{hat}
+  {wm("right:24px;top:1078px")}
+  {foot("fy" if i % 2 else "fk", tape)}
 </div>"""
+
 
 FOOT = '<div class="foot"><b>The Boundary Boys · 07542 666563</b><span>{}</span></div>'
 SUB = '<div style="position:absolute;left:60px;right:60px;top:{}px;text-align:center;font:500 50px Oswald;text-transform:uppercase">{}</div>'
@@ -196,61 +234,141 @@ FRIDAY = f"""
 <div class="p yel" id="friday-send-us-a-photo"><div class="head"><h1 style="font-size:200px">Send us a photo<br>of your fence.</h1>
   <h1 style="font-size:200px;margin-top:30px;color:#fff;-webkit-text-stroke:3px #0b0b0b">We'll send you<br>a price.</h1></div>{FOOT.format(QUOTE)}</div>"""
 
+
+EXTRA_CSS = """
+.hd{position:absolute;left:60px;right:60px;top:56px;z-index:6}
+.hd h1{font:400 170px/.95 Anton;text-transform:uppercase;white-space:nowrap;letter-spacing:.5px;color:#fff}
+.hd .yl{color:#FFD84A;margin-top:14px}
+.yel .head{position:absolute;left:60px;right:60px;top:60px}
+.yel .head h1{white-space:nowrap;line-height:.95}
+"""
+FIT = """<script>
+document.fonts.ready.then(()=>{
+  document.querySelectorAll('.hd, .yel .head').forEach(hd=>{
+    const hs=[...hd.querySelectorAll('h1')], fs=h=>parseFloat(getComputedStyle(h).fontSize);
+    hs.forEach(h=>{while(h.scrollWidth>hd.clientWidth+1&&fs(h)>40)h.style.fontSize=(fs(h)-2)+'px'});
+    let g=0; while(hd.dataset.max&&hd.offsetHeight>+hd.dataset.max-56&&g++<80) hs.forEach(h=>h.style.fontSize=(fs(h)*.97)+'px');
+  });
+  document.body.dataset.ready='1';
+});</script>"""
+
 html = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – all posters</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
-<style>{css}</style></head>
+<html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – calendar posters</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>{css}{TCSS}{EXTRA_CSS}</style></head>
 <body>
-{"".join(poster(*p) for p in POSTS)}
+{"".join(poster(i, *p) for i, p in enumerate(POSTS))}
 {FRIDAY}
-<script src="shared.js"></script>
+{FIT}
 </body></html>
 """
 (here / "all.html").write_text(html)
 
-# ---- calendar ----
-def when(d):
-    return datetime.date.fromisoformat(d).strftime("%a %-d %b %Y")
+# ---------------------------------------------------------------------------
+# Calendar: dated posts first, evergreen posts fill free Wednesdays and Fridays.
+# ---------------------------------------------------------------------------
+TWENTY = [
+ ("01-straighten-up", "Straighten up", "Monday morning. Straighten up. The fence, not you, you're fine. If yours is leaning, give us a shout. 07542 666563"),
+ ("02-selling-up", "Selling up?", "Selling the house? First thing buyers clock is a fence hanging off. Get it sorted before the photos go up. 07542 666563"),
+ ("03-before-after", "Before and after", "Before: held up by the wheelie bin. After: held up by concrete. Bit of a difference. 07542 666563"),
+ ("04-the-text", "The text from next door", "We've all had this text off next door. Save yourself the awkward chat and ring us first. 07542 666563"),
+ ("05-caution", "Caution: fence may fall", "If your fence is one gust away from landing in next door's, now's the time to ring. 07542 666563"),
+ ("06-fence-facts", "Fence facts", "All the good stuff, none of the wobble. Every post concreted in. 07542 666563"),
+ ("07-guilty", "Guilty as charged", "Guilty. Every fence we put up makes next door jealous. Sorry, not sorry. 07542 666563"),
+ ("08-quiz", "Quiz", "If you didn't say A, we need to talk. Phone a friend. Preferably us. 07542 666563"),
+ ("09-fight-night", "Fight night", "Storm season is here and we're ready for it. Are your fence posts? 07542 666563"),
+ ("10-employee-of-the-month", "Employee of the month", "Employee of the month. Again. Nobody else even got nominated. 07542 666563"),
+ ("11-pisa", "Pisa", "Pisa's been leaning for 800 years and people pay to see it. Nobody's paying to see yours. 07542 666563"),
+ ("12-recipe", "Nan's recipe", "Nan's recipe for a fence that lasts. Dig deep, concrete it in, don't skimp. Brew is not optional. 07542 666563"),
+ ("13-school-report", "School report", "Your fence's school report is in and it's not good. Must try harder. Or ring us. 07542 666563"),
+ ("14-storm-bingo", "Storm bingo", "How many have you ticked off this winter? Full house, give us a ring. 07542 666563"),
+ ("15-fence-o-scope", "Fence-o-scope", "The stars say a tall bearded stranger is going to fix your fence. The stars are right. 07542 666563"),
+ ("16-scratch-and-win", "Scratch and win", "Everyone's a winner. Match three, get a fence that stands up. 07542 666563"),
+ ("17-instagram-vs-reality", "Instagram vs reality", "Your fence on Instagram vs your fence in real life. We'll make them match. 07542 666563"),
+ ("18-instructions", "How to get a new fence", "Easiest flat pack you'll ever do. No Allen key, no swearing. 07542 666563"),
+ ("19-receipt", "The receipt", "What you actually get when you ring us. Peace, quiet, and a fence that lasts. 07542 666563"),
+ ("20-now-playing", "Now playing", "On repeat round Southampton this week. 07542 666563"),
+]
+STYLES = [
+ ("01-wanted", "Wanted", "Wanted: your old fence, dead or leaning. Reward: a new one that actually stands up. 07542 666563"),
+ ("02-fence-shocker", "Fence shocker", "Breaking news from Southampton. Local man can't walk past a wonky fence. Good news for you. 07542 666563"),
+ ("03-signing-of-the-season", "Signing of the season", "Signing of the season. Zero wonky fences, plenty of tea breaks. 07542 666563"),
+ ("04-missing", "Missing fence", "Missing: one garden fence. Last seen heading into next door's in the wind. If found, don't bother. Ring us. 07542 666563"),
+ ("05-pow", "Pow!", "Pow. Another fence sorted in Southampton. Who's next? 07542 666563"),
+ ("06-the-postfather", "The Postfather", "We're gonna make you a fence you can't refuse. 07542 666563"),
+ ("07-never-gonna", "Never gonna give you up", "Never gonna give you up. Never gonna let your fence down. 07542 666563"),
+ ("08-weather", "Fence weather", "Tonight: strong winds. Tomorrow: a 100% chance of us. If yours goes over, send us a photo. 07542 666563"),
+ ("09-swipe-right", "Swipe right", "Looking for something long term? Swipe right. 07542 666563"),
+ ("10-no-concrete-no-fence", "No concrete, no fence", "No pain, no gain. No concrete, no fence. Every post we put in is concreted. 07542 666563"),
+]
+QUEUE = []
+for a, b in zip(TWENTY, STYLES + [None] * 10):
+    QUEUE.append(("graphics/exports/twenty/" + a[0] + ".png", a[1], a[2]))
+    if b:
+        QUEUE.append(("graphics/exports/styles/" + b[0] + ".png", b[1], b[2]))
+
 plain = lambda s: s.replace("<br>", " ")
-rows = []
-for d, slug, w, y, tape, bg, prop, pose, extra, cap in sorted(POSTS, key=lambda p: p[0]):
-    if d == "storm":
-        continue
-    note = " *(check date)*" if "check" in extra else ""
-    rows.append(f"| {when(d)}{note} | **{plain(w)}** {plain(y)} | {cap} | `{d}-{slug}.png` |")
+D = datetime.date.fromisoformat
+slots = {}
+slots[D(START)] = ("graphics/exports/2026-11-15-sunday-roast.png", "Sunday roast? Your fence is toast.",
+                   "Sunday roast? Lovely. Shame about the fence, that's toast. Have a look out the window while the spuds are in. If it's leaning, give us a shout tomorrow. 07542 666563", "")
+for d, slug, w, y, tape, bg, prop, pose, extra, cap in POSTS:
+    if d != "storm":
+        slots[D(d)] = (f"graphics/exports/{d}-{slug}.png", f"{plain(w)} {plain(y)}", cap, " *(check date)*" if "check" in extra else "")
+# "Straighten up" says Monday morning, so it goes on a free Monday rather than a Wednesday.
+mon = next(q for q in QUEUE if "straighten-up" in q[0]); QUEUE.remove(mon)
+slots[D("2027-03-08")] = (*mon, "")
+skip = {D("2026-12-25"), D("2026-12-26"), D("2027-01-01")}
+day = D(START)
+while QUEUE:
+    if day.weekday() in (2, 4) and day not in slots and day not in skip:
+        f, t, c = QUEUE.pop(0)
+        slots[day] = (f, t, c, "")
+    day += datetime.timedelta(days=1)
+last_evergreen = day
 
-CAP = {p[1]: p[9] for p in POSTS}
-md = f"""# The Boundary Boys – marketing calendar
+rows = "\n".join(f"| {d.strftime('%a %-d %b %Y')}{n} | **{t}** | {c} | `{f}` |" for d, (f, t, c, n) in sorted(slots.items()))
+CAPS = {p[1]: p[9] for p in POSTS}
+md = f"""# The Boundary Boys – content calendar
 
-11 November 2026 to 5 November 2027. Every poster is made and sits in `graphics/exports/`, named by the date it posts.
+15 November 2026 to 5 November 2027. Every post below has a finished graphic and a caption, ready to go.
 
-## The rule for every poster
+## How to use it
 
-One gag, told in two lines. The **white line** is the line everyone already knows. The **yellow line** is the fence punchline. The tape underneath is just the name, the number and what you do.
+- **Post on the Boundary Boys page**, then share it to your personal profile.
+- **Every graphic** has a real fence, you from the waist up, the name, the number and the SB Media watermark.
+- **Hashtags for every post:** `#TheBoundaryBoys #Southampton #Fencing #FenceRepair`
+- **Files** are in the `marketing` folder. The path for each post is in the last column.
 
 ## The week
 
-| Day | Post |
-|---|---|
-| Monday | The poster from the table below. |
-| Wednesday | Real photos or video from that week's jobs: before and after, posts going into concrete, a gate latching. |
-| Friday | One of the yellow templates (`friday-*.png`): slots left, a review, now booking, or send us a photo. Some Fridays have their own poster in the table. |
+- **Up to {last_evergreen.strftime('%-d %B %Y')}:** a finished post every Monday, Wednesday and Friday, plus the odd extra on a special day.
+- **After that:** the Monday post is still ready every week or two. Wednesdays are for your own job photos, and Fridays use the yellow templates in `graphics/exports/` (`friday-*.png`), which you fill in Canva.
 
-**After a storm:** post `storm-blown-away.png` the next morning instead of whatever was planned. Caption: "{CAP['blown-away']}" In December use `storm-the-grinch-stole-christmas.png` instead. Caption: "{CAP['the-grinch-stole-christmas']}"
+## After a storm
 
-**December:** Christmas takes over. There is a Christmas poster every Monday, Wednesday and Friday from 30 November to Christmas Eve, so job photos move to Tuesdays and Thursdays. Fill in `friday-christmas-dates.png` with your last working day and your first day back, and post it around 14 December.
+The morning after a named storm, swap that day's post for:
 
-## Posters and captions
+- **Most of the year:** `graphics/exports/storm-blown-away.png`. Caption: "{CAPS['blown-away']}"
+- **In December:** `graphics/exports/storm-the-grinch-stole-christmas.png`. Caption: "{CAPS['the-grinch-stole-christmas']}"
 
-| Posts | Poster | Caption | File |
+Put £10–20 behind it for 48 hours.
+
+## Christmas dates
+
+Fill in `graphics/exports/friday-christmas-dates.png` with your last working day and your first day back, and post it around 14 December.
+
+## Every post
+
+| Date | Post | Caption | File |
 |---|---|---|---|
-{chr(10).join(rows)}
+{rows}
 
 ## Before you post
 
-- **Dates marked "check date"** follow TV shows whose 2027 dates are not announced yet (Eurovision, Love Island, Wimbledon, Bake Off, Strictly). Move the post to match.
-- **Claims to confirm:** free quotes, old fence taken away, posts concreted in, 6ft fencing, gravel boards, lockable side gates. Change any line that is not true for you.
-- **The white boxes** on three Friday templates are for you to fill in Canva: a number, a month, or a screenshot of a review.
+- **Dates marked "check date"** follow TV shows whose 2027 dates aren't announced yet (Eurovision, Love Island, Wimbledon, Bake Off, Strictly). Move them to match.
+- **Claims to confirm:** free quotes, old fence taken away, every post concreted in, 6ft fencing, gravel boards, lockable side gates. Change any line that isn't true for you.
+- **When your real photos arrive**, broken fences and finished jobs will replace the fence texture on every graphic.
 """
 (here.parent / "content-calendar.md").write_text(md)
-print(len(POSTS), "posters + 4 templates;", len(rows), "calendar rows")
+print(len(POSTS), "dated posters;", len(slots), "calendar rows; evergreen runs to", last_evergreen)
