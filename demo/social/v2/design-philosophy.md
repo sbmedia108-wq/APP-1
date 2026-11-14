@@ -1,0 +1,13 @@
+# Four Buttons
+
+*A design philosophy for Ask Mavis marketing.*
+
+Every home has one object everyone knows how to hold: the remote control. Under the arrows and numbers sit four coloured buttons, red, green, yellow and blue, each a promise that one press does one thing. Four Buttons takes those four colours and that promise. Each colour is a whole field, used flat and generously, never as a thin accent or a gradient wash. Each one means something: red warns, green confirms, yellow coaches, blue introduces. A viewer who sees three red posts in a row learns, without being told, that red means *be careful*.
+
+Form comes from the button itself: soft, thick, rubbery circles and rounded squares with real weight. Each one is lit from above, sits slightly proud of the surface, and looks as if it would give under a thumb. These buttons do the work that cards and boxes usually do: they hold a number, a symbol, a single word. There is one big tactile gesture per composition, and everything around it stays still and disciplined. The craft is in making a circle feel pressable: the exact softness of a highlight, how deep the shadow beneath it falls, and a border so slight it is felt rather than seen. Every one should be meticulously crafted, the product of painstaking attention.
+
+Type is one family, Atkinson Hyperlegible Next, drawn for readers with low vision, used from its lightest to its heaviest weight. Headlines are set huge, tight and left-aligned, in plain sentence case, with no word picked out in another colour. The weight of the type carries the emphasis, not decoration. Small text stays rare and sits on a clear baseline grid. Copy is a few plain words in a calm voice: what is wrong, what to do, nothing more. Every line has been reduced until nothing more can be taken away, the mark of a master-level hand.
+
+Space is generous and asymmetric. A composition is a field of colour, a headline anchored to the top-left margin, one tactile object placed where the eye lands next, and a quiet signature along the bottom edge. The signature is the Ask Mavis mark and the four buttons in a row, with the one that matches the post lit and the others dimmed. Margins are equal on every side. Elements never touch, crowd or overlap, and the alignment has been checked many times over.
+
+Real screens from the app appear as they are, held in a plain phone frame with no tilt for the sake of drama, because the product should be shown, not dressed up. The phone is evidence, not decoration. When the phone appears, it is the one big object and the buttons step back. The finished set should read as one hand at work: calibrated, consistent, unhurried. It should look like countless hours of quiet refinement by someone at the very top of the craft.

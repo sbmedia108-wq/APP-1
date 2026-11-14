@@ -1,0 +1,213 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600;800&display=swap">
+<style>
+/* Four Buttons: see design-philosophy.md */
+:root {
+  --red: #C8102E; --green: #0B7A3E; --yellow: #FFC72C; --blue: #1F5FBF;
+  --paper: #FFFFFF; --ink: #102A56;
+  --m: 80px; /* outer margin on every side */
+}
+* { box-sizing: border-box; margin: 0; }
+body { background: #9aa; display: grid; gap: 40px; padding: 20px; font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", sans-serif; }
+.a { position: relative; overflow: hidden; color: var(--paper); }
+.post { width: 1080px; height: 1350px; }
+.red { background: var(--red); } .green { background: var(--green); } .blue { background: var(--blue); }
+.yellow { background: var(--yellow); color: var(--ink); }
+
+h1 { position: absolute; left: var(--m); right: var(--m); top: var(--m); font-weight: 800; font-size: 104px; line-height: 0.98; letter-spacing: -2.5px; }
+.sub { position: absolute; left: var(--m); font-weight: 400; font-size: 42px; line-height: 1.25; letter-spacing: -0.3px; }
+
+/* the rubber button */
+.btn { --c: var(--paper); position: absolute; border-radius: 50%; display: grid; place-items: center;
+  background: radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--c), white 45%) 0%, var(--c) 46%, color-mix(in srgb, var(--c), black 12%) 100%);
+  box-shadow: 0 9px 0 color-mix(in srgb, var(--c), black 28%), 0 24px 34px rgba(0,0,0,.22), inset 0 -5px 9px rgba(0,0,0,.12), inset 0 4px 6px rgba(255,255,255,.4);
+  font-weight: 800; color: var(--ink); }
+.btn.r { --c: var(--red); color: #fff; } .btn.g { --c: var(--green); color: #fff; } .btn.y { --c: var(--yellow); } .btn.b { --c: var(--blue); color: #fff; }
+.btn.dim { opacity: .38; box-shadow: 0 6px 0 rgba(0,0,0,.18); }
+.pill { border-radius: 999px; }
+
+/* signature: mark on the left, the four buttons on the right with the post's colour lit */
+.sig { position: absolute; left: var(--m); right: var(--m); bottom: var(--m); height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.sig .mark { display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 38px; letter-spacing: -0.5px; }
+.sig .mark img { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+.sig .keys { display: flex; gap: 16px; padding: 12px 16px; border-radius: 999px; background: #13223F; box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+.sig .keys i { width: 36px; height: 36px; border-radius: 50%; display: block; opacity: .4;
+  box-shadow: inset 0 -3px 5px rgba(0,0,0,.18), inset 0 3px 4px rgba(255,255,255,.35); }
+.sig .keys i.on { opacity: 1; box-shadow: 0 0 0 4px rgba(255,255,255,.9), inset 0 -3px 5px rgba(0,0,0,.18), inset 0 3px 4px rgba(255,255,255,.35); }
+.yellow .sig .keys i.on { box-shadow: 0 0 0 4px #fff, inset 0 -3px 5px rgba(0,0,0,.18), inset 0 3px 4px rgba(255,255,255,.35); }
+.k-r { background: var(--red); } .k-g { background: #19A35A; } .k-y { background: var(--yellow); } .k-b { background: #3B7BE0; }
+
+/* phone: plain frame, upright */
+.phone { position: absolute; padding: 14px; border-radius: 58px; background: #1A1A1A; box-shadow: 0 30px 60px rgba(0,0,0,.28); }
+.phone img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 45px; }
+
+.bubble { position: absolute; background: var(--paper); color: var(--ink); border-radius: 40px; padding: 32px 38px; box-shadow: 0 20px 40px rgba(0,0,0,.18); }
+.bubble.tail-l::after { content: ""; position: absolute; left: 70px; bottom: -34px; border: 34px solid transparent; border-top-color: var(--paper); border-bottom: 0; border-left: 0; }
+.bubble small { display: block; font-size: 26px; font-weight: 600; color: #5a6b86; margin-bottom: 8px; }
+.note { position: absolute; font-size: 22px; font-weight: 400; opacity: .85; }
+
+.why { position: absolute; left: var(--m); right: var(--m); display: grid; gap: 22px; font-size: 38px; font-weight: 600; line-height: 1.2; }
+.why div { display: flex; align-items: center; gap: 24px; }
+.why .dot { position: relative; flex: none; width: 58px; height: 58px; font-size: 28px; }
+
+/* telly shapes */
+.tv { position: absolute; width: 430px; height: 300px; }
+.tv .scr { position: absolute; inset: 0 0 34px 0; border-radius: 34px; background: var(--paper); border: 14px solid #1E2A44; display: grid; place-items: center; padding: 20px 26px; text-align: center; font-size: 36px; font-weight: 800; line-height: 1.15; color: var(--ink); }
+.tv .stand { position: absolute; left: 50%; bottom: 0; width: 140px; height: 34px; margin-left: -70px; background: #1E2A44; border-radius: 0 0 14px 14px; clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); }
+</style></head><body>
+
+<!-- 1  Ring 159 (red: be careful) -->
+<section class="a post red" id="r1">
+  <h1>Bank on the phone? Hang up. Ring 159.</h1>
+  <p class="sub" style="top:430px;width:560px">It puts you through to your own bank, safely.</p>
+  <div class="btn" style="left:560px;top:640px;width:120px;height:120px;font-size:52px;--c:#fff">1</div>
+  <div class="btn" style="left:700px;top:640px;width:120px;height:120px;font-size:52px;opacity:.55">2</div>
+  <div class="btn" style="left:840px;top:640px;width:120px;height:120px;font-size:52px;opacity:.55">3</div>
+  <div class="btn" style="left:560px;top:790px;width:120px;height:120px;font-size:52px;opacity:.55">4</div>
+  <div class="btn" style="left:700px;top:790px;width:120px;height:120px;font-size:52px;--c:#fff">5</div>
+  <div class="btn" style="left:840px;top:790px;width:120px;height:120px;font-size:52px;opacity:.55">6</div>
+  <div class="btn" style="left:560px;top:940px;width:120px;height:120px;font-size:52px;opacity:.55">7</div>
+  <div class="btn" style="left:700px;top:940px;width:120px;height:120px;font-size:52px;opacity:.55">8</div>
+  <div class="btn" style="left:840px;top:940px;width:120px;height:120px;font-size:52px;--c:#fff">9</div>
+  <p class="sub" style="top:700px;width:420px;font-size:34px;opacity:.9">Real banks never mind you hanging up and ringing back.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r on"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 2  Parcel scam text (red) -->
+<section class="a post red" id="r2">
+  <h1>This text is a scam.</h1>
+  <div class="bubble tail-l" style="left:80px;top:330px;width:820px;font-size:40px;line-height:1.3"><small>Text message</small>Royal Mail: your parcel could not be delivered. Pay a £1.45 fee here: <span style="color:#1F5FBF;text-decoration:underline;white-space:nowrap">royalmail-redelivery.co</span></div>
+  <div class="why" style="top:700px">
+    <div><span class="btn dot">🚩</span>It asks for money for a parcel you weren't expecting</div>
+    <div><span class="btn dot">🚩</span>The web address isn't Royal Mail's</div>
+    <div><span class="btn dot">🚩</span>It rushes you to pay</div>
+  </div>
+  <div class="btn pill" style="left:80px;top:1010px;width:560px;height:110px;font-size:40px">Forward it to 7726</div>
+  <p class="note" style="left:680px;top:1045px;font-size:30px;width:320px">It's free. Then delete it.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r on"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 3  Netflix! (blue: the app) -->
+<section class="a post blue" id="r3">
+  <h1>Just say one word.</h1>
+  <div class="bubble tail-l" style="left:80px;top:270px;font-size:120px;font-weight:800;letter-spacing:-3px;padding:30px 46px">Netflix!</div>
+  <p class="sub" style="top:600px;width:440px">Mavis asks what's happening, with big buttons to tap.</p>
+  <div class="phone" style="left:580px;top:470px;width:420px;height:720px"><img src="netflix-picker.png" alt=""></div>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b on"></i></div></div>
+</section>
+
+<!-- 4  Things said to the telly (yellow: tips) -->
+<section class="a post yellow" id="r4">
+  <h1>Things said to the telly this week</h1>
+  <div class="tv" style="left:80px;top:400px"><div class="scr">“I haven't touched anything!”</div><div class="stand"></div></div>
+  <div class="tv" style="left:570px;top:400px"><div class="scr">“It's gone blue and says No Signal”</div><div class="stand"></div></div>
+  <div class="tv" style="left:80px;top:750px"><div class="scr">“Where's the Netflix gone?”</div><div class="stand"></div></div>
+  <div class="tv" style="left:570px;top:750px"><div class="scr">“Why is it talking over the programme?”</div><div class="stand"></div></div>
+  <p class="sub" style="top:1095px;width:920px;font-weight:600;font-size:38px">Ask Mavis has a guide for every one.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y on"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 5  Practice mode (green: you did it) -->
+<section class="a post green" id="r5">
+  <h1>Practise the big ordering screens at home.</h1>
+  <p class="sub" style="top:440px;width:440px">A coach shows you what to touch. No queue and no pressure.</p>
+  <div class="btn pill" style="left:80px;top:800px;width:400px;height:110px;font-size:38px">Touch to order</div>
+  <div class="phone" style="left:580px;top:420px;width:420px;height:780px"><img src="practice.png" alt=""></div>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g on"></i><i class="k-y"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 6  Features (blue) -->
+<section class="a post blue" id="r6">
+  <h1>Help you can actually follow.</h1>
+  <div class="why" style="top:340px;right:560px;gap:34px">
+    <div><span class="btn dot">🎤</span>Say what's wrong</div>
+    <div><span class="btn dot">🔍</span>Big writing</div>
+    <div><span class="btn dot">🔊</span>Read out loud</div>
+    <div><span class="btn dot">👣</span>One step at a time</div>
+    <div><span class="btn dot">🛡️</span>Scam warnings</div>
+  </div>
+  <div class="phone" style="left:580px;top:330px;width:420px;height:860px"><img src="tv-step.png" alt=""></div>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b on"></i></div></div>
+</section>
+
+<!-- 7  Hi Mum scam (red) -->
+<section class="a post red" id="r7">
+  <h1>A new number saying it's your son or daughter?</h1>
+  <div class="bubble" style="left:80px;top:440px;width:820px;font-size:42px;line-height:1.3;background:#DCF8C6;color:#1d3a24;border-radius:40px 40px 40px 10px"><small style="color:#4b6b4b">WhatsApp, unknown number</small>Hi Mum, I've broken my phone so this is my new number. Can you help me pay a bill today?</div>
+  <p class="sub" style="top:800px;width:900px;font-weight:600">Ring them on the number you already have. If it's really them, they'll answer.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r on"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 8  Coming soon (blue) -->
+<section class="a post blue" id="r8">
+  <img src="logo.png" alt="" style="position:absolute;left:80px;top:80px;width:200px;height:200px;border-radius:46px;box-shadow:0 20px 40px rgba(0,0,0,.25)">
+  <h1 style="top:340px;font-size:150px;letter-spacing:-4px">Ask Mavis</h1>
+  <p class="sub" style="top:520px;font-size:56px;font-weight:600">Coming soon to Android.</p>
+  <div class="btn r" style="left:80px;top:720px;width:190px;height:190px"></div>
+  <div class="btn g" style="left:316px;top:720px;width:190px;height:190px"></div>
+  <div class="btn y" style="left:552px;top:720px;width:190px;height:190px"></div>
+  <div class="btn" style="left:788px;top:720px;width:190px;height:190px;--c:#3B7BE0"></div>
+  <p class="sub" style="top:1000px;width:900px;font-size:38px">Free to download. Made in the UK. No adverts.</p>
+  <p class="sub" style="top:1170px;font-size:30px;opacity:.85">Follow along for simple tips and scam alerts.</p>
+</section>
+
+<!-- 9  Intro: say what's wrong (yellow) -->
+<section class="a post yellow" id="r9">
+  <h1>Say what's wrong. Mavis shows you how to fix it.</h1>
+  <p class="sub" style="top:460px;width:440px">One small step at a time, in big writing, read out loud.</p>
+  <div class="btn b" style="left:80px;top:760px;width:220px;height:220px;font-size:96px">🎤</div>
+  <div class="phone" style="left:580px;top:440px;width:420px;height:760px"><img src="home.png" alt=""></div>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y on"></i><i class="k-b"></i></div></div>
+</section>
+
+<!-- 10  LinkedIn: 1 in 3 (blue) -->
+<section class="a post blue" id="r10">
+  <h1>1 in 3 people over 65 can't do the basics online.</h1>
+  <div class="btn y" style="left:80px;top:560px;width:250px;height:250px"></div>
+  <div class="btn dim" style="left:380px;top:560px;width:250px;height:250px"></div>
+  <div class="btn dim" style="left:680px;top:560px;width:250px;height:250px"></div>
+  <p class="sub" style="top:900px;width:900px">Booking the GP, banking and paying for parking all expect it now. Ask Mavis helps, one step at a time.</p>
+  <p class="note" style="left:80px;top:1130px">Age UK estimates 4.7 million of the UK's 13.4 million people aged 65 and over.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b on"></i></div></div>
+</section>
+
+<!-- 11  LinkedIn: every grandchild knows this screen (blue) -->
+<section class="a post blue" id="r11">
+  <h1>Every grandchild knows this screen.</h1>
+  <div class="phone" style="left:300px;top:330px;width:480px;height:760px;padding:14px">
+    <div style="width:100%;height:100%;border-radius:45px;overflow:hidden;background:#24324F;position:relative">
+      <div style="position:absolute;left:0;right:0;top:40px;text-align:center;font-size:22px;font-weight:600;opacity:.85">Tuesday 10 November</div>
+      <div style="position:absolute;left:0;right:0;top:66px;text-align:center;font-size:110px;font-weight:300;letter-spacing:-3px">7:42</div>
+      <div style="position:absolute;left:18px;right:18px;top:230px;display:grid;gap:12px;color:#102A56">
+        <div style="background:#fff;border-radius:24px;padding:14px 18px"><div style="font-size:18px;font-weight:600;color:#5a6b86">Nan · now</div><div style="font-size:24px;font-weight:800;color:#C8102E">Missed call (3)</div></div>
+        <div style="background:#fff;border-radius:24px;padding:14px 18px"><div style="font-size:18px;font-weight:600;color:#5a6b86">Nan · 2m</div><div style="font-size:24px;font-weight:800">NETFLIX HAS GONE AGAIN</div></div>
+        <div style="background:#fff;border-radius:24px;padding:14px 18px"><div style="font-size:18px;font-weight:600;color:#5a6b86">Nan · 6m</div><div style="font-size:24px;font-weight:800">The telly says no signal. I haven't touched anything!!</div></div>
+        <div style="background:#fff;border-radius:24px;padding:14px 18px"><div style="font-size:18px;font-weight:600;color:#5a6b86">Nan · 11m</div><div style="font-size:24px;font-weight:800">Is this text from the bank real??</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="sub" style="top:1125px;font-weight:800;font-size:46px">Now she asks Mavis.</p>
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i class="k-r"></i><i class="k-g"></i><i class="k-y"></i><i class="k-b on"></i></div></div>
+</section>
+
+<!-- 12  Facebook cover 1640 x 924: everything in the middle 1200 x 560 -->
+<section class="a blue" id="cover" style="width:1640px;height:924px">
+  <img src="logo.png" alt="" style="position:absolute;left:220px;top:250px;width:120px;height:120px;border-radius:28px;box-shadow:0 14px 30px rgba(0,0,0,.25)">
+  <div style="position:absolute;left:220px;top:400px;font-weight:800;font-size:120px;letter-spacing:-3px;line-height:1">Ask Mavis</div>
+  <div style="position:absolute;left:220px;top:540px;font-size:44px;font-weight:400;width:700px;line-height:1.25">Say what's wrong. Get it fixed, one step at a time.</div>
+  <div class="btn r" style="left:1010px;top:330px;width:180px;height:180px"></div>
+  <div class="btn g" style="left:1220px;top:330px;width:180px;height:180px"></div>
+  <div class="btn y" style="left:1010px;top:540px;width:180px;height:180px"></div>
+  <div class="btn" style="left:1220px;top:540px;width:180px;height:180px;--c:#3B7BE0"></div>
+</section>
+
+<!-- 13  LinkedIn banner 1584 x 396: the profile photo covers the bottom left -->
+<section class="a blue" id="banner" style="width:1584px;height:396px">
+  <div style="position:absolute;left:520px;top:110px;font-weight:800;font-size:84px;letter-spacing:-2px;line-height:1">Ask Mavis</div>
+  <div style="position:absolute;left:520px;top:215px;font-size:34px;width:620px;line-height:1.25">Simple, voice-first tech help for older people. Made in the UK.</div>
+  <div class="btn r" style="left:1180px;top:138px;width:80px;height:80px"></div>
+  <div class="btn g" style="left:1280px;top:138px;width:80px;height:80px"></div>
+  <div class="btn y" style="left:1380px;top:138px;width:80px;height:80px"></div>
+  <div class="btn" style="left:1480px;top:138px;width:80px;height:80px;--c:#3B7BE0"></div>
+</section>
+</body></html>

@@ -1,0 +1,80 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600;800&display=swap">
+<style>
+/* A5 waitlist leaflet in the Four Buttons system. 154 x 216 mm = A5 plus 3 mm bleed. Text stays 11 mm in from the edge. */
+@page { size: 154mm 216mm; margin: 0; }
+:root { --red: #C8102E; --green: #0B7A3E; --yellow: #FFC72C; --blue: #1F5FBF; --ink: #102A56; }
+* { box-sizing: border-box; margin: 0; }
+html, body { margin: 0; font-family: "Atkinson Hyperlegible Next", sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 154mm; height: 216mm; position: relative; overflow: hidden; page-break-after: always; }
+.safe { position: absolute; left: 11mm; right: 11mm; top: 11mm; bottom: 11mm; }
+.btn { --c: #fff; border-radius: 50%; display: inline-grid; place-items: center; flex: none;
+  background: radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--c), white 45%) 0%, var(--c) 46%, color-mix(in srgb, var(--c), black 12%) 100%);
+  box-shadow: 0 1mm 0 color-mix(in srgb, var(--c), black 28%), 0 2.4mm 3.4mm rgba(0,0,0,.2), inset 0 -0.5mm 1mm rgba(0,0,0,.12), inset 0 0.4mm 0.6mm rgba(255,255,255,.4); }
+.r { --c: var(--red); } .g { --c: var(--green); } .y { --c: var(--yellow); } .b { --c: #3B7BE0; }
+
+/* front */
+.front { background: var(--blue); color: #fff; }
+.front .mark { display: flex; align-items: center; gap: 3mm; font-weight: 800; font-size: 14pt; }
+.front .mark img { width: 11mm; height: 11mm; border-radius: 2.6mm; }
+.front h1 { margin-top: 7mm; font-weight: 800; font-size: 38pt; line-height: 0.98; letter-spacing: -0.8pt; }
+.front .lead { margin-top: 5mm; font-size: 15pt; line-height: 1.3; width: 64mm; }
+.front .phone { position: absolute; right: 0; top: 56mm; width: 54mm; height: 108mm; padding: 1.4mm; border-radius: 6mm; background: #1A1A1A; box-shadow: 0 3mm 6mm rgba(0,0,0,.28); }
+.front .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 4.6mm; display: block; }
+.front .keys { position: absolute; left: 0; bottom: 0; display: flex; gap: 4mm; }
+.front .keys .btn { width: 15mm; height: 15mm; }
+.front .free { position: absolute; left: 0; bottom: 22mm; font-size: 13pt; font-weight: 600; line-height: 1.35; width: 62mm; }
+
+/* back */
+.back { background: #fff; color: var(--ink); }
+.back h2 { font-weight: 800; font-size: 21pt; line-height: 1.05; letter-spacing: -0.4pt; }
+.back .list { margin-top: 4mm; display: grid; gap: 2.6mm; }
+.back .list div { display: flex; align-items: center; gap: 3.5mm; font-size: 13pt; font-weight: 600; }
+.back .list .btn { width: 7mm; height: 7mm; }
+.back .scam { margin-top: 6mm; padding: 4mm 5mm; background: var(--red); color: #fff; border-radius: 4mm; font-size: 12.5pt; line-height: 1.3; }
+.back .scam b { font-weight: 800; }
+.back .steps { margin-top: 3.5mm; display: grid; gap: 3mm; }
+.back .step { display: flex; align-items: center; gap: 3.5mm; font-size: 13pt; line-height: 1.25; }
+.back .step .btn { width: 9mm; height: 9mm; font-weight: 800; font-size: 13pt; color: #fff; }
+.back .bottom { position: absolute; left: 0; right: 0; bottom: 0; display: flex; gap: 5mm; align-items: center; }
+.back .qr { flex: none; width: 26mm; height: 26mm; border: 0.6mm dashed #8a97ad; border-radius: 2mm; display: grid; place-items: center; text-align: center; font-size: 8.5pt; color: #5a6b86; padding: 2mm; }
+.back .web { font-size: 12pt; line-height: 1.35; }
+.back .web b { font-weight: 800; }
+</style></head><body>
+
+<section class="page front">
+  <div class="safe">
+    <div class="mark"><img src="logo.png" alt="">Ask Mavis</div>
+    <h1>Stuck with your phone or telly?</h1>
+    <p class="lead">Say what's wrong in your own words. Mavis shows you how to fix it, one step at a time, and reads it out loud.</p>
+    <div class="phone"><img src="tv-step.png" alt=""></div>
+    <p class="free">Free to download.<br>Made in the UK.<br>No adverts.</p>
+    <div class="keys"><span class="btn r"></span><span class="btn g"></span><span class="btn y"></span><span class="btn b"></span></div>
+  </div>
+</section>
+
+<section class="page back">
+  <div class="safe">
+    <h2>What Mavis helps with</h2>
+    <div class="list">
+      <div><span class="btn b"></span>The telly, Netflix and iPlayer</div>
+      <div><span class="btn b"></span>Your phone, WhatsApp and photos</div>
+      <div><span class="btn b"></span>Email, the internet and apps</div>
+      <div><span class="btn b"></span>The GP and repeat prescriptions</div>
+      <div><span class="btn b"></span>Banking and scams</div>
+      <div><span class="btn b"></span>Ordering screens and car parks</div>
+    </div>
+    <div class="scam"><b>Worried about a call or a text?</b> Hang up and ring 159 to reach your own bank safely.</div>
+    <h2 style="margin-top:7mm">Be one of the first</h2>
+    <div class="steps">
+      <div class="step"><span class="btn b">1</span><span>Point your phone's camera at the square code</span></div>
+      <div class="step"><span class="btn b">2</span><span>Leave your name and email</span></div>
+      <div class="step"><span class="btn b">3</span><span>We'll tell you the day it's ready</span></div>
+    </div>
+    <div class="bottom">
+      <div class="qr">QR code to your waitlist page</div>
+      <div class="web">No camera? Type this into your phone or computer:<br><b>[your website address]</b></div>
+    </div>
+  </div>
+</section>
+</body></html>
