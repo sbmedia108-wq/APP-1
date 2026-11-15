@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jarvis</string>
+    <string name="tile_label">Ask Jarvis</string>
+    <string name="accessibility_description">Lets Jarvis control your phone by voice: go home, go back, open recents and notifications, lock the screen, take screenshots, scroll, tap buttons by name and type text. Jarvis only acts when you give it a voice command and does not record or send screen content anywhere.</string>
+</resources>

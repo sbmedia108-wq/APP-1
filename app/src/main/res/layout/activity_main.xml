@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.3"
+            android:text="JARVIS"
+            android:textColor="@color/accent"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Ready"
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/micButton"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/mic_button"
+            android:contentDescription="Tap to talk"
+            android:padding="32dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_jarvis" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Tap to talk"
+            android:textColor="@color/muted" />
+
+        <TextView
+            android:id="@+id/transcript"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/card"
+            android:minHeight="72dp"
+            android:padding="14dp"
+            android:text="Say something like “open YouTube”, “call Mum”, “set a timer for 10 minutes” or “turn on the flashlight”."
+            android:textColor="@color/text"
+            android:textSize="15sp" />
+
+        <Switch
+            android:id="@+id/wakeSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Always listening — say “Jarvis …”"
+            android:textColor="@color/text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keeps running in the background with a notification, even with the app closed. Uses more battery."
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <Switch
+            android:id="@+id/muteSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Silence the listening beep"
+            android:textColor="@color/text"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="While waiting for “Jarvis”, notification and system sounds are muted so the mic doesn't beep every few seconds."
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="SETUP"
+            android:letterSpacing="0.2"
+            android:textColor="@color/accent"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="1. Grant permissions" />
+
+        <Button
+            android:id="@+id/btnAccessibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Turn on phone control (Accessibility)" />
+
+        <Button
+            android:id="@+id/btnWriteSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Allow brightness control" />
+
+        <Button
+            android:id="@+id/btnBattery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4. Don't let Android kill Jarvis (battery)" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Tip: add the “Ask Jarvis” tile to Quick Settings for one-swipe access. Android 13+: if Accessibility says “Restricted setting”, open App info → ⋮ → Allow restricted settings."
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="SMART MODE (OPTIONAL)"
+            android:letterSpacing="0.2"
+            android:textColor="@color/accent"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Built-in commands work offline. Add a Claude API key (console.anthropic.com) and Jarvis will also understand anything you say, chain actions, and answer questions."
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/apiKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="sk-ant-…"
+            android:inputType="textPassword"
+            android:textColor="@color/text"
+            android:textColorHint="@color/muted" />
+
+        <Button
+            android:id="@+id/btnSaveKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save key" />
+
+        <TextView
+            android:id="@+id/helpText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/card"
+            android:padding="14dp"
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>
