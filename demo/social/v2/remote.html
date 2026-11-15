@@ -1,0 +1,74 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600;800&display=swap">
+<style>
+/* "The remote, in plain words": Four Buttons system, yellow (a tip). 1080 x 1350. */
+:root { --red: #C8102E; --green: #0B7A3E; --yellow: #FFC72C; --blue: #1F5FBF; --ink: #102A56; --m: 80px; }
+* { box-sizing: border-box; margin: 0; }
+body { background: #999; font-family: "Atkinson Hyperlegible Next", sans-serif; padding: 20px; }
+#remote-post { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--yellow); color: var(--ink); }
+h1 { position: absolute; left: var(--m); right: var(--m); top: var(--m); font-weight: 800; font-size: 96px; line-height: 0.98; letter-spacing: -2.4px; }
+
+/* the remote */
+.remote { position: absolute; left: 110px; top: 330px; width: 260px; height: 860px; border-radius: 130px 130px 110px 110px;
+  background: linear-gradient(90deg, #1b2236 0%, #2a3350 18%, #2a3350 82%, #161c2d 100%);
+  box-shadow: 0 34px 60px rgba(16,42,86,.35), inset 0 2px 0 rgba(255,255,255,.12); }
+.k { position: absolute; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800;
+  background: radial-gradient(circle at 34% 28%, #6b7591 0%, #454f6b 50%, #333b55 100%);
+  box-shadow: 0 4px 0 #161c2d, inset 0 2px 3px rgba(255,255,255,.25); }
+.k.c { --c: #fff; background: radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--c), white 45%) 0%, var(--c) 50%, color-mix(in srgb, var(--c), black 15%) 100%); box-shadow: 0 4px 0 color-mix(in srgb, var(--c), black 40%), inset 0 2px 3px rgba(255,255,255,.35); }
+.ring { position: absolute; left: 40px; top: 300px; width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, transparent 0 52px, #3d4662 53px 88px, transparent 89px);
+  box-shadow: 0 4px 0 #161c2d; }
+.ring::before { content: "▲"; position: absolute; left: 0; right: 0; top: 10px; text-align: center; color: #c9cfdc; font-size: 20px; }
+.ring::after { content: "▼"; position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; color: #c9cfdc; font-size: 20px; }
+.ring i { position: absolute; top: 50%; margin-top: -13px; color: #c9cfdc; font-size: 20px; font-style: normal; }
+
+/* labels: a dot on the button, a line out to the words */
+.lab { position: absolute; left: 420px; right: var(--m); font-size: 34px; line-height: 1.15; font-weight: 800; }
+.lab span { display: block; font-weight: 400; font-size: 27px; margin-top: 4px; }
+.lead { position: absolute; height: 3px; background: var(--ink); }
+.lead::before { content: ""; position: absolute; left: -2px; top: -6px; width: 15px; height: 15px; border-radius: 50%; background: var(--ink); }
+
+.sig { position: absolute; left: var(--m); right: var(--m); bottom: var(--m); height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.sig .mark { display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 38px; letter-spacing: -0.5px; }
+.sig .mark img { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+.sig .keys { display: flex; gap: 16px; padding: 12px 16px; border-radius: 999px; background: #13223F; box-shadow: 0 6px 14px rgba(0,0,0,.18); }
+.sig .keys i { width: 36px; height: 36px; border-radius: 50%; display: block; opacity: .4; box-shadow: inset 0 -3px 5px rgba(0,0,0,.18), inset 0 3px 4px rgba(255,255,255,.35); }
+.sig .keys i.on { opacity: 1; box-shadow: 0 0 0 4px #fff, inset 0 -3px 5px rgba(0,0,0,.18), inset 0 3px 4px rgba(255,255,255,.35); }
+</style></head><body>
+<section id="remote-post">
+  <h1>What do half these buttons do?</h1>
+
+  <div class="remote" style="top:300px;height:870px">
+    <div class="k" style="left:46px;top:28px;width:64px;height:64px;font-size:22px;color:#c9cfdc">≡</div>
+    <div class="k c" style="--c:#C8102E;left:150px;top:28px;width:64px;height:64px;font-size:26px">⏻</div>
+    <div class="k" style="left:46px;top:128px;width:64px;height:64px;font-size:22px;color:#c9cfdc">i</div>
+    <div class="k" style="left:150px;top:128px;width:64px;height:64px;font-size:28px">⇥</div>
+    <div class="k" style="left:150px;top:218px;width:64px;height:64px;font-size:30px">⌂</div>
+    <div class="ring" style="top:300px"><i style="left:12px">◀</i><i style="right:12px">▶</i></div>
+    <div class="k" style="left:85px;top:345px;width:90px;height:90px;font-size:28px">OK</div>
+    <div class="k" style="left:46px;top:510px;width:64px;height:64px;font-size:22px;color:#c9cfdc">⏏</div>
+    <div class="k" style="left:150px;top:510px;width:64px;height:64px;font-size:30px">↶</div>
+    <div class="k c" style="--c:#C8102E;left:30px;top:610px;width:42px;height:42px"></div>
+    <div class="k c" style="--c:#19A35A;left:82px;top:610px;width:42px;height:42px"></div>
+    <div class="k c" style="--c:#FFC72C;left:134px;top:610px;width:42px;height:42px"></div>
+    <div class="k c" style="--c:#3B7BE0;left:186px;top:610px;width:42px;height:42px"></div>
+    <div class="k" style="left:46px;top:690px;width:64px;height:120px;border-radius:32px;font-size:26px;line-height:1.7;text-align:center">+<br>−</div>
+    <div class="k" style="left:150px;top:690px;width:64px;height:120px;border-radius:32px;font-size:22px;line-height:2;text-align:center">▲<br>▼</div>
+  </div>
+  <div class="lead" style="left:332px;top:359px;width:68px"></div>
+  <div class="lab" style="top:336px">The red one at the top<span>On and off</span></div>
+  <div class="lead" style="left:332px;top:459px;width:68px"></div>
+  <div class="lab" style="top:436px">The box with an arrow<span>Fixes “No Signal” (it’s called Source)</span></div>
+  <div class="lead" style="left:332px;top:549px;width:68px"></div>
+  <div class="lab" style="top:526px">The little house<span>Gets you to Netflix and iPlayer</span></div>
+  <div class="lead" style="left:340px;top:689px;width:60px"></div>
+  <div class="lab" style="top:666px">The ring of arrows<span>Move around, then press OK</span></div>
+  <div class="lead" style="left:332px;top:841px;width:68px"></div>
+  <div class="lab" style="top:818px">The curly arrow<span>Takes you back a step</span></div>
+  <div class="lead" style="left:346px;top:930px;width:54px"></div>
+  <div class="lab" style="top:907px">The four colours<span>You’ll hardly ever need them</span></div>
+
+  <div class="sig"><div class="mark"><img src="logo.png" alt="">Ask Mavis</div><div class="keys"><i style="background:#C8102E"></i><i style="background:#19A35A"></i><i class="on" style="background:#FFC72C"></i><i style="background:#3B7BE0"></i></div></div>
+</section>
+</body></html>
