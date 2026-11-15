@@ -1,159 +1,284 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-type="software" data-radius="round" data-ground="sky" data-buttons="arrow" data-motion>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ask Mavis – simple help with your phone and telly</title>
-<meta name="description" content="Ask Mavis is a UK phone app for anyone who gets stuck with technology. Just say what's wrong, and Mavis shows you how to fix it, one simple step at a time. Join the waitlist.">
-<meta property="og:title" content="Ask Mavis – just say what's wrong">
-<meta property="og:description" content="Simple, friendly help with your phone, tablet and telly, one step at a time. Join the waitlist for 3 months of Plus free.">
-<meta property="og:image" content="img/logo.png">
-<link rel="icon" href="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Merriweather:wght@700;900&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ask Mavis: tech help app for older people</title>
+<meta name="description" content="Say what's wrong with your phone, telly or tablet and Mavis talks you through the fix, one big step at a time. Free to download, made in the UK.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ask Mavis: tech help app for older people">
+<meta property="og:description" content="Say what's wrong and Mavis talks you through the fix, one big step at a time.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png" type="image/png">
+<meta name="theme-color" content="#ffffff">
+<!-- <link rel="canonical" href="https://[the Ask Mavis domain]/"> -->
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<style>:root {
+  --p-bg:#ffffff; --p-surface:#f3f6fb; --p-ink:#102a56; --p-muted:#4a5a78; --p-accent:#1f5fbf; --p-accent-ink:#ffffff; --p-action:#1f5fbf; --p-action-ink:#ffffff;
+  --p-inv-bg:#102a56; --p-inv-surface:#1f3861; --p-inv-ink:#ffffff; --p-inv-muted:#b4c0d3; --p-inv-accent:#ffffff; --p-inv-accent-ink:#102a56; --p-inv-action:#ffffff; --p-inv-action-ink:#102a56;
+  --font-display: "Atkinson Hyperlegible Next", system-ui, sans-serif; --font-text: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --display-weight:700; --display-tracking:-0.025em; --display-tracking-xl:-0.03em;
+}</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/marquee-row/moment.js">
 <style>
-  /*
-    ONE THING TO CHANGE: the waitlist form link.
-    Search this file for WAITLIST-LINK and replace both copies of
-    https://tally.so/r/YOUR-FORM with your own form's link.
-  */
-  :root {
-    --cream: #FDF6E8; --sun: #FFC845; --sun-soft: #FFE6A8; --ink: #2A2522; --brown: #5A4A3F;
-    --blue: #1F5FBF; --blue-dark: #174A96; --red: #B3261E; --red-soft: #FDECEA; --line: #E4D3B4; --green: #2E7D32;
+  /* larger reading sizes: the readers are mostly over 70 */
+  :root { --t-small: 16px; --t-body: 19px; --t-lead: 22px; }
+  /* the phone: the app's real screens in a plain handset frame */
+  .device { position: relative; width: 280px; height: 570px; padding: 8px; border-radius: 32px; background: #0d1830;
+    box-shadow: 0 30px 60px -20px rgba(16,42,86,.45), inset 0 0 0 1px rgba(255,255,255,.08); flex: none; }
+  .device img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 24px; }
+  .phone-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; background: var(--ground-bg); }
+  .hero__media.phone-frame { background: var(--ground-bg); }
+  #how .panel { --p-h: 336px; position: relative; overflow: hidden; background: var(--ground-bg); border-radius: var(--r-lg); height: 336px; }
+  #how .panel .device { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); width: 240px; height: 490px; }
+  .frame-phone { position: relative; overflow: hidden; border-radius: var(--r-lg); background: var(--ground-bg); aspect-ratio: 5 / 4; }
+  .frame-phone .device { position: absolute; left: 50%; top: 56px; transform: translateX(-50%); }
+  #scams .frame-phone { background: #c8102e; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+  .facts li { padding-left: 28px; position: relative; }
+  .facts li::before { content: ""; position: absolute; left: 0; top: .45em; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+  .cats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--s-4) var(--gutter); }
+  .cats li { border-top: 1px solid var(--line); padding-top: var(--s-3); font-weight: 500; }
+  .cats li span { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    #how .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    #how .grid > * { grid-column: auto; }
+    #how .panel { height: 300px; }
+    #how .panel .device { width: 190px; height: 388px; top: 28px; border-radius: 26px; }
+    .frame-phone { aspect-ratio: auto; height: 440px; }
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Atkinson Hyperlegible", Arial, sans-serif; font-size: 21px; line-height: 1.5; }
-  a { color: var(--blue); }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  header { padding: 18px 0; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 24px; color: var(--brown); text-decoration: none; }
-  .brand img { width: 48px; height: 48px; border-radius: 12px; }
-  h1, h2 { font-family: Merriweather, Georgia, serif; font-weight: 900; line-height: 1.15; margin: 0 0 16px; }
-  h1 { font-size: clamp(36px, 7vw, 56px); }
-  h1 .blue { color: var(--blue); }
-  h2 { font-size: clamp(28px, 5vw, 38px); }
-  .hero { background: radial-gradient(70% 90% at 80% 60%, var(--sun-soft) 0%, var(--cream) 70%); padding: 24px 0 48px; }
-  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
-  .lead { font-size: 24px; margin: 0 0 24px; }
-  .btn { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font-weight: 700; font-size: 24px; padding: 18px 30px; border-radius: 16px; box-shadow: 0 4px 0 var(--blue-dark); }
-  .btn:hover, .btn:focus-visible { background: var(--blue-dark); }
-  .btn:focus-visible { outline: 4px solid var(--sun); outline-offset: 3px; }
-  .small { font-size: 18px; color: var(--brown); margin-top: 14px; }
-  .phone { justify-self: center; width: min(280px, 70vw); padding: 10px; border-radius: 36px; background: #3B3B3B; }
-  .phone img { display: block; width: 100%; border-radius: 28px; }
-  .trust { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 22px; font-weight: 700; font-size: 19px; }
-  .trust span::before { content: "✔ "; color: var(--green); }
-  section { padding: 48px 0; }
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
-  .step { background: #fff; border: 2px solid var(--line); border-radius: 20px; padding: 22px; }
-  .step .n { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; font-family: Merriweather, serif; font-size: 26px; margin-bottom: 12px; }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .tile { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px 18px; font-weight: 700; display: flex; gap: 12px; align-items: center; }
-  .tile span { font-size: 32px; }
-  .band { background: var(--sun-soft); }
-  .offer { background: #fff; border: 3px solid var(--sun); border-radius: 24px; padding: 28px; text-align: center; }
-  .offer .big { font-family: Merriweather, serif; font-weight: 900; font-size: clamp(26px, 4.5vw, 34px); margin: 0 0 8px; }
-  .scam { background: var(--red-soft); border: 3px solid var(--red); border-radius: 20px; padding: 22px; }
-  .scam strong { color: var(--red); }
-  details { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px 20px; margin-bottom: 12px; }
-  summary { font-weight: 700; cursor: pointer; }
-  footer { background: var(--blue); color: #fff; padding: 28px 0; font-size: 18px; }
-  footer a { color: #fff; }
-  @media (max-width: 760px) {
-    body { font-size: 20px; }
-    .hero-grid, .steps, .tiles { grid-template-columns: 1fr; }
-    .phone { order: -1; width: min(220px, 60vw); }
-    .btn { display: block; text-align: center; }
+  @media (max-width: 639px) { #how { --hm: 2; }
+    #help .cats { display: none; }
+    #faq .muted { display: none; } }
+  @media (max-width: 359px) { header.nav .nav__bar > .nav__actions { display: none; } header.nav .nav__bar > .nav__toggle { margin-left: auto; } }
+  @media (max-width: 1023px) { .cats { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 639px) {
+    .cats { grid-template-columns: 1fr; }
+    #how .panel { height: 280px; }
+    .frame-phone { aspect-ratio: 1 / 1; }
+    .frame-phone .device { top: 32px; width: 240px; height: 490px; }
   }
 </style>
 </head>
 <body>
-
-<header class="wrap">
-  <a class="brand" href="#top" id="top"><img src="img/logo.png" alt="">Ask Mavis</a>
+<!-- type: software (an Android app; site-kind software)
+     deal: hero split, nav nav-centre, close close-type, footer footer-statement, rhythm space, buttons arrow, mark: the client's own logo, ground sky
+     moments: marquee-row in #help (the real problems people bring, sliding past)
+     palette: the client's own Four Buttons colours through start.mjs brand (ink #102A56, blue #1F5FBF), Atkinson Hyperlegible Next for its readers
+     effects and CSS grounds waived: the readers are older people, so the page stays still and plain apart from the moment and the hover layer -->
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top"><img src="img/logo.png" alt="" width="36" height="36" style="border-radius:10px">Ask Mavis</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#help">Help <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <div class="menu-col span-3"><p class="t-label">At home</p><a href="#help">The telly<span>No Signal, Netflix, iPlayer</span></a><a href="#help">Phone and tablet<span>WhatsApp, photos, calls</span></a></div>
+            <div class="menu-col span-3"><p class="t-label">Out and about</p><a href="#practice">Ordering screens<span>Practise one at home</span></a><a href="#help">Parking and trains<span>Apps and ticket machines</span></a></div>
+            <div class="menu-col span-3"><p class="t-label">Staying safe</p><a href="#scams">Scam check<span>Texts, calls and emails</span></a><a href="#help">Banking<span>Apps and card readers</span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#how">How it works</a></div>
+      <div class="nav__item"><a class="nav__link" href="#scams">Scams</a></div>
+      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#join">Join the waitlist</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
 </header>
 
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Stuck with your phone or telly?<br><span class="blue">Ask Mavis.</span></h1>
-      <p class="lead">Just say what's wrong in your own words. Mavis shows you how to fix it, one simple step at a time, and reads it out loud.</p>
-      <!-- WAITLIST-LINK (1 of 2) -->
-      <a class="btn" href="https://tally.so/r/YOUR-FORM">Join the waitlist</a>
-      <p class="small">Coming soon to Android phones and tablets. The first 500 people get <b>3 months of Plus free</b>.</p>
-      <div class="trust"><span>Made in the UK</span><span>No adverts</span><span>No jargon</span></div>
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <h1 id="hero-h">Tech help app for older people</h1>
+        <p class="hero__lead">Say what's wrong in your own words. Mavis shows you the fix one big step at a time and reads each step out loud.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#join">Join the waitlist<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="#how">See how it works</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>Guides</dt><dd>156 fixes</dd></div>
+          <div><dt>Price</dt><dd>Free to download</dd></div>
+          <div><dt>Made in</dt><dd>Southampton, UK</dd></div>
+        </dl>
+      </div>
+      <div class="hero__media phone-frame span-6 start-7">
+        <div class="phone-stage">
+          <div class="device" role="img" aria-label="Ask Mavis on a phone, showing step 2 of fixing No Signal on the telly: press the Source button">
+            <img src="img/tv-step.jpg" alt="" fetchpriority="high" data-source="client" data-subject="the Ask Mavis app">
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="help" aria-labelledby="help-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="help-h">Help with the telly, the phone and the shops. <span class="muted">Ask the way you'd ask a grandchild.</span></h2>
+      </div>
+      <div data-moment="marquee-row" data-moment-opts='{"speed": 36}'>
+        <ul class="mo-mq__track"><li>The telly says No Signal</li><li>Netflix won't load</li><li>Open a photo in an email</li><li>Book a GP appointment</li><li>A text about a parcel</li><li>Send a WhatsApp voice note</li><li>The screen in the burger bar</li><li>Pay for parking</li><li>Make the writing bigger</li><li>Video call the family</li></ul>
+      </div>
+      <ul class="cats" style="margin-top: var(--s-8)">
+        <li>The telly<span>Channels, Netflix, iPlayer, the remote</span></li>
+        <li>Phone and tablet<span>Calls, WhatsApp, photos, Wi-Fi</span></li>
+        <li>Email and the internet<span>Attachments, passwords, sign-ins</span></li>
+        <li>Health<span>The NHS App and repeat prescriptions</span></li>
+        <li>Money<span>Banking apps and spotting scams</span></li>
+        <li>Out and about<span>Ordering screens, parking, trains</span></li>
+      </ul>
     </div>
-    <div class="phone"><img src="img/tv-step.jpg" alt="The Ask Mavis app showing step 1 of 4 for fixing the TV, in big clear writing"></div>
-  </div>
-</div>
+  </section>
 
-<section>
-  <div class="wrap">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step"><span class="n" aria-hidden="true">1</span>Tap the big blue button and say what's wrong, like <i>"the telly's got no sound"</i>.</div>
-      <div class="step"><span class="n" aria-hidden="true">2</span>Mavis shows one small step at a time, in big writing, and reads it out loud.</div>
-      <div class="step"><span class="n" aria-hidden="true">3</span>Tap <b>Done</b> when you're ready for the next step. No rush, and no one watching.</div>
+  <section class="section" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="how-h">Fix it in 3 steps</h2></div>
+      <div class="grid">
+        <article class="card card--row card--open span-4">
+          <span class="step-num">1</span>
+          <h3>Tell Mavis what's wrong</h3>
+          <p>Press the big button and talk. No typing.</p>
+          <div class="panel"><div class="device" role="img" aria-label="The Ask Mavis home screen with one large Talk to Mavis button"><img src="img/home.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+        </article>
+        <article class="card card--row card--open span-4">
+          <span class="step-num">2</span>
+          <h3>Pick the closest help guide</h3>
+          <p>If Mavis isn't sure, she asks you to choose.</p>
+          <div class="panel"><div class="device" role="img" aria-label="Ask Mavis asking which Netflix problem it is, with four large choices"><img src="img/netflix-picker.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+        </article>
+        <article class="card card--row card--open span-4">
+          <span class="step-num">3</span>
+          <h3>Follow one step at a time</h3>
+          <p>Big writing, read aloud, with a Back button.</p>
+          <div class="panel"><div class="device" role="img" aria-label="One step of a guide, in large writing with Next and Back buttons"><img src="img/tv-step.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="band">
-  <div class="wrap">
-    <h2>What Mavis helps with</h2>
-    <div class="tiles">
-      <div class="tile"><span aria-hidden="true">📺</span>The telly and Netflix</div>
-      <div class="tile"><span aria-hidden="true">📱</span>Your phone or tablet</div>
-      <div class="tile"><span aria-hidden="true">💬</span>WhatsApp and photos</div>
-      <div class="tile"><span aria-hidden="true">🩺</span>The GP and prescriptions</div>
-      <div class="tile"><span aria-hidden="true">🏦</span>Banking and scams</div>
-      <div class="tile"><span aria-hidden="true">🍔</span>Ordering screens and parking</div>
+  <section class="section" id="scams" aria-labelledby="scams-h">
+    <div class="wrap grid">
+      <div class="span-5 stack-5">
+        <h2 id="scams-h">Check a scam text with Mavis</h2>
+        <p class="t-lead">Tell Mavis what the message says. She points out the warning signs and tells you what to do next.</p>
+        <ul class="facts">
+          <li>Ring 159 to reach your own bank safely</li>
+          <li>Never share a code sent by text</li>
+          <li>Works for calls, texts and emails</li>
+        </ul>
+        <a class="link" href="#faq">Read the questions</a>
+      </div>
+      <div class="span-6 start-7">
+        <div class="frame-phone"><div class="device" role="img" aria-label="The Ask Mavis scam check, warning never to give codes or bank details to anyone who contacted you"><img src="img/scam.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+      </div>
     </div>
-    <p class="small">There's also a practice mode, so you can try a takeaway ordering screen at home with no queue, and a little brain teaser every day.</p>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="scam"><strong>Worried about a call or a text?</strong> Mavis can check a message for warning signs. And if anyone says they're from your bank, hang up and ring <strong>159</strong> to reach your bank safely.</div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>For sons and daughters</h2>
-    <p>Fed up being the family IT department? Ask Mavis gives Mum and Dad help they can actually use, any time of day, so they can do it themselves. You can add your name and number, so a big "Call" button is there if they still need you.</p>
-  </div>
-</section>
-
-<section class="band" id="join">
-  <div class="wrap">
-    <div class="offer">
-      <p class="big">Be one of the first</p>
-      <p>Leave your name and email and we'll let you know the day Ask Mavis is ready. The first 500 people get 3 months of Ask Mavis Plus free.</p>
-      <!-- WAITLIST-LINK (2 of 2) -->
-      <a class="btn" href="https://tally.so/r/YOUR-FORM">Join the waitlist</a>
-      <p class="small">Signing up for someone else? That's lovely. Just put your own email in, and we'll tell you when it's ready to set up for them.</p>
+  <section class="section ground-inverse" id="practice" aria-labelledby="practice-h">
+    <div class="wrap grid">
+      <div class="span-5 stack-5">
+        <h2 id="practice-h">Practise the ordering screen in the app</h2>
+        <p class="t-lead">A pretend touch screen like the ones in burger bars, to try with no queue behind you.</p>
+        <ul class="facts">
+          <li>Order a meal and pay by card, for pretend</li>
+          <li>Try it as often as you like</li>
+          <li>Fireworks when you get it right</li>
+        </ul>
+      </div>
+      <div class="span-6 start-7">
+        <div class="frame-phone"><div class="device" role="img" aria-label="A pretend ordering screen with burgers, chicken, sides and drinks to try"><img src="img/practice.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <h2>Questions</h2>
-    <details><summary>Is Mavis a real person?</summary><p>No. Mavis is a friendly computer helper with a familiar name. She'll never pretend to be a person, and she'll never ask for your passwords, bank details or codes.</p></details>
-    <details><summary>How much will it cost?</summary><p>Ask Mavis is free to download, and all the built-in guides and scam warnings are free for good. Ask Mavis Plus, for unlimited "ask anything" help, will be £3.99 a month or £34.99 a year.</p></details>
-    <details><summary>Does it work on iPhone?</summary><p>Not at first. Ask Mavis is starting on Android phones and tablets. iPhone will follow, so join the waitlist and we'll tell you when.</p></details>
-    <details><summary>What do you do with my email?</summary><p>We only use it to tell you about Ask Mavis, and you can leave the list at any time. We never sell it or share it. See our <a href="privacy.html">privacy notice</a>.</p></details>
-  </div>
-</section>
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap grid">
+      <div class="span-5 stack-4">
+        <h2 id="faq-h">Questions</h2>
+        <p class="muted">Something else on your mind? Write to us.</p>
+        <a class="link" href="mailto:hello@askmavis.example">Email Ask Mavis</a>
+      </div>
+      <div class="faq span-6 start-7">
+        <div class="faq__item"><h3>Is Mavis a real person?</h3><p>No. Mavis is the app's name. She works from guides we wrote and checked, and never asks for bank details.</p></div>
+        <div class="faq__item"><h3>How much does the app cost?</h3><p>Free to download, with every guide. A Plus plan is planned at £3.99 a month.</p></div>
+        <div class="faq__item"><h3>Does the app work on an iPhone?</h3><p>Not yet. Android phones and tablets come first, iPhone after.</p></div>
+        <div class="faq__item"><h3>Does Mavis need the internet?</h3><p>The guides work without it. Talking to Mavis works best on Wi-Fi or mobile data.</p></div>
+      </div>
+    </div>
+  </section>
 
-<footer>
+  <section class="section" id="join" aria-labelledby="join-h">
+    <div class="wrap grid">
+      <div class="span-5 stack-5">
+        <h2 id="join-h">Be first to get the app</h2>
+        <p class="t-lead">Leave your name and email. We'll write once, on the day Ask Mavis is ready.</p>
+        <!-- the form service: paste the Tally or Formspree address into data-endpoint and action -->
+        <form class="form" action="mailto:hello@askmavis.example" method="post" enctype="text/plain" data-endpoint="" data-sent="You're on the waitlist. We'll email you the day it's ready." novalidate>
+          <div class="field"><label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" hidden>Write your first name.</p></div>
+          <div class="field"><label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" hidden>Write an email address with an @, like name@example.com.</p></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Join the waitlist</button></div>
+          <p class="form__status" role="status" data-form-status></p>
+        </form>
+        <p class="t-small">Signing up for someone else? Use your own email and pass it on.</p>
+      </div>
+      <div class="span-6 start-7">
+        <div class="frame-phone"><div class="device" role="img" aria-label="The All the help screen in Ask Mavis: the TV, 18 guides; phone or tablet basics, 25 guides; calls and contacts, 15 guides"><img src="img/browse.jpg" alt="" loading="lazy" data-source="client" data-subject="the Ask Mavis app"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--statement" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <p style="margin:0 0 8px"><b>Ask Mavis</b> · Made in the UK · <a href="privacy.html">Privacy</a></p>
-    <p style="margin:0">Questions? Email <a href="mailto:hello@example.com">hello@example.com</a></p>
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Join the Ask Mavis waitlist</h2>
+        <p>Free to download. Android first.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="#join">Join the waitlist<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><img src="img/logo.png" alt="" width="36" height="36" style="border-radius:10px">Ask Mavis</a>
+          <p class="footer__lede">Tech help for older people, made in Southampton.</p>
+        </div>
+        <div class="span-2 start-7 footer__col"><h3>The app</h3><ul><li><a href="#help">Help</a></li><li><a href="#how">How it works</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Extras</h3><ul><li><a href="#scams">Scam check</a></li><li><a href="#practice">Practice</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Talk to us</h3><ul><li><a href="#faq">Questions</a></li><li><a href="mailto:hello@askmavis.example">Email</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Ask Mavis &nbsp; <a href="privacy.html">Privacy</a></span>
+      </div>
+    </div>
   </div>
 </footer>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
 </body>
 </html>
