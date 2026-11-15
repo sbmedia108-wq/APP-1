@@ -34,4 +34,6 @@ node build.mjs /path/to/APP-1 --still    # one picture per scene, to check the l
 
 `ask-mavis-reel-7-showcase-lily-voice.mp4` is the same showcase video read by "Lily" (bf_lily), another British voice from the same Kokoro-82M model (Apache-2.0). To record any script with her, add the voice name: `python3 tts.py scripts.json wav bf_lily`, with `bf_lily.pt` in `pack/kokoro-voices/`.
 
+For recording a different voice over the showcase video, use `ask-mavis-reel-7-showcase-no-captions-music-only.mp4` (no captions, no voice, backing track kept) or `ask-mavis-reel-7-showcase-no-captions-silent.mp4` (no sound at all). The lines and their timings are in `showcase-script.md`. To make these again, run the build with `NOCAPS=1 NOVOICE=1` set.
+
 The showcase video (`promo_showcase` in `videos.mjs`) also uses `music.wav`, a simple backing track made by `source/make_music.py`. It is generated from scratch, so there is no licence to worry about.

@@ -29,15 +29,18 @@ for (const [name, v] of Object.entries(videos)) {
       "atempo=0.94", dst]);
     const dur = parseFloat(sh("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", dst]));
     sc.start = t;
-    audio.push({ file: dst, at: t + LEAD, vol: 1 });
+    if (!process.env.NOVOICE) audio.push({ file: dst, at: t + LEAD, vol: 1 });
+    sc.voiceAt = t + LEAD; sc.voiceLen = dur;
     for (const [s, d] of sc.sfx || []) audio.push({ file: `${REPO}/app/assets/sounds/${s}.wav`, at: t + d, vol: 0.3 });
     t += LEAD + dur + (sc.hold || 0) + (i === v.scenes.length - 1 ? TAIL : GAP);
   }
   const total = t, frames = Math.round(total * FPS);
+  if (process.env.TIMES) console.log(JSON.stringify(v.scenes.map((s) => [s.key, +s.voiceAt.toFixed(2), +s.voiceLen.toFixed(2)])), total.toFixed(2));
   if (v.music) audio.unshift({ file: `${HERE}/${v.music}`, at: 0, vol: 0.14, fade: true });
 
   // 2. the page
   const html = `<!doctype html><meta charset="utf-8"><title>${v.title}</title><link rel="stylesheet" href="common.css"><body>
+${process.env.NOCAPS ? "<style>.cap{display:none}</style>" : ""}
 ${v.scenes.map((sc) => sc.html.replace("$S", sc.start.toFixed(3))).join("\n")}</body>`;
   fs.writeFileSync(`${HERE}/${name}.html`, html);
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
