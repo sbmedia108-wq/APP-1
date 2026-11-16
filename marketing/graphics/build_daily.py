@@ -3,7 +3,8 @@
 Usage: python3 build_daily.py && node render.js daily.html
 """
 import pathlib
-from build_twenty import me, fence, foot, wm, CSS
+from build_twenty import me, fence, foot, wm, CSS, RATIO
+RATIO["bond"] = 809 / 1430
 
 here = pathlib.Path(__file__).parent
 stars = "".join(f'<path d="M{x} {y} l6 14 15 2 -11 10 3 15 -13 -8 -13 8 3 -15 -11 -10 15 -2 z" fill="{c}" stroke="#111" stroke-width="3"/>'
@@ -21,9 +22,22 @@ P = [("2026-11-14-big-night", "background:repeating-conic-gradient(from 0deg at 
 {wm("right:24px;top:24px", dark=True)}
 {foot("fk", "Hangover cure: a new fence · Southampton")}""")]
 
+P.append(("2026-11-16-the-names-post", "background:radial-gradient(60% 45% at 50% 62%,#5a4518 0%,#1a1406 55%,#050403 100%)", f"""
+<div class="abs" style="inset:22px 22px 172px;border:2px solid #c9a24a;z-index:3;pointer-events:none"></div>
+<div class="t" style="top:52px;font:600 26px Oswald;letter-spacing:14px;color:#c9a24a">THE BOUNDARY BOYS PRESENT</div>
+<div class="t" style="top:92px;font:900 104px/1 'Playfair Display';color:#fff;letter-spacing:1px">THE NAME'S POST.</div>
+<div class="t" style="top:204px;font:900 142px/1 'Playfair Display';color:#e2b85a;letter-spacing:2px;text-shadow:0 4px 30px rgba(226,184,90,.35)">FENCE POST.</div>
+<div class="t" style="top:368px;font:600 38px Oswald;letter-spacing:16px;color:#fff">LICENSED TO DRILL</div>
+<div class="abs" style="left:390px;width:300px;top:428px;height:2px;background:#c9a24a;z-index:5"></div>
+<div class="t" style="top:446px;font:700 34px 'Playfair Display';font-style:italic;color:#e2b85a">Shaken by the wind? Not ours.</div>
+{fence(0, 900, 1080, 300, z=2, extra="filter:brightness(.62) sepia(.25)")}
+{me("bond", 250, 580, bottom=1200, z=4, show=.66)}
+{wm("right:40px;top:1060px")}
+<div class="foot" style="background:#050403;color:#e2b85a;border-top:4px solid #c9a24a"><b>The Boundary Boys · 07542 666563</b><i style="color:#fff">Fencing · Gates · Repairs · Southampton</i></div>"""))
+
 html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – daily posts</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,900;1,700&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
 {"".join(f'<div class="p" id="{i}" style="{bg}">{body}</div>' for i, bg, body in P)}
 <script>document.fonts.ready.then(()=>document.body.dataset.ready='1')</script>
