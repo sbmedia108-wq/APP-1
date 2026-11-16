@@ -1,0 +1,33 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Atkinson+Hyperlegible+Next:wght@600;800&display=swap">
+<style>
+* { box-sizing:border-box; margin:0; }
+body { background:#999; padding:20px; }
+#post { width:1080px; height:1350px; position:relative; overflow:hidden; background:#08321c; font-family:"Atkinson Hyperlegible Next", sans-serif; }
+/* the photo: everything above its own title band */
+.photo { position:absolute; left:0; top:0; width:1080px; height:1350px; background:url(me-jungle-clean.png) 0 0 / 1080px 1350px no-repeat;
+  clip-path: inset(0 0 322px 0); }
+/* the Ask Mavis tile sits where the old corner logo was */
+.tile { position:absolute; left:34px; top:38px; width:150px; height:150px; border-radius:22px; background:#fff; display:grid; place-items:center; box-shadow:0 10px 24px rgba(0,0,0,.35); }
+.tile img { width:118px; height:118px; border-radius:18px; }
+/* the new title band, with a torn top edge */
+.band { position:absolute; left:0; right:0; bottom:0; height:330px;
+  background: radial-gradient(90% 120% at 50% 0%, #1e5a33 0%, #0c3a20 55%, #062413 100%);
+  clip-path: polygon(0 26px, 6% 12px, 12% 30px, 19% 8px, 27% 24px, 34% 6px, 41% 22px, 49% 4px, 56% 20px, 63% 8px, 71% 26px, 78% 10px, 86% 24px, 93% 6px, 100% 20px, 100% 100%, 0 100%); }
+.band::before { content:""; position:absolute; inset:0; background: repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 2px, transparent 2px 9px); }
+.title { position:absolute; left:40px; right:40px; bottom:72px; text-align:center; font-family:"Anton", sans-serif; text-transform:uppercase; line-height:.95; }
+.l1, .l2 { display:block; background: linear-gradient(180deg, #fff6d0 0%, #ffd75a 38%, #e0a21a 62%, #fff0b0 100%); -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter: drop-shadow(0 4px 0 #4a3200) drop-shadow(0 10px 18px rgba(0,0,0,.6)); }
+.l1 { font-size:104px; letter-spacing:1px; }
+.l2 { font-size:72px; letter-spacing:1px; margin-top:10px; }
+.under { position:absolute; left:0; right:0; bottom:26px; text-align:center; color:#d9e8dc; font-weight:600; font-size:24px; letter-spacing:3px; text-transform:uppercase; }
+.under b { color:#FFC72C; font-weight:800; }
+</style></head><body>
+<section id="post">
+  <div class="photo"></div>
+  <div class="tile"><img src="logo.png" alt=""></div>
+  <div class="band"></div>
+  <div class="title"><span class="l1">I'm building Ask Mavis</span><span class="l2">Get me out of this settings menu!</span></div>
+  <p class="under">Tech help for older people · <b>Coming soon</b></p>
+</section>
+</body></html>
