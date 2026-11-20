@@ -1,0 +1,118 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap"><style>
+:root { --red:#C8102E; --m:80px; }
+* { box-sizing:border-box; margin:0; }
+body { background:#999; padding:20px; font-family:"Atkinson Hyperlegible Next", sans-serif; display:flex; gap:20px; flex-wrap:wrap; }
+.slide { width:1080px; height:1920px; position:relative; overflow:hidden; background:#0b0f1a; color:#fff; }
+.glow { position:absolute; left:50%; width:1100px; height:1100px; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(200,16,46,.34) 0%, transparent 62%); }
+.kick { position:absolute; left:var(--m); top:200px; display:inline-block; background:var(--red); color:#fff; font-weight:800; font-size:30px; letter-spacing:2px; text-transform:uppercase; padding:10px 22px; border-radius:999px; }
+h1 { position:absolute; left:var(--m); right:160px; top:290px; font-weight:800; font-size:92px; line-height:1; letter-spacing:-2.4px; }
+h1 em { font-style:normal; color:#ff4d63; }
+/* phone */
+.phone { position:absolute; left:190px; width:580px; border-radius:80px; background:#1b2030; padding:14px; box-shadow:0 40px 80px rgba(0,0,0,.6), inset 0 0 0 2px rgba(255,255,255,.12), inset 0 0 0 7px #10131d; }
+.screen { position:relative; height:100%; border-radius:66px; background:#fff; color:#111; overflow:hidden; display:flex; flex-direction:column; }
+.island { position:absolute; left:50%; top:16px; width:150px; height:42px; border-radius:22px; background:#000; transform:translateX(-50%); }
+.status { display:flex; justify-content:space-between; align-items:center; padding:24px 44px 0; font-size:22px; font-weight:800; height:68px; }
+.bars { display:flex; gap:3px; align-items:flex-end; } .bars i { width:5px; background:#111; border-radius:1px; }
+.ic { display:flex; gap:8px; align-items:center; }
+.batt { width:32px; height:16px; border:2px solid #111; border-radius:5px; position:relative; } .batt::after { content:""; position:absolute; inset:2px; right:8px; background:#111; border-radius:1px; }
+.head { text-align:center; padding:10px 24px 18px; border-bottom:1px solid #e6e7ec; background:#f7f7f9; position:relative; }
+.back { position:absolute; left:24px; top:38px; color:#1f5fbf; font-size:40px; font-weight:600; }
+.av { width:68px; height:68px; border-radius:50%; background:#b9bdc8; margin:0 auto 8px; display:grid; place-items:center; color:#fff; font-weight:800; font-size:30px; }
+.head b { font-size:23px; }
+.thread { flex:1; padding:18px 22px; }
+.time { text-align:center; font-size:18px; color:#8a8f99; margin:4px 0 16px; }
+.bubble { background:#e9e9eb; border-radius:28px 28px 28px 8px; padding:20px 24px; font-size:31px; line-height:1.38; width:94%; }
+.bubble u { color:#1f5fbf; text-decoration-thickness:2px; white-space:nowrap; }
+.n { display:inline-grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--red); color:#fff; font-size:19px; font-weight:800; vertical-align:4px; }
+.hl { background:#ffe27a; border-radius:6px; padding:0 4px; box-shadow:0 0 0 3px #ffe27a; }
+.dim .bubble, .dim .head b { color:#9a9ea8; } .dim .bubble u { color:#9fb3d8; }
+.dim .hl { color:#111; } .dim .hl u { color:#1f5fbf; }
+.mine { margin:20px 0 0 auto; width:fit-content; background:#1f7bf2; color:#fff; border-radius:28px 28px 8px 28px; padding:16px 24px; font-size:30px; }
+.read { text-align:right; font-size:17px; color:#8a8f99; margin-top:6px; }
+.mavis { margin-top:20px; margin-left:auto; width:90%; display:flex; gap:14px; align-items:flex-start; background:#fff; border:4px solid var(--red); border-radius:26px; padding:18px 20px; font-size:29px; line-height:1.32; color:#102A56; box-shadow:0 8px 20px rgba(200,16,46,.18); }
+.mavis img { width:56px; height:56px; border-radius:12px; flex:none; }
+.mavis b { color:var(--red); }
+.input { display:flex; align-items:center; gap:12px; padding:14px 22px 40px; }
+.input span { flex:1; height:56px; border:2px solid #d4d6dc; border-radius:28px; padding:0 22px; display:flex; align-items:center; color:#a0a4ad; font-size:22px; }
+.input i { width:46px; height:46px; border-radius:50%; background:#d4d6dc; flex:none; }
+.homebar { position:absolute; left:50%; bottom:10px; width:180px; height:6px; border-radius:3px; background:#111; transform:translateX(-50%); }
+/* a phone cut by a fade at its foot */
+.fade { position:absolute; left:0; right:0; height:260px; background:linear-gradient(180deg, rgba(11,15,26,0) 0%, #0b0f1a 85%); }
+/* cards */
+.cards { position:absolute; left:var(--m); right:160px; display:grid; gap:26px; }
+.card { display:flex; gap:24px; align-items:flex-start; background:#161c2d; border:2px solid rgba(255,255,255,.1); border-radius:30px; padding:28px 30px; }
+.card .big { flex:none; width:64px; height:64px; border-radius:50%; background:var(--red); display:grid; place-items:center; font-weight:800; font-size:34px; box-shadow:0 5px 0 #7a0a1c; }
+.card b { display:block; font-size:40px; font-weight:800; letter-spacing:-.5px; }
+.card p { font-size:31px; line-height:1.32; color:#d0d5e0; margin-top:6px; }
+.foot { position:absolute; left:var(--m); right:160px; font-size:40px; line-height:1.25; font-weight:600; color:#d8dce6; }
+.foot b { color:#fff; font-weight:800; }
+.mark { position:absolute; left:var(--m); display:flex; align-items:center; gap:20px; font-weight:800; font-size:44px; }
+.mark img { width:84px; height:84px; border-radius:20px; }
+.list { position:absolute; left:var(--m); right:160px; top:470px; display:grid; gap:24px; }
+.list div { display:flex; gap:26px; align-items:center; background:#161c2d; border:2px solid rgba(255,255,255,.1); border-radius:30px; padding:30px 32px; font-size:40px; font-weight:800; line-height:1.2; }
+.list div span { font-weight:400; display:block; font-size:30px; color:#d0d5e0; margin-top:6px; }
+.list .k { flex:none; width:72px; height:72px; border-radius:50%; display:grid; place-items:center; font-size:36px; background:radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--c), white 40%) 0%, var(--c) 50%, color-mix(in srgb, var(--c), black 15%) 100%); box-shadow:0 5px 0 color-mix(in srgb, var(--c), black 40%); }
+.pill { display:inline-block; background:var(--red); color:#fff; padding:0 12px; border-radius:10px; }
+</style></head><body>
+<section class="slide" id="s1"><div class="glow" style="top:1100px"></div>
+<span class="kick">Black Friday week</span>
+<h1>This text could land on your phone <em>this week.</em></h1>
+<div class="phone " style="top:600px;height:680px"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>18:42</span><span class="ic"><span class="bars"><i style="height:6px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:18px"></i></span><span class="batt"></span></span></div>
+  <div class="head"><span class="back">&lsaquo;</span><div class="av">?</div><b>+44 7488 000000</b></div>
+  <div class="thread"><p class="time">Text Message &middot; Today 18:42</p><div class="bubble">Your parcel could not be delivered. A&nbsp;&pound;1.45&nbsp;redelivery&nbsp;fee is due within&nbsp;24&nbsp;hours or it will be returned. Pay&nbsp;now: <u>parcel-redeliver-uk.info</u></div></div>
+  <div class="input"><span>Text Message</span><i></i></div><div class="homebar"></div>
+</div></div>
+<p class="foot" style="top:1340px">Can you spot the <b>4 warning signs?</b> Swipe &rarr;</p>
+</section>
+<section class="slide" id="s2"><div class="glow" style="top:800px"></div>
+<span class="kick">Warning signs 1 and 2</span>
+<h1>It <em>looks</em> harmless.</h1>
+<div class="phone dim" style="top:430px;height:700px"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>18:42</span><span class="ic"><span class="bars"><i style="height:6px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:18px"></i></span><span class="batt"></span></span></div>
+  <div class="head"><span class="back">&lsaquo;</span><div class="av">?</div><b><span class="hl">+44 7488 000000</span>&nbsp;<span class="n">1</span></b></div>
+  <div class="thread"><p class="time">Text Message &middot; Today 18:42</p><div class="bubble">Your parcel could not be delivered. A&nbsp;<span class="hl">&pound;1.45&nbsp;redelivery&nbsp;fee</span>&nbsp;<span class="n">2</span> is due within&nbsp;24&nbsp;hours or it will be returned. Pay&nbsp;now: <u>parcel-redeliver-uk.info</u></div></div>
+  <div class="input"><span>Text Message</span><i></i></div><div class="homebar"></div>
+</div></div>
+<div class="fade" style="top:900px"></div>
+<div class="cards" style="top:1010px"><div class="card"><span class="big">1</span><div><b>A random mobile</b><p>Delivery firms usually text from their own name, not an ordinary 07 number.</p></div></div><div class="card"><span class="big">2</span><div><b>A tiny fee</b><p>&pound;1.45 feels too small to worry about. That's the trick: they want your card details.</p></div></div></div>
+</section>
+<section class="slide" id="s3"><div class="glow" style="top:800px"></div>
+<span class="kick">Warning signs 3 and 4</span>
+<h1>Then it <em>rushes</em> you.</h1>
+<div class="phone dim" style="top:430px;height:700px"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>18:42</span><span class="ic"><span class="bars"><i style="height:6px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:18px"></i></span><span class="batt"></span></span></div>
+  <div class="head"><span class="back">&lsaquo;</span><div class="av">?</div><b>+44 7488 000000</b></div>
+  <div class="thread"><p class="time">Text Message &middot; Today 18:42</p><div class="bubble">Your parcel could not be delivered. A&nbsp;&pound;1.45&nbsp;redelivery&nbsp;fee is due <span class="hl">within&nbsp;24&nbsp;hours</span>&nbsp;<span class="n">3</span> or it will be returned. Pay&nbsp;now: <span class="hl"><u>parcel-redeliver-uk.info</u></span>&nbsp;<span class="n">4</span></div></div>
+  <div class="input"><span>Text Message</span><i></i></div><div class="homebar"></div>
+</div></div>
+<div class="fade" style="top:900px"></div>
+<div class="cards" style="top:1010px"><div class="card"><span class="big">3</span><div><b>&ldquo;Within 24 hours&rdquo;</b><p>A deadline is there to stop you thinking it through.</p></div></div><div class="card"><span class="big">4</span><div><b>A strange link</b><p>It isn't royalmail.com or evri.com. Never tap a link in a text like this.</p></div></div></div>
+</section>
+<section class="slide" id="s4"><div class="glow" style="top:1100px"></div>
+<span class="kick" style="background:#1F5FBF">Not sure?</span>
+<h1>Ask <em style="color:#FFC72C">Mavis.</em></h1>
+<div class="phone " style="top:470px;height:1000px"><div class="screen">
+  <div class="island"></div>
+  <div class="status"><span>18:42</span><span class="ic"><span class="bars"><i style="height:6px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:18px"></i></span><span class="batt"></span></span></div>
+  <div class="head"><span class="back">&lsaquo;</span><div class="av">?</div><b>+44 7488 000000</b></div>
+  <div class="thread"><p class="time">Text Message &middot; Today 18:42</p><div class="bubble">Your parcel could not be delivered. A&nbsp;&pound;1.45&nbsp;redelivery&nbsp;fee is due within&nbsp;24&nbsp;hours or it will be returned. Pay&nbsp;now: <u>parcel-redeliver-uk.info</u></div><div class="mine">Mavis, is this real?</div><p class="read">Read</p><div class="mavis"><img src="logo.png" alt=""><span><b>That's a scam.</b> Don't tap the link. Delete it and carry on with your day.</span></div></div>
+  <div class="input"><span>Text Message</span><i></i></div><div class="homebar"></div>
+</div></div>
+</section>
+<section class="slide" id="s5"><div class="glow" style="top:900px"></div>
+<span class="kick" style="background:#0B7A3E">If you get one</span>
+<h1>What to do</h1>
+<div class="list">
+  <div><span class="k" style="--c:#C8102E">1</span><p>Don't tap the link<span>Not even to check it.</span></p></div>
+  <div><span class="k" style="--c:#0B7A3E">2</span><p>Forward it to <span class="pill" style="display:inline;font-size:40px;color:#fff;margin:0">7726</span><span>It's free and reports it to your network.</span></p></div>
+  <div><span class="k" style="--c:#FFC72C">3</span><p>Delete it<span>Then carry on with your day.</span></p></div>
+  <div><span class="k" style="--c:#1F5FBF">4</span><p>Worried about your bank?<span>Hang up and ring 159 to reach your own bank safely.</span></p></div>
+</div>
+<div class="mark" style="top:1250px"><img src="logo.png" alt="">Ask Mavis</div>
+<p class="foot" style="top:1360px;font-size:34px">Tech help for older people. <b>Coming soon.</b> Follow for more.</p>
+</section>
+</body></html>
