@@ -32,8 +32,12 @@ h1 em { font-style:normal; color:var(--yellow); }
   background: linear-gradient(180deg, #ffd770, #e9ab24); box-shadow:0 8px 18px rgba(0,0,0,.25); }
 .rim::after { content:""; position:absolute; left:50%; top:0; bottom:0; width:84px; margin-left:-42px; background:linear-gradient(90deg,#174c9c,var(--blue) 40%,#2b6fd6 60%,#174c9c); }
 
-/* the tag: the Mavis icon, big, on a string from the ribbon */
-.string { position:absolute; z-index:4; left:582px; top:870px; height:3px; background:#e9eef8; transform-origin:left center; }
+/* the tag: the Mavis icon, big, tied on with curled ribbon from a knot on the box's ribbon */
+.twine { position:absolute; inset:0; z-index:4; pointer-events:none; overflow:visible; }
+.tie { position:absolute; left:540px; top:846px; width:120px; height:64px; margin-left:-60px; z-index:3; filter:drop-shadow(0 4px 4px rgba(0,0,0,.3)); }
+.tie i { position:absolute; top:4px; width:58px; height:42px; border-radius:50%; border:11px solid #4f93f2; box-shadow: inset 0 0 0 2px #174c9c, 0 0 0 2px #174c9c; }
+.tie i:first-child { left:-6px; transform:rotate(-18deg); } .tie i:nth-child(2) { right:-6px; transform:rotate(18deg); }
+.tie b { position:absolute; left:50%; top:16px; width:30px; height:30px; margin-left:-15px; border:2px solid #174c9c; background:#4f93f2 !important; border-radius:8px; background:#174c9c; box-shadow: inset 0 3px 0 rgba(255,255,255,.2); }
 .tag { position:absolute; left:700px; top:880px; width:270px; padding:20px 20px 22px; border-radius:30px; background:#fff; color:var(--ink); text-align:center;
   transform:rotate(7deg); box-shadow:0 24px 44px rgba(0,0,0,.45); }
 .tag::before { content:""; position:absolute; left:50%; top:12px; width:18px; height:18px; margin-left:-9px; border-radius:50%; background:#0a1c42; box-shadow: inset 0 0 0 4px #c9d2e3; }
@@ -70,8 +74,22 @@ h1 em { font-style:normal; color:var(--yellow); }
   <div class="rim"></div>
   <div class="box"></div>
   <div class="tag"><img src="logo.png" alt=""><b>Ask Mavis</b><span>Help, one step at a time</span></div>
-  <div class="string"></div>
+  <div class="tie"><i></i><i></i><b></b></div>
+  <svg class="twine" viewBox="0 0 1080 1350" aria-hidden="true"><path id="tw-shadow" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="7" stroke-linecap="round"/><path id="tw" fill="none" stroke="#2b6fd6" stroke-width="5" stroke-linecap="round"/><path id="tw-hi" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.6" stroke-linecap="round"/></svg>
   <p class="foot"><b>Free tech help app for older people.</b> Coming soon to Android.</p>
 </section>
-<script>addEventListener("load",()=>{const t=document.querySelector(".tag").getBoundingClientRect(),r=document.querySelector("#xmas").getBoundingClientRect(),s=document.querySelector(".string");const hx=t.left+t.width/2-r.left+14, hy=t.top-r.top+34, x0=582,y0=871;const dx=hx-x0,dy=hy-y0;s.style.width=Math.hypot(dx,dy)+"px";s.style.transform="rotate("+Math.atan2(dy,dx)+"rad)";})</script>
+<script>addEventListener("load",()=>{
+  const sec=document.querySelector("#xmas").getBoundingClientRect(), hole=document.querySelector(".tag").getBoundingClientRect();
+  // the tag is turned 7deg: its hole sits a little right of the box's centre line
+  const hx=hole.left+hole.width/2-sec.left+14, hy=hole.top-sec.top+34;
+  const x0=548, y0=878;
+  // a loose ribbon: out of the knot, a curl, a soft sag, then up and through the hole
+  const d=`M${x0} ${y0}
+    C ${x0+30} ${y0+40}, ${x0+70} ${y0+46}, ${x0+66} ${y0+16}
+    C ${x0+62} ${y0-10}, ${x0+34} ${y0+6}, ${x0+52} ${y0+34}
+    C ${x0+74} ${y0+72}, ${hx-150} ${hy+40}, ${hx-60} ${hy-2}
+    C ${hx-36} ${hy-12}, ${hx-12} ${hy-10}, ${hx} ${hy}`;
+  for (const id of ["tw-shadow","tw","tw-hi"]) document.getElementById(id).setAttribute("d", d);
+  document.getElementById("tw-shadow").setAttribute("transform","translate(2 5)");
+});</script>
 </body></html>
