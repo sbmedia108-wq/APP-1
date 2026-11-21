@@ -1,0 +1,27 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Scam Watch: a "payment declined" text with the name spelt wrong, and a magnifying glass on the trick. Red warns. */
+.from { position:absolute; left:var(--m); top:276px; font-size:24px; color:#ffd5db; font-weight:600; }
+.big { position:absolute; left:var(--m); right:var(--m); top:316px; background:#eeeef1; color:#16181d; border-radius:44px 44px 44px 12px; padding:40px 46px; font-size:44px; line-height:1.3;
+  box-shadow: 0 14px 0 #d2c3c7, 0 30px 50px rgba(60,0,10,.35); }
+.big u { color:#1f5fbf; text-decoration-thickness:3px; }
+.big .pin { width:40px; height:40px; font-size:22px; vertical-align:6px; }
+.lens { position:absolute; left:100px; top:688px; width:262px; height:262px; }
+.glass { position:absolute; inset:0; border-radius:50%; overflow:hidden; background:#f4f4f7;
+  box-shadow: 0 0 0 16px #23262e, 0 0 0 19px #4a4f5b, 0 30px 50px rgba(0,0,0,.45), inset 0 0 40px rgba(0,0,0,.18); }
+.glass span { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:56px; font-weight:600; letter-spacing:0; color:#16181d; white-space:nowrap; }
+.glass span b { color:var(--red); text-decoration:underline; text-decoration-thickness:6px; text-underline-offset:8px; font-weight:800; }
+.glass::after { content:""; position:absolute; inset:0; border-radius:50%; background:linear-gradient(140deg, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 70%, rgba(255,255,255,.2) 100%); }
+.handle { position:absolute; left:226px; top:232px; width:42px; height:110px; border-radius:23px; background:linear-gradient(90deg, #15171c, #3d424d 45%, #15171c); transform:rotate(-40deg); transform-origin:top center; box-shadow:0 20px 30px rgba(0,0,0,.4); }
+.tags { position:absolute; left:470px; right:var(--m); top:694px; display:flex; flex-direction:column; align-items:flex-start; gap:20px; }
+.tags .tag { font-size:27px; padding:12px 22px 12px 12px; } .tags .tag i { width:40px; height:40px; font-size:21px; }
+</style></head><body>
+<section id="post" class="f-red">
+  <h1 class="m">&ldquo;Payment declined.&rdquo; Read the name&nbsp;twice.</h1>
+  <p class="from">Text message from 07451&nbsp;982330</p>
+  <div class="big chk">NETFLlX <span class="pin">1</span>: your payment was declined. Your account will be suspended <b>today</b> <span class="pin">2</span>. Update your details at <u class="nw">netflix-billing-help.com</u>&nbsp;<span class="pin">3</span></div>
+  <div class="lens"><div class="handle"></div><div class="glass"><span>NETF<b>l</b>IX</span></div></div>
+  <div class="tags chk"><span class="tag"><i>1</i>A small L, not an i</span><span class="tag"><i>2</i>&ldquo;Today&rdquo;</span><span class="tag"><i>3</i>Not netflix.com</span></div>
+  <div class="say chk" style="left:var(--m); top:1036px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:28px; padding:20px 26px"><b>Open the app yourself.</b> If there really is a problem, it&rsquo;ll tell you&nbsp;there.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Scam Watch, every Tuesday</span></div></div><div class="keys"><i class="on"></i><i></i><i></i><i></i></div></div>
+</section></body></html>

@@ -1,0 +1,31 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feel-good Friday: real badges from the app, as real medals on ribbons in the remote's colours. */
+.lead { top:262px; font-size:32px; color:#dbe4f5; }
+.lead b { color:#fff; }
+.grid { position:absolute; left:var(--m); right:var(--m); top:350px; display:grid; grid-template-columns:repeat(3, 1fr); gap:30px 20px; }
+.med { display:flex; flex-direction:column; align-items:center; }
+.rib { width:110px; height:64px; position:relative; }
+.rib::before, .rib::after { content:""; position:absolute; top:0; width:50px; height:76px; background:var(--c); box-shadow: inset -8px 0 10px rgba(0,0,0,.18); }
+.rib::before { left:6px; transform:skewX(14deg); } .rib::after { right:6px; transform:skewX(-14deg); background:var(--c2); }
+.coin { width:142px; height:142px; margin-top:-12px; border-radius:50%; position:relative; z-index:1; display:grid; place-items:center; font-size:64px;
+  background: radial-gradient(circle at 35% 30%, #fff3c0 0%, #ffd75a 30%, #e8a81b 70%, #b77a0a 100%);
+  box-shadow: inset 0 0 0 10px rgba(255,255,255,.25), inset 0 0 0 12px rgba(150,95,0,.35), inset 0 -10px 18px rgba(120,70,0,.4), 0 18px 30px rgba(0,0,0,.45); }
+.coin::after { content:""; position:absolute; left:22%; top:12%; width:40%; height:22%; border-radius:50%; background:radial-gradient(closest-side, rgba(255,255,255,.7), rgba(255,255,255,0)); }
+.med b { margin-top:14px; font-size:27px; font-weight:800; }
+.med span { font-size:21px; color:#b9c8e6; margin-top:2px; text-align:center; }
+</style></head><body>
+<section id="post" class="f-ink">
+  <h1 class="m">Which badge would you earn&nbsp;first?</h1>
+  <p class="lead chk"><b>47 badges and 7 levels,</b> from Getting started to Tech&nbsp;legend.</p>
+  <div class="grid chk">
+    <div class="med"><div class="rib" style="--c:#3B7BE0; --c2:#2a62bd"></div><div class="coin">📺</div><b>Telly tamer</b><span>Fix a TV problem</span></div>
+    <div class="med"><div class="rib" style="--c:#19A35A; --c2:#0f7f45"></div><div class="coin">💬</div><b>Keeping in touch</b><span>Sort out WhatsApp</span></div>
+    <div class="med"><div class="rib" style="--c:#E0233F; --c2:#b3142d"></div><div class="coin">🛡️</div><b>Scam spotter</b><span>Spot 5 scams</span></div>
+    <div class="med"><div class="rib" style="--c:#FFC72C; --c2:#e0a810"></div><div class="coin">📷</div><b>Snap happy</b><span>Sort out photos</span></div>
+    <div class="med"><div class="rib" style="--c:#3B7BE0; --c2:#2a62bd"></div><div class="coin">🍔</div><b>First order</b><span>Finish a practice order</span></div>
+    <div class="med"><div class="rib" style="--c:#19A35A; --c2:#0f7f45"></div><div class="coin">🤝</div><b>Old friend</b><span>Use Ask Mavis on 30&nbsp;days</span></div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:990px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:28px; padding:20px 26px"><b>Tell us in the comments.</b> Mine&rsquo;s Telly tamer. I&rsquo;ve heard a lot about that&nbsp;remote.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Every fix counts</span></div></div><div class="keys"><i></i><i class="on"></i><i></i><i></i></div></div>
+</section></body></html>

@@ -1,0 +1,43 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Plain-English word of the week (Christmas Eve): network key. The back of a router with its sticker. Green. */
+.kicker { color:#cfeedd; } .kicker i { background:#19A35A; }
+h1 { top:136px; font-size:120px; letter-spacing:-4px; line-height:.95; }
+.def { position:absolute; left:var(--m); top:290px; width:920px; font-size:36px; line-height:1.3; }
+.def b { font-weight:800; }
+.back { position:absolute; left:var(--m); right:var(--m); top:430px; height:440px; border-radius:30px; padding:34px;
+  background: linear-gradient(#f5f6f8, #dfe3e8); box-shadow: inset 0 3px 0 #fff, inset 0 -8px 16px rgba(0,0,0,.08), 0 14px 0 #9fb2a6, 0 34px 50px rgba(0,30,10,.45); }
+.ports { position:absolute; left:34px; right:34px; bottom:30px; display:flex; gap:18px; align-items:flex-end; }
+.ports div { display:flex; flex-direction:column; align-items:center; gap:8px; font-size:14px; font-weight:800; color:#7b8591; letter-spacing:1px; }
+.ports i { display:block; width:62px; height:50px; border-radius:6px; background:#2b3038; box-shadow: inset 0 6px 8px rgba(0,0,0,.6), 0 1px 0 #fff; }
+.ports i.y { background:#3b3f47; box-shadow: inset 0 0 0 4px #FFC72C, inset 0 6px 8px rgba(0,0,0,.6); }
+.ports i.p { width:34px; height:34px; border-radius:50%; }
+.ports i.b { width:26px; height:26px; border-radius:50%; background:#c4c9d0; box-shadow: inset 0 -3px 4px rgba(0,0,0,.25); }
+.sticker { position:absolute; left:34px; right:34px; top:34px; height:250px; border-radius:12px; background:#fff; color:#1b2030; padding:22px 26px; transform:rotate(-1deg);
+  box-shadow: 0 2px 6px rgba(0,0,0,.18); display:grid; grid-template-columns:1fr 160px; gap:0 20px; }
+.sticker .r { font-size:22px; color:#5d6470; margin-bottom:4px; }
+.sticker .v { font-size:36px; font-weight:800; letter-spacing:.5px; margin-bottom:16px; }
+.sticker .v.hl { background:#fff1b8; box-shadow:0 0 0 6px #fff1b8; border-radius:4px; display:inline-block; }
+.qr { width:168px; height:168px; align-self:center; display:grid; grid-template-columns:repeat(21, 1fr); padding:6px; background:#fff; }
+.qr i { display:block; }
+.qr i.k { background:#1b2030; }
+</style></head><body>
+<section id="post" class="f-green">
+  <div class="kicker"><i></i>Plain-English word of the week</div>
+  <h1>Network key</h1>
+  <p class="def chk"><b>It&rsquo;s just the Wi-Fi password.</b> Look for the sticker on the back of the&nbsp;router.</p>
+  <div class="back chk">
+    <div class="sticker"><div>
+      <div class="r">Wi-Fi name (SSID)</div><div class="v">HOME-4K2T</div>
+      <div class="r">Wi-Fi password (network key)</div><div class="v hl">7fQm-29xR-k8Lp</div></div>
+      <div class="qr" id="qr"></div></div>
+    <div class="ports"><div><i class="p"></i>POWER</div><div><i class="b"></i>RESET</div><div><i class="y"></i>WAN</div><div><i></i>LAN 1</div><div><i></i>LAN 2</div><div><i></i>LAN 3</div></div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:960px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:28px; padding:20px 26px"><b>Visitors after the Wi-Fi tomorrow?</b> Snap a photo of the sticker and you&rsquo;ll always have&nbsp;it.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Tech words, made plain</span></div></div><div class="keys"><i></i><i class="on"></i><i></i><i></i></div></div>
+</section><script>
+// a believable QR code: three finder squares and seeded random modules
+const q = document.getElementById('qr'); let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+const finder = (r, c) => { for (const [R, C] of [[0,0],[0,14],[14,0]]) { const y = r - R, x = c - C; if (y >= 0 && y < 7 && x >= 0 && x < 7) return (y === 0 || y === 6 || x === 0 || x === 6 || (y > 1 && y < 5 && x > 1 && x < 5)) ? 1 : 0; if (y >= -1 && y <= 7 && x >= -1 && x <= 7) return 0; } return null; };
+for (let r = 0; r < 21; r++) for (let c = 0; c < 21; c++) { const f = finder(r, c); const i = document.createElement('i'); if (f === 1 || (f === null && rnd() > .52)) i.className = 'k'; q.appendChild(i); }
+</script></body></html>

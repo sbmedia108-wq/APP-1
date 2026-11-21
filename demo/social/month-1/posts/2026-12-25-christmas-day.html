@@ -1,0 +1,50 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Christmas Day: four glass baubles in the remote's colours, hanging from a fir branch. The front one is Ask Mavis. */
+.halo { position:absolute; left:560px; top:820px; width:900px; height:900px; transform:translate(-50%,-50%); border-radius:50%;
+  background: radial-gradient(circle, rgba(255,200,69,.38) 0%, rgba(255,200,69,.10) 40%, transparent 68%); }
+.lead { top:262px; font-size:34px; color:#dbe4f5; width:900px; }
+.lead b { color:#fff; }
+.tree { position:absolute; inset:0; }
+.bauble { position:absolute; border-radius:50%; }
+.bauble .glass { position:absolute; inset:0; border-radius:50%; background: radial-gradient(circle at 34% 28%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.35) 7%, rgba(255,255,255,0) 18%), radial-gradient(circle at 50% 50%, var(--a) 0%, var(--b) 62%, var(--c) 100%);
+  box-shadow: inset -16px -22px 40px rgba(0,0,0,.35), inset 10px 10px 30px rgba(255,255,255,.15), 0 30px 50px rgba(0,0,0,.45); }
+.bauble .cap { position:absolute; left:50%; top:-26px; width:56px; height:38px; margin-left:-28px; border-radius:8px 8px 4px 4px;
+  background: repeating-linear-gradient(90deg, #c99a3b 0 5px, #f5dc8c 5px 9px, #b0832c 9px 13px); box-shadow:0 4px 6px rgba(0,0,0,.3); }
+.bauble .cap::before { content:""; position:absolute; left:50%; top:-22px; width:22px; height:24px; margin-left:-11px; border:4px solid #d9b45a; border-bottom:0; border-radius:12px 12px 0 0; }
+.bauble .decal { position:absolute; left:50%; top:50%; transform:translate(-50%,-48%); }
+.bauble .refl { position:absolute; left:14%; bottom:14%; width:72%; height:22%; border-radius:50%; background:radial-gradient(closest-side, rgba(255,255,255,.18), rgba(255,255,255,0)); }
+.say { z-index:3; }
+</style></head><body>
+<section id="post" class="f-night">
+  <div class="halo"></div>
+  <svg class="tree" viewBox="0 0 1080 1350" aria-hidden="true">
+    <defs><filter id="nsh" x="-10%" y="-30%" width="120%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".45"/></filter><linearGradient id="br" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a2d17"/><stop offset="1" stop-color="#6b4424"/></linearGradient></defs>
+    <path d="M1080 360 C 880 380, 620 380, 300 440" stroke="url(#br)" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <g id="needles" filter="url(#nsh)"></g>
+    <g stroke="#e9d8a6" stroke-width="2.5" opacity=".9">
+      <line x1="430" y1="420" x2="430" y2="560"/><line x1="610" y1="398" x2="610" y2="700"/><line x1="790" y1="384" x2="790" y2="520"/><line x1="930" y1="372" x2="930" y2="610"/>
+    </g>
+    <g fill="#fff" opacity=".6"><circle cx="120" cy="560" r="3"/><circle cx="200" cy="760" r="2.5"/><circle cx="90" cy="980" r="3"/><circle cx="1000" cy="900" r="3"/><circle cx="960" cy="1080" r="2.5"/><circle cx="260" cy="1040" r="2"/></g>
+    <g fill="#FFC845"><path d="M240 640 l6 18 18 6 -18 6 -6 18 -6 -18 -18 -6 18 -6z"/><path d="M880 760 l5 14 14 5 -14 5 -5 14 -5 -14 -14 -5 14 -5z"/><path d="M340 900 l4 11 11 4 -11 4 -4 11 -4 -11 -11 -4 11 -4z"/></g>
+  </svg>
+  <div class="bauble" style="left:370px; top:560px; width:120px; height:120px; --a:#ff5a6e; --b:#C8102E; --c:#6d0716"><div class="cap"></div><div class="glass"></div></div>
+  <div class="bauble" style="left:735px; top:520px; width:110px; height:110px; --a:#3fd486; --b:#0B7A3E; --c:#04381c"><div class="cap"></div><div class="glass"></div></div>
+  <div class="bauble" style="left:870px; top:610px; width:120px; height:120px; --a:#7fb0ff; --b:#1F5FBF; --c:#0b2a63"><div class="cap"></div><div class="glass"></div></div>
+  <div class="bauble chk" style="left:440px; top:700px; width:340px; height:340px; --a:#ffe18a; --b:#FFC72C; --c:#b07a06"><div class="cap" style="width:96px; margin-left:-48px; top:-40px; height:54px"></div><div class="glass"></div>
+    <div class="decal"><svg width="190" height="170" viewBox="0 0 190 170"><path d="M14 10 H176 Q184 10 184 18 V112 Q184 120 176 120 H74 L38 156 L46 120 H14 Q6 120 6 112 V18 Q6 10 14 10 Z" fill="#1F5FBF"/><text x="95" y="98" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="92" fill="#FFF8EC">M</text></svg></div>
+    <div class="refl"></div><div class="glass" style="background:radial-gradient(circle at 34% 28%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.3) 6%, rgba(255,255,255,0) 16%); box-shadow:inset -20px -26px 50px rgba(120,70,0,.28)"></div></div>
+  <h1 class="m">Merry Christmas from Ask&nbsp;Mavis.</h1>
+  <p class="lead chk"><b>To everyone fixing the telly today:</b> thank&nbsp;you.</p>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>See you in January</span></div></div><div class="keys"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+</section>
+<script>
+// fir needles along the branch
+const g = document.getElementById('needles'); let s = 3; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+for (let layer = 0; layer < 2; layer++) for (let i = 0; i < 420; i++) { const t = r(); const x = 300 + t * 780, y = 440 - t * 80 + (t * (1 - t)) * 40;
+  const side = r() > .5 ? 1 : -1; const a = Math.PI / 2 * side + (r() - .5) * 1.6 + .35;
+  const L = (layer ? 26 : 38) + r() * 22; const p = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  p.setAttribute('x1', x); p.setAttribute('y1', y); p.setAttribute('x2', x + Math.cos(a) * L); p.setAttribute('y2', y + Math.sin(a) * L * .75);
+  p.setAttribute('stroke', layer ? ['#3f9663', '#4fa872', '#2f8052'][i % 3] : ['#0f3d25', '#174d30', '#1d5e3a'][i % 3]);
+  p.setAttribute('stroke-width', layer ? 3.5 : 5); p.setAttribute('stroke-linecap', 'round'); g.appendChild(p); }
+</script></body></html>

@@ -1,0 +1,42 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Seasonal Monday Fix: giving a phone? Set it up before you wrap it. A new phone in its box, seen from above, and a checklist card. */
+.scene { position:absolute; left:80px; top:330px; width:470px; height:830px; transform:scale(.9); transform-origin:top left; }
+.lid { position:absolute; left:46px; top:50px; width:370px; height:740px; border-radius:34px; transform:rotate(-7deg); overflow:hidden;
+  background:linear-gradient(150deg, #ffffff, #e8ebf0); box-shadow: inset 0 0 0 2px rgba(255,255,255,.8), 0 30px 50px rgba(0,0,0,.45); }
+.lid::after { content:""; position:absolute; left:50%; top:50%; width:150px; height:150px; margin:-75px 0 0 -75px; border-radius:50%; border:3px solid #d5dae2; }
+.base { position:absolute; left:84px; top:20px; width:390px; height:780px; border-radius:36px; transform:rotate(3deg);
+  background:linear-gradient(160deg, #ffffff 0%, #eef1f5 100%); box-shadow: 0 34px 60px rgba(0,0,0,.5), inset 0 0 0 2px #fff; }
+.tray { position:absolute; inset:28px; border-radius:26px; background:linear-gradient(#1a1e28, #0d1017); box-shadow: inset 0 8px 18px rgba(0,0,0,.6); }
+.base .phone { --w:300px; left:45px; top:36px; box-shadow: 0 6px 10px rgba(0,0,0,.5), inset 0 0 0 2px rgba(255,255,255,.14), inset 0 0 0 6px #10131d; }
+.setup { position:absolute; inset:0; background:radial-gradient(80% 60% at 50% 30%, #3a6fd0 0%, #1d3f86 60%, #13285a 100%); color:#fff; text-align:center; }
+.setup b { display:block; margin-top:220px; font-size:52px; font-weight:800; letter-spacing:-1px; }
+.setup span { display:block; font-size:18px; opacity:.85; margin-top:8px; }
+.setup i { position:absolute; left:50%; bottom:90px; transform:translateX(-50%); background:#fff; color:#1d3f86; font-style:normal; font-weight:800; font-size:20px; padding:12px 30px; border-radius:999px; }
+.list { position:absolute; left:560px; top:350px; width:440px; background:#fffdf8; color:var(--ink); border-radius:30px; padding:30px 30px 26px; box-shadow: 0 12px 0 #c9d3e6, 0 30px 50px rgba(0,0,0,.4); }
+.list h3 { font-size:30px; font-weight:800; margin-bottom:18px; letter-spacing:-.4px; }
+.list div { display:flex; gap:16px; align-items:flex-start; font-size:27px; line-height:1.25; margin-bottom:18px; }
+.list div:last-child { margin-bottom:0; }
+.list .ck { flex:none; width:40px; height:40px; border-radius:12px; background:#19A35A; display:grid; place-items:center; box-shadow: inset 0 -3px 4px rgba(0,0,0,.2), inset 0 3px 3px rgba(255,255,255,.35); }
+.list .ck svg { width:24px; }
+.snow { position:absolute; inset:0; }
+</style></head><body>
+<section id="post" class="f-night">
+  <svg class="snow" viewBox="0 0 1080 1350" aria-hidden="true" fill="#fff"><g opacity=".55"><circle cx="1010" cy="300" r="3"/><circle cx="960" cy="1000" r="2.5"/><circle cx="560" cy="300" r="2.5"/><circle cx="1030" cy="860" r="3"/><circle cx="50" cy="300" r="3"/><circle cx="40" cy="1170" r="2.5"/></g></svg>
+  <h1 class="m">Giving a phone? Set it up before you wrap&nbsp;it.</h1>
+  <div class="scene chk">
+    <div class="lid"></div>
+    <div class="base"><div class="tray"></div>
+      <div class="phone"><div class="scr"><div class="setup"><b>Hello</b><span>Let&rsquo;s set up your phone</span><i>Start</i></div><div class="glass"></div></div><div class="cam"></div></div>
+    </div>
+  </div>
+  <div class="list chk"><h3>Before the paper goes on</h3>
+    <div><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Charge it and switch it&nbsp;on</div>
+    <div><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Join their home&nbsp;Wi-Fi</div>
+    <div><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Put the family in&nbsp;Favourites</div>
+    <div><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Make the writing&nbsp;bigger</div>
+    <div><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Write their Google password down, somewhere&nbsp;safe</div>
+  </div>
+  <div class="say chk" style="left:560px; top:880px; width:440px"><div class="tile" style="--s:84px"></div><div class="bub" style="font-size:26px; padding:16px 22px"><b>I arrive in January.</b> Pop me on&nbsp;then.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Free tech help, coming to Android in January</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section></body></html>

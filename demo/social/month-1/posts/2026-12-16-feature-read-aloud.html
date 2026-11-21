@@ -1,0 +1,31 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feature: every step is read out loud. The phone speaks; the sound fills the space beside it. Blue introduces. */
+.waves { position:absolute; left:446px; top:440px; width:200px; height:360px; overflow:visible; }
+.for { position:absolute; left:640px; top:350px; width:360px; }
+.for small { display:block; font-size:22px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; color:#cfe0fb; margin-bottom:18px; }
+.for div { display:flex; gap:16px; align-items:flex-start; font-size:30px; line-height:1.25; margin-bottom:22px; }
+.for i { flex:none; width:22px; height:22px; border-radius:50%; background:#FFC72C; margin-top:8px; box-shadow: inset 0 -3px 4px rgba(0,0,0,.2), inset 0 3px 3px rgba(255,255,255,.5); }
+.spk { position:absolute; left:620px; top:900px; width:380px; display:flex; align-items:center; gap:18px; background:#fff; color:var(--ink); border-radius:999px; padding:12px 26px 12px 12px; font-size:27px; font-weight:800;
+  box-shadow:0 8px 0 #b9c8e6, 0 18px 28px rgba(5,20,60,.35); }
+.spk b { width:64px; height:64px; border-radius:50%; background:var(--blue); display:grid; place-items:center; flex:none; }
+.spk b svg { width:34px; }
+.bub.up::before { left:40px; top:-16px; border:16px solid transparent; border-bottom-color:#fff; border-top:0; }
+</style></head><body>
+<section id="post" class="f-blue">
+  <h1 class="m">Every step, read out&nbsp;loud.</h1>
+  <div class="phone chk" style="--w:380px; left:80px; top:300px"><div class="scr sb" data-time="17:05"><img src="img/screen-whatsapp-step.png" alt=""><div class="glass"></div></div><div class="cam"></div></div>
+  <svg class="waves" viewBox="0 0 200 360" aria-hidden="true" fill="none" stroke="#FFC72C" stroke-linecap="round">
+    <path d="M40 130 a60 60 0 0 1 0 100" stroke-width="10"/>
+    <path d="M78 95 a110 110 0 0 1 0 170" stroke-width="9" opacity=".75"/>
+    <path d="M116 60 a160 160 0 0 1 0 240" stroke-width="8" opacity=".5"/>
+  </svg>
+  <div class="for chk"><small>Handy if</small>
+    <div><i></i>small writing is hard to&nbsp;read</div>
+    <div><i></i>English isn&rsquo;t your first&nbsp;language</div>
+    <div><i></i>you&rsquo;re living with memory&nbsp;loss</div>
+    <div><i></i>you&rsquo;d just rather&nbsp;listen</div>
+  </div>
+  <div class="say chk" style="left:640px; top:820px; width:360px; flex-direction:column; gap:24px"><div class="tile"></div><div class="bub up" style="font-size:29px">I&rsquo;ll say it again as many times as you like. <b>No&nbsp;rush.</b></div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Big writing. A calm voice. One step at a time.</span></div></div><div class="keys"><i></i><i></i><i></i><i class="on"></i></div></div>
+</section></body></html>

@@ -1,0 +1,47 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Monday Fix: put the family in Favourites, so calling is one touch. Yellow coaches. */
+.dial { position:absolute; inset:0; background:#f7f5f0; color:#1b2030; display:flex; flex-direction:column; }
+.dial .st { display:flex; justify-content:space-between; padding:20px 30px 0; font-size:17px; font-weight:800; }
+.dial h4 { font-size:34px; font-weight:800; padding:26px 26px 6px; }
+.dial .search { margin:6px 20px 18px; height:52px; border-radius:26px; background:#e9e6df; display:flex; align-items:center; padding:0 20px; color:#80838c; font-size:19px; }
+.fav { display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:0 20px; }
+.fav div { height:200px; border-radius:24px; display:flex; flex-direction:column; justify-content:flex-end; padding:14px 16px; color:#fff; font-weight:800; font-size:24px; position:relative; overflow:hidden; }
+.fav div b { position:absolute; left:50%; top:30px; width:96px; height:96px; margin-left:-48px; border-radius:50%; background:rgba(255,255,255,.25); display:grid; place-items:center; font-size:46px; }
+.fav div span { display:block; font-weight:400; font-size:16px; opacity:.9; }
+.tabs { margin-top:auto; display:flex; justify-content:space-around; padding:14px 0 30px; background:#efece5; font-size:16px; color:#6b6f78; }
+.tabs span { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.tabs i { width:56px; height:30px; border-radius:15px; display:grid; place-items:center; font-style:normal; font-size:20px; }
+.tabs .on { color:#1b2030; font-weight:800; } .tabs .on i { background:#FFC72C; }
+.steps { position:absolute; left:var(--m); top:350px; width:470px; display:grid; gap:26px; }
+.steps div { display:flex; align-items:center; gap:20px; font-size:32px; line-height:1.25; }
+.steps i { flex:none; font-style:normal; width:64px; height:64px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-weight:800; font-size:32px;
+  box-shadow: inset 0 -4px 6px rgba(0,0,0,.3), inset 0 4px 4px rgba(255,255,255,.2), 0 6px 0 #0a1b3a, 0 12px 18px rgba(0,0,0,.25); }
+.steps .star { display:inline-grid; place-items:center; width:46px; height:46px; border-radius:12px; background:#fff; font-size:30px; vertical-align:-8px; box-shadow:0 3px 0 #d9a514; }
+</style></head><body>
+<section id="post" class="f-yellow">
+  <h1 class="m">Ring the family with one&nbsp;touch.</h1>
+  <div class="steps chk">
+    <div><i>1</i><span>Open <b>Contacts</b></span></div>
+    <div><i>2</i><span>Touch a name, like your&nbsp;daughter</span></div>
+    <div><i>3</i><span>Touch the star <span class="star">&#9734;</span></span></div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:760px; width:470px; flex-direction:column; gap:26px"><div class="tile"></div><div class="bub up" style="font-size:29px">Now they&rsquo;re at the top of your Phone app, under <b>Favourites</b>.</div></div>
+  <div class="phone chk" style="--w:400px; left:600px; top:300px"><div class="scr">
+    <div class="dial">
+      <div class="st"><span>09:12</span><span>91%</span></div>
+      <h4>Favourites</h4>
+      <div class="search">&#128269;&nbsp; Search contacts</div>
+      <div class="fav">
+        <div style="background:linear-gradient(160deg,#2e72d6,#1a4fa0)"><b>S</b>Sarah<span>Mobile</span></div>
+        <div style="background:linear-gradient(160deg,#16975a,#0b6a3e)"><b>D</b>Dan<span>Mobile</span></div>
+        <div style="background:linear-gradient(160deg,#d9445b,#a8172f)"><b>J</b>Jean<span>Next door</span></div>
+        <div style="background:linear-gradient(160deg,#5f6b85,#3c465c)"><b>&#43;</b>Surgery<span>Work</span></div>
+      </div>
+      <div class="tabs"><span class="on"><i>&#9733;</i>Favourites</span><span><i>&#9719;</i>Recents</span><span><i>&#9786;</i>Contacts</span></div>
+    </div>
+    <div class="glass"></div></div><div class="cam"></div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Free tech help, coming soon to Android</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section>
+<style>.bub.up::before { left:40px; top:-16px; border:16px solid transparent; border-bottom-color:#fff; border-top:0; }</style>
+</body></html>
