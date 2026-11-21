@@ -63,7 +63,7 @@ function questionnaire() {
   let i = 0; const q = (a, b, l) => Q(++i, a, b, l);
   D.page(`
     <div style="display:flex;gap:16px;align-items:center;margin-bottom:22px"><img class="tile" src="${K.LOGO}" style="width:56px"><div><h1 style="margin:0">Before we crack on: 20 quick questions</h1></div></div>
-    <p class="lead">Your answers shape everything we say about Site Queue: what we promise in adverts, who we go after first and how we tell your story. Short answers are fine. If it's easier, we can just go through them together on a 30-minute call.</p>
+    <p class="lead">Your answers shape everything we say about Site Queue: what we promise in adverts, who we go after first and how we tell your story. Short answers are fine. If it's easier, just send voice notes on Messenger and I'll write them up.</p>
     <p class="small"><b>Please return by 28 November 2026</b> so the first outreach can go out on 7 December.</p>
     <h2>About you</h2>
     ${q('What is your background on site: role, years, and which companies? Why did you build Site Queue?', 'Your story leads the press release, your LinkedIn and the first line of every email.', 3)}
@@ -93,7 +93,7 @@ function questionnaire() {
     ${q('Do you own the domains and the original logo files? Is “Site Queue” trademarked?', 'We need vector logo files for print and must protect the name before launch PR.')}
     ${q('Is the 2027 launch date firm? Is UK Construction Week London (11–13 May 2027) realistic for you?', 'Stand and speaker applications open early.')}
     ${q('What monthly budget is available for tools, ads, design and events? What does success look like to you by launch?', 'So we spend where it matters and measure what you care about.', 3)}
-    <div class="cta"><div class="d" style="font-size:30px">Cheers</div><p style="margin:6px 0 0;color:#1F3A0C;font-weight:600">Just send your answers back by email, or we'll jump on a 30-minute call and fill it in together.</p></div>`);
+    <div class="cta"><div class="d" style="font-size:30px">Cheers</div><p style="margin:6px 0 0;color:#1F3A0C;font-weight:600">Just reply to the email with your answers, or send them as voice notes on Messenger, whatever's easiest.</p></div>`);
   return D.html();
 }
 
@@ -166,8 +166,8 @@ function proposal() {
     </div>
     <h2>How we work</h2>
     <ul class="l">
-      <li><b>Weekly check-in:</b> Monday evenings, 30 minutes by video call.</li>
-      <li><b>Replies:</b> within 24 hours on weekdays, by email or WhatsApp.</li>
+      <li><b>Weekly update:</b> a quick catch-up on Messenger every Monday evening, and a call only if we actually need one.</li>
+      <li><b>Replies:</b> within 24 hours on weekdays, by email or Messenger.</li>
       <li><b>Approvals:</b> we'll batch posts and emails for you to approve once a week, so you're not getting chased every day.</li>
       <li><b>Visibility:</b> one shared CRM and tracker, so you can see every contact and demo whenever you want.</li>
       <li><b>Monthly review:</b> we look at the numbers against the targets and put more effort into whatever's booking demos.</li>
@@ -183,7 +183,7 @@ function proposal() {
     <p class="lead">Three things and we're off. If I've got them by 28 November, the first founding-site emails go out on 7 December.</p>
     <div class="grid3" style="margin-top:10px">
       <div class="tile2 lime"><b>1. Approve</b><span>This proposal, the founding-site offer and the launch budget.</span></div>
-      <div class="tile2"><b>2. Answer</b><span>The 20-question marketing questionnaire, or a 30-minute call to go through it.</span></div>
+      <div class="tile2"><b>2. Answer</b><span>The 20-question questionnaire, by email or voice notes, whatever's easiest.</span></div>
       <div class="tile2"><b>3. Share access</b><span>Website admin, domain access for company email, and the original logo files.</span></div>
     </div>
     <h2>What we need from you to start</h2>
@@ -217,7 +217,7 @@ function evening() {
       <li><b>Schedule posts.</b> Use LinkedIn's own scheduler or Buffer (free). Load a week of posts on Sunday.</li>
       <li><b>Batch approvals.</b> One weekly approval pack to the founder, not daily messages.</li>
       <li><b>Claude first.</b> Before you write, design or research anything, ask Claude. Your time goes on sending, deciding and talking to the client.</li>
-      <li><b>Set expectations.</b> Tell the client: replies within 24 hours on weekdays, check-ins on Monday evenings. That is already written into the proposal.</li>
+      <li><b>Set expectations.</b> Tell the client: replies within 24 hours on weekdays, and a Monday evening update on Messenger. That is already written into the proposal.</li>
     </ul>
     <h2>Days you will need off work</h2>
     <p>UK Construction Week London, ExCeL, 11–13 May 2027: book at least one day, ideally two. Everything else can be done in evenings.</p>`);
@@ -227,7 +227,7 @@ function evening() {
     <table class="t" style="margin-top:10px">
       <tr><th style="width:15%">Evening</th><th style="width:12%">Time</th><th>What you do</th></tr>
       <tr><td class="k">Sunday</td><td>1.5 h</td><td><b>Plan and load the week.</b> Ask Claude for the week's posts and emails. Review, then schedule the posts and load 100 contacts into the sending tool. Send the founder his approval pack.<div class="w">Claude prepares: posts, email copy, contact research notes, approval pack.</div></td></tr>
-      <tr><td class="k">Monday</td><td>1 h</td><td><b>Client check-in, 30 minutes.</b> Then update the tracker and send Claude the notes.<div class="w">Claude prepares: agenda and last week's numbers from your CRM export.</div></td></tr>
+      <tr><td class="k">Monday</td><td>1 h</td><td><b>Client catch-up.</b> Send the founder a quick Messenger update (Claude drafts it), sort anything he needs, then update the tracker.<div class="w">Claude prepares: the update message and last week's numbers from your CRM export.</div></td></tr>
       <tr><td class="k">Tuesday</td><td>1.5 h</td><td><b>Contacts.</b> Find named contacts in LinkedIn Sales Navigator for next week's companies (about 30 people), and send LinkedIn connection requests from the company page or founder account.<div class="w">Claude prepares: which companies and job titles to search, and the connection notes.</div></td></tr>
       <tr><td class="k">Wednesday</td><td>1.5 h</td><td><b>Replies and leads.</b> Answer replies with Claude's drafts, pass hot leads to the founder's booking link, log everything in the CRM.<div class="w">Claude prepares: reply drafts from the messages you paste in.</div></td></tr>
       <tr><td class="k">Thursday</td><td>1 h</td><td><b>One project task.</b> Website update, press pitch, event application or new design: whatever this week's action plan says.<div class="w">Claude prepares: the finished piece, ready to send or upload.</div></td></tr>
@@ -235,7 +235,7 @@ function evening() {
     </table>
     <h2>What to send Claude each week</h2>
     <ul class="l">
-      <li>Notes from the Monday check-in and any client answers or decisions.</li>
+      <li>Anything the founder has sent you on Messenger or email: answers, decisions, voice notes (paste in the text).</li>
       <li>A CRM export (contacts, replies, demos booked) for the weekly numbers.</li>
       <li>Any replies from prospects or journalists you want help answering.</li>
       <li>Photos or video clips from pilot sites the founder sends you.</li>

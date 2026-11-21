@@ -29,7 +29,7 @@ P.push(page(`
   <p class="small">Plus 3 published case studies and 5 paying sites from the launch offer.</p>
   <h3>How to read this plan</h3>
   <div class="key"><div>${own('You')}<span>Actions for you as founder. Only you can do these: your story, your product, your decisions.</span></div><div>${own('SB Media')}<span>Actions we deliver, and report on each week.</span></div><div>${own('Together')}<span>Work we do side by side, such as pilot onboarding and the launch event.</span></div></div>
-  <p class="small">Every action has a due date and a box to tick. We'll go through it together every Monday evening.</p>`));
+  <p class="small">Every action has a due date and a box to tick. I'll send you a quick update on it every Monday evening.</p>`));
 
 P.push(page(`
   <h1>What we need from you this week</h1>
@@ -44,7 +44,7 @@ P.push(page(`
   ])}
   <h3>Information and access</h3>
   ${table([
-    ['Your background on site', 'Role, years, companies, why you built it. 15-minute call; we write it up.', 'You', '28 Nov'],
+    ['Your background on site', 'Role, years, companies, why you built it. Voice notes are fine; we write it up.', 'You', '28 Nov'],
     ['Admin access to the website (WordPress)', 'So we can add the demo form, privacy policy, analytics and fixes.', 'You', '28 Nov'],
     ['Domain access for company email', 'To set up hello@sitequeue.uk with proper email authentication.', 'You', '28 Nov'],
     ['Screenshots or a screen recording of the mobile app', 'To replace our designed phone screens with the real app.', 'You', '4 Dec'],
@@ -148,7 +148,7 @@ P.push(page(`
   ${[['Company email', '£10', '', 'Now'], ['LinkedIn Sales Navigator (1 seat)', '£80–£100', '', 'Now'], ['Email finder (Apollo or Hunter)', '£0–£50', '', 'Now'], ['CRM (HubSpot free or Pipedrive)', '£0–£30', '', 'Now'], ['Cold email sending tool', '£30–£60', '', 'Now'], ['Canva Pro', '£10', '', 'Now'], ['Trademark filing (UK IPO)', '', 'About £200', 'Now'], ['Vector logo, pitch deck, advertiser media pack', '', '£500–£1,500', 'Jan'], ['Product video and three short clips', '', '£500–£2,000', 'Feb'], ['LinkedIn and Google ads', '£500–£1,000', '', 'Mar'], ['Print: one-pagers, pull-up banner, site signs, hi-vis', '', '£300–£800', 'Mar'], ['UK Construction Week stand or start-up pod', '', 'Quote from organiser', 'Book Jan']].map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</table>
   <h1 style="margin-top:34px">How we'll work together</h1>
   <div class="key">
-    <div>${own('Weekly')}<span><b>Monday evening check-in, 30 minutes by video call.</b> What went out, who replied, demos booked, what we need from you this week.</span></div>
+    <div>${own('Weekly')}<span><b>Monday evening update on Messenger.</b> What went out, who replied, demos booked, what we need from you this week.</span></div>
     <div>${own('Monthly')}<span><b>Numbers review.</b> Contacts, replies, demos, pilots, sign-ups, website visits, against the targets on page 2.</span></div>
     <div>${own('Shared')}<span><b>One CRM and one tracker.</b> You can see every contact, email and demo at any time.</span></div>
   </div>

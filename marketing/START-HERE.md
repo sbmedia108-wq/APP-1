@@ -1,79 +1,83 @@
 # Site Queue: start here
 
-Everything for Site Queue is in this folder. This page is your order of play: what to do first, second, third, and so on. Each step is sized to fit an evening.
+Everything for Site Queue is in this folder. This page is your order of play, sized to fit around work, and done over email and Messenger rather than calls.
 
 ## Step by step
 
 **Tonight (30 mins)**
-1. Have a quick look through the proposal, the action plan and the questionnaire. Fill in the founder's name where it says [Founder name] on the covers. If you want it done for you, just tell Claude his name.
+1. Skim the proposal, the action plan and the questionnaire. Fill in his name where it says [Founder name] on the covers, or just tell Claude his name and it'll do it.
 2. Watch the video with the sound on. If the voice or music isn't right, say so and Claude will swap it.
 
-**Next evening (1 hour): send the client pack**
-3. Send the founder the email below, with the proposal, the questionnaire, the action plan and the video attached.
-4. Share the pitch deck link with him from the deck's Share menu (it's private until you do), or export it as a PDF and attach it.
-5. Book a 30-minute video call with him for a weekday evening that week, to walk through the proposal and his answers.
+**Next evening (30 mins): send the pack**
+3. Send him the Messenger heads-up below.
+4. Reply to his email with the email below, and attach the proposal, questionnaire, action plan and the square video. Export the deck to PDF from its Share menu and attach that too. It's easier for him than a link.
 
-**On the call (1 hour)**
-6. Run through the deck (it takes about 20 minutes), then go through the questionnaire together if he hasn't filled it in.
-7. Get his three yeses: the founding-site offer, the launch budget and the launch date.
-8. Ask for access: website admin, the domain for company email, and the original logo files.
-9. Send Claude your notes from the call. It'll update the plan, the playbook and the documents.
+**While you wait for his answers**
+5. Answers can come back however suits him: a reply to the email, filling in the questionnaire, or voice notes on Messenger. Paste whatever he sends into Claude and it'll write it up and update every document.
+6. The three things you really need from him: yes to the founding-site offer, yes to the launch budget, and the launch date. Plus website admin access, domain access for the company email, and the original logo files.
 
 **Week 1 (Phase 0, about 6 hours across the week)**
-10. Set up hello@sitequeue.uk (Google Workspace) and the email authentication settings. Claude will walk you through it.
-11. Create the LinkedIn company page and upload the banner and logo.
-12. Set up HubSpot (free) and import `site-queue-outreach-targets.xlsx`.
-13. Get the website fixes done: either give Claude a WordPress application password so it can make them, or pass the list to his developer.
-14. Set up Calendly for the founder so prospects book demos straight into his diary, not yours.
+7. Set up hello@sitequeue.uk (Google Workspace) and the email authentication settings. Claude will walk you through it.
+8. Create the LinkedIn company page and upload the banner and logo.
+9. Set up HubSpot (free) and import `site-queue-outreach-targets.xlsx`.
+10. Get the website fixes done: either get a WordPress application password from him so Claude can make the fixes, or pass the list to whoever built his site.
+11. Set up a Calendly link for him, so prospects book demos straight into his diary, not yours.
 
 **Week 2 (Phase 1, about 7 hours across the week)**
-15. Find named contacts for the first 10 housebuilders in LinkedIn Sales Navigator. Claude tells you who to look for.
-16. Load the first founding-site email sequence into the sending tool. It sends from the founder's inbox during the day without you.
-17. Schedule the first LinkedIn posts (the graphics are ready in `graphics/`).
-18. Apply for UK Construction Week London. Claude writes the application.
+12. Find named contacts for the first 10 housebuilders in LinkedIn Sales Navigator. Claude tells you who to look for.
+13. Load the first founding-site email sequence into the sending tool. It sends from his inbox during the day without you.
+14. Schedule the first LinkedIn posts (the graphics are ready in `graphics/`).
+15. Apply for UK Construction Week London. Claude writes the application.
 
 **Every week after that**
-19. Follow the standard week in `sb-media-evening-plan.pdf`: Sunday plan, Monday check-in, Tuesday contacts, Wednesday replies, Thursday one project task. Friday and Saturday off.
+16. Follow the standard week in `sb-media-evening-plan.pdf`: Sunday plan, Monday update to him on Messenger, Tuesday contacts, Wednesday replies, Thursday one task. Friday and Saturday off.
 
 **Book now**
-20. Put in for a day or two off work for UK Construction Week London, 11–13 May 2027.
+17. Put in for a day or two off for UK Construction Week London, 11–13 May 2027.
+
+## His story is the best angle we've got
+
+He's a fencing and decking contractor who has stood on sites waiting for the forklift, chasing the main contractor and working from out-of-date drawings, so he built the fix himself. That's the press release, his LinkedIn posts and the first line of every cold email. Get him to tell it in his own words on a voice note, and Claude will turn it into the founder story.
 
 ## What's in the folder
 
 | File | What it is | Who it's for |
 | --- | --- | --- |
-| `site-queue-proposal.pdf` | The proposal: plan, timeline, what's included, budget, sign-off | Founder |
-| `site-queue-client-questionnaire.pdf` | 20 questions we need answering | Founder |
-| `site-queue-launch-action-plan.pdf` | Every step to launch, with who and when | Founder |
-| `video/site-queue-1x1.mp4`, `video/site-queue-16x9.mp4` | 59-second video with voiceover and music | Founder, social, website |
-| Pitch deck (link in the playbook) | 17 slides to present the plan | The call with the founder |
+| `site-queue-proposal.pdf` | The proposal: plan, timeline, what's included, budget, sign-off | Him |
+| `site-queue-client-questionnaire.pdf` | 20 questions we need answering | Him |
+| `site-queue-launch-action-plan.pdf` | Every step to launch, with who and when | Him |
+| `video/site-queue-1x1.mp4`, `video/site-queue-16x9.mp4` | 59-second video with voiceover and music | Him, social, website |
+| Pitch deck (export to PDF from its Share menu) | 17 slides covering the plan | Him |
 | `sb-media-evening-plan.pdf` | Your weekly routine and setup list | You only |
 | `site-queue-outreach-targets.xlsx` | 112 companies to go after, with a tracker | You |
 | `graphics/` | 12 social posts, banner, one-pager, pull-up banner | Ready to use |
 | `brand/` | Logo, brand basics sheet, dashboard screenshots | Reference |
 
-## Email to the founder
+## Messenger heads-up
 
-Subject: Site Queue: the marketing plan
+> Alright mate, I've just emailed over the Site Queue stuff. There's the plan, a timeline, a short video and a few questions for you. No rush, have a look when you get a minute. Answers can just be voice notes if that's easier 👍
 
-Hi [Founder name],
+## Email to him (reply to the one he sent)
 
-Hope you're well. As promised, here's everything for getting Site Queue out there properly.
+Subject: Re: Site Queue
 
-Short version: the product's really strong, but at the minute nobody knows it exists. The plan is to get 10 founding sites using it before launch, use them as proof, then launch it properly at UK Construction Week London in May.
+Alright mate,
 
-Attached you'll find:
+As promised, here's everything for getting Site Queue out there properly.
 
-- the proposal, covering the plan, timeline, budget and what we'll do
-- the action plan, with every step from now to launch and who does what
-- a short questionnaire: 20 quick questions so we get the messaging spot on
-- a 1-minute video we've made for the launch
+Short version: the app's really strong, but at the minute nobody knows it exists. The plan is to get 10 sites using it free before launch, use them as proof, then launch it properly at UK Construction Week London in May.
 
-I've also put together a short deck that I'd like to walk you through. Have you got 30 minutes one evening this week for a quick video call? We can go through the questionnaire on the same call if that's easier.
+Attached:
 
-If we can get the decisions on page 3 of the action plan sorted by 28 November, the first founding-site emails go out on 7 December and we should have the first sites signed before Christmas.
+- **The proposal:** the plan, timeline, budget and what I'll be doing.
+- **The action plan:** every step from now to launch and who's doing what.
+- **20 quick questions:** so I get the messaging spot on. Voice notes on Messenger are fine.
+- **A 1-minute video** I've made for the launch.
+- **A short deck** that sums the whole thing up.
 
-Any questions, just give me a shout.
+The main bits I need from you are on page 3 of the action plan. If we can get those sorted by 28 November, the first emails to housebuilders go out on 7 December and we should have the first sites signed up before Christmas.
+
+Have a look and give me a shout with any questions.
 
 Cheers,
 [Your name]
