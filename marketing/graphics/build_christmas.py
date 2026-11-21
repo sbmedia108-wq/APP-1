@@ -7,7 +7,11 @@ W, FENCE = 1080, 990
 # photo: spirit-level pose, waist hidden by the fence
 PW, PH = 916, 1434
 pw = 560; ph = pw * PH / PW; ptop = FENCE - .6 * ph; pleft = W - pw - 50
-hw = pw * .36; hat_left = pleft + pw * .49 - hw * .52; hat_top = ptop + ph * .044 - .8 * hw * 100 / 120
+sc = pw / PW                                   # photo px -> canvas px
+head_cx, head_w = pleft + 460 * sc, 225 * sc      # measured from me-level.png
+brim_y = ptop + 84 * sc                           # just above the hairline
+hw = head_w * 1.24 / .92; hh = hw * .85
+hat_left = head_cx - hw / 2; hat_top = brim_y - hh * 130 / 170
 
 # fairy lights: sagging wire between hooks along the rail
 hooks = list(range(-40, W + 200, 180))
@@ -38,8 +42,17 @@ snowcap = (f'<svg class="abs" viewBox="0 0 {W} 52" preserveAspectRatio="none" st
            f'<path d="M0 52 L{" L".join(f"{x} {y - FENCE + 48:.0f}" for x, y in pts)} L{W} 52 Z" fill="#cfdcee" opacity=".7"/></svg>')
 
 # falling snow, three depths
-flakes = "".join(f'<div class="abs" style="left:{random.randint(0, W)}px;top:{random.randint(0, 980)}px;width:{s}px;height:{s}px;border-radius:50%;background:#fff;opacity:{o};filter:blur({b}px);z-index:{z}"></div>'
-                 for s, o, b, z, n in ((5, .55, 0, 2, 70), (9, .7, 1, 2, 30), (16, .45, 3, 8, 10)) for _ in range(n))
+def flake_spots():
+    out = []
+    for s_, o, b, n in ((5, .55, 0, 70), (9, .7, 1, 30), (16, .45, 3, 10)):
+        while n:
+            x, y = random.randint(0, W), random.randint(0, 980)
+            if pleft - 30 < x < pleft + pw + 10 and y > ptop - 140:   # keep clear of the person and hat
+                continue
+            out.append(f'<div class="abs" style="left:{x}px;top:{y}px;width:{s_}px;height:{s_}px;border-radius:50%;background:#fff;opacity:{o};filter:blur({b}px);z-index:2"></div>')
+            n -= 1
+    return "".join(out)
+flakes = flake_spots()
 bokeh = "".join(f'<div class="abs" style="left:{x}px;top:{y}px;width:{r}px;height:{r}px;border-radius:50%;background:{c};opacity:.18;filter:blur(18px);z-index:1"></div>'
                 for x, y, r, c in ((60, 380, 160, "#ffd84a"), (820, 300, 120, "#ff5a3c"), (380, 700, 180, "#ffd84a"), (960, 640, 140, "#3bd16f")))
 
@@ -51,11 +64,26 @@ wreath = (f'<svg class="abs" viewBox="0 0 120 130" style="left:90px;top:{FENCE +
           f'{leaves}{berries}<path d="M60 96 l-20 22 l12 -2 l4 10 z M60 96 l20 22 l-12 -2 l-4 10 z" fill="#c0141f"/>'
           f'<path d="M60 96 c-20 -14 -30 4 -14 8 c6 1 10 -3 14 -8 c4 5 8 9 14 8 c16 -4 6 -22 -14 -8z" fill="#e0262f"/><circle cx="60" cy="97" r="5" fill="#9d0f18"/></svg>')
 
-HAT = '<svg viewBox="0 0 120 100" style="width:100%"><path d="M12 78 C20 30 60 6 96 30 C80 34 96 60 104 78 Z" fill="#d81f2a"/><path d="M40 40 C56 26 76 24 92 32" stroke="#a3121c" stroke-width="5" fill="none" opacity=".6"/><rect x="4" y="72" width="108" height="22" rx="11" fill="#fff"/><circle cx="100" cy="30" r="13" fill="#fff"/></svg>'
+HAT = """<svg viewBox="0 0 200 170" style="width:100%;overflow:visible">
+<defs>
+ <radialGradient id="vel" cx="38%" cy="45%" r="70%"><stop offset="0" stop-color="#e8343c"/><stop offset=".55" stop-color="#b9141e"/><stop offset="1" stop-color="#6a0610"/></radialGradient>
+ <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff8ee"/><stop offset=".55" stop-color="#efe3d0"/><stop offset="1" stop-color="#c7b496"/></linearGradient>
+ <filter id="fluff" x="-20%" y="-30%" width="140%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<path d="M22 126 C30 72 66 30 116 22 C146 18 170 30 180 54 C168 48 152 50 144 62 C152 84 162 106 180 128 Z" fill="url(#vel)"/>
+<path d="M70 118 C76 86 96 58 128 44" stroke="#7d0912" stroke-width="7" fill="none" opacity=".45" filter="url(#soft)"/>
+<path d="M120 120 C122 96 132 74 146 62" stroke="#7d0912" stroke-width="6" fill="none" opacity=".4" filter="url(#soft)"/>
+<path d="M58 70 C78 46 104 34 130 32" stroke="#ff6a6a" stroke-width="5" fill="none" opacity=".35" filter="url(#soft)"/>
+<path d="M8 110 Q100 132 192 110 Q198 128 190 142 Q100 166 10 142 Q2 128 8 110 Z" fill="url(#fur)" filter="url(#fluff)"/>
+<path d="M14 138 Q100 160 186 138" stroke="#a8977c" stroke-width="5" fill="none" opacity=".55" filter="url(#soft)"/>
+<circle cx="181" cy="56" r="16" fill="url(#fur)" filter="url(#fluff)"/>
+<circle cx="186" cy="62" r="9" fill="#cfc8bd" opacity=".5" filter="url(#soft)"/>
+</svg>"""
 
 html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>The Boundary Boys – Christmas</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Mountains+of+Christmas:wght@700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{background:#333;padding:40px}}
@@ -70,18 +98,39 @@ body{{background:#333;padding:40px}}
     <div style="color:#ff4d4d;text-shadow:0 6px 24px rgba(0,0,0,.5);margin-top:10px">We'll do the fence.</div></div>
   <div class="abs" style="left:{pleft:.0f}px;top:{ptop:.0f}px;width:{pw}px;height:{FENCE - ptop:.0f}px;overflow:hidden;z-index:4">
     <img src="assets/me-level.png" style="position:absolute;left:0;top:0;width:{pw}px;filter:drop-shadow(0 0 40px rgba(255,216,74,.25)) drop-shadow(0 12px 24px rgba(0,0,0,.5))"></div>
-  <div class="abs" style="left:{hat_left:.0f}px;top:{hat_top:.0f}px;width:{hw:.0f}px;transform:rotate(-10deg);transform-origin:50% 85%;z-index:5">{HAT}</div>
-  <!-- gift tag with the deal -->
-  <div class="abs" style="left:66px;top:540px;z-index:6;transform:rotate(-7deg);transform-origin:50% 0">
-    <svg viewBox="0 0 90 50" style="position:absolute;left:115px;top:-14px;width:90px;z-index:2"><path d="M45 26 C20 0 0 14 14 26 C24 34 38 30 45 26 C52 30 66 34 76 26 C90 14 70 0 45 26Z" fill="#c0141f"/><path d="M45 26 l-16 24 l10 -3 l4 8z M45 26 l16 24 l-10 -3 l-4 8z" fill="#9d0f18"/><circle cx="45" cy="26" r="7" fill="#e0262f"/></svg>
-    <div style="position:relative;width:320px;padding:56px 26px 30px;background:linear-gradient(160deg,#e9d3a8,#cfb07a);clip-path:polygon(18% 0,82% 0,100% 12%,100% 100%,0 100%,0 12%);text-align:center;color:#3a2410;box-shadow:0 14px 30px rgba(0,0,0,.5)">
-      <div style="position:absolute;left:146px;top:18px;width:28px;height:28px;border-radius:50%;background:#0c2219;box-shadow:inset 0 0 0 5px #b8925a"></div>
-      <div style="font:700 22px Oswald;letter-spacing:6px;text-transform:uppercase;color:#9d0f18">Christmas deal</div>
-      <div style="font:400 64px/1 Anton;text-transform:uppercase;margin:12px 0 6px">Free removal</div>
-      <div style="font:600 26px/1.2 Oswald;text-transform:uppercase">of your old fence</div>
-      <div style="height:2px;background:#3a2410;opacity:.3;margin:16px 30px"></div>
-      <div style="font:700 24px Oswald;letter-spacing:2px;text-transform:uppercase;color:#9d0f18">Book by 18 December</div>
-    </div></div>
+  <div class="abs" style="left:{head_cx - head_w * .62:.0f}px;top:{brim_y + 4:.0f}px;width:{head_w * 1.24:.0f}px;height:{head_w * .32:.0f}px;border-radius:50%;background:#2a0c06;opacity:.45;filter:blur(7px);z-index:5"></div>
+  <div class="abs" style="left:{hat_left:.0f}px;top:{hat_top:.0f}px;width:{hw:.0f}px;transform:rotate(-5deg);transform-origin:50% 76%;z-index:5;filter:sepia(.12) drop-shadow(0 8px 10px rgba(0,0,0,.35))">{HAT}</div>
+  <!-- gift tag: standing in the snow on the fence, tied on with twine -->
+  <div class="abs" style="left:70px;top:{FENCE - 26}px;width:330px;height:40px;border-radius:50%;background:#000;opacity:.45;filter:blur(12px);z-index:5"></div>
+  <div class="abs" style="left:74px;top:{FENCE + 6 - 500}px;width:330px;height:500px;z-index:5;transform:rotate(-4deg);transform-origin:50% 100%">
+    <svg viewBox="0 0 330 500" width="330" height="500" style="position:absolute;inset:0;overflow:visible;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))">
+      <defs>
+        <linearGradient id="kraft" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ead6ad"/><stop offset=".6" stop-color="#d9bd8a"/><stop offset="1" stop-color="#c4a26b"/></linearGradient>
+        <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="8"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .12  0 0 0 .22 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+        <radialGradient id="edge" cx="50%" cy="50%" r="75%"><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#5a3a12" stop-opacity=".35"/></radialGradient>
+      </defs>
+      <path d="M64 0 H266 L330 56 V500 H0 V56 Z" fill="url(#kraft)"/>
+      <path d="M64 0 H266 L330 56 V500 H0 V56 Z" fill="#fff" filter="url(#grain)"/>
+      <path d="M64 0 H266 L330 56 V500 H0 V56 Z" fill="url(#edge)"/>
+      <path d="M165 44 C120 20 40 22 -6 48 C-22 140 -20 380 -26 540" stroke="#b08a52" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M165 44 C150 20 128 22 132 38 C136 52 156 50 165 44 C176 26 196 26 194 40 C192 54 172 52 165 44Z" fill="none" stroke="#b08a52" stroke-width="4"/>
+      <circle cx="165" cy="44" r="17" fill="#b8925a"/><circle cx="165" cy="44" r="10" fill="#0c2219"/>
+      <g transform="translate(250 70) rotate(18)">
+        <path d="M0 0 C10 -18 34 -20 44 -6 C34 -10 30 0 36 8 C24 4 18 12 20 22 C10 14 2 10 0 0Z" fill="#1f6b33"/>
+        <path d="M0 0 C-6 -20 4 -40 22 -44 C16 -34 22 -28 30 -28 C22 -18 26 -10 32 -6 C20 -4 8 -2 0 0Z" fill="#2e8a45"/>
+        <circle cx="-2" cy="2" r="7" fill="#d81f2a"/><circle cx="9" cy="8" r="6" fill="#b8141e"/><circle cx="-8" cy="10" r="6" fill="#e0262f"/>
+      </g>
+    </svg>
+    <div style="position:absolute;left:30px;right:30px;top:82px;color:#3a2410;text-align:left">
+      <div style="font:600 32px/1.2 Caveat,cursive;white-space:nowrap"><span style="opacity:.7">To:</span> Southampton</div>
+      <div style="font:600 32px/1.2 Caveat,cursive;white-space:nowrap"><span style="opacity:.7">From:</span> The Boundary Boys</div>
+      <div style="border-top:3px dashed rgba(58,36,16,.35);margin:16px 0 14px"></div>
+      <div style="font:700 21px Oswald;letter-spacing:5px;text-transform:uppercase;color:#9d0f18;text-align:center">Christmas deal</div>
+      <div style="font:400 66px/.95 Anton;text-transform:uppercase;text-align:center;margin:8px 0 6px">Free removal</div>
+      <div style="font:600 25px/1.2 Oswald;text-transform:uppercase;text-align:center">of your old fence</div>
+      <div style="font:700 23px Oswald;letter-spacing:2px;text-transform:uppercase;color:#9d0f18;text-align:center;margin-top:12px">Book by 18 December</div>
+    </div>
+  </div>
   <div class="abs" style="left:0;top:{FENCE - 14}px;width:{W}px;height:22px;background:linear-gradient(#e8c48c,#b98a4e);z-index:5"></div>
   <div class="abs" style="left:0;top:{FENCE}px;width:{W}px;height:210px;background:url(assets/real-fence.jpg) left top/1152px 752px repeat;filter:brightness(.82) saturate(1.05);z-index:5"></div>
   {snowcap}{wreath}{lights}
