@@ -62,8 +62,8 @@ function questionnaire() {
   const Q = (i, q, why, lines = 2) => `<div class="qq"><div class="n">${i}</div><div><b>${q}</b><div class="why">${why}</div>${'<div class="line"></div>'.repeat(lines)}</div></div>`;
   let i = 0; const q = (a, b, l) => Q(++i, a, b, l);
   D.page(`
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:22px"><img class="tile" src="${K.LOGO}" style="width:56px"><div><h1 style="margin:0">Before we start: 20 questions</h1></div></div>
-    <p class="lead">Your answers shape everything we say about Site Queue: what we promise in adverts, who we contact first and how we tell your story. Short answers are fine. If it is easier, we can go through them together on a 30-minute call.</p>
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:22px"><img class="tile" src="${K.LOGO}" style="width:56px"><div><h1 style="margin:0">Before we crack on: 20 quick questions</h1></div></div>
+    <p class="lead">Your answers shape everything we say about Site Queue: what we promise in adverts, who we go after first and how we tell your story. Short answers are fine. If it's easier, we can just go through them together on a 30-minute call.</p>
     <p class="small"><b>Please return by 28 November 2026</b> so the first outreach can go out on 7 December.</p>
     <h2>About you</h2>
     ${q('What is your background on site: role, years, and which companies? Why did you build Site Queue?', 'Your story leads the press release, your LinkedIn and the first line of every email.', 3)}
@@ -93,33 +93,33 @@ function questionnaire() {
     ${q('Do you own the domains and the original logo files? Is “Site Queue” trademarked?', 'We need vector logo files for print and must protect the name before launch PR.')}
     ${q('Is the 2027 launch date firm? Is UK Construction Week London (11–13 May 2027) realistic for you?', 'Stand and speaker applications open early.')}
     ${q('What monthly budget is available for tools, ads, design and events? What does success look like to you by launch?', 'So we spend where it matters and measure what you care about.', 3)}
-    <div class="cta"><div class="d" style="font-size:30px">Thank you</div><p style="margin:6px 0 0;color:#1F3A0C;font-weight:600">Send your answers back by email, or book a 30-minute call and we will fill this in together.</p></div>`);
+    <div class="cta"><div class="d" style="font-size:30px">Cheers</div><p style="margin:6px 0 0;color:#1F3A0C;font-weight:600">Just send your answers back by email, or we'll jump on a 30-minute call and fill it in together.</p></div>`);
   return D.html();
 }
 
 // ---------- 2. Client proposal ----------
 function proposal() {
   const D = build('Site Queue marketing proposal', 'SB Media');
-  D.cover('Marketing proposal', 'Taking Site Queue from a working demo to a launch at UK Construction Week London, May 2027.', 'Prepared for [Founder name]<br>by SB Media, 21 November 2026', K.phoneHome());
+  D.cover('Marketing proposal', 'Taking Site Queue from a working demo to a proper launch at UK Construction Week London, May 2027.', 'Prepared for [Founder name]<br>by SB Media, 21 November 2026', K.phoneHome());
   D.page(`
     <h1>Our recommendation</h1>
-    <p class="lead">Site Queue is a genuinely strong product with no marketing behind it yet. We recommend a focused plan: sign 10 founding sites before launch, turn them into proof, and launch publicly at UK Construction Week London on 11–13 May 2027.</p>
+    <p class="lead">Right, straight to it. Site Queue is a properly good product, but at the minute nobody knows it exists. The plan is simple: get 10 founding sites using it before launch, use them as proof, then launch it properly at UK Construction Week London, 11–13 May 2027.</p>
     <div class="grid3" style="margin-top:14px">
-      <div class="tile2"><b>The product is ready</b><span>Logistics, inductions, programme, drawings, safety, site map and feed, for every role. The demo is strong enough to sell from today.</span></div>
-      <div class="tile2"><b>The marketing isn't</b><span>The website has no way to capture a lead, no link to the demo and a Gmail contact address. Nobody knows Site Queue exists yet.</span></div>
-      <div class="tile2 lime"><b>The plan</b><span>Fix the basics, win 10 founding sites, build proof, then launch with customers beside you.</span></div>
+      <div class="tile2"><b>The product's ready</b><span>Logistics, inductions, programme, drawings, safety, site map and feed, for every role on site. The demo's good enough to sell from today.</span></div>
+      <div class="tile2"><b>The marketing isn't</b><span>The website's got no way to capture a lead, no link to the demo and a Gmail contact. Basically, nobody can find you yet.</span></div>
+      <div class="tile2 lime"><b>The plan</b><span>Sort the basics, win 10 founding sites, build the proof, then launch with real customers stood beside you.</span></div>
     </div>
     <h2>How we position Site Queue</h2>
     <div class="tile2 dark" style="padding:22px 24px"><b style="font-size:36px;line-height:1">Run the whole site from one app.</b><span style="font-size:13.5px;margin-top:8px">For UK housebuilders and contractors who lose hours to waiting, chasing and paperwork, Site Queue is the one live app that keeps people, plant, materials and information moving, with a free app for every trade on site.</span></div>
     <h2>The offer that opens doors</h2>
-    <p>Every email, post and call carries one offer: <b>become one of 10 founding sites</b>. Free use of the whole platform on one live site until launch, founding pricing locked in afterwards, and a direct line to you to shape the product. It costs a contractor nothing to say yes, and gives you the case studies the launch needs.</p>
+    <p>Every email, post and call has one offer in it: <b>become one of 10 founding sites</b>. They get the whole platform free on one live site until launch, founding pricing locked in after, and a direct line to you to help shape it. It costs a contractor nothing to say yes, and it gives us the case studies we need for launch.</p>
     <h2>Who we go after first</h2>
-    <p>Regional housebuilders in the South first (the demo is built around plots and phases, and you can visit their sites), then national housebuilders and mid-tier contractors once we have proof, then suppliers and plant hire as advertisers once sites are live. We have already built a list of 112 target organisations.</p>`);
+    <p>We start with regional housebuilders down south. The demo's built around plots and phases, which is exactly how they work, and you can actually get to their sites. Once we've got proof, we go after the national builders and mid-tier contractors, then suppliers and plant hire as advertisers once sites are live. We've already built a list of 112 companies to go after.</p>`);
   D.page(`
     <h1>Our approach</h1>
-    <p class="lead">Three stages, each with a clear finish line.</p>
+    <p class="lead">Three stages. Each one has a clear finish line, so we both know exactly where we're at.</p>
     <div class="grid3" style="margin-top:12px">
-      <div class="tile2"><b>1. Get ready</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Nov–Dec 2026.</b> Fix the website and demo so every visit can become a conversation. Set up company email, LinkedIn, CRM and the outreach system. First founding-site emails and site visits.</span></div>
+      <div class="tile2"><b>1. Get ready</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Nov–Dec 2026.</b> Sort the website and demo so every visit can turn into a conversation. Set up company email, LinkedIn, CRM and the outreach system. First founding-site emails and site visits.</span></div>
       <div class="tile2"><b>2. Prove it</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Jan–Apr 2027.</b> 10 founding sites live and measured. Case studies with real numbers. Founder story in the press. National builders and contractors approached with proof.</span></div>
       <div class="tile2 lime"><b>3. Launch and scale</b><span><b style="font-family:Barlow;font-size:12px;display:inline">May–Sep 2027.</b> Public launch at UK Construction Week London. Paying sites. Advertisers and partners. Digital Construction Week and UKCW Birmingham.</span></div>
     </div>
@@ -168,9 +168,9 @@ function proposal() {
     <ul class="l">
       <li><b>Weekly check-in:</b> Monday evenings, 30 minutes by video call.</li>
       <li><b>Replies:</b> within 24 hours on weekdays, by email or WhatsApp.</li>
-      <li><b>Approvals:</b> we batch posts and emails for you to approve once a week, so you are not chased daily.</li>
-      <li><b>Visibility:</b> one shared CRM and tracker, so you can see every contact and demo at any time.</li>
-      <li><b>Monthly review:</b> numbers against targets, and we move effort to whatever books demos most cheaply.</li>
+      <li><b>Approvals:</b> we'll batch posts and emails for you to approve once a week, so you're not getting chased every day.</li>
+      <li><b>Visibility:</b> one shared CRM and tracker, so you can see every contact and demo whenever you want.</li>
+      <li><b>Monthly review:</b> we look at the numbers against the targets and put more effort into whatever's booking demos.</li>
     </ul>
     <h2>Launch budget (third-party costs)</h2>
     <table class="t">
@@ -180,7 +180,7 @@ function proposal() {
     <p class="small" style="margin-top:6px">All figures are estimates to confirm with quotes. Costs are paid directly by Site Queue.</p>`);
   D.page(`
     <h1>Next steps</h1>
-    <p class="lead">Three things get us started. With them by 28 November, the first founding-site emails go out on 7 December.</p>
+    <p class="lead">Three things and we're off. If I've got them by 28 November, the first founding-site emails go out on 7 December.</p>
     <div class="grid3" style="margin-top:10px">
       <div class="tile2 lime"><b>1. Approve</b><span>This proposal, the founding-site offer and the launch budget.</span></div>
       <div class="tile2"><b>2. Answer</b><span>The 20-question marketing questionnaire, or a 30-minute call to go through it.</span></div>
@@ -194,7 +194,7 @@ function proposal() {
       <li>Confirmation of pricing, launch date and how many pilots you can support.</li>
     </ul>
     <h2>Agreement</h2>
-    <p>Signed on behalf of Site Queue and SB Media to start the plan described in this proposal.</p>
+    <p>Sign below and we'll crack on with the plan in this proposal.</p>
     <div class="sign"><div>Site Queue: name and signature</div><div>Date</div><div>SB Media: name and signature</div><div>Date</div></div>`);
   return D.html();
 }
@@ -204,7 +204,7 @@ function evening() {
   const D = build('Your Site Queue evening plan', 'Internal to SB Media');
   D.page(`
     <div style="display:flex;gap:16px;align-items:center;margin-bottom:18px"><img class="tile" src="${K.LOGO}" style="width:56px"><h1 style="margin:0">Your evening plan</h1></div>
-    <p class="lead">Everything you need to run the Site Queue account around a full-time job on site: about <b>8 hours a week</b>, in evenings of 1 to 2 hours, never more than five a week. Claude does the writing, design, research and preparation; you do the parts that need a real person.</p>
+    <p class="lead">Everything you need to run Site Queue around work: about <b>8 hours a week</b>, 1 to 2 hours a night, never more than five nights. Claude does the writing, design, research and prep. You do the bits that need an actual person.</p>
     <div class="grid3" style="margin-top:12px">
       <div class="tile2 lime"><b>8 hours</b><span>a week, across 4–5 evenings</span></div>
       <div class="tile2"><b>1–2 hours</b><span>per evening, never more</span></div>

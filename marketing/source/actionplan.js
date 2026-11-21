@@ -21,7 +21,7 @@ P.push(page(`
 
 P.push(page(`
   <h1>At a glance</h1>
-  <p class="lead">The plan in one line: sign 10 founding sites before launch, turn them into case studies, and launch Site Queue publicly at UK Construction Week London on 11 May 2027.</p>
+  <p class="lead">The plan in one line: get 10 founding sites on board before launch, turn them into case studies, then launch Site Queue properly at UK Construction Week London on 11 May 2027.</p>
   <h3>The six phases</h3>
   <div class="tl">${[['0', 'Foundations', '23 Nov – 4 Dec'], ['1', 'First outreach', '7 – 18 Dec'], ['2', 'Pilots live', 'Jan – Feb'], ['3', 'Proof', 'Mar – Apr'], ['4', 'Launch', '11–13 May'], ['5', 'Scale', 'Jun – Sep']].map(([n, t, d]) => `<div class="tlb ${n === '4' ? 'hl' : ''}"><div class="pn">Phase ${n}</div><b>${t}</b><span>${d}</span></div>`).join('')}</div>
   <h3>Targets by launch day</h3>
@@ -29,11 +29,11 @@ P.push(page(`
   <p class="small">Plus 3 published case studies and 5 paying sites from the launch offer.</p>
   <h3>How to read this plan</h3>
   <div class="key"><div>${own('You')}<span>Actions for you as founder. Only you can do these: your story, your product, your decisions.</span></div><div>${own('SB Media')}<span>Actions we deliver, and report on each week.</span></div><div>${own('Together')}<span>Work we do side by side, such as pilot onboarding and the launch event.</span></div></div>
-  <p class="small">Every action has a due date and a box to tick. We review this plan with you every Monday evening.</p>`));
+  <p class="small">Every action has a due date and a box to tick. We'll go through it together every Monday evening.</p>`));
 
 P.push(page(`
   <h1>What we need from you this week</h1>
-  <p class="lead">These decisions and items unlock everything else. With them by 28 November, the first outreach goes out on 7 December.</p>
+  <p class="lead">These decisions and bits unlock everything else. If I've got them by 28 November, the first outreach goes out on 7 December.</p>
   <h3>Decisions</h3>
   ${table([
     ['Approve the founding-site offer', 'Free use on one live site until launch, founding pricing locked in, a direct line to you.', 'You', '28 Nov'],
@@ -64,7 +64,7 @@ P.push(page(`
     ['Demo quick fixes', 'Open on a site after choosing a role; fix sample-data typos; link back to the website.', 'You', '4 Dec'],
     ['Register social handles and check the trademark', 'LinkedIn, Instagram, TikTok, YouTube, Facebook; UK IPO search and filing.', 'Together', '4 Dec'],
   ])}
-  <div class="tip"><b>Why this comes first:</b> every email, post and ad from Phase 1 onwards sends people to the website and the demo. If they can't book a demo there, the outreach is wasted.</div>`));
+  <div class="tip"><b>Why this comes first:</b> every email, post and ad from Phase 1 sends people to the website and the demo. If they can't book a demo there, we're wasting the outreach.</div>`));
 
 P.push(page(`
   ${phase(1, 'First outreach', '7 – 18 Dec 2026', '10 demo tours held and 3 founding sites signed before the Christmas break.', [
@@ -116,7 +116,7 @@ P.push(page(`
 const fix = (t, items) => `<div class="fix"><h3>${t}</h3>${items.map(([a, b]) => `<div class="fi"><span class="box"></span><div><b>${a}</b><div class="w">${b}</div></div></div>`).join('')}</div>`;
 P.push(page(`
   <h1>The fix list in detail</h1>
-  <p class="lead">Every campaign sends people to the website and the demo, so these come first. Most take under a day.</p>
+  <p class="lead">Every campaign sends people to the website and the demo, so these come first. Most of them take less than a day.</p>
   <div class="two">
   ${fix('Website', [
     ['Company email instead of Gmail', 'Contractors trust a company address, and outreach needs it to reach inboxes.'],
@@ -143,7 +143,7 @@ P.push(page(`
 
 P.push(page(`
   <h1>Launch budget</h1>
-  <p class="lead">A lean launch: about £300 a month in tools, ads from March once the website captures leads, and one-off design, video, print and event costs. All figures are estimates to confirm with quotes.</p>
+  <p class="lead">We're keeping it lean: about £300 a month on tools, ads from March once the website's capturing leads, and a few one-off costs for design, video, print and the event. All figures are estimates until we get quotes.</p>
   <table class="t b"><tr><th>Item</th><th style="width:150px">Monthly</th><th style="width:150px">One-off</th><th style="width:90px">From</th></tr>
   ${[['Company email', '£10', '', 'Now'], ['LinkedIn Sales Navigator (1 seat)', '£80–£100', '', 'Now'], ['Email finder (Apollo or Hunter)', '£0–£50', '', 'Now'], ['CRM (HubSpot free or Pipedrive)', '£0–£30', '', 'Now'], ['Cold email sending tool', '£30–£60', '', 'Now'], ['Canva Pro', '£10', '', 'Now'], ['Trademark filing (UK IPO)', '', 'About £200', 'Now'], ['Vector logo, pitch deck, advertiser media pack', '', '£500–£1,500', 'Jan'], ['Product video and three short clips', '', '£500–£2,000', 'Feb'], ['LinkedIn and Google ads', '£500–£1,000', '', 'Mar'], ['Print: one-pagers, pull-up banner, site signs, hi-vis', '', '£300–£800', 'Mar'], ['UK Construction Week stand or start-up pod', '', 'Quote from organiser', 'Book Jan']].map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</table>
   <h1 style="margin-top:34px">How we'll work together</h1>
@@ -157,11 +157,11 @@ P.push(page(`
 const ready = [['Marketing playbook', 'Positioning, messages for every role, who to email, email and LinkedIn templates, demo script, channels.'], ['Outreach target list', '112 organisations in 10 segments, with roles to contact and a status tracker.'], ['12 social posts', 'One for every part of the platform, plus the founding-site offer and advertisers.'], ['LinkedIn banner, share image, email header', 'Ready to upload.'], ['A4 sales one-pager', 'To email after calls and leave at site cabins.'], ['Pull-up banner layout', 'For the UKCW stand, to be finished for print.'], ['Brand basics sheet', 'Colours, type and rules so everything stays consistent.'], ['Go-to-market pitch deck', '17 slides covering the whole plan.']];
 P.push(page(`
   <h1>Ready to use today</h1>
-  <p class="lead">Everything below is already made, in the Site Queue brand, and ready from day one of the plan.</p>
+  <p class="lead">Everything below is already done, in the Site Queue brand, and ready to go from day one.</p>
   <div class="ready">${ready.map(([a, b]) => `<div><b>${a}</b><span>${b}</span></div>`).join('')}</div>
   <div class="cta on-lime">
     <div class="d" style="font-size:40px">Next step</div>
-    <div style="font-size:15px;line-height:1.5;font-weight:600;color:#2E5A14;margin-top:8px">Send us the decisions and items on page 3 by 28 November. We start Phase 0 the same day, and the first founding-site emails go out on 7 December.</div>
+    <div style="font-size:15px;line-height:1.5;font-weight:600;color:#2E5A14;margin-top:8px">Get me the decisions and bits on page 3 by 28 November and we'll start Phase 0 the same day. The first founding-site emails go out on 7 December.</div>
   </div>`));
 
 const CSS = `
