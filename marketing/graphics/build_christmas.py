@@ -97,9 +97,7 @@ body{{background:#333;padding:40px}}
     <div style="color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.5)">Deck the halls.</div>
     <div style="color:#ff4d4d;text-shadow:0 6px 24px rgba(0,0,0,.5);margin-top:10px">We'll do the fence.</div></div>
   <div class="abs" style="left:{pleft:.0f}px;top:{ptop:.0f}px;width:{pw}px;height:{FENCE - ptop:.0f}px;overflow:hidden;z-index:4">
-    <img src="assets/me-level.png" style="position:absolute;left:0;top:0;width:{pw}px;filter:drop-shadow(0 0 40px rgba(255,216,74,.25)) drop-shadow(0 12px 24px rgba(0,0,0,.5))"></div>
-  <div class="abs" style="left:{head_cx - head_w * .62:.0f}px;top:{brim_y + 4:.0f}px;width:{head_w * 1.24:.0f}px;height:{head_w * .32:.0f}px;border-radius:50%;background:#2a0c06;opacity:.45;filter:blur(7px);z-index:5"></div>
-  <div class="abs" style="left:{hat_left:.0f}px;top:{hat_top:.0f}px;width:{hw:.0f}px;transform:rotate(-5deg);transform-origin:50% 76%;z-index:5;filter:sepia(.12) drop-shadow(0 8px 10px rgba(0,0,0,.35))">{HAT}</div>
+    <img src="assets/me-level.png" style="position:absolute;left:0;top:0;width:{pw}px;filter:none"></div>
   <!-- gift tag: standing in the snow on the fence, tied on with twine -->
   <div class="abs" style="left:70px;top:{FENCE - 26}px;width:330px;height:40px;border-radius:50%;background:#000;opacity:.45;filter:blur(12px);z-index:5"></div>
   <div class="abs" style="left:74px;top:{FENCE + 6 - 500}px;width:330px;height:500px;z-index:5;transform:rotate(-4deg);transform-origin:50% 100%">
