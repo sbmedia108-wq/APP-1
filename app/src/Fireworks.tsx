@@ -101,7 +101,7 @@ export function Fireworks() {
 
   if (bursts.length === 0) return null;
   return (
-    <View style={[StyleSheet.absoluteFill, { pointerEvents: "none" }]}>
+    <View style={[StyleSheet.absoluteFill, { pointerEvents: "none", overflow: "hidden" }]}>
       {bursts.map((b) => (
         <BurstView key={b.id} burst={b} />
       ))}

@@ -151,8 +151,8 @@ function Main({
         <HomeScreen
           voice={voice}
           onSubmitText={(t) => {
-            voice.setTranscript(t);
-            setScreen({ name: "confirm" });
+            voice.setTranscript("");
+            askForHelp(t);
           }}
           onPickGuide={(g) =>
             setScreen({ name: "guide", guide: g, offline: true })
@@ -378,7 +378,7 @@ function HomeScreen({
             style={{ width: 36, height: 36 }}
             accessibilityIgnoresInvertColors
           />
-          <T size={20} bold color={colors.text}>
+          <T size={20} bold color={colors.text} maxScale={1}>
             {BRAND.appName}
           </T>
         </View>
@@ -387,18 +387,17 @@ function HomeScreen({
           onPress={onSettings}
           style={styles.settingsLink}
         >
-          <T size={18} color={colors.primary} bold>
+          <T size={18} color={colors.primary} bold maxScale={1}>
             ⚙️ Settings
           </T>
         </Pressable>
       </View>
 
-      <T size={34} bold>
-        Hello, I'm {BRAND.helperName}. What's not working?
+      <T size={24} maxScale={1.2}>
+        Hello, I'm {BRAND.helperName}.
       </T>
-      <T size={22} color={colors.muted} style={{ marginTop: 8 }}>
-        Tap the big button and tell me in your own words. I'm a computer helper,
-        not a real person, so there's no wrong way to say it.
+      <T size={36} bold maxScale={1.2} style={{ marginTop: 2 }}>
+        What's not working?
       </T>
 
       <Pressable
@@ -423,9 +422,14 @@ function HomeScreen({
         <T size={26} bold center color="#fff">
           {voice.listening
             ? "I'm listening…\nTap here when you've finished"
-            : "Tap and tell me"}
+            : "Tap and tell\u00A0me"}
         </T>
       </Pressable>
+      {!voice.listening && (
+        <T size={19} center color={colors.text} style={{ marginTop: 10 }}>
+          I'm a computer helper, so there's no wrong way to ask.
+        </T>
+      )}
 
       {voice.listening && !!voice.transcript && (
         <Card>
@@ -481,7 +485,7 @@ function HomeScreen({
         </View>
         {!teaserDone && (
           <View style={styles.newBadge}>
-            <T size={15} bold color="#fff">
+            <T size={16} bold color="#fff">
               NEW
             </T>
           </View>
@@ -1005,34 +1009,54 @@ function SettingsScreen({
       <T size={22} bold style={{ marginTop: 20 }}>
         Writing size
       </T>
-      <View style={{ flexDirection: "row", gap: 8 }}>
+      {/* One option per row: three side by side squash together at the biggest size on a small phone. */}
+      <View style={{ gap: 8 }}>
         {sizes.map((s) => (
           <BigButton
             key={s.value}
             label={s.label}
+            icon={settings.textScale === s.value ? "✅" : undefined}
             variant={settings.textScale === s.value ? "primary" : "secondary"}
             onPress={() => update({ textScale: s.value })}
-            style={{ flex: 1 }}
           />
         ))}
       </View>
 
-      <View style={[styles.topRow, { marginTop: 20 }]}>
+      <Pressable
+        accessibilityRole="switch"
+        accessibilityLabel="Read steps out loud"
+        accessibilityState={{ checked: settings.readAloud }}
+        onPress={() => update({ readAloud: !settings.readAloud })}
+        style={[styles.topRow, styles.switchRow, { marginTop: 20 }]}
+      >
         <T size={22} bold style={{ flex: 1 }}>
           Read steps out loud
         </T>
         <Switch
+          accessibilityLabel="Read steps out loud"
           value={settings.readAloud}
           onValueChange={(v) => update({ readAloud: v })}
           style={{ transform: [{ scale: 1.4 }] }}
         />
-      </View>
+      </Pressable>
 
-      <View style={[styles.topRow, { marginTop: 12 }]}>
+      <Pressable
+        accessibilityRole="switch"
+        accessibilityLabel="Play cheerful sounds"
+        accessibilityState={{ checked: settings.sounds }}
+        onPress={() => {
+          const v = !settings.sounds;
+          update({ sounds: v });
+          setSoundsEnabled(v);
+          if (v) playSound("correct");
+        }}
+        style={[styles.topRow, styles.switchRow, { marginTop: 12 }]}
+      >
         <T size={22} bold style={{ flex: 1 }}>
           Play cheerful sounds
         </T>
         <Switch
+          accessibilityLabel="Play cheerful sounds"
           value={settings.sounds}
           onValueChange={(v) => {
             update({ sounds: v });
@@ -1041,7 +1065,7 @@ function SettingsScreen({
           }}
           style={{ transform: [{ scale: 1.4 }] }}
         />
-      </View>
+      </Pressable>
 
       <T size={22} bold style={{ marginTop: 20 }}>
         Reading speed
@@ -1141,11 +1165,14 @@ const styles = StyleSheet.create({
   centered: { flexGrow: 1, justifyContent: "center", alignItems: "center" },
   topRow: {
     flexDirection: "row",
+    flexWrap: "wrap",
+    rowGap: 4,
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 12,
   },
-  settingsLink: { paddingVertical: 12, paddingHorizontal: 4 },
+  switchRow: { minHeight: 64, paddingVertical: 8, flexWrap: "nowrap" },
+  settingsLink: { paddingVertical: 12, paddingHorizontal: 4, minHeight: 48, justifyContent: "center" },
   micButton: {
     marginTop: 24,
     borderRadius: 28,

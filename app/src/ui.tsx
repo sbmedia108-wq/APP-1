@@ -34,15 +34,18 @@ export function T({
   color = colors.text,
   center,
   style,
+  maxScale,
 }: {
   children: ReactNode;
   size?: number;
+  /** Caps the "text size" setting for this text, so a heading never pushes the main button off a small screen. */
+  maxScale?: number;
   bold?: boolean;
   color?: string;
   center?: boolean;
   style?: TextStyle;
 }) {
-  const scale = useScale();
+  const scale = Math.min(useScale(), maxScale ?? 99);
   return (
     <Text
       style={[

@@ -344,8 +344,13 @@ export function PracticeKiosk({
           <T size={16} bold color="#fff">
             🎓 PRACTICE
           </T>
-          <Pressable accessibilityRole="button" onPress={onExit} hitSlop={12}>
-            <T size={16} bold color="#fff">
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Leave practice"
+            onPress={onExit}
+            style={styles.leave}
+          >
+            <T size={18} bold color="#fff">
               ✕ Leave
             </T>
           </Pressable>
@@ -361,7 +366,7 @@ export function PracticeKiosk({
             }}
             style={styles.again}
           >
-            <T size={16} bold color="#fff">
+            <T size={18} bold color="#fff">
               🔊 Say that again
             </T>
           </Pressable>
@@ -422,7 +427,7 @@ export function PracticeKiosk({
             <View style={styles.kioskHeader}>
               <Text style={styles.brand}>☀️ CORNER GRILL</Text>
               {stage !== "attract" && (
-                <Pressable onPress={restart}>
+                <Pressable accessibilityRole="button" onPress={restart} style={{ minHeight: 48, justifyContent: "center" }}>
                   <Text style={styles.headerLink}>Start again</Text>
                 </Pressable>
               )}
@@ -760,8 +765,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  leave: { minHeight: 48, minWidth: 48, paddingHorizontal: 10, justifyContent: "center", alignItems: "center" },
   again: {
     alignSelf: "flex-start",
+    minHeight: 48,
+    justifyContent: "center",
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 10,
@@ -789,6 +797,7 @@ const styles = StyleSheet.create({
 
   attract: {
     flex: 1,
+    minHeight: 120,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: K.sun,

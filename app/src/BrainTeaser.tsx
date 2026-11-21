@@ -348,7 +348,7 @@ function Badges({ progress }: { progress: QuizProgress }) {
         {badgesFor(progress).map((b) => (
           <View
             key={b.id}
-            style={[styles.badge, !b.earned && { opacity: 0.45 }]}
+            style={[styles.badge, !b.earned && styles.badgeLocked]}
             accessibilityLabel={`${b.name}: ${b.earned ? "earned" : b.how}`}
           >
             <T size={32} center>
@@ -358,7 +358,7 @@ function Badges({ progress }: { progress: QuizProgress }) {
               {b.name}
             </T>
             {!b.earned && (
-              <T size={14} center color={colors.muted}>
+              <T size={16} center color={colors.text}>
                 {b.how}
               </T>
             )}
@@ -406,6 +406,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   badges: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginTop: 8 },
+  badgeLocked: { backgroundColor: "#F1ECE3", borderStyle: "dashed" },
   badge: {
     width: "30%",
     backgroundColor: colors.card,
