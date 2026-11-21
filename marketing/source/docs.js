@@ -100,7 +100,7 @@ function questionnaire() {
 // ---------- 2. Client proposal ----------
 function proposal() {
   const D = build('Site Queue marketing proposal', 'SB Media');
-  D.cover('Marketing proposal', 'Taking Site Queue from a working demo to a proper launch at UK Construction Week London, May 2027.', 'Prepared for [Founder name]<br>by SB Media, 21 November 2026', K.phoneHome());
+  D.cover('Marketing proposal', 'Taking Site Queue from a working demo to a proper launch at UK Construction Week London, May 2027.', 'Prepared for Luke Valvona<br>by SB Media, 21 November 2026', K.phoneHome());
   D.page(`
     <h1>Our recommendation</h1>
     <p class="lead">Right, straight to it. Site Queue is a properly good product, but at the minute nobody knows it exists. The plan is simple: get 10 founding sites using it before launch, use them as proof, then launch it properly at UK Construction Week London, 11–13 May 2027.</p>

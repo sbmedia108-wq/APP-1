@@ -5,7 +5,7 @@ Everything for Site Queue is in this folder. This page is your order of play, si
 ## Step by step
 
 **Tonight (30 mins)**
-1. Skim the proposal, the action plan and the questionnaire. Fill in his name where it says [Founder name] on the covers, or just tell Claude his name and it'll do it.
+1. Skim the proposal, the action plan and the questionnaire. Luke's name is already on the covers.
 2. Watch the video with the sound on. If the voice or music isn't right, say so and Claude will swap it.
 
 **Next evening (30 mins): send the pack**
@@ -61,7 +61,7 @@ He's a fencing and decking contractor who has stood on sites waiting for the for
 
 Subject: Re: Site Queue
 
-Alright mate,
+Alright Luke,
 
 As promised, here's everything for getting Site Queue out there properly.
 
@@ -80,5 +80,5 @@ The main bits I need from you are on page 3 of the action plan. If we can get th
 Have a look and give me a shout with any questions.
 
 Cheers,
-[Your name]
+Sam
 SB Media

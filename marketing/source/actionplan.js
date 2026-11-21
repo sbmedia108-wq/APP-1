@@ -17,7 +17,7 @@ P.push(page(`
   ${K.phone(470, 250, 290, K.phoneHome())}
   <img class="tile abs" src="${K.LOGO}" style="left:56px;top:56px;width:84px">
   ${K.stack(56, 300, 420, [`<div class="d" style="font-size:76px">Your launch action plan</div>`, `<div style="font-size:18px;line-height:1.5;color:#B7BCB4">Every step from today to the Site Queue launch at UK Construction Week London, 11–13 May 2027, and what follows.</div>`], 26)}
-  <div class="abs" style="left:56px;bottom:56px;font-size:14px;line-height:1.6;color:#B7BCB4">Prepared for [Founder name]<br>by SB Media, 21 November 2026</div>`, 'cover on-char'));
+  <div class="abs" style="left:56px;bottom:56px;font-size:14px;line-height:1.6;color:#B7BCB4">Prepared for Luke Valvona<br>by SB Media, 21 November 2026</div>`, 'cover on-char'));
 
 P.push(page(`
   <h1>At a glance</h1>
