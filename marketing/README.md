@@ -7,6 +7,7 @@ Marketing for Site Queue (sitequeue.uk), the all-in-one construction site app la
 
 | Path | What it is |
 | --- | --- |
+| `site-queue-launch-action-plan.pdf` | 10-page client action plan: every step to launch with owner, due date and tick box |
 | `site-queue-outreach-targets.xlsx` | 112 target organisations in 10 segments, roles, pitch angle, wave and status tracker |
 | `graphics/linkedin-banner.png`, `og-image.png`, `email-header.png` | LinkedIn cover, website share image, email header |
 | `graphics/post-01…12-*.png` | 12 social posts (1080 × 1080) covering every feature, the founding-site offer and advertisers |
