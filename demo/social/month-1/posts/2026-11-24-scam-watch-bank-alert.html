@@ -1,0 +1,43 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Scam Watch: a fake "bank alert" text on a lock screen. Red warns. */
+.lock { position:absolute; inset:0; background: radial-gradient(90% 60% at 30% 20%, #3b4f8a 0%, #1d2547 50%, #0c1022 100%); color:#fff; }
+.lock .st { display:flex; justify-content:space-between; padding:20px 30px 0; font-size:17px; font-weight:600; }
+.lock .clock { text-align:center; font-size:104px; font-weight:300; letter-spacing:-3px; margin-top:44px; line-height:1; }
+.lock .date { text-align:center; font-size:22px; margin-top:10px; opacity:.9; }
+.note { position:absolute; left:14px; right:14px; top:290px; background:rgba(245,246,250,.94); color:#111; border-radius:28px; padding:18px 20px 20px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+.note .h { display:flex; align-items:center; gap:10px; font-size:16px; color:#555; font-weight:600; }
+.note .h i { width:26px; height:26px; border-radius:8px; background:#1a73e8; display:block; position:relative; }
+.note .h i::after { content:""; position:absolute; left:6px; top:7px; width:14px; height:10px; border-radius:4px; background:#fff; }
+.note .h em { margin-left:auto; font-style:normal; font-weight:400; }
+.note .from { font-size:21px; font-weight:800; margin:10px 0 4px; }
+.note .msg { font-size:21px; line-height:1.36; }
+.note .pin { width:26px; height:26px; font-size:15px; box-shadow:none; }
+.unlock { position:absolute; left:0; right:0; bottom:34px; text-align:center; font-size:16px; opacity:.7; }
+.tags { position:absolute; left:540px; top:340px; display:grid; gap:24px; }
+.say .bub { font-size:29px; }
+</style></head><body>
+<section id="post" class="f-red">
+  <h1 style="font-size:74px;letter-spacing:-2px;line-height:1">A text from &ldquo;your bank&rdquo;? Don&rsquo;t ring their&nbsp;number.</h1>
+  <div class="phone chk" style="--w:390px; left:80px; top:330px"><div class="scr">
+    <div class="lock">
+      <div class="st"><span>EE</span><span>79%</span></div>
+      <div class="clock">10:14</div>
+      <div class="date">Tuesday 24 November</div>
+      <div class="note">
+        <div class="h"><i></i>Messages<em>now</em></div>
+        <div class="from">07700 900417 <span class="pin">1</span></div>
+        <div class="msg">BANK ALERT: a payment of <b>&pound;849.99</b> <span class="pin">2</span> to APPLE.COM was attempted. If this was NOT you, call our fraud team <b>now</b> <span class="pin">3</span> on 020&nbsp;7946&nbsp;0731 <span class="pin">4</span></div>
+      </div>
+      <div class="unlock">Swipe up to open</div>
+    </div>
+    <div class="glass"></div></div><div class="cam"></div></div>
+  <div class="tags chk">
+    <div class="tag"><i>1</i>Sent from a mobile</div>
+    <div class="tag"><i>2</i>A scary amount</div>
+    <div class="tag"><i>3</i>Hurry, &ldquo;now&rdquo;</div>
+    <div class="tag"><i>4</i>Their number, not&nbsp;yours</div>
+  </div>
+  <div class="say chk" style="left:540px; top:780px; width:460px"><div class="tile"></div><div class="bub"><b>Ring 159</b> or the number on the back of your card. That&rsquo;s your real&nbsp;bank.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Scam Watch, every Tuesday</span></div></div><div class="keys"><i class="on"></i><i></i><i></i><i></i></div></div>
+</section></body></html>

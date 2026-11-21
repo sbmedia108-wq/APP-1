@@ -1,0 +1,34 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feature: one big button, 156 guides in 13 areas around it. Blue introduces. */
+.orbit { position:absolute; inset:0; }
+.ring { position:absolute; left:540px; top:760px; width:820px; height:640px; margin:-320px 0 0 -410px; border-radius:50%; border:3px dashed rgba(255,255,255,.22); }
+.area { position:absolute; width:150px; margin-left:-75px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.area i { width:96px; height:96px; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:46px; background:linear-gradient(#fff, #eef2fa);
+  box-shadow: inset 0 -6px 10px rgba(16,42,86,.12), inset 0 4px 4px #fff, 0 7px 0 #b9c8e6, 0 16px 24px rgba(5,20,60,.35); }
+.area span { font-size:21px; font-weight:800; text-align:center; line-height:1.1; text-shadow:0 2px 6px rgba(0,0,0,.25); }
+.mic { position:absolute; left:540px; top:732px; width:260px; height:260px; margin:-130px 0 0 -130px; border-radius:50%;
+  background: radial-gradient(circle at 40% 30%, #4b8bea 0%, #2563c9 45%, #163f8a 100%);
+  box-shadow: 0 0 0 14px rgba(255,255,255,.95), 0 0 0 22px rgba(255,255,255,.18), 0 16px 0 14px #0e2f6b, 0 40px 60px 10px rgba(0,0,0,.4), inset 0 -18px 30px rgba(0,0,0,.25), inset 0 14px 20px rgba(255,255,255,.3); }
+.mic svg { position:absolute; left:50%; top:50%; width:112px; height:112px; transform:translate(-50%,-50%); filter:drop-shadow(0 4px 6px rgba(0,0,0,.3)); }
+.pill { position:absolute; left:540px; top:912px; transform:translateX(-50%); background:#FFC72C; color:var(--ink); font-weight:800; font-size:30px; padding:14px 30px; border-radius:999px; white-space:nowrap;
+  box-shadow: 0 6px 0 #c99515, 0 14px 24px rgba(0,0,0,.3); }
+</style></head><body>
+<section id="post" class="f-blue">
+  <h1 class="m">156 guides. 13&nbsp;areas.<br>One big button.</h1>
+  <div class="ring"></div>
+  <div class="orbit" id="orbit"></div>
+  <div class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5" fill="#fff"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></div>
+  <div class="pill">Tap and tell me</div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Say what&rsquo;s wrong. Mavis finds the fix.</span></div></div><div class="keys"><i></i><i></i><i></i><i class="on"></i></div></div>
+</section>
+<script>
+const A = [["📺","The TV"],["📱","Phone basics"],["📞","Calls"],["💬","WhatsApp"],["✉️","Email"],["📷","Photos"],["📶","Wi-Fi"],["🧩","Apps"],["🔑","Passwords"],["🛡️","Scams"],["🏦","Banking"],["🩺","The GP"],["🅿️","Screens and car parks"]];
+const o = document.getElementById('orbit'), cx = 540, cy = 760, rx = 410, ry = 320;
+A.forEach(([e, t], i) => {
+  const a = -Math.PI / 2 + i * 2 * Math.PI / A.length;
+  const d = document.createElement('div'); d.className = 'area';
+  d.style.left = (cx + rx * Math.cos(a)) + 'px'; d.style.top = (cy + ry * Math.sin(a) - 48) + 'px';
+  d.innerHTML = `<i>${e}</i><span>${t}</span>`; o.appendChild(d);
+});
+</script></body></html>

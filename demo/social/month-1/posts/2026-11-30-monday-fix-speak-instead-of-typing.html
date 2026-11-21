@@ -1,0 +1,33 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Monday Fix: speak instead of typing. A real-size Android keyboard with the microphone key lit. Yellow coaches. */
+.kb { position:absolute; left:var(--m); right:var(--m); top:500px; height:460px; border-radius:46px; background:linear-gradient(#e9ecf1, #d9dee6); padding:22px 20px 20px;
+  box-shadow: 0 30px 60px rgba(90,60,0,.35), 0 8px 0 #b9bfc9, inset 0 2px 0 #fff; }
+.bar { height:76px; display:flex; align-items:center; gap:22px; padding:0 14px; color:#5b6472; font-size:26px; font-weight:600; }
+.bar .mic { margin-left:auto; margin-right:18px; position:relative; width:60px; height:60px; border-radius:50%; background:#1F5FBF; display:grid; place-items:center;
+  box-shadow: 0 0 0 8px rgba(31,95,191,.25), 0 0 0 16px rgba(31,95,191,.12), 0 6px 14px rgba(0,0,0,.25); }
+.bar .mic svg { width:32px; height:32px; }
+.row { display:flex; gap:9px; margin-top:12px; justify-content:center; }
+.k { flex:none; width:78px; height:74px; border-radius:14px; background:#fff; display:grid; place-items:center; font-size:34px; color:#1d2430; box-shadow:0 3px 0 #b7bdc7; }
+.k.w { background:#c9d0db; font-size:24px; font-weight:800; }
+.k.sp { width:400px; }
+.typed { position:absolute; left:var(--m); right:var(--m); top:350px; height:116px; background:#fff; border-radius:34px; display:flex; align-items:center; padding:0 34px; font-size:34px; color:var(--ink);
+  box-shadow: 0 14px 30px rgba(90,60,0,.25); }
+.typed .cur { width:4px; height:44px; background:#1F5FBF; margin-left:4px; }
+.typed .ph { color:#9aa3b0; }
+.arrow { position:absolute; right:60px; top:450px; }
+</style></head><body>
+<section id="post" class="f-yellow">
+  <h1 class="m">Fiddly little keys? Talk&nbsp;instead.</h1>
+  <p class="lead chk" style="top:270px; width:900px">Touch the <b>microphone</b> on the keyboard, then&nbsp;speak.</p>
+  <div class="typed chk"><span>Happy birthday love, see you&nbsp;Sunday</span><span class="cur"></span></div>
+  <div class="kb chk">
+    <div class="bar"><span>Hello</span><span>Hi</span><span>Thanks</span><span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5" fill="#fff"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/></svg></span></div>
+    <div class="row"><span class="k">q</span><span class="k">w</span><span class="k">e</span><span class="k">r</span><span class="k">t</span><span class="k">y</span><span class="k">u</span><span class="k">i</span><span class="k">o</span><span class="k">p</span></div>
+    <div class="row"><span class="k">a</span><span class="k">s</span><span class="k">d</span><span class="k">f</span><span class="k">g</span><span class="k">h</span><span class="k">j</span><span class="k">k</span><span class="k">l</span></div>
+    <div class="row"><span class="k w" style="width:118px">&#8679;</span><span class="k">z</span><span class="k">x</span><span class="k">c</span><span class="k">v</span><span class="k">b</span><span class="k">n</span><span class="k">m</span><span class="k w" style="width:118px">&#9003;</span></div>
+    <div class="row"><span class="k w" style="width:118px">?123</span><span class="k">,</span><span class="k sp"></span><span class="k">.</span><span class="k w" style="width:118px">&#8629;</span></div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:1000px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:29px; padding:20px 28px">Ask Mavis works the same way. Just say what&rsquo;s wrong, in your own&nbsp;words.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Free tech help, coming soon to Android</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section></body></html>

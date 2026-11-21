@@ -1,0 +1,35 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feel-good Friday: the daily brain teaser. The top of a phone, very close up, with the little aeroplane. */
+.kicker { color:#FFC72C; } .kicker i { background:#FFC72C; }
+h1 { top:136px; }
+.crop { position:absolute; left:var(--m); right:var(--m); top:350px; height:250px; overflow:hidden; -webkit-mask-image:linear-gradient(#000 55%, transparent 100%); }
+.big { position:absolute; left:0; right:0; top:0; height:600px; border-radius:110px 110px 0 0; background:#1b2030; padding:16px;
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.14), inset 0 0 0 9px #10131d; }
+.big .s { height:100%; border-radius:96px 96px 0 0; background:var(--cream); color:#111; display:flex; justify-content:space-between; align-items:flex-start; padding:62px 90px 0; font-size:58px; font-weight:800; }
+.big .s .r { display:flex; align-items:center; gap:52px; margin-top:-4px; }
+.plane { position:relative; width:76px; height:76px; display:block; }
+.pw { position:relative; display:block; width:76px; height:76px; }
+.pw::before { content:""; position:absolute; inset:-22px; border-radius:50%; border:8px solid #FFC72C; box-shadow:0 0 0 6px rgba(255,199,44,.25); }
+.fade { position:absolute; left:0; right:0; bottom:0; height:70px; background:linear-gradient(rgba(16,42,86,0), #102A56); }
+.opts { position:absolute; left:var(--m); right:var(--m); top:620px; display:grid; gap:20px; }
+.opt { display:flex; align-items:center; gap:24px; background:#fff; color:var(--ink); border-radius:28px; padding:22px 28px; font-size:34px; font-weight:600; box-shadow:0 8px 0 #b9c8e6, 0 18px 28px rgba(0,0,0,.3); }
+.opt i { font-style:normal; flex:none; width:62px; height:62px; border-radius:50%; background:#1F5FBF; color:#fff; display:grid; place-items:center; font-weight:800; font-size:32px;
+  box-shadow: inset 0 -4px 6px rgba(0,0,0,.25), inset 0 4px 4px rgba(255,255,255,.3); }
+.ask { position:absolute; left:var(--m); right:var(--m); top:1040px; font-size:32px; color:#dbe4f5; }
+.ask b { color:#fff; font-weight:800; }
+</style></head><body>
+<section id="post" class="f-ink">
+  <div class="kicker"><i></i>Friday brain teaser</div>
+  <h1 class="m">What does this little aeroplane&nbsp;mean?</h1>
+  <div class="crop chk"><div class="big"><div class="s"><span>10:14</span><span class="r">
+    <span class="pw"><svg class="plane" viewBox="0 0 24 24"><path fill="#111" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>
+    <span>79%</span></span></div></div></div>
+  <div class="opts chk">
+    <div class="opt"><i>A</i>You&rsquo;re on a plane</div>
+    <div class="opt"><i>B</i>Calls and internet are switched&nbsp;off</div>
+    <div class="opt"><i>C</i>The battery is full</div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:1028px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:29px; padding:20px 28px"><b>Pop your answer in the comments.</b> It&rsquo;s one of today&rsquo;s three teasers in the&nbsp;app.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>A new brain teaser every day</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section></body></html>

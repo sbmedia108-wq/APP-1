@@ -1,0 +1,49 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Plain-English word of the week: router. Green, in the voice of a dictionary that's on your side. */
+.kicker { color:#cfeedd; }
+.kicker i { background:#19A35A; }
+.word { position:absolute; left:var(--m); top:140px; font-weight:800; font-size:200px; letter-spacing:-7px; line-height:1; }
+.say-it { position:absolute; left:var(--m); top:370px; font-size:34px; color:#d7f1e2; }
+.say-it b { color:#fff; font-weight:800; background:rgba(255,255,255,.14); padding:4px 16px; border-radius:12px; margin-left:6px; }
+.def { position:absolute; left:var(--m); top:470px; width:520px; font-size:36px; line-height:1.3; }
+.def b { font-weight:800; }
+.router { position:absolute; left:560px; top:440px; width:470px; height:420px; }
+</style></head><body>
+<section id="post" class="f-green">
+  <div class="kicker"><i></i>Plain-English word of the week</div>
+  <div class="word chk">Router</div>
+  <p class="say-it chk">Say it like this: <b>ROO-ter</b></p>
+  <p class="def chk"><b>The box that brings the internet into your home</b> and sends out the&nbsp;Wi-Fi.</p>
+  <svg class="router" viewBox="0 0 470 420" aria-hidden="true">
+    <defs>
+      <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9ecef"/></linearGradient>
+      <linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".6" stop-color="#dde2e7"/><stop offset="1" stop-color="#c3cad2"/></linearGradient>
+      <linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c7ced6"/><stop offset="1" stop-color="#a9b2bc"/></linearGradient>
+      <linearGradient id="ant" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a2f38"/><stop offset=".45" stop-color="#5b6370"/><stop offset="1" stop-color="#1d2128"/></linearGradient>
+      <radialGradient id="led" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#eafff1"/><stop offset=".35" stop-color="#3ff08a"/><stop offset="1" stop-color="#3ff08a" stop-opacity="0"/></radialGradient>
+      <filter id="blur"><feGaussianBlur stdDeviation="14"/></filter>
+    </defs>
+    <ellipse cx="225" cy="372" rx="210" ry="26" fill="#03311a" opacity=".55" filter="url(#blur)"/>
+    <!-- antennas behind -->
+    <g transform="rotate(-12 120 210)"><rect x="108" y="20" width="24" height="200" rx="12" fill="url(#ant)"/></g>
+    <g transform="rotate(10 330 210)"><rect x="318" y="20" width="24" height="200" rx="12" fill="url(#ant)"/></g>
+    <!-- body: top, front and side -->
+    <path d="M40 220 L110 180 L440 180 L390 220 Z" fill="url(#top)"/>
+    <path d="M40 220 L390 220 L390 350 Q390 362 378 362 L52 362 Q40 362 40 350 Z" fill="url(#front)"/>
+    <path d="M390 220 L440 180 L440 306 Q440 316 432 322 L390 356 Z" fill="url(#side)"/>
+    <path d="M40 220 L390 220 L440 180" fill="none" stroke="#fff" stroke-width="3"/>
+    <!-- vents on top -->
+    <g stroke="#cfd5dc" stroke-width="5" stroke-linecap="round"><path d="M150 202 L330 202"/><path d="M170 192 L345 192"/></g>
+    <!-- lights -->
+    <g><circle cx="110" cy="295" r="26" fill="url(#led)"/><circle cx="110" cy="295" r="7" fill="#eafff1"/>
+       <circle cx="210" cy="295" r="26" fill="url(#led)"/><circle cx="210" cy="295" r="7" fill="#eafff1"/>
+       <circle cx="310" cy="295" r="26" fill="url(#led)"/><circle cx="310" cy="295" r="7" fill="#eafff1"/></g>
+    <g font-family="Atkinson Hyperlegible Next" font-size="16" font-weight="800" fill="#7b8591" text-anchor="middle" letter-spacing="1"><text x="110" y="336">POWER</text><text x="210" y="336">INTERNET</text><text x="310" y="336">WI-FI</text></g>
+    <!-- wifi waves -->
+    <g fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".9"><path d="M190 110 a50 50 0 0 1 70 0"/><path d="M165 82 a86 86 0 0 1 120 0" opacity=".7"/><path d="M140 54 a122 122 0 0 1 170 0" opacity=".45"/></g>
+    <circle cx="225" cy="134" r="9" fill="#fff"/>
+  </svg>
+  <div class="say chk" style="left:var(--m); top:940px; width:920px"><div class="tile"></div><div class="bub" style="flex:1">Internet stopped? Switch the router off, wait 30&nbsp;seconds, then switch it back&nbsp;on.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Tech words, made plain</span></div></div><div class="keys"><i></i><i class="on"></i><i></i><i></i></div></div>
+</section></body></html>

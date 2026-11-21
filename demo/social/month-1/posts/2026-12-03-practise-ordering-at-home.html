@@ -1,0 +1,47 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Practise with Mavis: the pretend ordering screen, finished, with fireworks going off around it. Green confirms. */
+#post.f-green { background: radial-gradient(70% 55% at 50% 60%, #0f6b3a 0%, #08502b 50%, #04331b 100%); }
+.sky { position:absolute; inset:0; }
+.lead { top:262px; font-size:32px; color:#cdeedb; }
+.lead b { color:#fff; }
+</style></head><body>
+<section id="post" class="f-green">
+  <svg class="sky" id="sky" viewBox="0 0 1080 1350" aria-hidden="true"></svg>
+  <h1 class="m">No queue behind you. Practise at&nbsp;home.</h1>
+  <p class="lead chk"><b>Get it wrong as often as you like.</b> Fireworks when it&rsquo;s&nbsp;right.</p>
+  <div class="phone chk" style="--w:380px; left:350px; top:350px"><div class="scr sb" data-time="12:41"><img src="img/screen-practice-done.png" alt=""><div class="glass"></div></div><div class="cam"></div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>A pretend ordering screen, in your pocket</span></div></div><div class="keys"><i></i><i class="on"></i><i></i><i></i></div></div>
+</section>
+<script>
+// Fireworks: rays of light with a bright tip, each burst in one of the remote's colours
+const sky = document.getElementById('sky'), NS = 'http://www.w3.org/2000/svg';
+const defs = document.createElementNS(NS, 'defs');
+defs.innerHTML = '<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+sky.appendChild(defs);
+function burst(cx, cy, r, col, n, seed) {
+  const g = document.createElementNS(NS, 'g'); g.setAttribute('filter', 'url(#glow)');
+  let s = seed; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+  const id = 'g' + seed;
+  const lg = document.createElementNS(NS, 'radialGradient'); lg.id = id; lg.setAttribute('gradientUnits', 'userSpaceOnUse'); lg.setAttribute('cx', cx); lg.setAttribute('cy', cy); lg.setAttribute('r', r);
+  lg.innerHTML = `<stop offset="0" stop-color="${col}" stop-opacity="0"/><stop offset=".55" stop-color="${col}" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="1"/>`;
+  defs.appendChild(lg);
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + rnd() * .12, rr = r * (.75 + rnd() * .25);
+    const x1 = cx + Math.cos(a) * rr * .22, y1 = cy + Math.sin(a) * rr * .22, x2 = cx + Math.cos(a) * rr, y2 = cy + Math.sin(a) * rr + rr * .06;
+    const l = document.createElementNS(NS, 'path'); l.setAttribute('d', `M${x1} ${y1} Q ${(x1+x2)/2} ${(y1+y2)/2 - 4} ${x2} ${y2}`);
+    l.setAttribute('stroke', `url(#${id})`); l.setAttribute('stroke-width', 4); l.setAttribute('stroke-linecap', 'round'); l.setAttribute('fill', 'none'); g.appendChild(l);
+    const d = document.createElementNS(NS, 'circle'); d.setAttribute('cx', x2); d.setAttribute('cy', y2); d.setAttribute('r', 4.5); d.setAttribute('fill', '#fff'); g.appendChild(d);
+  }
+  const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r * .9); c.setAttribute('fill', col); c.setAttribute('opacity', .08); g.prepend(c);
+  sky.appendChild(g);
+}
+burst(190, 470, 120, '#FFC72C', 28, 3);
+burst(920, 520, 105, '#5b9bff', 24, 7);
+burst(170, 860, 85, '#ff5a6e', 20, 11);
+burst(925, 900, 120, '#FFC72C', 28, 17);
+burst(250, 1060, 55, '#ffffff', 14, 19);
+burst(860, 1100, 50, '#5b9bff', 14, 23);
+// a few falling sparks
+for (const [x, y, r] of [[120,640,3],[300,600,2.5],[980,700,3],[800,690,2],[90,1000,2.5],[1000,1040,2.5],[310,760,2],[780,800,2]]) { const c = document.createElementNS(NS,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',r); c.setAttribute('fill','#ffe9a6'); sky.appendChild(c); }
+</script></body></html>

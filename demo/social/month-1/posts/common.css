@@ -1,0 +1,87 @@
+/* Ask Mavis, month 1. Shared parts for every post, following "Four Buttons" (../v2/design-philosophy.md).
+   Red warns, green confirms, yellow coaches, blue introduces. One family: Atkinson Hyperlegible Next. 1080 x 1350. */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600;800&display=swap");
+:root {
+  --ink:#102A56; --red:#C8102E; --green:#0B7A3E; --yellow:#FFC72C; --blue:#1F5FBF;
+  --cream:#FFF8EC; --m:80px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#888; padding:20px; font-family:"Atkinson Hyperlegible Next", sans-serif; -webkit-font-smoothing:antialiased; }
+#post { width:1080px; height:1350px; position:relative; overflow:hidden; color:#fff; }
+
+/* Fields: a flat colour, lit softly from above so it reads as a surface, not a wash */
+.f-blue   { background: radial-gradient(120% 80% at 30% 0%, #2a6cd0 0%, #1F5FBF 45%, #174a99 100%); }
+.f-red    { background: radial-gradient(120% 80% at 30% 0%, #d81a39 0%, #C8102E 45%, #9c0b23 100%); }
+.f-green  { background: radial-gradient(120% 80% at 30% 0%, #12904b 0%, #0B7A3E 45%, #075a2d 100%); }
+#post.f-yellow, .f-yellow { background: radial-gradient(120% 80% at 30% 0%, #ffd34f 0%, #FFC72C 45%, #f0ad12 100%); color:var(--ink); }
+.f-night  { background: radial-gradient(80% 60% at 50% 55%, #1e4a9a 0%, #12306b 45%, #0a1c42 100%); }
+.f-ink    { background: radial-gradient(90% 70% at 50% 40%, #183a72 0%, #102A56 55%, #0a1b3a 100%); }
+
+/* Headlines: huge, tight, left-aligned, sentence case */
+h1 { position:absolute; left:var(--m); right:var(--m); top:var(--m); font-weight:800; font-size:92px; line-height:.98; letter-spacing:-2.6px; }
+h1.m { font-size:80px; letter-spacing:-2.2px; line-height:1; }
+h1.s { font-size:68px; letter-spacing:-1.6px; line-height:1.02; }
+.kicker { position:absolute; left:var(--m); top:var(--m); display:flex; align-items:center; gap:14px; font-weight:800; font-size:26px; letter-spacing:2px; text-transform:uppercase; }
+.kicker i { width:22px; height:22px; border-radius:50%; display:block; box-shadow: inset 0 -3px 4px rgba(0,0,0,.2), inset 0 3px 3px rgba(255,255,255,.45); }
+.lead { position:absolute; left:var(--m); font-size:34px; line-height:1.3; }
+.lead b { font-weight:800; }
+
+/* The Mavis tile: the app icon as a real, pressable object */
+.tile { --s:120px; width:var(--s); height:var(--s); border-radius:24%; position:relative; flex:none;
+  background:url(img/logo.png) center/cover;
+  box-shadow: inset 0 2px 1px rgba(255,255,255,.55), inset 0 -4px 8px rgba(120,80,0,.25),
+    0 calc(var(--s)*.05) 0 #c99515, 0 calc(var(--s)*.12) calc(var(--s)*.18) rgba(0,0,0,.32); }
+.tile::after { content:""; position:absolute; inset:0; border-radius:inherit;
+  background: linear-gradient(170deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.08) 38%, rgba(255,255,255,0) 50%); }
+
+/* Mavis speaking: icon + bubble. Used wherever Mavis gives the answer */
+.say { position:absolute; display:flex; align-items:flex-start; gap:22px; }
+.say .tile { --s:104px; }
+.say .bub { position:relative; background:#fff; color:var(--ink); border-radius:30px; padding:24px 30px 26px; font-size:31px; line-height:1.3;
+  box-shadow: 0 14px 30px rgba(0,0,0,.22); }
+.say .bub::before { content:""; position:absolute; left:-16px; top:34px; border:16px solid transparent; border-right-color:#fff; border-left:0; }
+.say .bub b { font-weight:800; }
+.say .bub small { display:block; font-size:21px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+
+/* A real-looking Android phone. Set --w; the screen keeps the app's 1170 x 2532 shape */
+.phone { --w:420px; position:absolute; width:var(--w); height:calc((var(--w) - 24px) * 2.164 + 24px); border-radius:calc(var(--w) * .15); background:#1b2030; padding:12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25), inset 0 0 0 2px rgba(255,255,255,.14), inset 0 0 0 6px #10131d; }
+.phone::before { content:""; position:absolute; right:-5px; top:22%; width:5px; height:11%; border-radius:0 4px 4px 0; background:#2a3043; }
+.phone::after { content:""; position:absolute; right:-5px; top:36%; width:5px; height:6%; border-radius:0 4px 4px 0; background:#2a3043; }
+.phone .scr { position:relative; width:100%; height:100%; border-radius:calc(var(--w) * .12); overflow:hidden; background:var(--cream); }
+.phone .scr > img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+.phone .cam { position:absolute; left:50%; top:14px; width:16px; height:16px; margin-left:-8px; border-radius:50%; background:#05070c; box-shadow: inset 0 0 0 3px #1a1f2c; z-index:3; }
+.phone .glass { position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 30%); }
+
+/* Numbered warning tags (red posts) */
+.pin { display:inline-grid; place-items:center; width:30px; height:30px; border-radius:50%; background:var(--red); color:#fff; font-size:17px; font-weight:800; vertical-align:2px; margin:0 2px; font-style:normal; box-shadow:0 0 0 3px #fff; }
+.tag { display:flex; align-items:center; gap:16px; background:#fff; color:var(--red); font-weight:800; font-size:30px; padding:16px 26px 16px 16px; border-radius:999px;
+  box-shadow:0 7px 0 #d8c9cc, 0 16px 26px rgba(0,0,0,.28); white-space:nowrap; }
+.tag i { font-style:normal; width:44px; height:44px; border-radius:50%; background:var(--red); color:#fff; display:grid; place-items:center; font-size:24px; flex:none;
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.25), inset 0 3px 3px rgba(255,255,255,.35); }
+
+/* Rubber buttons in the remote's colours */
+.btn { border-radius:50%; position:relative; flex:none;
+  box-shadow: inset 0 -10px 18px rgba(0,0,0,.22), inset 0 8px 12px rgba(255,255,255,.45), 0 10px 0 rgba(0,0,0,.22), 0 22px 34px rgba(0,0,0,.28); }
+.btn::after { content:""; position:absolute; left:18%; top:10%; width:46%; height:30%; border-radius:50%; background:radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,255,255,0)); }
+
+/* The signature: the Ask Mavis mark, said plainly, and the four buttons with this post's one lit */
+.sig { position:absolute; left:var(--m); right:var(--m); bottom:64px; height:96px; display:flex; align-items:center; justify-content:space-between; }
+.sig .mark { display:flex; align-items:center; gap:22px; }
+.sig .mark .tile { --s:92px; }
+.sig .mark b { display:block; font-weight:800; font-size:44px; letter-spacing:-.8px; line-height:1; }
+.sig .mark span { display:block; font-size:23px; margin-top:7px; opacity:.85; }
+.sig .keys { display:flex; gap:14px; padding:12px 14px; border-radius:999px; background:rgba(8,20,45,.32); }
+.f-yellow .sig .keys { background:rgba(16,42,86,.14); }
+.sig .keys i { width:34px; height:34px; border-radius:50%; display:block; opacity:.38; box-shadow: inset 0 -3px 5px rgba(0,0,0,.22), inset 0 3px 4px rgba(255,255,255,.4); }
+.sig .keys i:nth-child(1) { background:#E0233F; } .sig .keys i:nth-child(2) { background:#19A35A; }
+.sig .keys i:nth-child(3) { background:#FFC72C; } .sig .keys i:nth-child(4) { background:#3B7BE0; }
+.sig .keys i.on { opacity:1; box-shadow:0 0 0 4px #fff, inset 0 -3px 5px rgba(0,0,0,.22), inset 0 3px 4px rgba(255,255,255,.4); }
+.f-yellow .sig .keys i.on { box-shadow:0 0 0 4px var(--ink), inset 0 -3px 5px rgba(0,0,0,.22), inset 0 3px 4px rgba(255,255,255,.4); }
+.nw { white-space:nowrap; }
+/* A phone showing an app screenshot with a status bar above it */
+.phone .scr.sb > img { width:95%; height:auto; margin:38px auto 0; }
+.phone .scr.sb::before { content:attr(data-time); position:absolute; left:34px; top:12px; font-size:15px; font-weight:800; color:#1b2030; }
+.phone .scr.sb::after { content:"\25AE\25AE\25AE  82%"; position:absolute; right:30px; top:12px; font-size:13px; letter-spacing:-1px; font-weight:800; color:#1b2030; }
+.hl { position:absolute; border:5px solid #FFC72C; border-radius:18px; box-shadow:0 0 0 8px rgba(255,199,44,.3), 0 0 30px rgba(255,199,44,.6); }

@@ -1,0 +1,41 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feature: "call my helper". Mum's phone shows Mavis with the Call Sarah button; Sarah's phone rings. Blue introduces. */
+.inc { position:absolute; inset:0; background:radial-gradient(90% 60% at 50% 25%, #2f8f63 0%, #14513a 55%, #0b2e22 100%); color:#fff; text-align:center; }
+.inc .st { display:flex; justify-content:space-between; padding:20px 30px 0; font-size:17px; font-weight:600; }
+.inc .lbl { font-size:20px; opacity:.8; margin-top:64px; }
+.inc .name { font-size:50px; font-weight:800; margin-top:10px; letter-spacing:-1px; }
+.inc .sub { font-size:20px; opacity:.75; margin-top:6px; }
+.inc .av { width:150px; height:150px; border-radius:50%; margin:48px auto 0; background:linear-gradient(#f6c9a8, #e9a983); display:grid; place-items:center; color:#7a3e1c; font-size:70px; font-weight:800;
+  box-shadow: 0 0 0 14px rgba(255,255,255,.10), 0 0 0 30px rgba(255,255,255,.06); }
+.inc .btns { position:absolute; left:46px; right:46px; bottom:70px; display:flex; justify-content:space-between; }
+.inc .btns div { display:flex; flex-direction:column; align-items:center; gap:12px; font-size:18px; }
+.inc .btns i { width:84px; height:84px; border-radius:50%; display:grid; place-items:center; }
+.inc .btns i svg { width:40px; }
+.arc { position:absolute; left:400px; top:250px; width:300px; height:180px; }
+.who { position:absolute; font-size:26px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#cfe0fb; }
+</style></head><body>
+<section id="post" class="f-blue">
+  <h1 class="m">Still stuck? One button rings the&nbsp;family.</h1>
+  <p class="who chk" style="left:80px; top:302px">Mum&rsquo;s phone</p>
+  <p class="who chk" style="left:640px; top:302px">Sarah&rsquo;s phone</p>
+  <div class="phone chk" style="--w:360px; left:80px; top:356px"><div class="scr sb" data-time="15:20"><img src="img/screen-call-helper.png" alt=""><div class="hl" style="left:20px; top:563px; width:296px; height:70px"></div><div class="glass"></div></div><div class="cam"></div></div>
+  <div class="phone chk" style="--w:360px; left:640px; top:356px"><div class="scr">
+    <div class="inc">
+      <div class="st"><span>15:20</span><span>88%</span></div>
+      <div class="lbl">Incoming call</div>
+      <div class="name">Mum</div>
+      <div class="sub">Mobile</div>
+      <div class="av">M</div>
+      <div class="btns">
+        <div><i style="background:#e2263f"><svg viewBox="0 0 24 24" fill="#fff" style="transform:rotate(135deg)"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></i>Decline</div>
+        <div><i style="background:#1fb35e; box-shadow:0 0 0 12px rgba(31,179,94,.25)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></i>Answer</div>
+      </div>
+    </div>
+    <div class="glass"></div></div><div class="cam"></div></div>
+  <svg class="arc" viewBox="0 0 200 400" style="position:absolute; left:440px; top:560px; width:200px; height:400px; overflow:visible" aria-hidden="true">
+    <path d="M14 400 C 70 380, 130 300, 178 175" fill="none" stroke="#FFC72C" stroke-width="7" stroke-dasharray="2 16" stroke-linecap="round"/>
+    <path d="M157 191 L178 175 L180 201" fill="none" stroke="#FFC72C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Add a helper once. Mavis does the rest.</span></div></div><div class="keys"><i></i><i></i><i></i><i class="on"></i></div></div>
+</section></body></html>

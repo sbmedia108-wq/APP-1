@@ -1,0 +1,30 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Feel-good Friday: the word puzzle. Six letter tiles on a wooden rack under a winter sky. */
+.kicker { color:#FFC72C; } .kicker i { background:#FFC72C; }
+h1 { top:136px; }
+.rack { position:absolute; left:var(--m); right:var(--m); top:420px; height:250px; }
+.tiles { position:absolute; left:20px; right:20px; top:0; display:flex; justify-content:space-between; }
+.t { width:128px; height:140px; border-radius:22px; display:grid; place-items:center; font-weight:800; font-size:96px; color:var(--ink);
+  background: linear-gradient(155deg, #fff8e6 0%, #ffe9b8 55%, #f5d48a 100%);
+  box-shadow: inset 0 3px 2px rgba(255,255,255,.9), inset 0 -6px 10px rgba(150,100,20,.25), 0 10px 0 #c99a45, 0 24px 30px rgba(0,0,0,.45); }
+.t:nth-child(odd) { transform:rotate(-3deg) translateY(4px); } .t:nth-child(3n) { transform:rotate(4deg); }
+.wood { position:absolute; left:0; right:0; top:120px; height:70px; border-radius:14px;
+  background: repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 3px, rgba(0,0,0,0) 3px 21px), linear-gradient(#b7803f, #8d5a24 60%, #6e4319);
+  box-shadow: inset 0 3px 0 rgba(255,220,160,.5), 0 18px 30px rgba(0,0,0,.45); }
+.blanks { position:absolute; left:var(--m); right:var(--m); top:720px; display:flex; justify-content:space-between; padding:0 20px; }
+.blanks i { width:128px; height:10px; border-radius:5px; background:rgba(255,255,255,.35); display:block; }
+.hint { position:absolute; left:var(--m); right:var(--m); top:790px; font-size:34px; line-height:1.3; color:#dbe4f5; }
+.hint b { color:#FFC72C; font-weight:800; }
+.snow { position:absolute; inset:0; }
+</style></head><body>
+<section id="post" class="f-night">
+  <svg class="snow" viewBox="0 0 1080 1350" aria-hidden="true" fill="#fff"><g opacity=".6"><circle cx="980" cy="110" r="4"/><circle cx="900" cy="250" r="3"/><circle cx="1020" cy="330" r="2.5"/><circle cx="60" cy="380" r="3"/><circle cx="1030" cy="700" r="3"/><circle cx="40" cy="760" r="2.5"/><circle cx="1010" cy="980" r="3"/><circle cx="50" cy="1000" r="3"/><circle cx="700" cy="60" r="2.5"/></g></svg>
+  <div class="kicker"><i></i>Friday brain teaser</div>
+  <h1 class="m">Unscramble this word. It&rsquo;s a tech&nbsp;one.</h1>
+  <div class="rack chk"><div class="wood"></div><div class="tiles"><span class="t">T</span><span class="t">B</span><span class="t">L</span><span class="t">E</span><span class="t">T</span><span class="t">A</span></div></div>
+  <div class="blanks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <p class="hint chk"><b>A clue:</b> plenty of people will unwrap one on Christmas&nbsp;Day.</p>
+  <div class="say chk" style="left:var(--m); top:900px; width:920px"><div class="tile" style="--s:92px"></div><div class="bub" style="flex:1; font-size:28px; padding:20px 26px"><b>Answer in the comments.</b> No peeking at anyone else&rsquo;s&nbsp;first!</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>A new brain teaser every day</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section></body></html>
