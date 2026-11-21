@@ -6,7 +6,17 @@ const { execSync } = require('child_process');
 const K = require('./kit');
 
 const MODE = process.argv[2] || 'square';
-const W = MODE === 'wide' ? 1920 : 1080, H = 1080, FPS = 30, DUR = 32;
+const W = MODE === 'wide' ? 1920 : 1080, H = 1080, FPS = 30;
+// Scene timing follows the voiceover: each scene lasts at least its minimum, or its line plus breathing room.
+const TTS = '/tmp/claude-0/-home-user-APP-1/60ebac03-fad6-5156-a5c9-2f31bd489645/scratchpad/tts/';
+const vo = id => parseFloat(execSync(`ffprobe -v error -show_entries format=duration -of csv=p=0 ${TTS}l_${id}.wav`).toString());
+const LEAD = 0.5;
+const dur = { s1: Math.max(7.0, vo('s1') + LEAD + 1.2), s2: Math.max(3.2, vo('s2') + LEAD + 1.0), s3: Math.max(4.5, vo('s3') + LEAD + 1.4) };
+const fd = [0, 1, 2, 3, 4, 5].map(i => Math.max(4.2, vo('f' + i) + LEAD + 0.8));
+dur.s5 = Math.max(4.5, vo('s5') + LEAD + 1.4); dur.s6 = vo('s6') + LEAD + 1.6;
+const T = { s1: 0 }; T.s2 = T.s1 + dur.s1; T.s3 = T.s2 + dur.s2; T.f = [T.s3 + dur.s3]; for (let i = 1; i < 6; i++) T.f[i] = T.f[i - 1] + fd[i - 1];
+T.s5 = T.f[5] + fd[5]; T.s6 = T.s5 + dur.s5; const DUR = T.s6 + dur.s6;
+const CUES = [['s1', T.s1], ['s2', T.s2], ['s3', T.s3], ...T.f.map((t, i) => ['f' + i, t]), ['s5', T.s5], ['s6', T.s6]].map(([id, t]) => [id, t + LEAD]);
 const FR = `/tmp/claude-0/-home-user-APP-1/60ebac03-fad6-5156-a5c9-2f31bd489645/scratchpad/frames-${MODE}`;
 const OUT = `${K.ROOT}/video/site-queue-${MODE === 'wide' ? '16x9' : '1x1'}.mp4`;
 fs.rmSync(FR, { recursive: true, force: true }); fs.mkdirSync(FR, { recursive: true }); fs.mkdirSync(K.ROOT + '/video', { recursive: true });
@@ -26,10 +36,11 @@ const feats = [
   ['Site feed', 'One noticeboard, not six chats.', K.phoneFeed()],
 ];
 
-const html = `<!doctype html><html><head><style>${K.CSS}
+const htmlRaw = `<!doctype html><html><head><style>${K.CSS}
 body{width:${W}px;height:${H}px;background:#1F1F1F;overflow:hidden}
 .sc{position:absolute;inset:0;opacity:0}
 .it{position:absolute;opacity:0;will-change:transform,opacity}
+.d,.it>div,.it{text-wrap:balance}
 .strike{position:absolute;left:0;top:52%;height:5px;background:#80D83B;width:0}
 </style></head><body>
 <!-- S1: how sites run today -->
@@ -82,30 +93,40 @@ function show(id, t, a, b, o = {}) {
 }
 function scene(id, t, a, b) { $(id).style.opacity = (t >= a && t < b) ? 1 : 0; }
 window.render = t => {
-  scene('s1', t, 0, 5.2); scene('s2', t, 5.2, 8.4); scene('s3', t, 8.4, 12); scene('s4', t, 12, 24.4); scene('s5', t, 24.4, 28.4); scene('s6', t, 28.4, 99);
-  show('s1h', t, 0.2, 5.2);
-  for (let i = 0; i < 6; i++) { show('o' + i, t, 0.9 + i * .32, 5.2, { dy: 24, f: .35 }); $('k' + i).style.width = (100 * e3((t - (2.6 + i * .3)) / .35)) + '%'; }
-  show('s2h', t, 5.25, 8.4, { dy: 60, s: .04 });
-  show('s3t', t, 8.5, 12); show('s3p', t, 8.7, 12, { dy: 140, f: .7 });
-  for (let i = 0; i < 6; i++) { const a = 12 + i * 2.07, b = a + 2.07; show('ft' + i, t, a, b, { dy: 0, dx: -40, f: .3 }); show('fp' + i, t, a, b, { dy: 0, dx: 120, f: .35 }); }
-  show('s5h', t, 24.5, 28.4); show('s5l', t, 24.8, 28.4, { dy: 160, f: .8 });
-  show('s6l', t, 28.5, 99, { s: .2 }); show('s6h', t, 28.8, 99, { dy: 50 }); show('s6s', t, 29.4, 99); show('s6u', t, 29.7, 99);
+  const T = __T__, fd = __FD__;
+  scene('s1', t, 0, T.s2); scene('s2', t, T.s2, T.s3); scene('s3', t, T.s3, T.f[0]); scene('s4', t, T.f[0], T.s5); scene('s5', t, T.s5, T.s6); scene('s6', t, T.s6, 999);
+  show('s1h', t, 0.2, T.s2);
+  // list appears quickly, then each item is struck as the voice names it
+  for (let i = 0; i < 6; i++) { show('o' + i, t, 0.7 + i * .25, T.s2, { dy: 24, f: .35 }); $('k' + i).style.width = (100 * e3((t - (2.4 + i * .62)) / .35)) + '%'; }
+  show('s2h', t, T.s2 + .05, T.s3, { dy: 60, s: .04 });
+  show('s3t', t, T.s3 + .1, T.f[0]); show('s3p', t, T.s3 + .3, T.f[0], { dy: 140, f: .7 });
+  for (let i = 0; i < 6; i++) { const a = T.f[i], b = a + fd[i]; show('ft' + i, t, a, b, { dy: 0, dx: -40, f: .45 }); show('fp' + i, t, a, b, { dy: 0, dx: 120, f: .5 }); }
+  show('s5h', t, T.s5 + .1, T.s6); show('s5l', t, T.s5 + .4, T.s6, { dy: 160, f: .8 });
+  show('s6l', t, T.s6 + .1, 999, { s: .2 }); show('s6h', t, T.s6 + .4, 999, { dy: 50 }); show('s6s', t, T.s6 + 1.4, 999); show('s6u', t, T.s6 + 2.2, 999);
 };
 render(0);
 </script></body></html>`;
 
+const html = htmlRaw.replace('__T__', JSON.stringify(T)).replace('__FD__', JSON.stringify(fd));
 (async () => {
   const b = await chromium.launch();
   const p = await (await b.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1 })).newPage();
   await p.setContent(html); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(300);
-  const N = FPS * DUR;
+  const N = Math.ceil(FPS * DUR);
   for (let f = 0; f < N; f++) {
     await p.evaluate(t => window.render(t), f / FPS);
     await p.screenshot({ path: `${FR}/${String(f).padStart(4, '0')}.jpg`, type: 'jpeg', quality: 93 });
   }
   await b.close();
-  execSync(`ffmpeg -y -loglevel error -framerate ${FPS} -i ${FR}/%04d.jpg -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -movflags +faststart ${OUT}`);
-  for (const t of [2, 4, 6.5, 10, 14, 20, 26, 31]) execSync(`ffmpeg -y -loglevel error -ss ${t} -i ${OUT} -frames:v 1 ${FR}/../still-${MODE}-${t}.jpg`);
+  const A = FR + '/../audio-' + MODE; fs.mkdirSync(A, { recursive: true });
+  execSync(`python3 ${__dirname}/music.py ${A}/music.wav ${DUR} ${T.s2} ${T.s3} ${T.f[0]} ${T.s5} ${T.s6}`);
+  const ins = CUES.map(([id]) => `-i ${TTS}l_${id}.wav`).join(' ');
+  const dl = CUES.map(([id, t], i) => `[${i}:a]aresample=44100,pan=stereo|c0=c0|c1=c0,adelay=${Math.round(t * 1000)}|${Math.round(t * 1000)}[v${i}]`).join(';');
+  execSync(`ffmpeg -y -loglevel error ${ins} -filter_complex "${dl};${CUES.map((_, i) => `[v${i}]`).join('')}amix=inputs=${CUES.length}:normalize=0,apad,atrim=0:${DUR},loudnorm=I=-16:TP=-1.5[vo]" -map "[vo]" ${A}/vo.wav`);
+  execSync(`ffmpeg -y -loglevel error -i ${A}/music.wav -i ${A}/vo.wav -filter_complex "[0:a]volume=0.32[m];[1:a]asplit[v][sc];[m][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[md];[md][v]amix=inputs=2:normalize=0,alimiter=limit=0.8:level=false[a]" -map "[a]" -ar 44100 ${A}/mix.wav`);
+  execSync(`ffmpeg -y -loglevel error -framerate ${FPS} -i ${FR}/%04d.jpg -i ${A}/mix.wav -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -shortest -movflags +faststart ${OUT}`);
+  console.log('timeline', JSON.stringify({ T, fd, DUR }));
+  for (const t of [1.5, 4.5, T.s2 + 1, T.s3 + 2, ...T.f.map(x => x + 2), T.s5 + 2.5, T.s6 + 4]) execSync(`ffmpeg -y -loglevel error -ss ${t} -i ${OUT} -frames:v 1 ${FR}/../still-${MODE}-${t}.jpg`);
   fs.rmSync(FR, { recursive: true, force: true });
   console.log('wrote', OUT, fs.statSync(OUT).size);
 })();

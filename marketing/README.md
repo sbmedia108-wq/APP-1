@@ -10,7 +10,8 @@ Marketing for Site Queue (sitequeue.uk), the all-in-one construction site app la
 | `site-queue-proposal.pdf` | Client proposal: recommendation, approach, what's included, timeline, working together, launch budget, sign-off |
 | `site-queue-client-questionnaire.pdf` | 20 questions for the founder, with space to answer |
 | `sb-media-evening-plan.pdf` | Internal: SB Media's evening work plan (about 8 hours a week) |
-| `video/site-queue-1x1.mp4`, `video/site-queue-16x9.mp4` | 32-second animated product video, square and widescreen (silent; add music in the posting app) |
+| `video/site-queue-1x1.mp4`, `video/site-queue-16x9.mp4` | 59-second animated product video with British voiceover and original music, square and widescreen |
+| `video/site-queue-music.mp3`, `video/voiceover-script.md` | Music track on its own, and the voiceover script |
 | `site-queue-launch-action-plan.pdf` | 10-page client action plan: every step to launch with owner, due date and tick box |
 | `site-queue-outreach-targets.xlsx` | 112 target organisations in 10 segments, roles, pitch angle, wave and status tracker |
 | `graphics/linkedin-banner.png`, `og-image.png`, `email-header.png` | LinkedIn cover, website share image, email header |
