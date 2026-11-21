@@ -19,6 +19,8 @@ import {
 } from "react-native";
 
 import { BigButton, colors, T } from "./ui";
+import { recordPractice, type Badge } from "./achievements";
+import { NewBadges, withRewards } from "./Rewards";
 
 /* ---------- The pretend menu ---------- */
 
@@ -314,7 +316,9 @@ export function PracticeKiosk({
         .filter((l) => l.qty > 0),
     );
 
+  const [fresh, setFresh] = useState<Badge[]>([]); // badges this order unlocked
   const restart = () => {
+    setFresh([]);
     setStage("attract");
     setEatIn(null);
     setCategory("Burgers");
@@ -331,6 +335,7 @@ export function PracticeKiosk({
       setPaying(false);
       setStage("done");
       celebrate("big");
+      withRewards(recordPractice).then((r) => setFresh(r.fresh));
     }, 1400);
   };
 
@@ -413,6 +418,7 @@ export function PracticeKiosk({
               {stage === "done" ? "PAID BY CARD" : "PLEASE PAY AT THE COUNTER"}
             </Text>
           </View>
+          <NewBadges badges={fresh} />
           <BigButton label="Practise again" icon="🔁" onPress={restart} />
           <BigButton
             label="Back to the start"

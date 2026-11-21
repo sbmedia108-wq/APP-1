@@ -17,6 +17,9 @@ import type { ScamResult } from "./scamCheck";
 import { speak, stopSpeaking } from "./speech";
 import type { Settings } from "./types";
 import { BigButton, Card, colors, T, useScale } from "./ui";
+import { recordScamCheck, type Badge } from "./achievements";
+import { NewBadges, withRewards } from "./Rewards";
+import { celebrate } from "./celebrate";
 import type { useVoice } from "./useVoice";
 
 const LOOK = {
@@ -40,6 +43,7 @@ export function ScamCheck({
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<ScamResult | null>(null);
+  const [fresh, setFresh] = useState<Badge[]>([]); // badges this check unlocked
 
   // Words spoken into the microphone go into the box.
   useEffect(() => {
@@ -61,10 +65,14 @@ export function ScamCheck({
     setBusy(true);
     setResult(await checkScam(text));
     setBusy(false);
+    const r = await withRewards(recordScamCheck);
+    setFresh(r.fresh);
+    if (r.fresh.length) celebrate("small");
   };
 
   const again = () => {
     setResult(null);
+    setFresh([]);
     setText("");
     voice.setTranscript("");
   };
@@ -130,6 +138,7 @@ export function ScamCheck({
           </Card>
         ))}
 
+        <NewBadges badges={fresh} />
         <BigButton
           label="Ring my bank safely (159)"
           icon="🏦"

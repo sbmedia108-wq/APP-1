@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import {
-  badgesFor,
   loadProgress,
   questionsFor,
   recordDay,
@@ -17,6 +16,8 @@ import { playSound } from "./sounds";
 import { speak, stopSpeaking } from "./speech";
 import type { Settings } from "./types";
 import { BigButton, Card, colors, T } from "./ui";
+import type { Badge } from "./achievements";
+import { LevelCard, NewBadges, withRewards, type Snapshot } from "./Rewards";
 
 const KIND: Record<QuizKind, { label: string; icon: string }> = {
   tech: { label: "Tech tip", icon: "💡" },
@@ -39,9 +40,11 @@ const KIND_WORDS = [
 export function BrainTeaser({
   settings,
   onHome,
+  onBadges,
 }: {
   settings: Settings;
   onHome: () => void;
+  onBadges: () => void;
 }) {
   const key = todayKey();
   const questions = useMemo(() => questionsFor(key), [key]);
@@ -52,7 +55,8 @@ export function BrainTeaser({
   const [results, setResults] = useState<{ kind: QuizKind; right: boolean }[]>(
     [],
   );
-  const [before, setBefore] = useState<QuizProgress | null>(null);
+  const [fresh, setFresh] = useState<Badge[]>([]);
+  const [snap, setSnap] = useState<Snapshot | null>(null);
   const scroller = useRef<React.ComponentRef<typeof ScrollView>>(null);
 
   useEffect(() => {
@@ -92,9 +96,13 @@ export function BrainTeaser({
     setPicked(null);
     if (index + 1 < questions.length) return setIndex(index + 1);
     if (!practice) {
-      setBefore(progress);
-      const p = await recordDay(results);
+      let p = progress as QuizProgress;
+      const r = await withRewards(async () => {
+        p = await recordDay(results);
+      });
       setProgress(p);
+      setFresh(r.fresh);
+      setSnap(r.after);
       const got = results.filter((r) => r.right).length;
       if (got > 0) celebrate("big");
       else playSound("step");
@@ -159,7 +167,7 @@ export function BrainTeaser({
             onPress={() => start(false)}
           />
         )}
-        <Badges progress={progress} />
+        <BigButton label="See my badges" icon="🏅" variant="secondary" onPress={onBadges} />
       </ScrollView>
     );
   }
@@ -256,12 +264,7 @@ export function BrainTeaser({
 
   // Results.
   const got = results.filter((r) => r.right).length;
-  const newBadges =
-    before && !practice
-      ? badgesFor(progress).filter(
-          (b, i) => b.earned && !badgesFor(before).at(i)?.earned,
-        )
-      : [];
+  const newBadges = practice ? [] : fresh;
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <T size={64} center>
@@ -283,23 +286,15 @@ export function BrainTeaser({
           </T>
         </Card>
       )}
-      {newBadges.map((b) => (
-        <Card
-          key={b.id}
-          style={{ backgroundColor: "#E3F3E6", borderColor: colors.success }}
-        >
-          <T size={24} bold center>
-            {b.emoji} New badge: {b.name}
-          </T>
-        </Card>
-      ))}
+      <NewBadges badges={newBadges} />
       <T size={22} center color={colors.muted} style={{ marginVertical: 8 }}>
         Every question you try teaches you something. Come back tomorrow for
         three new ones.
       </T>
-      <BigButton label="Back to the start" onPress={onHome} />
+      {snap && <LevelCard snap={snap} />}
+      <BigButton label="Back to the start" onPress={onHome} style={{ marginTop: 12 }} />
+      <BigButton label="See my badges" icon="🏅" variant="secondary" onPress={onBadges} />
       <Stats progress={progress} />
-      <Badges progress={progress} />
     </ScrollView>
   );
 }
@@ -338,36 +333,6 @@ function Stat({
   );
 }
 
-function Badges({ progress }: { progress: QuizProgress }) {
-  return (
-    <View style={{ marginTop: 16 }}>
-      <T size={22} bold>
-        Your badges
-      </T>
-      <View style={styles.badges}>
-        {badgesFor(progress).map((b) => (
-          <View
-            key={b.id}
-            style={[styles.badge, !b.earned && styles.badgeLocked]}
-            accessibilityLabel={`${b.name}: ${b.earned ? "earned" : b.how}`}
-          >
-            <T size={32} center>
-              {b.earned ? b.emoji : "🔒"}
-            </T>
-            <T size={16} bold center>
-              {b.name}
-            </T>
-            {!b.earned && (
-              <T size={16} center color={colors.text}>
-                {b.how}
-              </T>
-            )}
-          </View>
-        ))}
-      </View>
-    </View>
-  );
-}
 
 const styles = StyleSheet.create({
   scroll: { padding: 20, paddingBottom: 48 },

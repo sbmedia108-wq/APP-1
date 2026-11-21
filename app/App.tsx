@@ -32,6 +32,8 @@ import { PracticeKiosk } from "./src/PracticeKiosk";
 import { ScamCheck } from "./src/ScamCheck";
 import { celebrate } from "./src/celebrate";
 import { Fireworks } from "./src/Fireworks";
+import { recordFix, recordVisit, type Badge } from "./src/achievements";
+import { LevelCard, MyBadges, NewBadges, RewardsTile, withRewards, type Snapshot } from "./src/Rewards";
 import { playSound, setSoundsEnabled } from "./src/sounds";
 import { setSpeechSpeed, speak, stopSpeaking } from "./src/speech";
 import { BigButton, Card, colors, ScaleContext, T, useScale } from "./src/ui";
@@ -44,7 +46,8 @@ type Screen =
   | { name: "loading" }
   | { name: "notFound" }
   | { name: "guide"; guide: Guide; offline: boolean }
-  | { name: "fixed" }
+  | { name: "fixed"; fresh: Badge[]; snap: Snapshot }
+  | { name: "badges" }
   | { name: "notFixed"; guide: Guide }
   | { name: "settings" }
   | { name: "practice" }
@@ -85,6 +88,9 @@ function Main({
   const voice = useVoice();
 
   useEffect(() => setSpeechSpeed(settings.speechSpeed), [settings.speechSpeed]);
+  useEffect(() => {
+    recordVisit(); // counts towards the "coming back" badges
+  }, []);
   useEffect(() => setSoundsEnabled(settings.sounds), [settings.sounds]);
 
   const goHome = () => {
@@ -167,12 +173,21 @@ function Main({
           onPhoto={() => setScreen({ name: "photo" })}
           onBrowse={() => setScreen({ name: "browse" })}
           onTeaser={() => setScreen({ name: "teaser" })}
+          onBadges={() => setScreen({ name: "badges" })}
         />
       );
     case "browse":
       return <BrowseHelp onPick={showGuide} onHome={goHome} />;
     case "teaser":
-      return <BrainTeaser settings={settings} onHome={goHome} />;
+      return (
+        <BrainTeaser
+          settings={settings}
+          onHome={goHome}
+          onBadges={() => setScreen({ name: "badges" })}
+        />
+      );
+    case "badges":
+      return <MyBadges onHome={goHome} />;
     case "scam":
       return (
         <ScamCheck
@@ -266,9 +281,12 @@ function Main({
           guide={screen.guide}
           offline={screen.offline}
           settings={settings}
-          onFixed={() => {
+          onFixed={async () => {
             celebrate("big");
-            setScreen({ name: "fixed" });
+            const { after, fresh } = await withRewards(() =>
+              recordFix((screen.guide as OfflineGuide).category),
+            );
+            setScreen({ name: "fixed", fresh, snap: after });
           }}
           onNotFixed={() =>
             setScreen({ name: "notFixed", guide: screen.guide })
@@ -288,12 +306,28 @@ function Main({
           <T size={34} bold center>
             Well done!
           </T>
-          <T size={24} center style={{ marginVertical: 16 }}>
+          <T size={24} center style={{ marginVertical: 12 }}>
             You fixed it yourself. That's brilliant.
           </T>
+          <Card style={{ alignSelf: "stretch", backgroundColor: "#FFF4D6", borderColor: "#F2C14E" }}>
+            <T size={24} bold center>
+              🔧 {screen.snap.a.fixes === 1 ? "Your first fix!" : `${screen.snap.a.fixes} things fixed by you`}
+            </T>
+          </Card>
+          <View style={{ alignSelf: "stretch" }}>
+            <NewBadges badges={screen.fresh} />
+            <LevelCard snap={screen.snap} />
+          </View>
           <BigButton
             label="Back to the start"
             onPress={goHome}
+            style={{ alignSelf: "stretch", marginTop: 16 }}
+          />
+          <BigButton
+            label="See my badges"
+            icon="🏅"
+            variant="secondary"
+            onPress={() => setScreen({ name: "badges" })}
             style={{ alignSelf: "stretch" }}
           />
         </Centered>
@@ -346,6 +380,7 @@ function HomeScreen({
   onPhoto,
   onBrowse,
   onTeaser,
+  onBadges,
 }: {
   voice: ReturnType<typeof useVoice>;
   onSubmitText: (t: string) => void;
@@ -357,6 +392,7 @@ function HomeScreen({
   onPhoto: () => void;
   onBrowse: () => void;
   onTeaser: () => void;
+  onBadges: () => void;
 }) {
   const [typed, setTyped] = useState("");
   const [quiz, setQuiz] = useState<QuizProgress | null>(null);
@@ -491,6 +527,7 @@ function HomeScreen({
           </View>
         )}
       </Pressable>
+      <RewardsTile onPress={onBadges} refresh={quiz} />
       {ONLINE_HELP_AVAILABLE && (
         <BigButton
           label="Show Mavis a photo of the screen"

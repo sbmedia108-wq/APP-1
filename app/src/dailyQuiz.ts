@@ -394,6 +394,8 @@ export type QuizProgress = {
   stars: number; // one per right answer, ever
   scamRight: number;
   techRight: number;
+  wordRight: number;
+  perfectDays: number; // days with all 3 right
   daysPlayed: number;
 };
 
@@ -405,6 +407,8 @@ const EMPTY: QuizProgress = {
   stars: 0,
   scamRight: 0,
   techRight: 0,
+  wordRight: 0,
+  perfectDays: 0,
   daysPlayed: 0,
 };
 
@@ -438,65 +442,14 @@ export async function recordDay(
       p.scamRight + results.filter((r) => r.right && r.kind === "scam").length,
     techRight:
       p.techRight + results.filter((r) => r.right && r.kind === "tech").length,
+    wordRight:
+      p.wordRight + results.filter((r) => r.right && r.kind === "word").length,
+    perfectDays:
+      p.perfectDays + (results.length > 0 && results.every((r) => r.right) ? 1 : 0),
     daysPlayed: p.daysPlayed + 1,
   };
   try {
     await AsyncStorage.setItem(KEY, JSON.stringify(next));
   } catch {}
   return next;
-}
-
-export type Badge = {
-  id: string;
-  emoji: string;
-  name: string;
-  earned: boolean;
-  how: string;
-};
-
-export function badgesFor(p: QuizProgress): Badge[] {
-  return [
-    {
-      id: "first",
-      emoji: "🌱",
-      name: "First go",
-      earned: p.daysPlayed >= 1,
-      how: "Finish your first brain teaser",
-    },
-    {
-      id: "streak3",
-      emoji: "🔥",
-      name: "Three days running",
-      earned: p.bestStreak >= 3,
-      how: "Play 3 days in a row",
-    },
-    {
-      id: "scam5",
-      emoji: "🛡️",
-      name: "Scam Spotter",
-      earned: p.scamRight >= 5,
-      how: "Spot 5 scams correctly",
-    },
-    {
-      id: "tech5",
-      emoji: "💡",
-      name: "Tech Whizz",
-      earned: p.techRight >= 5,
-      how: "Get 5 tech questions right",
-    },
-    {
-      id: "streak7",
-      emoji: "🏆",
-      name: "Full week",
-      earned: p.bestStreak >= 7,
-      how: "Play 7 days in a row",
-    },
-    {
-      id: "stars25",
-      emoji: "⭐",
-      name: "Star collector",
-      earned: p.stars >= 25,
-      how: "Collect 25 stars",
-    },
-  ];
 }
