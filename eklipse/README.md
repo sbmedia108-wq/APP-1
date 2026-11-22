@@ -13,6 +13,7 @@ Everything for relaunching and running Eklipse Media, prepared 22 November 2026.
 | 7 | **Something new: the Quote Builder**, which turns visitors into structured WhatsApp and email enquiries | [`site/quote.html`](site/quote.html) |
 | 8 | **Marketing assets**: 30 days of social posts, email/WhatsApp sequences, venue/corporate/podcast outreach, Google & Meta ad copy, Google Business Profile copy | [`marketing/`](marketing/) |
 | 9 | **Graphics**: 3 Instagram posts (1080×1350) and a venue one-pager (PNG + print PDF) | [`marketing/graphics/`](marketing/graphics/) |
+| 10 | **Step-by-step action plan**: who does what, in order | [`05-ACTION-PLAN.md`](05-ACTION-PLAN.md) |
 
 ## Do these today (15 minutes, in GoDaddy)
 1. Replace the **meta description**. It currently describes a construction consultancy.
