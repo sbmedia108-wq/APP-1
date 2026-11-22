@@ -1,0 +1,52 @@
+<!--{"path":"/careers/","title":"Careers | Eklipse Construction Group","description":"Join Eklipse Construction Group. We're hiring quantity surveyors and site managers across our group companies in Southampton and the South Coast.","nav":"careers","dark":false}-->
+<section class="page-hero">
+  <div class="wrap center">
+    <span class="eyebrow">Careers</span>
+    <h1 class="h1">Build what's next<br>with us.</h1>
+    <p class="lede measure-wide">We're always looking for talented, ambitious people who care about construction and want to work in a dynamic team.</p>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="h4 muted" style="font-weight:600">Open roles</h2>
+    <div class="xlinks mt-s">
+      <a class="tile" href="#apply" data-role="Quantity Surveyor"><div class="tile-icon" style="margin-bottom:18px">{{icon:ruler}}</div><h3 class="h4">Quantity Surveyor</h3><p class="muted mt-s">Piers Brown Associates</p><span class="more">Apply</span></a>
+      <a class="tile" href="#apply" data-role="Site Manager"><div class="tile-icon" style="margin-bottom:18px">{{icon:crane}}</div><h3 class="h4">Site Manager</h3><p class="muted mt-s">Corylus Projects</p><span class="more">Apply</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-alt" id="apply">
+  <div class="wrap contact-grid">
+    <div class="stack">
+      <span class="eyebrow">Apply</span>
+      <h2 class="h2">Tell us about yourself.</h2>
+      <p class="muted">Don't see the right role? Send your CV anyway. We'd still like to hear from you.</p>
+    </div>
+    <form class="form" data-form data-subject="Job application" novalidate>
+      <div class="form-grid">
+        <div class="field full"><input id="a-role" name="Role" type="text" placeholder=" "><label for="a-role">Role you're applying for</label></div>
+        <div class="field"><input id="a-name" name="Name" type="text" autocomplete="name" placeholder=" " required><label for="a-name">Name</label><p class="err">Please enter your name.</p></div>
+        <div class="field"><input id="a-phone" name="Phone" type="tel" autocomplete="tel" placeholder=" "><label for="a-phone">Phone (optional)</label></div>
+        <div class="field full"><input id="a-email" name="Email" type="email" autocomplete="email" placeholder=" " required><label for="a-email">Email</label><p class="err">Please enter a valid email address.</p></div>
+        <div class="field full"><textarea id="a-msg" name="Message" placeholder=" "></textarea><label for="a-msg">A few words about you (optional)</label></div>
+        <div class="full file">
+          <input id="a-cv" name="CV" type="file" accept=".pdf,.doc,.docx">
+          <label for="a-cv" class="btn btn-ghost" style="min-height:38px;padding:8px 16px;font-size:.9375rem">Attach CV</label>
+          <span class="small muted" data-file-name>No file chosen</span>
+        </div>
+      </div>
+      <div class="form-foot">
+        <p class="small muted">We only use your details for recruitment. See our <a href="/privacy">privacy policy</a>.</p>
+        <button class="btn" type="submit">Submit application</button>
+      </div>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+<script>
+  document.querySelectorAll('[data-role]').forEach((a) => a.addEventListener('click', () => {
+    const f = document.getElementById('a-role'); f.value = a.dataset.role;
+  }));
+</script>

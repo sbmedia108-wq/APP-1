@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "residential",
+    "name": "Residential",
+    "icon": "house",
+    "title": "Residential Development Cost Consultants Southampton | Eklipse",
+    "description": "Quantity surveying and cost management for residential developers, housebuilders and housing associations across Southampton, Hampshire and the South Coast.",
+    "h1": "Cost advice that protects your development margin.",
+    "intro": "Quantity surveying and cost management for residential developers, housebuilders and housing associations across Southampton, Hampshire and the South Coast.",
+    "whyTitle": "Residential development is driven by viability.",
+    "why": [
+      "Accurate cost planning from the earliest stage is what secures funding, satisfies planning obligations and protects your margin.",
+      "From small infill schemes to large brownfield regeneration across Hampshire and the South Coast, we give you the cost certainty your business case depends on."
+    ],
+    "points": [
+      { "icon": "chart", "title": "Viability first", "text": "We understand the pressures from land acquisition to practical completion, and advise with your business case in mind." },
+      { "icon": "pin", "title": "South Coast specialists", "text": "Based in Southampton, working with housebuilders, developers and housing associations across Hampshire, Dorset and West Sussex." },
+      { "icon": "crane", "title": "Build it with us too", "text": "Through our sister company Corylus Projects, we can also deliver residential and mixed-use construction." }
+    ],
+    "servicesTitle": "Residential cost consultancy services",
+    "services": [
+      "Cost planning and feasibility for residential schemes",
+      "Bills of quantities for new-build housing and apartments",
+      "Procurement and tendering for residential contractors",
+      "Development monitoring and employer's agent services",
+      "Cost management for brownfield and regeneration projects",
+      "Final account settlement and post-contract cost control"
+    ],
+    "ctaTitle": "Planning a residential scheme?"
+  },
+  {
+    "slug": "commercial",
+    "name": "Commercial",
+    "icon": "building",
+    "title": "Commercial Construction Cost Consultants Southampton | Eklipse",
+    "description": "Quantity surveying and cost management for office, retail and mixed-use commercial developments across Southampton, Hampshire and the South Coast.",
+    "h1": "Cost certainty for commercial investment.",
+    "intro": "Quantity surveying and cost management for office, retail and mixed-use developments across Southampton, Hampshire and the South Coast.",
+    "whyTitle": "Commercial projects are high-stakes investments.",
+    "why": [
+      "Accurate cost planning, rigorous procurement and proactive cost control are what protect your returns. Our quantity surveyors give you independent expertise to keep the project on budget and on programme.",
+      "From Cat A office fit-outs in Southampton city centre to large mixed-use schemes across Hampshire, we deliver cost certainty at every stage."
+    ],
+    "points": [
+      { "icon": "building", "title": "Commercial know-how", "text": "From Cat A fit-outs to mixed-use schemes, we understand the cost drivers that matter to developers and occupiers." },
+      { "icon": "pin", "title": "Local base, national reach", "text": "Our team is based in Southampton and works across Hampshire, the South Coast and beyond." },
+      { "icon": "shield", "title": "Developer-focused", "text": "We work closely with developers, investors and occupiers to protect your commercial interests throughout." }
+    ],
+    "servicesTitle": "Commercial cost consultancy services",
+    "services": [
+      "Cost planning and feasibility for office, retail and mixed-use",
+      "Bills of quantities for Cat A and Cat B fit-outs",
+      "Procurement and tendering for commercial projects",
+      "Contract administration for office and retail developments",
+      "Employer's agent and development monitoring",
+      "Value engineering and whole-life cost analysis"
+    ],
+    "ctaTitle": "Talk to our commercial team."
+  },
+  {
+    "slug": "education",
+    "name": "Education",
+    "icon": "school",
+    "title": "Education Sector Cost Consultants Southampton | Eklipse",
+    "description": "Quantity surveying and cost management for schools, academies, colleges and universities across Southampton, Hampshire and the South Coast.",
+    "h1": "Rigorous cost management for places of learning.",
+    "intro": "Quantity surveying and cost management for schools, academies, colleges and universities across Southampton, Hampshire and the South Coast.",
+    "whyTitle": "Tight funding. Strict procurement. Learners on site.",
+    "why": [
+      "Education projects carry public-sector procurement rules, tight funding envelopes and the need to minimise disruption to learners. Our quantity surveyors have the experience to handle all three.",
+      "From primary school extensions in Hampshire to university campus developments on the South Coast, we provide the independent cost advice your project needs."
+    ],
+    "points": [
+      { "icon": "doc", "title": "Public-sector experience", "text": "We know the procurement frameworks, funding constraints and compliance rules that govern education construction." },
+      { "icon": "pin", "title": "South Coast specialists", "text": "Working with schools, academies, colleges and universities across Hampshire, Dorset and the wider South Coast." },
+      { "icon": "chart", "title": "Budget-focused", "text": "Education projects rarely have contingency to spare. We keep yours on budget without compromising quality." }
+    ],
+    "servicesTitle": "Education cost consultancy services",
+    "services": [
+      "Cost planning and feasibility for new school and university buildings",
+      "Bills of quantities for refurbishments and extensions",
+      "Procurement and tendering for public-sector frameworks",
+      "Contract administration for academies, colleges and universities",
+      "Value engineering to meet tight public-sector budgets",
+      "Whole-life cost analysis and lifecycle planning"
+    ],
+    "ctaTitle": "Talk to our education specialists."
+  },
+  {
+    "slug": "leisure-hospitality",
+    "name": "Leisure & hospitality",
+    "icon": "glass",
+    "title": "Leisure & Hospitality Cost Consultants Southampton | Eklipse",
+    "description": "Quantity surveying and cost management for hotels, restaurants, leisure centres, spas and hospitality venues across Southampton, Hampshire and the South Coast.",
+    "h1": "Specialist fit-outs, costed precisely.",
+    "intro": "Quantity surveying and cost management for hotels, restaurants, leisure centres, spas and hospitality venues across Southampton, Hampshire and the South Coast.",
+    "whyTitle": "Operating venues can't afford surprises.",
+    "why": [
+      "Leisure and hospitality projects demand a precise understanding of specialist fit-out costs, phased delivery and the commercial pressures of operating venues.",
+      "From boutique hotel refurbishments to large leisure centre developments, we provide independent cost advice from feasibility through to final account."
+    ],
+    "points": [
+      { "icon": "glass", "title": "Sector expertise", "text": "We plan for the cost drivers unique to hospitality, from specialist M&E to high-specification finishes." },
+      { "icon": "pin", "title": "South Coast focus", "text": "Serving developers and operators across Hampshire, Dorset, West Sussex and the wider South Coast." },
+      { "icon": "scale", "title": "Independent advice", "text": "As independent cost consultants we act solely in your interest, with transparent, unbiased advice." }
+    ],
+    "servicesTitle": "Leisure & hospitality cost consultancy services",
+    "services": [
+      "Cost planning and feasibility for hotel and resort developments",
+      "Bills of quantities for leisure centre fit-outs and refurbishments",
+      "Procurement and tendering for restaurant and bar projects",
+      "Contract administration for spa and wellness facilities",
+      "Value engineering to maximise return on investment",
+      "Final account settlement and dispute resolution"
+    ],
+    "ctaTitle": "Planning a leisure or hospitality project?"
+  }
+]

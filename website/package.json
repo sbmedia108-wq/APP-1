@@ -1,0 +1,9 @@
+{
+  "name": "eklipse-website",
+  "private": true,
+  "description": "Static website for Eklipse Construction Group",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node build.js && npx --yes serve public -l 8080"
+  }
+}
