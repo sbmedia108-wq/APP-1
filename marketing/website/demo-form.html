@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a demo | Site Queue</title>
+<!-- Site Queue demo / early-access form. Drop the <section> into a WordPress Custom HTML block,
+     or rebuild the same fields in WPForms / Fluent Forms / Gravity Forms. Point the form action at your
+     form handler or CRM (e.g. HubSpot free forms). Styles are scoped to .sq-form. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  .sq-form { --char:#1F1F1F; --lime:#80D83B; --deep:#2E5A14; --con:#ECEDE8; --line:#C9CCC4; --grey:#545A52;
+    font-family: Barlow, Arial, sans-serif; color: var(--char); background: var(--con); padding: 48px 20px; }
+  .sq-form * { box-sizing: border-box; }
+  .sq-form .wrap { max-width: 760px; margin: 0 auto; background: #FBFBF8; border-radius: 18px; padding: 40px clamp(20px, 5vw, 48px); box-shadow: 0 10px 40px rgba(0,0,0,.08); }
+  .sq-form h2 { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: clamp(36px, 6vw, 52px); line-height: .95; margin: 0 0 10px; }
+  .sq-form .lead { font-size: 17px; line-height: 1.5; color: var(--grey); margin: 0 0 28px; }
+  .sq-form fieldset { border: 0; padding: 0; margin: 0 0 24px; }
+  .sq-form legend, .sq-form label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .sq-form .opt { font-weight: 500; color: var(--grey); }
+  .sq-form .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .sq-form .choices label { margin: 0; cursor: pointer; }
+  .sq-form .choices input { position: absolute; opacity: 0; }
+  .sq-form .choices span { display: block; height: 100%; border: 2px solid var(--line); border-radius: 12px; padding: 14px; font-weight: 700; font-size: 16px; line-height: 1.25; background: #fff; }
+  .sq-form .choices small { display: block; font-weight: 500; font-size: 13px; color: var(--grey); margin-top: 4px; }
+  .sq-form .choices input:checked + span { border-color: var(--lime); background: #EEF9E4; box-shadow: inset 0 0 0 1px var(--lime); }
+  .sq-form .choices input:focus-visible + span { outline: 3px solid var(--deep); outline-offset: 2px; }
+  .sq-form .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  .sq-form .full { grid-column: 1 / -1; }
+  .sq-form input[type=text], .sq-form input[type=email], .sq-form input[type=tel], .sq-form select, .sq-form textarea {
+    width: 100%; font: inherit; font-size: 16px; padding: 13px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--char); }
+  .sq-form textarea { min-height: 96px; resize: vertical; }
+  .sq-form input:focus, .sq-form select:focus, .sq-form textarea:focus { outline: none; border-color: var(--deep); box-shadow: 0 0 0 3px rgba(128,216,59,.35); }
+  .sq-form .consent { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; font-size: 14px; color: var(--grey); margin: 22px 0 0; }
+  .sq-form .consent input { width: 20px; height: 20px; margin-top: 1px; accent-color: var(--deep); }
+  .sq-form button { margin-top: 26px; width: 100%; font: inherit; font-weight: 700; font-size: 18px; padding: 17px; border: 0; border-radius: 12px; background: var(--lime); color: var(--char); cursor: pointer; }
+  .sq-form button:hover { background: #74c935; }
+  .sq-form button:focus-visible { outline: 3px solid var(--deep); outline-offset: 3px; }
+  .sq-form .small { font-size: 13px; color: var(--grey); margin-top: 14px; line-height: 1.5; }
+  .sq-form .small a { color: var(--deep); }
+  .sq-form .hp { position: absolute; left: -9999px; }
+  @media (max-width: 640px) { .sq-form .grid, .sq-form .choices { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body style="margin:0">
+<section class="sq-form" id="demo">
+  <div class="wrap">
+    <h2>See Site Queue on your site</h2>
+    <p class="lead">Book a 20-minute demo, or join early access for the early-bird rate. We'll get back to you within one working day.</p>
+
+    <form action="[FORM HANDLER URL]" method="post">
+      <fieldset>
+        <legend>What are you after?</legend>
+        <div class="choices">
+          <label><input type="radio" name="interest" value="demo" checked><span>Book a demo<small>20 minutes, online or on site</small></span></label>
+          <label><input type="radio" name="interest" value="early_access"><span>Join early access<small>Early-bird rate before launch</small></span></label>
+          <label><input type="radio" name="interest" value="advertising"><span>Advertise on Site Queue<small>For suppliers and plant hire</small></span></label>
+        </div>
+      </fieldset>
+
+      <div class="grid">
+        <div><label for="sq-name">Full name</label><input id="sq-name" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="sq-company">Company</label><input id="sq-company" name="company" type="text" autocomplete="organization" required></div>
+        <div><label for="sq-email">Work email</label><input id="sq-email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="sq-phone">Phone <span class="opt">(optional)</span></label><input id="sq-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div>
+          <label for="sq-role">Your role</label>
+          <select id="sq-role" name="role" required>
+            <option value="">Choose one</option>
+            <option>Main contractor or housebuilder</option>
+            <option>Site or project manager</option>
+            <option>Contracts manager</option>
+            <option>Subcontractor or trade</option>
+            <option>Supplier, merchant or plant hire</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="sq-sites">How many live sites?</label>
+          <select id="sq-sites" name="live_sites">
+            <option value="">Choose one</option>
+            <option>1</option><option>2–5</option><option>6–20</option><option>More than 20</option><option>Not applicable</option>
+          </select>
+        </div>
+        <div class="full"><label for="sq-msg">Anything we should know? <span class="opt">(optional)</span></label>
+          <textarea id="sq-msg" name="message" placeholder="For example: next site starts in March, 40 plots, forklift is our biggest headache"></textarea></div>
+      </div>
+
+      <!-- Hidden tracking fields: fill from the page URL with a few lines of JS or your form plugin -->
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="page_url">
+      <!-- Spam honeypot: leave empty -->
+      <label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+
+      <label class="consent"><input type="checkbox" name="updates_opt_in" value="yes"><span>Send me occasional Site Queue updates. You can unsubscribe any time.</span></label>
+
+      <button type="submit">Send my request</button>
+      <p class="small">We'll only use your details to reply and, if you tick the box, to send updates. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+    </form>
+  </div>
+</section>
+</body>
+</html>
