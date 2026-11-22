@@ -49,10 +49,10 @@ P['04-value'] = { theme: 'con', html: `<body style="background:#ECEDE8;color:#1F
   <div class="abs" style="left:90px;right:90px;top:740px;display:flex;flex-direction:column;gap:24px">
     <div style="background:#FBFBF8;border-radius:28px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center">
       <div style="font-size:28px;font-weight:600;color:#545A52;line-height:1.3">Separate software<br>for one site, roughly</div>
-      <div style="text-align:right"><div class="d" style="font-size:128px;color:#8A8F88">£1,600</div><div style="font-size:21px;color:#7D827C;font-weight:600">a month</div></div></div>
+      <div style="text-align:right"><div class="d" style="font-size:128px;color:#8A8F88">£1,600<span style="font-family:Barlow;font-size:26px;font-weight:600;letter-spacing:0;color:#8A8F88;vertical-align:top;margin-left:8px;position:relative;top:14px">e.g.</span></div><div style="font-size:21px;color:#7D827C;font-weight:600">a month</div></div></div>
     <div style="background:#80D83B;border-radius:28px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center">
       <div style="font-size:28px;font-weight:700;line-height:1.3">Site Queue,<br>everything included</div>
-      <div style="text-align:right"><div class="d" style="font-size:128px">£399</div><div style="font-size:21px;color:#24470F;font-weight:700">a site, a month</div></div></div>
+      <div style="text-align:right"><div class="d" style="font-size:128px">£399<span style="font-family:Barlow;font-size:26px;font-weight:600;letter-spacing:0;color:#24470F;vertical-align:top;margin-left:8px;position:relative;top:14px">e.g.</span></div><div style="font-size:21px;color:#24470F;font-weight:700">a site, a month</div></div></div>
   </div>
   <div class="abs" style="left:90px;right:90px;bottom:62px;text-align:center;font-size:17px;line-height:1.45;color:#7D827C;text-wrap:balance">Unlimited users. Free for workers. Comparison uses the cheapest published plans for one housing site, November 2026, excluding VAT.</div>
   </body>` };
