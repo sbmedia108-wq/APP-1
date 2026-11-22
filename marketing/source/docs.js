@@ -161,7 +161,7 @@ function proposal() {
   D.page(`
     <h1>Working together</h1>
     <div class="grid2" style="margin-top:8px">
-      <div class="tile2"><b>You</b><span>Your story and your face on LinkedIn and at events. Demo tours and sales calls. Site visits and onboarding pilot sites. Product decisions, pricing and approvals.</span></div>
+      <div class="tile2"><b>You</b><span>Your story and your face on LinkedIn and at events. Demo tours and sales calls. Site visits and onboarding the pilot site. Product decisions, pricing and approvals.</span></div>
       <div class="tile2 dark"><b>SB Media</b><span>Strategy, all writing and design, outreach setup and running, LinkedIn content, PR, website updates, event material and reporting.</span></div>
     </div>
     <h2>How we work</h2>
@@ -172,30 +172,12 @@ function proposal() {
       <li><b>Visibility:</b> one shared CRM and tracker, so you can see every contact and demo whenever you want.</li>
       <li><b>Monthly review:</b> we look at the numbers against the targets and put more effort into whatever's booking demos.</li>
     </ul>
-    <h2>Launch budget (third-party costs)</h2>
-    <table class="t">
-      <tr><th>Item</th><th style="width:30%">Approximate cost</th></tr>
-      ${[['Tools: company email, Sales Navigator, CRM, email sending, Canva', 'About £300 a month'], ['LinkedIn and Google ads, from March', '£500–£1,000 a month'], ['Vector logo, advertiser media pack', '£500–£1,500 once'], ['Product video filmed on site', '£500–£2,000 once'], ['Print: one-pagers, banner, site signs', '£300–£800 once'], ['UK Construction Week stand or start-up pod', 'Quote from organiser'], ['Trademark filing', 'About £200 once']].map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}
-    </table>
-    <p class="small" style="margin-top:6px">All figures are estimates to confirm with quotes. Costs are paid directly by Site Queue.</p>`);
-  D.page(`
-    <h1>Next steps</h1>
-    <p class="lead">Three things and we're off. If I've got them by 28 November, the first emails go out on 7 December.</p>
-    <div class="grid3" style="margin-top:10px">
-      <div class="tile2 lime"><b>1. Approve</b><span>This proposal, the offer (one free pilot, everyone else pays) and the launch budget.</span></div>
-      <div class="tile2"><b>2. Answer</b><span>The 20-question questionnaire, by email or voice notes, whatever's easiest.</span></div>
-      <div class="tile2"><b>3. Share access</b><span>Website admin, domain access for company email, and the original logo files.</span></div>
-    </div>
-    <h2>What we need from you to start</h2>
-    <ul class="l">
-      <li>Your background on site, for the press release and LinkedIn.</li>
-      <li>Screenshots or a screen recording of the mobile app.</li>
-      <li>Your contacts: anyone who has seen Site Queue or would take a call.</li>
-      <li>Confirmation of pricing, launch date and how many pilots you can support.</li>
-    </ul>
-    <h2>Agreement</h2>
-    <p>Sign below and we'll crack on with the plan in this proposal.</p>
-    <div class="sign"><div>Site Queue: name and signature</div><div>Date</div><div>SB Media: name and signature</div><div>Date</div></div>`);
+    <h2>Next steps</h2>
+    <p>Two things and we're off. If I've got them by 28 November, the first emails go out on 7 December.</p>
+    <div class="grid2" style="margin-top:10px">
+      <div class="tile2 lime"><b>1. Have a look</b><span>Read through the plan and the offer (one free pilot site, everyone else pays), and let me know what you think.</span></div>
+      <div class="tile2"><b>2. Answer the questions</b><span>The 20-question questionnaire, by email or voice notes, whatever's easiest.</span></div>
+    </div>`);
   return D.html();
 }
 
