@@ -13,10 +13,10 @@ const THEMES = {
 };
 const CSS = `${K.CSS}
 body{width:${W}px;height:${H}px}
-.top{position:absolute;left:0;right:0;top:92px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.top .tile{width:76px;box-shadow:none}
+.top{position:absolute;left:0;right:0;top:70px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.top .tile{width:96px;box-shadow:none}
 .dk .top .tile{outline:1.5px solid rgba(255,255,255,.16);outline-offset:0}
-.h{font-family:'Barlow Condensed';font-weight:800;font-size:112px;line-height:.93;letter-spacing:-.5px;margin-top:40px}
+.h{font-family:'Barlow Condensed';font-weight:800;font-size:108px;line-height:.93;letter-spacing:-.5px;margin-top:36px}
 .s{font-size:30px;line-height:1.38;font-weight:500;max-width:700px;margin-top:26px;text-wrap:balance}
 .h{text-wrap:balance}
 .glow{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;filter:blur(60px);opacity:.55}
@@ -28,11 +28,13 @@ const hero = (screen, top = 610, w = 560) => `
 const post = (theme, headline, sub, body) => {
   const t = THEMES[theme];
   return { theme, html: `<body class="${theme === 'char' ? 'dk' : ''}" style="background:${t.bg};color:${t.ink}">
-  <div class="top"><img class="tile" src="${K.LOGO}" alt="">
+  <div class="top">${lock(t.ink)}
     <div class="h">${headline}</div><div class="s" style="color:${t.sub}">${sub}</div></div>
   ${body}</body>` };
 };
 
+// Logo lockup: tile + name, so the brand reads clearly at feed size.
+const lock = ink => `<div style="display:flex;align-items:center;gap:18px"><img class="tile" src="${K.LOGO}" alt="Site Queue logo"><span class="d" style="font-size:54px;letter-spacing:.2px;color:${ink}">Site Queue</span></div>`;
 const P = {};
 P['01-whole-site'] = post('con', 'The whole site.<br>One app.',
   'Logistics, inductions, programme, drawings and safety, live for everyone on site.', hero(K.phoneHome()));
@@ -43,7 +45,7 @@ P['03-inductions'] = post('char', 'Inducted before<br>the gate.',
 
 // 04: value story, no phone; two big figures do the work.
 P['04-value'] = { theme: 'con', html: `<body style="background:#ECEDE8;color:#1F1F1F">
-  <div class="top"><img class="tile" src="${K.LOGO}" alt="">
+  <div class="top">${lock('#1F1F1F')}
     <div class="h">Eight tools.<br>One app.</div>
     <div class="s" style="color:#545A52">Delivery booking, drawings, inductions, programme, plant tracking, hazard reporting, alerts and site chat.</div></div>
   <div class="abs" style="left:90px;right:90px;top:740px;display:flex;flex-direction:column;gap:24px">
@@ -59,7 +61,7 @@ P['04-value'] = { theme: 'con', html: `<body style="background:#ECEDE8;color:#1F
 
 // 05: call to action; a smaller phone sits behind a lime pill.
 P['05-early-access'] = { theme: 'char', html: `<body class="dk" style="background:#1F1F1F;color:#F4F5F1">
-  <div class="top"><img class="tile" src="${K.LOGO}" alt="">
+  <div class="top">${lock('#F4F5F1')}
     <div class="h" style="color:#80D83B">Early access<br>is open.</div>
     <div class="s" style="color:#AEB3AB">Get Site Queue on your site before launch, at the early-bird rate.</div>
     <div style="margin-top:40px;background:#80D83B;color:#1F1F1F;border-radius:999px;padding:20px 46px;font-size:30px;font-weight:700">Join at sitequeue.uk</div></div>
