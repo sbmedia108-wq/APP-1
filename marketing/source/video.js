@@ -77,7 +77,7 @@ body{width:${W}px;height:${H}px;background:#1F1F1F;overflow:hidden}
 <div class="sc on-lime" id="s6">
   <img class="it tile" id="s6l" src="${K.LOGO}" style="left:${TX}px;top:${wide ? 140 : 120}px;width:${wide ? 170 : 150}px">
   <div class="it d" id="s6h" style="left:${TX}px;top:${wide ? 390 : 360}px;width:${wide ? 1500 : 900}px;font-size:${wide ? 170 : 140}px">Run the whole site from one app.</div>
-  <div class="it" id="s6s" style="left:${TX + 4}px;top:${wide ? 800 : 820}px;font-size:${wide ? 44 : 40}px;font-weight:700">Launching 2027. Founding sites open now.</div>
+  <div class="it" id="s6s" style="left:${TX + 4}px;top:${wide ? 800 : 820}px;font-size:${wide ? 44 : 40}px;font-weight:700">Launching 2027. Early access open now.</div>
   <div class="it d" id="s6u" style="left:${TX}px;top:${wide ? 880 : 900}px;font-size:${wide ? 72 : 66}px;color:#2E5A14">sitequeue.uk</div>
 </div>
 <script>

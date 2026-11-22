@@ -68,7 +68,7 @@ function questionnaire() {
     <h2>About you</h2>
     ${q('What is your background on site: role, years, and which companies? Why did you build Site Queue?', 'Your story leads the press release, your LinkedIn and the first line of every email.', 3)}
     ${q('Are you happy to be the face of Site Queue: posting on LinkedIn, appearing in short videos and presenting at events?', 'Founder-led marketing is the fastest way to win trust with site managers.')}
-    ${q('How many hours a week can you give to demos, sales calls and site visits?', 'This sets how many founding sites we chase at once.')}
+    ${q('How many hours a week can you give to demos, sales calls and site visits?', 'This sets how many demos and site visits we line up.')}
     ${q('Are there companies you cannot approach (former employers, non-competes) or that you already know personally?', 'So we never contact the wrong people, and warm up the right ones first.')}`);
   D.page(`
     <h2 style="margin-top:0">About the product</h2>
@@ -78,10 +78,10 @@ function questionnaire() {
     ${q('Does it connect with anything contractors already use, such as CSCS checks, Procore or Excel?', 'Larger contractors will ask about integrations and exports.')}
     ${q('Where is customer data hosted, and do you have a privacy policy and data terms ready?', 'Needed for the website and for contractors’ procurement checks.')}
     <h2>Pricing and the offer</h2>
-    ${q('What will Site Queue cost: per site, per user or tiered? Who pays, the main contractor or each subcontractor?', 'Sets the website pricing message and the founding-site offer.')}`);
+    ${q('What will Site Queue cost: per site, per user or tiered? Who pays, the main contractor or each subcontractor?', 'Sets the website pricing message and the early-bird offer.')}`);
   D.page(`
     ${q('Is the trade app definitely free for workers on site?', 'A free trade app is a strong selling point; we want to say it confidently.')}
-    ${q('Are you happy to offer founding sites free use until launch, with a locked-in price afterwards?', 'This is the offer in every email and post.')}
+    ${q('Are you happy to give one pilot site 8 weeks free, and an early-bird rate to sites that sign up before launch? What rate?', 'This is the offer in every email and post.')}
     ${q('Is advertising launching with the product or later? Roughly what would a supplier pay?', 'Decides when we start talking to merchants and plant hire.')}
     <h2>Proof and contacts</h2>
     ${q('Has Site Queue been used on a real site yet, even informally? Any numbers, feedback or quotes?', 'Any real proof makes the first emails far stronger.', 3)}
@@ -103,24 +103,24 @@ function proposal() {
   D.cover('Marketing proposal', 'Taking Site Queue from a working demo to a proper launch at UK Construction Week London, May 2027.', 'Prepared for Luke Valvona<br>by SB Media, 21 November 2026', K.phoneHome());
   D.page(`
     <h1>Our recommendation</h1>
-    <p class="lead">Right, straight to it. Site Queue is a properly good product, but at the minute nobody knows it exists. The plan is simple: get 10 founding sites using it before launch, use them as proof, then launch it properly at UK Construction Week London, 11–13 May 2027.</p>
+    <p class="lead">Right, straight to it. Site Queue is a properly good product, but at the minute nobody knows it exists. The plan is simple: prove it on one pilot site, get paying sites lined up on an early-access list, then launch it properly at UK Construction Week London, 11–13 May 2027.</p>
     <div class="grid3" style="margin-top:14px">
       <div class="tile2"><b>The product's ready</b><span>Logistics, inductions, programme, drawings, safety, site map and feed, for every role on site. The demo's good enough to sell from today.</span></div>
       <div class="tile2"><b>The marketing isn't</b><span>The website's got no way to capture a lead, no link to the demo and a Gmail contact. Basically, nobody can find you yet.</span></div>
-      <div class="tile2 lime"><b>The plan</b><span>Sort the basics, win 10 founding sites, build the proof, then launch with real customers stood beside you.</span></div>
+      <div class="tile2 lime"><b>The plan</b><span>Sort the basics, prove it on one pilot site, line up paying customers, then launch with them stood beside you.</span></div>
     </div>
     <h2>How we position Site Queue</h2>
     <div class="tile2 dark" style="padding:22px 24px"><b style="font-size:36px;line-height:1">Run the whole site from one app.</b><span style="font-size:13.5px;margin-top:8px">For UK housebuilders and contractors who lose hours to waiting, chasing and paperwork, Site Queue is the one live app that keeps people, plant, materials and information moving, with a free app for every trade on site.</span></div>
     <h2>The offer that opens doors</h2>
-    <p>Every email, post and call has one offer in it: <b>become one of 10 founding sites</b>. They get the whole platform free on one live site until launch, founding pricing locked in after, and a direct line to you to help shape it. It costs a contractor nothing to say yes, and it gives us the case studies we need for launch.</p>
+    <p>No giving it away. <b>One pilot site</b> gets Site Queue free for 8 weeks, in return for honest feedback, a case study and a quote, then moves onto the paid plan. <b>Everyone else pays.</b> Interested sites join an early-access list on the website and get an early-bird rate if they sign up before launch. Sites that want it sooner can start paying from April.</p>
     <h2>Who we go after first</h2>
     <p>We start with regional housebuilders down south. The demo's built around plots and phases, which is exactly how they work, and you can actually get to their sites. Once we've got proof, we go after the national builders and mid-tier contractors, then suppliers and plant hire as advertisers once sites are live. We've already built a list of 112 companies to go after.</p>`);
   D.page(`
     <h1>Our approach</h1>
     <p class="lead">Three stages. Each one has a clear finish line, so we both know exactly where we're at.</p>
     <div class="grid3" style="margin-top:12px">
-      <div class="tile2"><b>1. Get ready</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Nov–Dec 2026.</b> Sort the website and demo so every visit can turn into a conversation. Set up company email, LinkedIn, CRM and the outreach system. First founding-site emails and site visits.</span></div>
-      <div class="tile2"><b>2. Prove it</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Jan–Apr 2027.</b> 10 founding sites live and measured. Case studies with real numbers. Founder story in the press. National builders and contractors approached with proof.</span></div>
+      <div class="tile2"><b>1. Get ready</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Nov–Dec 2026.</b> Sort the website and demo so every visit can turn into a conversation. Set up company email, LinkedIn, CRM and the outreach system. First emails and site visits.</span></div>
+      <div class="tile2"><b>2. Prove it</b><span><b style="font-family:Barlow;font-size:12px;display:inline">Jan–Apr 2027.</b> One pilot site live and measured. A case study with real numbers. First paying sites from April. Founder story in the press. National builders and contractors approached with proof.</span></div>
       <div class="tile2 lime"><b>3. Launch and scale</b><span><b style="font-family:Barlow;font-size:12px;display:inline">May–Sep 2027.</b> Public launch at UK Construction Week London. Paying sites. Advertisers and partners. Digital Construction Week and UKCW Birmingham.</span></div>
     </div>
     <h2>Channels, in order of impact</h2>
@@ -149,13 +149,13 @@ function proposal() {
       <li><b>Reporting:</b> a monthly numbers review against the launch targets.</li>
     </ul>
     <h2>Targets by launch day</h2>
-    <div class="grid3" style="grid-template-columns:repeat(4,1fr)">${[['1,000', 'target contacts emailed'], ['100', 'demo tours held'], ['10', 'founding sites live'], ['400', 'demo and waitlist sign-ups']].map(([a, b]) => `<div><div class="d" style="font-size:46px">${a}</div><span class="small">${b}</span></div>`).join('')}</div>`);
+    <div class="grid3" style="grid-template-columns:repeat(4,1fr)">${[['1,000', 'target contacts emailed'], ['100', 'demo tours held'], ['5', 'paying sites by launch'], ['400', 'early-access sign-ups']].map(([a, b]) => `<div><div class="d" style="font-size:46px">${a}</div><span class="small">${b}</span></div>`).join('')}</div>`);
   D.page(`
     <h1>Timeline</h1>
-    <div class="tl">${[['0', 'Foundations', '23 Nov – 4 Dec'], ['1', 'First outreach', '7 – 18 Dec'], ['2', 'Pilots live', 'Jan – Feb'], ['3', 'Proof', 'Mar – Apr'], ['4', 'Launch', '11–13 May'], ['5', 'Scale', 'Jun – Sep']].map(([n, t, d]) => `<div class="tlb ${n === '4' ? 'hl' : ''}"><div class="pn">Phase ${n}</div><b>${t}</b><span>${d}</span></div>`).join('')}</div>
+    <div class="tl">${[['0', 'Foundations', '23 Nov – 4 Dec'], ['1', 'First outreach', '7 – 18 Dec'], ['2', 'Pilot live', 'Jan – Feb'], ['3', 'Proof', 'Mar – Apr'], ['4', 'Launch', '11–13 May'], ['5', 'Scale', 'Jun – Sep']].map(([n, t, d]) => `<div class="tlb ${n === '4' ? 'hl' : ''}"><div class="pn">Phase ${n}</div><b>${t}</b><span>${d}</span></div>`).join('')}</div>
     <table class="t" style="margin-top:12px">
       <tr><th style="width:16%">When</th><th>Milestone</th><th style="width:20%">Who</th></tr>
-      ${[['28 Nov', 'Questionnaire answered, decisions made, access shared', 'Founder'], ['4 Dec', 'Website fixed: demo form, demo link, privacy policy, analytics', 'Together'], ['7 Dec', 'First founding-site emails go out', 'SB Media'], ['18 Dec', '3 founding sites signed before the Christmas break', 'Together'], ['4 Jan', 'First pilot sites go live', 'Founder'], ['31 Jan', 'Founder story in local and trade press', 'SB Media'], ['28 Feb', '10 founding sites live and measured', 'Together'], ['31 Mar', '2–3 case studies published; ads start', 'SB Media'], ['15 Apr', 'Pricing final, billing switched on', 'Founder'], ['30 Apr', 'Stand, banner and launch offer ready', 'Together'], ['11–13 May', 'Public launch at UK Construction Week London', 'Together'], ['Jun–Sep', 'Advertisers, partners, DCW and UKCW Birmingham', 'Together']].map(r => `<tr><td class="k">${r[0]}</td><td>${r[1]}</td><td>${own(r[2])}</td></tr>`).join('')}
+      ${[['28 Nov', 'Questionnaire answered, decisions made, access shared', 'Founder'], ['4 Dec', 'Website fixed: demo form, demo link, privacy policy, analytics', 'Together'], ['7 Dec', 'First emails to housebuilders go out', 'SB Media'], ['18 Dec', 'Pilot site agreed before the Christmas break', 'Together'], ['4 Jan', 'Pilot site goes live', 'Founder'], ['31 Jan', 'Founder story in local and trade press', 'SB Media'], ['28 Feb', 'Pilot results measured; early-access list growing', 'Together'], ['31 Mar', 'Pilot case study published; ads start', 'SB Media'], ['15 Apr', 'Pricing final, billing on, first paying sites', 'Founder'], ['30 Apr', 'Stand, banner and launch offer ready', 'Together'], ['11–13 May', 'Public launch at UK Construction Week London', 'Together'], ['Jun–Sep', 'Advertisers, partners, DCW and UKCW Birmingham', 'Together']].map(r => `<tr><td class="k">${r[0]}</td><td>${r[1]}</td><td>${own(r[2])}</td></tr>`).join('')}
     </table>
     <p class="small" style="margin-top:10px">The full step-by-step list, with every action, owner and due date, is in the separate launch action plan.</p>`);
   D.page(`
@@ -180,9 +180,9 @@ function proposal() {
     <p class="small" style="margin-top:6px">All figures are estimates to confirm with quotes. Costs are paid directly by Site Queue.</p>`);
   D.page(`
     <h1>Next steps</h1>
-    <p class="lead">Three things and we're off. If I've got them by 28 November, the first founding-site emails go out on 7 December.</p>
+    <p class="lead">Three things and we're off. If I've got them by 28 November, the first emails go out on 7 December.</p>
     <div class="grid3" style="margin-top:10px">
-      <div class="tile2 lime"><b>1. Approve</b><span>This proposal, the founding-site offer and the launch budget.</span></div>
+      <div class="tile2 lime"><b>1. Approve</b><span>This proposal, the offer (one free pilot, everyone else pays) and the launch budget.</span></div>
       <div class="tile2"><b>2. Answer</b><span>The 20-question questionnaire, by email or voice notes, whatever's easiest.</span></div>
       <div class="tile2"><b>3. Share access</b><span>Website admin, domain access for company email, and the original logo files.</span></div>
     </div>

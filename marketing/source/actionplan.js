@@ -21,12 +21,12 @@ P.push(page(`
 
 P.push(page(`
   <h1>At a glance</h1>
-  <p class="lead">The plan in one line: get 10 founding sites on board before launch, turn them into case studies, then launch Site Queue properly at UK Construction Week London on 11 May 2027.</p>
+  <p class="lead">The plan in one line: prove it on one pilot site, line up paying customers on an early-access list, then launch Site Queue properly at UK Construction Week London on 11 May 2027.</p>
   <h3>The six phases</h3>
-  <div class="tl">${[['0', 'Foundations', '23 Nov – 4 Dec'], ['1', 'First outreach', '7 – 18 Dec'], ['2', 'Pilots live', 'Jan – Feb'], ['3', 'Proof', 'Mar – Apr'], ['4', 'Launch', '11–13 May'], ['5', 'Scale', 'Jun – Sep']].map(([n, t, d]) => `<div class="tlb ${n === '4' ? 'hl' : ''}"><div class="pn">Phase ${n}</div><b>${t}</b><span>${d}</span></div>`).join('')}</div>
+  <div class="tl">${[['0', 'Foundations', '23 Nov – 4 Dec'], ['1', 'First outreach', '7 – 18 Dec'], ['2', 'Pilot live', 'Jan – Feb'], ['3', 'Proof', 'Mar – Apr'], ['4', 'Launch', '11–13 May'], ['5', 'Scale', 'Jun – Sep']].map(([n, t, d]) => `<div class="tlb ${n === '4' ? 'hl' : ''}"><div class="pn">Phase ${n}</div><b>${t}</b><span>${d}</span></div>`).join('')}</div>
   <h3>Targets by launch day</h3>
-  <div class="nums">${[['1,000', 'target contacts emailed'], ['100', 'demo tours held'], ['10', 'founding sites live'], ['400', 'demo and waitlist sign-ups']].map(([a, b]) => `<div><div class="d big">${a}</div><span>${b}</span></div>`).join('')}</div>
-  <p class="small">Plus 3 published case studies and 5 paying sites from the launch offer.</p>
+  <div class="nums">${[['1,000', 'target contacts emailed'], ['100', 'demo tours held'], ['5', 'paying sites by launch'], ['400', 'early-access sign-ups']].map(([a, b]) => `<div><div class="d big">${a}</div><span>${b}</span></div>`).join('')}</div>
+  <p class="small">Plus the pilot case study published, and the first paying sites from April.</p>
   <h3>How to read this plan</h3>
   <div class="key"><div>${own('You')}<span>Actions for you as founder. Only you can do these: your story, your product, your decisions.</span></div><div>${own('SB Media')}<span>Actions we deliver, and report on each week.</span></div><div>${own('Together')}<span>Work we do side by side, such as pilot onboarding and the launch event.</span></div></div>
   <p class="small">Every action has a due date and a box to tick. I'll send you a quick update on it every Monday evening.</p>`));
@@ -36,11 +36,11 @@ P.push(page(`
   <p class="lead">These decisions and bits unlock everything else. If I've got them by 28 November, the first outreach goes out on 7 December.</p>
   <h3>Decisions</h3>
   ${table([
-    ['Approve the founding-site offer', 'Free use on one live site until launch, founding pricing locked in, a direct line to you.', 'You', '28 Nov'],
+    ['Approve the offer', 'One pilot site free for 8 weeks in return for a case study. Everyone else joins the early-access list and pays an early-bird rate.', 'You', '28 Nov'],
     ['Confirm pricing', 'Price per site per month, any tiers, and confirm the trade app stays free.', 'You', '28 Nov'],
     ['Confirm the launch date and event', 'We recommend UK Construction Week London, ExCeL, 11–13 May 2027.', 'You', '28 Nov'],
     ['Agree the launch budget', 'Tools, ads, design, video, print and event costs (see the budget page).', 'You', '28 Nov'],
-    ['Confirm how many pilots you can support', 'We plan for 10 sites live by the end of February.', 'You', '28 Nov'],
+    ['Pick the pilot site', 'Ideally a site you or a contact already work on, so it’s easy to set up and support.', 'You', '28 Nov'],
   ])}
   <h3>Information and access</h3>
   ${table([
@@ -55,7 +55,7 @@ P.push(page(`
 P.push(page(`
   ${phase(0, 'Foundations', '23 Nov – 4 Dec 2026', 'everything a prospect touches works before anyone is contacted.', [
     ['Set up hello@sitequeue.uk', 'Google Workspace or Microsoft 365, with SPF, DKIM and DMARC so emails land in inboxes.', 'SB Media', '30 Nov'],
-    ['Add a “Book a demo / Join the founding sites” form to every page', 'Name, company, role, number of sites, phone. Entries go to the CRM.', 'SB Media', '2 Dec'],
+    ['Add a “Book a demo / Join early access” form to every page', 'Name, company, role, number of sites, phone. Entries go to the CRM.', 'SB Media', '2 Dec'],
     ['Add a “Try the live demo” button and link', '', 'SB Media', '2 Dec'],
     ['Publish a privacy policy, cookie notice and security page', 'Needed under UK GDPR: the app stores GPS positions and CSCS card photos.', 'Together', '4 Dec'],
     ['Website clean-up', 'Delete the “hello-world” post, hide the public user sitemap, add share image, analytics, Search Console.', 'SB Media', '2 Dec'],
@@ -67,9 +67,9 @@ P.push(page(`
   <div class="tip"><b>Why this comes first:</b> every email, post and ad from Phase 1 sends people to the website and the demo. If they can't book a demo there, we're wasting the outreach.</div>`));
 
 P.push(page(`
-  ${phase(1, 'First outreach', '7 – 18 Dec 2026', '10 demo tours held and 3 founding sites signed before the Christmas break.', [
+  ${phase(1, 'First outreach', '7 – 18 Dec 2026', '10 demo tours held, the pilot site agreed and the first early-access sign-ups before Christmas.', [
     ['Research named contacts for 10 regional housebuilders and 30 live local sites', '', 'SB Media', '7 Dec'],
-    ['Start the founding-site email sequence, 20 contacts a day', 'Sent from your address; we write and schedule it.', 'Together', '7 Dec'],
+    ['Start the early-access email sequence, 20 contacts a day', 'Sent from your address; we write and schedule it.', 'Together', '7 Dec'],
     ['Visit 3 local sites a week with the one-pager', 'Site boards name the contractor and often the site manager.', 'You', 'Weekly'],
     ['Publish your first LinkedIn post: why you built Site Queue', 'We draft, you post.', 'You', '8 Dec'],
     ['Run 20-minute demo tours for everyone who replies', 'Script in the playbook.', 'You', 'Ongoing'],
@@ -78,19 +78,19 @@ P.push(page(`
   ])}`));
 
 P.push(page(`
-  ${phase(2, 'Pilots live', '4 Jan – 28 Feb 2027', '10 founding sites live with a measured baseline, and the founder story in the press.', [
+  ${phase(2, 'Pilot live', '4 Jan – 28 Feb 2027', 'the pilot site live with a measured baseline, a growing early-access list, and the founder story in the press.', [
     ['Prepare the pilot onboarding pack', 'Step-by-step setup guide, QR posters for the cabin, induction template, trade invite message.', 'SB Media', '22 Dec'],
-    ['Onboard each pilot site in person', 'Using the onboarding pack: induction built, trades joined by QR code, drivers and first aiders set up.', 'You', 'From 4 Jan'],
-    ['Measure a baseline in week 1 of each pilot', 'A 5-minute form we provide: forklift waiting time, induction time, calls to the office, hazards logged.', 'You', 'Week 1 of each'],
-    ['Weekly check-in with each pilot site manager', 'Capture quotes, photos and issues.', 'You', 'Weekly'],
-    ['Keep outreach running until 10 pilots are live; invite trades on pilot sites', '', 'SB Media', 'Ongoing'],
+    ['Onboard the pilot site in person', 'Using the onboarding pack: induction built, trades joined by QR code, drivers and first aiders set up.', 'You', 'From 4 Jan'],
+    ['Measure a baseline in week 1 of the pilot', 'A 5-minute form we provide: forklift waiting time, induction time, calls to the office, hazards logged.', 'You', 'Week 1'],
+    ['Weekly check-in with the pilot site manager', 'Capture quotes, photos and issues.', 'You', 'Weekly'],
+    ['Keep outreach running to grow the early-access list; invite trades on the pilot site', '', 'SB Media', 'Ongoing'],
     ['Post weekly on LinkedIn and start short videos filmed on pilot sites', '2 short videos a week from February.', 'Together', 'Weekly'],
     ['Pitch the founder story to local and trade press', 'Southern Daily Echo, BBC South business, Construction Enquirer.', 'SB Media', '31 Jan'],
     ['Brief a designer: vector logo, product video, advertiser media pack', '', 'SB Media', '15 Jan'],
   ])}
-  ${phase(3, 'Proof', '1 Mar – 30 Apr 2027', '3 case studies published, national builders and contractors in conversation, billing ready.', [
-    ['Write 2–3 case studies with numbers and site-manager quotes', '', 'SB Media', '31 Mar'],
-    ['Start wave 2: national housebuilders, mid-tier contractors, subcontractors', 'With the case studies attached.', 'Together', '1 Mar'],
+  ${phase(3, 'Proof', '1 Mar – 30 Apr 2027', 'the pilot case study published, the first paying sites from April, and national builders in conversation.', [
+    ['Write the pilot case study with numbers and the site manager’s quotes', '', 'SB Media', '31 Mar'],
+    ['Start wave 2: national housebuilders, mid-tier contractors, subcontractors', 'With the pilot case study attached.', 'Together', '1 Mar'],
     ['Start LinkedIn and Google ads to the demo form', '£500–£1,000 a month, reviewed weekly.', 'SB Media', '1 Mar'],
     ['Pilot results press release', '', 'SB Media', '25 Mar'],
     ['Confirm final pricing and turn on billing for site subscriptions', '', 'You', '15 Apr'],
@@ -101,11 +101,11 @@ P.push(page(`
   ${phase(4, 'Launch', 'May 2027', 'a public launch with pilot customers beside you, and every lead followed up within 48 hours.', [
     ['Send embargoed launch release to trade press', '', 'SB Media', '4 May'],
     ['App Store and Google Play listings live, with screenshots and video', '', 'You', '8 May'],
-    ['UK Construction Week London, ExCeL', 'Live demos, pilot customers on the stand or a panel, “founding pricing ends this week” offer.', 'Together', '11–13 May'],
+    ['UK Construction Week London, ExCeL', 'Live demos, pilot customers on the stand or a panel, “early-bird pricing ends this week” offer.', 'Together', '11–13 May'],
     ['Follow up every UKCW lead within 48 hours', '', 'SB Media', '15 May'],
   ])}
   ${phase(5, 'Scale and advertising', 'June – September 2027', 'paying sites growing month on month, and the first paid advertising campaigns.', [
-    ['Start wave 3: plant hire, merchants and manufacturers', 'With the media pack and founding advertiser rates.', 'SB Media', '1 Jun'],
+    ['Start wave 3: plant hire, merchants and manufacturers', 'With the media pack and early advertiser rates.', 'SB Media', '1 Jun'],
     ['Switch on advert billing and moderation', '', 'You', '1 Jun'],
     ['Digital Construction Week, ExCeL', 'Meetings with heads of digital at larger contractors.', 'Together', '23–24 Jun'],
     ['Sign one plant or forklift hire partner and one merchant partner', '', 'Together', '31 Jul'],
@@ -124,7 +124,7 @@ P.push(page(`
     ['“Try the live demo” button', 'The demo is the strongest sales tool and the website never mentions it.'],
     ['Privacy policy, cookies and security page', 'Required under UK GDPR; procurement teams will ask for it.'],
     ['“For advertisers” page', 'Explains site-by-site advertising, with its own enquiry form.'],
-    ['Pricing signal', '“From £X per site” or “Free founding pilot, then a locked rate”.'],
+    ['Pricing signal', '“From £X per site”, with an early-bird rate for anyone who joins before launch.'],
     ['Remove the “hello-world” post', 'A default WordPress post is still live.'],
     ['Hide the public user sitemap', 'It shows admin usernames to anyone.'],
     ['Share image, analytics, Search Console', 'So links look right on LinkedIn and we can measure every visit.'],
@@ -161,7 +161,7 @@ P.push(page(`
   <div class="ready">${ready.map(([a, b]) => `<div><b>${a}</b><span>${b}</span></div>`).join('')}</div>
   <div class="cta on-lime">
     <div class="d" style="font-size:40px">Next step</div>
-    <div style="font-size:15px;line-height:1.5;font-weight:600;color:#2E5A14;margin-top:8px">Get me the decisions and bits on page 3 by 28 November and we'll start Phase 0 the same day. The first founding-site emails go out on 7 December.</div>
+    <div style="font-size:15px;line-height:1.5;font-weight:600;color:#2E5A14;margin-top:8px">Get me the decisions and bits on page 3 by 28 November and we'll start Phase 0 the same day. The first emails go out on 7 December.</div>
   </div>`));
 
 const CSS = `

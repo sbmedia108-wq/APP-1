@@ -25,7 +25,7 @@ D['og-image'] = { w: 1200, h: 630, cls: 'on-char', html: `
 
 D['email-header'] = { w: 1200, h: 400, cls: 'on-lime', html: `
   <img class="tile abs" src="${K.LOGO}" style="left:64px;top:52px;width:80px">
-  ${K.stack(64, 168, 640, [H(84, 'Founding sites are open'), P(22, 'Run your whole site on Site Queue, free, before the 2027 launch.', DG, 600)], 18)}
+  ${K.stack(64, 168, 640, [H(84, 'Early access is open'), P(22, 'Get Site Queue on your site before launch, at an early-bird rate.', DG, 600)], 18)}
   ${K.phone(850, 36, 290, K.phoneHome(), 'rotate(5deg)')}` };
 
 const post = (cls, html) => ({ w: 1080, h: 1080, cls, html });
@@ -58,10 +58,9 @@ D['post-08-drawings'] = split('on-con', 'Always the current drawing.', 'New revi
 D['post-09-safety'] = split('on-lime', 'Help, found in seconds.', 'One tap alerts every first aider with the exact location. Hazards are reported with a photo and tracked until closed.', K.phoneAlert());
 D['post-10-site-feed'] = split('on-char', 'One noticeboard for the whole site.', 'Updates, photos and video in one place instead of six group chats. Only people inducted on the site can post.', K.phoneFeed(), 88);
 
-D['post-11-founding-sites'] = post('on-char', `${brand(true)}
-  <div class="abs d" style="left:56px;top:150px;font-size:540px;color:var(--lime);line-height:.8">10</div>
-  ${K.stack(72, 620, 900, [H(96, 'founding sites wanted'), P(28, 'Run your whole site on Site Queue free before launch.<br>Founding pricing locked in.<br>A direct line to the founder.', '#D9DCD5')], 30)}
-  <div class="abs" style="left:74px;bottom:72px;font-size:26px;font-weight:700;color:var(--lime)">Housebuilders and main contractors: book a demo at sitequeue.uk</div>`);
+D['post-11-early-access'] = post('on-char', `${brand(true)}
+  ${K.stack(68, 210, 940, [H(200, 'Early access is open.', '#80D83B'), P(30, 'Get Site Queue on your site before anyone else.<br>Early-bird pricing if you join before launch.<br>A direct line to the founder.', '#D9DCD5')], 44)}
+  <div class="abs" style="left:74px;bottom:72px;font-size:26px;font-weight:700;color:var(--lime)">Join the list at sitequeue.uk</div>`);
 D['post-12-advertisers'] = split('on-lime', 'Your brand, on site.', 'Reach the trades and site managers ordering materials and plant. Choose the sites, pick the dates, pay per placement.', K.phoneAdvert());
 
 D['pullup-banner-preview'] = { w: 850, h: 2000, cls: 'on-char', html: `

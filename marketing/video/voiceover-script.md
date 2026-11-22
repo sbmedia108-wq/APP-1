@@ -12,4 +12,4 @@ Voice: Piper TTS, en_GB northern_english_male (open-source). Music: original tra
 - **f4:** One tap sends a first aider straight to the right spot.
 - **f5:** And one site feed replaces six group chats.
 - **s5:** While the office sees all of it, live.
-- **s6:** Site Queue. Run the whole site from one app. Launching in twenty twenty seven. Founding sites are open now, at site queue dot U K.
+- **s6:** Site Queue. Run the whole site from one app. Launching in twenty twenty seven. Join the early access list, at site queue dot U K.

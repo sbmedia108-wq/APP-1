@@ -14,7 +14,7 @@ Everything for Site Queue is in this folder. This page is your order of play, si
 
 **While you wait for his answers**
 5. Answers can come back however suits him: a reply to the email, filling in the questionnaire, or voice notes on Messenger. Paste whatever he sends into Claude and it'll write it up and update every document.
-6. The three things you really need from him: yes to the founding-site offer, yes to the launch budget, and the launch date. Plus website admin access, domain access for the company email, and the original logo files.
+6. The three things you really need from him: yes to the offer (one free pilot site, everyone else pays an early-bird rate), yes to the launch budget, and the launch date. Plus website admin access, domain access for the company email, and the original logo files.
 
 **Week 1 (Phase 0, about 6 hours across the week)**
 7. Set up hello@sitequeue.uk (Google Workspace) and the email authentication settings. Claude will walk you through it.
@@ -25,7 +25,7 @@ Everything for Site Queue is in this folder. This page is your order of play, si
 
 **Week 2 (Phase 1, about 7 hours across the week)**
 12. Find named contacts for the first 10 housebuilders in LinkedIn Sales Navigator. Claude tells you who to look for.
-13. Load the first founding-site email sequence into the sending tool. It sends from his inbox during the day without you.
+13. Load the first early-access email sequence into the sending tool. It sends from his inbox during the day without you.
 14. Schedule the first LinkedIn posts (the graphics are ready in `graphics/`).
 15. Apply for UK Construction Week London. Claude writes the application.
 
@@ -65,7 +65,7 @@ Alright Luke,
 
 As promised, here's everything for getting Site Queue out there properly.
 
-Short version: the app's really strong, but at the minute nobody knows it exists. The plan is to get 10 sites using it free before launch, use them as proof, then launch it properly at UK Construction Week London in May.
+Short version: the app's really strong, but at the minute nobody knows it exists. The plan is to prove it on one pilot site, get paying sites lined up on an early-access list, then launch it properly at UK Construction Week London in May.
 
 Attached:
 
@@ -75,7 +75,7 @@ Attached:
 - **A 1-minute video** I've made for the launch.
 - **A short deck** that sums the whole thing up.
 
-The main bits I need from you are on page 3 of the action plan. If we can get those sorted by 28 November, the first emails to housebuilders go out on 7 December and we should have the first sites signed up before Christmas.
+The main bits I need from you are on page 3 of the action plan. If we can get those sorted by 28 November, the first emails to housebuilders go out on 7 December and we should have the pilot site sorted before Christmas.
 
 Have a look and give me a shout with any questions.
 
