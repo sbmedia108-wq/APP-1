@@ -8,13 +8,19 @@ Everything for Site Queue is in this folder. This page is your order of play, si
 1. Skim the proposal, the action plan and the questionnaire. Luke's name is already on the covers.
 2. Watch the video with the sound on. If the voice or music isn't right, say so and Claude will swap it.
 
-**Next evening (30 mins): send the pack**
-3. Send him the Messenger heads-up below.
-4. Reply to his email with the email below, and attach the proposal, questionnaire, action plan and the square video. Export the deck to PDF from its Share menu and attach that too. It's easier for him than a link.
+**Now: first send (15 mins)**
+3. Reply to his email with the email below. Attach just two things: `site-queue-proposal.pdf` and `video/site-queue-16x9.mp4`.
+4. Send him the Messenger heads-up below so he knows it's landed.
+
+**When he comes back keen: second send**
+4a. Send the questionnaire (`site-queue-client-questionnaire.pdf`) and tell him voice notes are fine.
+
+**Once he's said yes and answered: third send**
+4b. Send the action plan (`site-queue-launch-action-plan.pdf`). Ask Claude to take the budget page out first. Skip the deck unless he wants something to show other people.
 
 **While you wait for his answers**
 5. Answers can come back however suits him: a reply to the email, filling in the questionnaire, or voice notes on Messenger. Paste whatever he sends into Claude and it'll write it up and update every document.
-6. The three things you really need from him: yes to the offer (one free pilot site, everyone else pays an early-bird rate), yes to the launch budget, and the launch date. Plus website admin access, domain access for the company email, and the original logo files.
+6. The three things you really need from him: yes to the offer (one free pilot site, everyone else pays an early-bird rate), and the launch date. Plus website admin access, domain access for the company email, and the original logo files.
 
 **Week 1 (Phase 0, about 6 hours across the week)**
 7. Set up hello@sitequeue.uk (Google Workspace) and the email authentication settings. Claude will walk you through it.
@@ -55,7 +61,7 @@ He's a fencing and decking contractor who has stood on sites waiting for the for
 
 ## Messenger heads-up
 
-> Alright mate, I've just emailed over the Site Queue stuff. There's the plan, a timeline, a short video and a few questions for you. No rush, have a look when you get a minute. Answers can just be voice notes if that's easier 👍
+> Alright mate, just emailed you the Site Queue stuff, the plan and a short video. Have a look when you get a sec 👍
 
 ## Email to him (reply to the one he sent)
 
@@ -63,21 +69,13 @@ Subject: Re: Site Queue
 
 Alright Luke,
 
-As promised, here's everything for getting Site Queue out there properly.
+As promised, here's what I reckon we do to get Site Queue out there properly.
 
-Short version: the app's really strong, but at the minute nobody knows it exists. The plan is to prove it on one pilot site, get paying sites lined up on an early-access list, then launch it properly at UK Construction Week London in May.
+Short version: the app's really strong, but at the minute nobody knows it exists. The plan is to prove it on one pilot site, get paying sites lined up on an early-access list, then launch it properly at UK Construction Week in May.
 
-Attached:
+Attached is the proposal, which covers the plan and the timeline, plus a 1-minute video I've made for the launch. The voice on it is a stand-in for now. We could even use yours.
 
-- **The proposal:** the plan, timeline, budget and what I'll be doing.
-- **The action plan:** every step from now to launch and who's doing what.
-- **20 quick questions:** so I get the messaging spot on. Voice notes on Messenger are fine.
-- **A 1-minute video** I've made for the launch.
-- **A short deck** that sums the whole thing up.
-
-The main bits I need from you are on page 3 of the action plan. If we can get those sorted by 28 November, the first emails to housebuilders go out on 7 December and we should have the pilot site sorted before Christmas.
-
-Have a look and give me a shout with any questions.
+Have a look when you get a minute and let me know what you think. Once you're happy with it, I'll send over a few questions so I can get the messaging spot on. Voice notes are fine for those.
 
 Cheers,
 Sam
