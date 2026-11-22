@@ -1,6 +1,6 @@
 # Site Queue video: voiceover script
 
-Voice: Kokoro-82M (Apache 2.0), British male voice "bm_george". Samples of other British voices: voice-sample-*.mp3. Music: original track generated in source/music.py (royalty-free, owned by the project).
+Voice: ElevenLabs "George" (British, eleven_multilingual_v2), generated with source/eleven_tts.py. Commercial use needs a paid ElevenLabs plan. Earlier free-voice samples: voice-sample-*.mp3. Music: original track generated in source/music.py (royalty-free, owned by the project).
 
 - **s1:** On most UK sites, the day still runs on radio calls, group chats, paper, and shouting.
 - **s2:** Site Queue replaces all of it.
