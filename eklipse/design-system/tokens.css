@@ -1,0 +1,87 @@
+/* Eklipse Media design tokens: the new system.
+   Idea: an eclipse. A dark ink field, one warm "corona" light, cool moonlight for secondary text.
+   Use the variables. Don't hard-code values in components. */
+
+:root {
+  /* Colour: core */
+  --ink-950: #07070a;   /* page background */
+  --ink-900: #0e0e13;   /* raised surface */
+  --ink-800: #17171f;   /* card / input */
+  --ink-700: #24242f;   /* borders on dark */
+  --ink-500: #4a4a5a;   /* disabled */
+  --moon-300: #a9adbd;  /* secondary text on dark (7.9:1 on ink-950) */
+  --moon-100: #e9e8ee;  /* primary text on dark (16.8:1 on ink-950) */
+  --white: #ffffff;
+
+  /* Colour: corona, the one accent. Use it sparingly: CTAs, the ring and highlights. */
+  --corona-500: #f4a62a; /* accent (9.9:1 on ink-950) */
+  --corona-400: #ffbe55; /* hover */
+  --corona-700: #b06a00; /* accent on light backgrounds (4.6:1 on white) */
+  --corona-glow: rgba(244, 166, 42, 0.35);
+
+  /* Colour: semantic */
+  --bg: var(--ink-950);
+  --surface: var(--ink-900);
+  --surface-2: var(--ink-800);
+  --border: var(--ink-700);
+  --text: var(--moon-100);
+  --text-muted: var(--moon-300);
+  --accent: var(--corona-500);
+  --accent-hover: var(--corona-400);
+  --on-accent: var(--ink-950);
+  --focus: var(--corona-400);
+  --success: #5fd08b;
+  --error: #ff6b6b;
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --text-xs: 0.8125rem;   /* 13 */
+  --text-sm: 0.9375rem;   /* 15 */
+  --text-base: 1.0625rem; /* 17 */
+  --text-lg: 1.25rem;     /* 20 */
+  --text-xl: 1.625rem;    /* 26 */
+  --text-2xl: 2.25rem;    /* 36 */
+  --text-3xl: clamp(2.5rem, 5vw, 3.75rem);
+  --text-hero: clamp(3rem, 9vw, 7.5rem);
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
+  --leading-body: 1.6;
+  --tracking-display: -0.035em;
+  --tracking-label: 0.14em;
+
+  /* Space: 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 9rem;
+
+  /* Layout */
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* Shape and depth */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-glow: 0 0 0 1px var(--corona-glow), 0 10px 40px -10px var(--corona-glow);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-med: 280ms;
+  --dur-slow: 700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-med: 0ms; --dur-slow: 0ms; }
+}

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Your Event Quote | Eklipse Media</title>
+<meta name="description" content="Build your event package in two minutes: DJ, live music, sound, lighting and more. Send it to Eklipse Media and get a clear quote within one working day.">
+<link rel="canonical" href="https://eklipsemedia.co.uk/quote">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Eklipse Media home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="21" fill="none" stroke="#f4a62a" stroke-width="3"/><circle cx="36.5" cy="29" r="19" fill="#07070a"/></svg>
+      <b>EKLIPSE</b><span>MEDIA</span>
+    </a>
+    <a class="btn btn-ghost" href="index.html#contact" style="min-height:42px;padding:.6rem 1.1rem">Contact</a>
+  </div>
+</header>
+
+<main id="main" class="section" style="padding-top:clamp(3rem,6vw,5rem)">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label">Quote builder</p>
+      <h1 style="font-size:clamp(2.5rem,6vw,4.5rem)">Build your night.</h1>
+      <p class="lede">Pick what you need and send it over. We'll reply with a clear, fixed price within one working day.</p>
+    </div>
+
+    <form class="qb" id="qb" novalidate>
+      <div>
+        <fieldset>
+          <legend>The occasion</legend>
+          <div class="chips" data-name="type">
+            <label class="chip"><input type="radio" name="type" value="Wedding" checked><span>Wedding</span></label>
+            <label class="chip"><input type="radio" name="type" value="Corporate event"><span>Corporate</span></label>
+            <label class="chip"><input type="radio" name="type" value="Private party"><span>Private party</span></label>
+            <label class="chip"><input type="radio" name="type" value="Awards / gala"><span>Awards / gala</span></label>
+            <label class="chip"><input type="radio" name="type" value="Festival / club night"><span>Festival / club</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The details</legend>
+          <div class="form" style="background:none;border:0;padding:0">
+            <div class="row">
+              <div class="field"><label for="date">Date</label><input id="date" name="date" type="date"></div>
+              <div class="field"><label for="venue">Venue or town</label><input id="venue" name="venue" placeholder="e.g. Leamington Spa"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="guests">Guests</label>
+                <select id="guests" name="guests"><option>Under 50</option><option selected>50–100</option><option>100–200</option><option>200–500</option><option>500+</option></select></div>
+              <div class="field"><label for="hours">Hours of entertainment</label>
+                <select id="hours" name="hours"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6+</option></select></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What you need</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="svc" value="DJ" checked><span>DJ</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Live band"><span>Live band</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Acoustic act (ceremony / drinks)"><span>Acoustic act</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Saxophonist / live instrumentalist"><span>Sax / live instrumentalist</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="MC / host"><span>MC / host</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Uplighting / mood lighting"><span>Uplighting</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Stage &amp; full PA"><span>Stage &amp; full PA</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Speeches mic / PA"><span>Speeches mic</span></label>
+            <label class="chip"><input type="checkbox" name="svc" value="Event filmed / recorded"><span>Filmed / recorded</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>The vibe</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="vibe" value="Commercial / chart"><span>Commercial &amp; chart</span></label>
+            <label class="chip"><input type="checkbox" name="vibe" value="80s / 90s / 00s"><span>80s · 90s · 00s</span></label>
+            <label class="chip"><input type="checkbox" name="vibe" value="R&amp;B / hip-hop"><span>R&amp;B &amp; hip-hop</span></label>
+            <label class="chip"><input type="checkbox" name="vibe" value="House / techno"><span>House &amp; techno</span></label>
+            <label class="chip"><input type="checkbox" name="vibe" value="Jazz / lounge"><span>Jazz &amp; lounge</span></label>
+            <label class="chip"><input type="checkbox" name="vibe" value="Open to suggestions"><span>Surprise us</span></label>
+          </div>
+          <div class="field" style="margin-top:1.25rem"><label for="name">Your name</label><input id="name" name="name" autocomplete="name"></div>
+        </fieldset>
+      </div>
+
+      <aside class="summary" aria-live="polite">
+        <h2>Your package</h2>
+        <dl id="sum"></dl>
+        <a class="btn btn-primary" id="wa" href="#" rel="noopener">Send on WhatsApp</a>
+        <a class="btn btn-ghost" id="em" href="#">Send by email</a>
+        <p class="form-note" style="margin-top:.75rem">Nothing is booked until you confirm. No obligation.</p>
+      </aside>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap"><span>© 2026 Eklipse Media Limited</span><a href="index.html">Back to home</a></div></footer>
+
+<script>
+(function () {
+  const f = document.getElementById('qb');
+  const sum = document.getElementById('sum');
+  const wa = document.getElementById('wa');
+  const em = document.getElementById('em');
+  const all = n => [...f.querySelectorAll('[name="' + n + '"]:checked')].map(i => i.value);
+  const v = id => document.getElementById(id).value.trim();
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function fmtDate(d) {
+    if (!d) return 'TBC';
+    const dt = new Date(d + 'T12:00:00');
+    return dt.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function update() {
+    const rows = [
+      ['Occasion', all('type')[0] || '-'],
+      ['Date', fmtDate(v('date'))],
+      ['Where', v('venue') || 'TBC'],
+      ['Guests', v('guests')],
+      ['Hours', v('hours')],
+      ['Services', all('svc').join(', ') || 'Not sure yet'],
+      ['Vibe', all('vibe').join(', ') || 'Open']
+    ];
+    sum.innerHTML = rows.map(([k, val]) => '<div><dt>' + k + '</dt><dd>' + esc(val) + '</dd></div>').join('');
+    const name = v('name');
+    const msg = 'Hi Eklipse Media' + (name ? ', this is ' + name : '') + '. I\'d like a quote:\n' +
+      rows.map(([k, val]) => '- ' + k + ': ' + val).join('\n');
+    wa.href = 'https://wa.me/447988300606?text=' + encodeURIComponent(msg);
+    em.href = 'mailto:enquiries@eklipsemedia.co.uk?subject=' + encodeURIComponent('Quote request: ' + rows[0][1] + ', ' + rows[1][1]) + '&body=' + encodeURIComponent(msg);
+  }
+  f.addEventListener('input', update);
+  f.addEventListener('change', update);
+  f.addEventListener('submit', e => e.preventDefault());
+  update();
+})();
+</script>
+</body>
+</html>
