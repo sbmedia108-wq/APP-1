@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing | Site Queue</title>
+<!-- Site Queue pricing section. DRAFT prices from Luke's pricing doc (Nov 2026): confirm before going live.
+     Drop the <section> into a WordPress Custom HTML block. Styles are scoped to .sq-pricing. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  .sq-pricing { --char:#1F1F1F; --lime:#80D83B; --deep:#2E5A14; --con:#ECEDE8; --line:#D3D6CE; --grey:#545A52;
+    font-family: Barlow, Arial, sans-serif; color: var(--char); background: var(--con); padding: 64px 20px; }
+  .sq-pricing * { box-sizing: border-box; }
+  .sq-pricing .wrap { max-width: 1120px; margin: 0 auto; }
+  .sq-pricing h2 { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: clamp(40px, 7vw, 64px); line-height: .95; margin: 0 0 14px; }
+  .sq-pricing .lead { font-size: 18px; line-height: 1.5; color: var(--grey); max-width: 640px; margin: 0 0 18px; }
+  .sq-pricing .ticks { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 36px; padding: 0; list-style: none; font-weight: 600; }
+  .sq-pricing .ticks li::before { content: "✓ "; color: var(--deep); font-weight: 700; }
+  .sq-pricing .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .sq-pricing .plan { background: #FBFBF8; border-radius: 16px; padding: 28px; border: 1.5px solid var(--line); display: flex; flex-direction: column; }
+  .sq-pricing .plan.pop { border: 2.5px solid var(--lime); }
+  .sq-pricing .who { font-size: 14px; font-weight: 700; color: var(--deep); }
+  .sq-pricing h3 { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 34px; margin: 6px 0 14px; }
+  .sq-pricing .price { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 58px; line-height: 1; }
+  .sq-pricing .per { font-size: 15px; color: var(--grey); margin: 4px 0 18px; }
+  .sq-pricing .plan p { font-size: 15px; line-height: 1.5; color: #3A3F38; margin: 0 0 22px; flex: 1; }
+  .sq-pricing .btn { display: block; text-align: center; font-weight: 700; font-size: 16px; padding: 14px; border-radius: 10px; text-decoration: none; background: var(--char); color: #fff; }
+  .sq-pricing .plan.pop .btn { background: var(--lime); color: var(--char); }
+  .sq-pricing .btn:focus-visible { outline: 3px solid var(--deep); outline-offset: 3px; }
+  .sq-pricing .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+  .sq-pricing .extra { background: #FBFBF8; border-radius: 16px; padding: 22px 28px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+  .sq-pricing .extra b { display: block; font-size: 18px; }
+  .sq-pricing .extra span { font-size: 14.5px; color: var(--grey); }
+  .sq-pricing .extra .amt { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 40px; white-space: nowrap; color: var(--char); }
+  .sq-pricing .compare { margin-top: 18px; background: var(--char); color: #F2F3EF; border-radius: 16px; padding: 26px 30px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .sq-pricing .compare b { font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 30px; }
+  .sq-pricing .compare span { color: #B7BCB4; font-size: 15px; display: block; margin-top: 4px; }
+  .sq-pricing .compare a { color: var(--lime); font-weight: 700; text-decoration: none; }
+  .sq-pricing .early { margin-top: 18px; border: 2px dashed var(--deep); border-radius: 16px; padding: 18px 24px; font-weight: 600; }
+  .sq-pricing .small { font-size: 13px; color: var(--grey); margin-top: 16px; }
+  @media (max-width: 860px) { .sq-pricing .plans, .sq-pricing .extras { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body style="margin:0">
+<section class="sq-pricing" id="pricing">
+  <div class="wrap">
+    <h2>One price per site. Everyone on it.</h2>
+    <p class="lead">Pay per active site, per month. No per-user fees, no setup fee, and every worker on site uses it free.</p>
+    <ul class="ticks"><li>Unlimited users</li><li>No setup fee</li><li>Free for workers</li><li>All core features on every plan</li></ul>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="who">Small builders, 1–3 sites</div>
+        <h3>Local</h3>
+        <div class="price">£399</div><div class="per">per site, per month</div>
+        <p>Everything Site Queue does: logistics, inductions, programme, drawings, safety, site map and site feed.</p>
+        <a class="btn" href="#demo">Book a demo</a>
+      </div>
+      <div class="plan pop">
+        <div class="who">4–20 sites</div>
+        <h3>Regional</h3>
+        <div class="price">£499</div><div class="per">per site, per month</div>
+        <p>[What's extra on Regional, for example multi-site dashboard, priority support]</p>
+        <a class="btn" href="#demo">Book a demo</a>
+      </div>
+      <div class="plan">
+        <div class="who">20+ sites</div>
+        <h3>National</h3>
+        <div class="price">£599</div><div class="per">per site, per month</div>
+        <p>[What's extra on National, for example account manager, onboarding for every site]</p>
+        <a class="btn" href="#demo">Talk to us</a>
+      </div>
+    </div>
+
+    <div class="extras">
+      <div class="extra"><div><b>Subcontractor companies</b><span>Company dashboard, analytics, reports and snagging for each site you work on.</span></div><div class="amt">£100</div></div>
+      <div class="extra"><div><b>Tradespeople, drivers, labourers, operators</b><span>Join any site with its code.</span></div><div class="amt">Free</div></div>
+    </div>
+
+    <div class="compare">
+      <div><b>Replaces around £1,600 a month of separate tools</b><span>Delivery booking, drawings, inductions, programme, plant tracking, hazard reporting, alerts and site chat, in one app.</span></div>
+      <a href="/what-site-queue-replaces/">See the breakdown</a>
+    </div>
+
+    <div class="early">Early access: [early-bird offer, for example 25% off your first year] when you sign up before launch. <a href="#demo" style="color:#2E5A14">Join early access</a></div>
+
+    <p class="small">Prices exclude VAT. Subcontractor price is per main contractor site or managed site.</p>
+  </div>
+</section>
+</body>
+</html>
