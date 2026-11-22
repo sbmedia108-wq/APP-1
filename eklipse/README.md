@@ -13,7 +13,8 @@ Everything for relaunching and running Eklipse Media, prepared 22 November 2026.
 | 7 | **Something new: the Quote Builder**, which turns visitors into structured WhatsApp and email enquiries | [`site/quote.html`](site/quote.html) |
 | 8 | **Marketing assets**: 30 days of social posts, email/WhatsApp sequences, venue/corporate/podcast outreach, Google & Meta ad copy, Google Business Profile copy | [`marketing/`](marketing/) |
 | 9 | **Graphics**: 3 Instagram posts (1080×1350) and a venue one-pager (PNG + print PDF) | [`marketing/graphics/`](marketing/graphics/) |
-| 10 | **Step-by-step action plan**: who does what, in order | [`05-ACTION-PLAN.md`](05-ACTION-PLAN.md) |
+| 10 | **Step-by-step action plan**: Dad / you / Claude, in order | [`05-ACTION-PLAN.md`](05-ACTION-PLAN.md) |
+| 11 | **Budget and hours**: 3 budget levels, booking maths, year-one scenarios, 5 hours a week each | [`06-BUDGET-AND-HOURS.md`](06-BUDGET-AND-HOURS.md) |
 
 ## Do these today (15 minutes, in GoDaddy)
 1. Replace the **meta description**. It currently describes a construction consultancy.
@@ -38,7 +39,7 @@ Then open http://localhost:8000.
 ## Assumptions to confirm before launch
 - **Base:** "Warwickshire", inferred from the 01926 phone number.
 - **What's included in packages:** the site and graphics say lighting and a speeches mic are standard. The current site only says "full technical set-up included".
-- **"Over a decade" / "10+ years"** comes from your current copy.
+- **Experience claims:** the site now says "behind the decks since the 90s" and "vetted, insured DJs". Only keep the second once every freelancer's insurance has been checked.
 - **Prices and revenue figures** in the plans are UK market estimates for planning only. Replace them with your real numbers.
 - **The logo mark** is a concept. Get it refined before any large print run.
 - **Photos:** there are no real event photos yet. This is the biggest gap (shot list in `design-system/DESIGN.md`).

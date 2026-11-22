@@ -6,7 +6,7 @@
 
 Hi [Events manager name],
 
-I'm [Name] from Eklipse Media. We're a Warwickshire-based events team (DJs, live music and production) with over 10 years of weddings and corporate events behind us.
+I'm [Name] from Eklipse Media. We're a new Warwickshire events team. I've been DJing since the 90s, and we now bring together a hand-picked roster of insured DJs and live acts for weddings and corporate events.
 
 I'd love to be on your recommended supplier list. What we'd bring to [Venue]:
 - **Punctual and tidy:** we arrive early, cable-manage everything and respect your noise limits and curfews.
@@ -26,7 +26,7 @@ Thanks,
 
 **Subject:** Reliable entertainment for your couples
 
-Hi [Name], I know your reputation depends on the suppliers you recommend, so I'll keep this short. We're Eklipse Media: DJs, live music and production, insured, and over a decade in events. We'd love to support your couples. Fancy a coffee and I'll show you what we do? [Name]
+Hi [Name], I know your reputation depends on the suppliers you recommend, so I'll keep this short. We're Eklipse Media: a new team of hand-picked, insured DJs and live acts, run by a DJ who started in the 90s. We'd love to support your couples. Fancy a coffee and I'll show you what we do? [Name]
 
 ## 3. Corporate (LinkedIn, Feb–June)
 

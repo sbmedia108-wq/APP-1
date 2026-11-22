@@ -1,5 +1,7 @@
 # 03. Marketing plan: the first 90 days
 
+> **Update:** With about 5 hours a week each, follow `05-ACTION-PLAN.md` and `06-BUDGET-AND-HOURS.md` first. This doc is the full menu. Don't start paid ads or wedding fairs until you have bookings and reviews.
+
 **Goal for 90 days:** fill the 2027 wedding diary, win at least 5 corporate Christmas 2027 bookings, sign 2 venue partnerships and land the first Studio retainer.
 
 **Budget assumption:** £500–£1,000/month in paid spend plus your time. Every tactic below is listed in order of return on effort. If money is tight, do the top five only.

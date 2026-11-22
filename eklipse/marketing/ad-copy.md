@@ -8,7 +8,7 @@ Negatives: free, jobs, course, equipment hire, cheap, karaoke.
 
 Headlines (≤30 characters):
 - Wedding DJ in Warwickshire
-- 10+ Years of Wedding Parties
+- Vetted, Insured Wedding DJs
 - DJ, Lighting & Live Music
 - Build Your Quote in 2 Mins
 - One Team. The Whole Night.
@@ -17,7 +17,7 @@ Headlines (≤30 characters):
 
 Descriptions (≤90 characters):
 - DJs who read the room. Full PA, lighting and speeches mic included. Get a quote today.
-- Ceremony acoustic act and evening DJ, one booking. Over a decade of weddings.
+- Ceremony acoustic act and evening DJ, one booking, one point of contact.
 
 **Campaign 2: Corporate events (Birmingham, Coventry, Warwickshire)**
 Keywords: "christmas party entertainment", "corporate event dj", "awards night entertainment", "event production birmingham", "corporate party band".
@@ -31,7 +31,7 @@ Headlines:
 
 Descriptions:
 - Awards, launches and Christmas parties. Sound, lighting, DJs and live acts from one team.
-- Reliable, insured and on time. Over 10 years running corporate events across the UK.
+- Vetted, insured DJs and acts, with one contact who handles everything on the night.
 
 **Campaign 3: Podcast production (Midlands, plus UK remote)**
 Headlines: Podcast Production Midlands · Done-For-You Podcasts · You Talk. We Do the Rest.

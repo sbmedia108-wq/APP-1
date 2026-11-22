@@ -1,5 +1,7 @@
 # 02. Brand and positioning
 
+> **Update:** Eklipse is a new business. Live runs as a booking agency (freelancers bring the kit), and Studio starts with podcasts only. Audio branding and PR stay off the site until you can show real samples. Budget and hours are in `06-BUDGET-AND-HOURS.md`.
+
 ## The core decision
 
 Eklipse Media currently tries to be a DJ company, an event producer, a PR agency, a podcast studio and a sonic-branding house all at once. That's too many front doors. Two structural options:
@@ -11,7 +13,7 @@ Eklipse Media currently tries to be a DJ company, an event producer, a PR agency
 
 **Recommendation: one brand, two divisions.**
 
-- **Eklipse Live** covers DJs, live music and event production. *This is the cash engine and where 10+ years of proof sits. It leads the homepage.*
+- **Eklipse Live** covers DJs, live music and event production. *This is the cash engine. It runs as a booking agency (freelance DJs and acts bring their own kit) and leads the homepage.*
 - **Eklipse Studio** covers podcast production, audio branding, PR and marketing. *This is the growth engine: recurring revenue that isn't tied to weekends.*
 
 The link between them is **sound**. "We set the tone" works literally (audio) and figuratively (atmosphere, reputation).
@@ -40,7 +42,7 @@ The link between them is **sound**. "We set the tone" works literally (audio) an
 | We say | We don't say |
 |---|---|
 | "We'll run the night. You enjoy it." | "Delivering unforgettable experiences" |
-| "Over a decade behind the decks." | "World-class" (unprovable) |
+| "Behind the decks since the 90s." | "World-class" or "over a decade" (unprovable) |
 | "Here's what's included." | "Bespoke solutions tailored to your needs" |
 | Short sentences. Contractions. | Long paragraphs about our history |
 

@@ -1,64 +1,52 @@
 # 05. Step-by-step action plan
 
-**YOU** = the Eklipse team. **ME** = Claude (send me what I ask for and I'll do the work).
+**DAD** = your dad · **YOU** = you · **ME** = Claude. About 5 hours a week each. Budget in `06-BUDGET-AND-HOURS.md`.
 
-## Phase 1: Stop the damage (today, ~30 min)
-- [ ] 1. **YOU:** In GoDaddy Website Builder → Settings → SEO, paste the new title and meta description from `01-AUDIT.md`.
-- [ ] 2. **YOU:** Settings → Social share image: upload one of your own event photos.
-- [ ] 3. **YOU:** Click the logo → change its alt text to "Eklipse Media".
-- [ ] 4. **YOU:** Hide the empty "Our Reputation…" section and remove the "Powered by GoDaddy" line if your plan allows it.
-- [ ] 5. **YOU:** Rename the "Brand Marketing" card to "Audio Branding".
+## Week 1: Fix and decide
+- [ ] 1. **YOU:** In GoDaddy, replace the meta description, social share image and logo alt text (copy in `01-AUDIT.md`). Hide the empty reviews section.
+- [ ] 2. **YOU:** On the current site, remove or reword anything that isn't true yet: "over a decade of experience", "our DJs are seasoned professionals". Also remove PR, crisis comms and audio branding until you can show work.
+- [ ] 3. **DAD + YOU:** 30-minute chat. Agree the agency model, a Level 1 budget (about £100–£250) and the Sunday check-in.
+- [ ] 4. **DAD:** Install WhatsApp Business on the 07988 number and set the auto-reply (wording in `06-BUDGET-AND-HOURS.md`).
+- [ ] 5. **ME:** Write the freelancer recruitment message, the freelancer agreement and the booking-contract draft.
 
-## Phase 2: Gather what I need (this week)
-- [ ] 6. **YOU:** Write down your prices, even rough "from" figures per service.
-- [ ] 7. **YOU:** Collect 20–50 of your best event photos and any phone videos into one folder.
-- [ ] 8. **YOU:** List past clients from the last 2 years (name + phone/email) and every venue you've played.
-- [ ] 9. **YOU:** Confirm your base town, your insurance (public liability amount) and PAT-testing status.
-- [ ] 10. **YOU:** Decide what's included as standard (lighting? speeches mic?) and which offer you're happy to run (e.g. free uplighting).
-- [ ] 11. **YOU → ME:** Send me 6–10, or upload them to this repo. **ME:** Finalise prices, packages and wording across the site and graphics.
+## Weeks 1–3: Build the roster (without this there is nothing to sell)
+- [ ] 6. **DAD:** Post the recruitment message in local DJ and musician Facebook groups. Search Lastminutemusicians, Add to Event and Encore for Warwickshire/Coventry DJs and acoustic acts.
+- [ ] 7. **DAD:** Call the best 6–8. Check their insurance, PAT certificates and video of them playing. Agree a fee per 4-hour set.
+- [ ] 8. **DAD:** Sign 3 DJs and 1–2 acoustic acts to the freelancer agreement. Ask each for photos and video you can use with credit.
+- [ ] 9. **YOU → ME:** Send me the freelancer fees. **ME:** Set the client "from" prices and package margins.
+- [ ] 10. **DAD:** Get 3 quotes for public liability insurance and buy one.
 
-## Phase 3: Get found and get reviewed (week 1–2)
-- [ ] 12. **YOU:** Claim or verify your Google Business Profile (google.com/business). Use the set-up in `marketing/google-business-posts.md`.
-- [ ] 13. **YOU:** Upload 20+ photos and add every service to the profile.
-- [ ] 14. **YOU:** Copy your Google review link (Profile → "Ask for reviews").
-- [ ] 15. **YOU:** Send the past-client review message (`marketing/email-sequences.md`, section D) to everyone from step 8. Aim for 10 reviews in 2 weeks.
-- [ ] 16. **YOU:** Create free listings on Hitched, Bridebook, Add to Event and Poptop, with the same name, phone and address as everywhere else.
+## Weeks 2–4: Go live
+- [ ] 11. **ME:** Finalise the site with real prices and the freelancers' photos, add a privacy policy page, and send you a preview.
+- [ ] 12. **YOU:** Launch on Netlify, point the domain and test the form and quote builder (steps in `README.md`). Cancel GoDaddy Website Builder but keep the domain.
+- [ ] 13. **YOU:** Set up the Google Business Profile, Hitched, Bridebook and Add to Event. Use the same name, phone and address everywhere.
+- [ ] 14. **YOU:** Set up Instagram, TikTok and Facebook as @eklipsemedia (or similar). Post the 3 launch graphics.
+- [ ] 15. **DAD:** Dig out any 90s DJ photos and flyers. **YOU:** Post a "where it started" reel. Real history beats stock photos.
+- [ ] 16. **DAD + YOU:** Tell friends, family and old contacts that you're open and ask them to share. Your first bookings will come from people who know you.
 
-## Phase 4: Launch the new website (week 2–3)
-- [ ] 17. **ME:** Add your photos, prices and final copy to `site/`, create the privacy-policy page and the 1200×630 share image, and send you a preview link.
-- [ ] 18. **YOU:** Check the preview on your phone and give me any changes.
-- [ ] 19. **YOU:** Create a free Netlify account and drag the `eklipse/site` folder onto app.netlify.com/drop (or I give you a zip).
-- [ ] 20. **YOU:** In Netlify → Domain settings, add eklipsemedia.co.uk. Then in GoDaddy → DNS, set the records Netlify shows. *Leave your email (MX) records alone so your inbox keeps working.*
-- [ ] 21. **YOU:** Netlify → Forms → turn on email notifications to enquiries@eklipsemedia.co.uk.
-- [ ] 22. **YOU:** Send a test enquiry through the form and the quote builder (WhatsApp + email). Once it works, cancel GoDaddy Website Builder (keep the domain).
-- [ ] 23. **YOU:** Add the site to Google Search Console and submit it.
+## Weeks 3–8: Win the first 3 bookings
+- [ ] 17. **DAD:** Email 2 venues a week (`outreach-scripts.md`). Visit the warmest ones with the printed one-pager.
+- [ ] 18. **DAD:** Reply to every enquiry the same day and use the quote template. Take a 25–30% deposit to secure the date.
+- [ ] 19. **DAD:** Attend each of the first events in person. Check the freelancer arrives early, sets up well and the client is happy.
+- [ ] 20. **YOU:** Film clips and take photos at those events (with permission). **ME:** Turn them into posts.
+- [ ] 21. **DAD:** Send the review request the next day (`email-sequences.md`, section C).
+- [ ] 22. **YOU:** Pitch 3 businesses a week for podcasts (`outreach-scripts.md`, section 4). Aim for 1 client by week 8.
 
-## Phase 5: Set up the machine (week 3–4)
-- [ ] 24. **YOU:** Pick a CRM (HoneyBook, Dubsado or Studio Ninja). **ME:** Write your proposal template, contract checklist and automated follow-ups to load into it.
-- [ ] 25. **YOU:** Set a 25–30% deposit rule and connect card payments.
-- [ ] 26. **YOU:** Add "How did you hear about us?" to every enquiry.
-- [ ] 27. **ME:** Build your weekly dashboard sheet (enquiries, conversion, revenue, reviews, free dates).
-- [ ] 28. **YOU:** Write a one-page set-up standard for any DJ or act you send. **ME:** Draft it for you to edit.
-
-## Phase 6: Start marketing (from week 2, ongoing)
-- [ ] 29. **YOU:** Post the 3 graphics in `marketing/graphics/`, then follow `social-30-days.md` (3 posts a week).
-- [ ] 30. **YOU:** Assign someone to film 10 clips + 10 photos at every event.
-- [ ] 31. **YOU:** Make a list of 40 venues within 45 minutes. Send 5 outreach emails a week (`outreach-scripts.md`), then visit with the printed one-pager.
-- [ ] 32. **YOU:** Post weekly to Google Business Profile.
-- [ ] 33. **YOU:** After every event, send the review request the next day.
-- [ ] 34. **YOU (January):** Start Meta ads at £10/day using your best video (`ad-copy.md`). **ME:** Write new ad variations monthly.
-- [ ] 35. **YOU (February):** Start LinkedIn outreach to Midlands companies for Christmas 2027.
-- [ ] 36. **YOU (March):** Turn on Google Ads at £15–25/day once you have 15+ reviews. **ME:** Build location landing pages (e.g. "Wedding DJ Warwickshire").
-
-## Phase 7: Run it (every week)
-- [ ] 37. **Monday:** check the dashboard. Fix marketing if enquiries are down, fix proposal speed if conversion is down, raise prices if both are fine.
-- [ ] 38. Reply to every enquiry within 1 hour and send the proposal within 24 hours.
-- [ ] 39. **Monthly:** send me the numbers. **ME:** Review them, write the next month's content and adjust the plan.
-
-## Milestones
-| By | Target |
+## Week 8 checkpoint: does it work?
+| Result | What to do |
 |---|---|
-| End of week 1 | Phase 1 done, everything in Phase 2 sent to me |
-| End of week 3 | New site live, 10+ Google reviews |
-| End of month 2 | 25 reviews, first venue partner, CRM running |
-| End of month 3 | 30+ enquiries/month, 2 venue partners, first Studio retainer |
+| **3+ bookings, happy clients** | Move to Level 2: ads test, contract check, photographer. Keep going. |
+| **1–2 bookings** | Fine for the season. Double venue outreach and keep going. |
+| **0 bookings, but enquiries** | Price or reply-speed problem. **ME:** Review the quotes and messages with you. |
+| **No enquiries** | Visibility problem. **ME:** Rework the listings, posts and Google profile. |
+
+## Months 3–6: Grow
+- [ ] 23. **DAD:** From February, LinkedIn outreach to Midlands companies about Christmas 2027 parties.
+- [ ] 24. **YOU:** Meta ads at £100–£150/month once you have 3+ reviews (copy in `ad-copy.md`).
+- [ ] 25. **DAD (optional):** Once £1,500+ profit is banked, buy a practice controller and start DJing again. Shadow a freelancer before playing a paid gig.
+- [ ] 26. **ME:** Every month, review the numbers and write next month's content, ads and outreach.
+
+## The weekly loop (every week from week 1)
+- **Sunday, 30 min, DAD + YOU:** what came in, what's booked, what's stuck, and 3 jobs each.
+- **Sunday/Monday, 20 min, YOU + ME:** you tell me what happened, I give you the week's posts, replies and messages.
+- **Daily, 2 × 10 min, DAD:** check WhatsApp, email and the form, and reply.

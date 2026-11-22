@@ -1,5 +1,7 @@
 # 04. How I'd run Eklipse Media
 
+> **Update:** The revenue table below is a full-time ambition, not year one. At ~5 hours a week each, use the realistic scenarios in `06-BUDGET-AND-HOURS.md`.
+
 This is the operating plan I'd follow if I were running the company day to day.
 
 > **To be clear about what I can and can't do:** I can build, write, plan, analyse and produce the marketing, every week. I can't sign contracts, take calls, turn up to events or spend money. Someone at Eklipse has to own the relationships, the gigs and the money. Think of this as your operating manual, with me as the marketing and operations team behind it.
@@ -73,7 +75,7 @@ The levers, in order: **price** (packages + upsells), **conversion** (reply fast
 **Quality control for the roster:** a written set-up standard (arrival time, cable management, dress code, volume limits, no phones on the decks), a briefing sheet per event and a post-event client score. Your reputation depends on the worst DJ you send.
 
 ## 6. Risk and compliance checklist
-- [ ] **Public liability insurance** (most venues require £5–10m). Put "fully insured" on the site once confirmed.
+- [ ] **Public liability insurance** (most venues require £5–10m). Require it from every freelancer too, and check their certificates.
 - [ ] **PAT testing** certificates for all equipment (venues ask for them).
 - [ ] **PPL PRS licensing**: venues usually hold it, but check for private and outdoor events. Podcasts need licensed or royalty-free music.
 - [ ] Contracts with clear cancellation, force majeure and overtime clauses.

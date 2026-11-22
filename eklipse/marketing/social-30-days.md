@@ -12,8 +12,8 @@ Post 3 times a week for 4 weeks (12 posts), plus the Stories ideas at the bottom
 ### Week 1: introduce the new brand
 **1. Reel: "We set the tone."**
 Clip: a 7-second montage of your 5 best crowd moments, cut on the beat. Text on screen: "WE SET THE TONE."
-> Over a decade behind the decks. Weddings, corporate nights, festivals, club nights, and every one read the room differently.
-> New look, same ears. 🌘
+> It started behind the decks in the 90s. Now it's Eklipse Media: hand-picked DJs and live acts for weddings, parties and corporate nights. 🌘
+> (Use old 90s photos of Dad DJing if you have them. They're the best content you own.)
 > Build your quote in 2 minutes. Link in bio.
 
 **2. Carousel: "What's actually in a DJ package?"**
@@ -39,11 +39,11 @@ Script: "1) Are you insured and PAT-tested? 2) Who actually turns up on the day?
 **7. Reel: corporate night montage**
 > Awards, launches, Christmas parties. Sound, lighting, music and talent from one team, with one point of contact. Planning your 2027 Christmas party? The best dates go by June.
 
-**8. Carousel: "Your brand has a look. What does it sound like?"** (Studio)
-Slides: audio logo, on-hold music, event stings, podcast intro.
-> Think of the sound when a Netflix show starts. That's audio branding. We make them for businesses of every size.
+**8. Carousel: "5 mistakes that kill a new podcast"** (Studio)
+Slides: bad audio, no format, too long, no clips, giving up at episode 3.
+> Most podcasts die before episode 7. Here's how to make sure yours doesn't. Save this.
 
-**9. Reel: podcast studio tour**
+**9. Reel: your podcast set-up** (mic, headphones, laptop. Keep it real)
 > Want to start a podcast in 2027? We handle the concept, recording, editing and publishing. You just turn up and talk.
 
 ### Week 4: urgency and conversion
