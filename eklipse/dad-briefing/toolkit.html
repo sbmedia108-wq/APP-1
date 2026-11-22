@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<title>Eklipse Media: DJ Toolkit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{--ink:#07070a;--ink2:#17171f;--paper:#faf8f4;--line:#e6e1d8;--t:#1b1b22;--m:#5d5d6b;--c:#f4a62a;--c7:#a35f00;--cs:#fff4e0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:400 13.5pt/1.55 Inter,sans-serif;color:var(--t);background:#888}
+.page{width:210mm;height:297mm;background:var(--paper);padding:20mm 18mm 16mm;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+h1,h2,h3{font-family:"Bricolage Grotesque";letter-spacing:-.03em;line-height:1.05}
+h2{font-size:30pt;margin-bottom:5mm}
+h3{font-size:15pt;margin:0 0 2mm;letter-spacing:-.01em}
+p{margin-bottom:3.5mm}
+.label{font:600 9pt/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--c7);margin-bottom:4mm}
+.num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:9mm;height:9mm;border-radius:50%;background:var(--ink);color:var(--c);font:800 12pt "Bricolage Grotesque";margin-bottom:5mm}
+.foot{margin-top:auto;display:flex;justify-content:space-between;font-size:8.5pt;color:var(--m);border-top:1px solid var(--line);padding-top:3mm}
+.box{background:#fff;border:1px solid var(--line);border-radius:4mm;padding:5mm 6mm;margin-bottom:4mm}
+.hi{background:var(--cs);border:1px solid #f6d49a;border-radius:4mm;padding:5mm 6mm;margin-bottom:4mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+ul.t{list-style:none;margin:0}
+ul.t li{padding:1.6mm 0 1.6mm 6mm;position:relative}
+ul.t li::before{content:"";position:absolute;left:0;top:3.6mm;width:2.2mm;height:2.2mm;border-radius:50%;background:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:12pt}
+td{padding:2.6mm 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:600}
+tr.total td{border-bottom:0;font-weight:700;font-size:13pt}
+.big{font:800 40pt/1 "Bricolage Grotesque";letter-spacing:-.04em;color:var(--c7)}
+.muted{color:var(--m)}
+.small{font-size:10.5pt}
+/* cover */
+.cover{background:var(--ink);color:#e9e8ee}
+.ring{position:absolute;border-radius:50%;background:radial-gradient(circle,transparent 58%,rgba(255,190,85,.95) 63%,rgba(244,166,42,.35) 68%,transparent 78%);filter:blur(1.5px)}
+.disc{position:absolute;border-radius:50%;background:var(--ink)}
+.cover h1{font-size:56pt;line-height:.95;margin-top:auto;position:relative}
+.cover h1 em{font-style:normal;color:var(--c)}
+.cover p{color:#a9adbd;font-size:14pt;max-width:130mm;position:relative}
+.brand{display:flex;align-items:center;gap:3mm;font:800 15pt "Bricolage Grotesque";position:relative}
+.brand small{font:500 8pt Inter;letter-spacing:.22em;color:#a9adbd}
+.cover .foot{border-color:#24242f;color:#a9adbd;position:relative}
+.steps{display:grid;gap:4mm}
+.step{display:grid;grid-template-columns:12mm 1fr;gap:4mm;align-items:start}
+.step .n{width:12mm;height:12mm;border-radius:50%;background:var(--c);color:var(--ink);display:flex;align-items:center;justify-content:center;font:800 15pt "Bricolage Grotesque"}
+.quote{font-family:"Bricolage Grotesque";font-size:15pt;font-weight:700;letter-spacing:-.01em;background:var(--ink);color:#e9e8ee;border-radius:4mm;padding:5mm 6mm;margin:3mm 0 4mm}
+.quote span{color:var(--c)}
+img.shot{border-radius:3mm;border:1px solid var(--line);display:block}
+.no{color:#b3261e;font-weight:600}
+.yes{color:#1e7a46;font-weight:600}
+</style></head><body>
+
+</head><body>
+<!-- 1 COVER -->
+<section class="page cover">
+  <div class="ring" style="width:190mm;height:190mm;right:-70mm;top:-40mm"></div>
+  <div class="disc" style="width:132mm;height:132mm;right:-37mm;top:-15mm"></div>
+  <div class="brand"><svg width="30" height="30" viewBox="0 0 64 64"><circle cx="32" cy="32" r="21" fill="none" stroke="#f4a62a" stroke-width="3"/><circle cx="36.5" cy="29" r="19" fill="#07070a"/></svg>EKLIPSE <small>MEDIA</small></div>
+  <h1>Finding<br>your <em>DJs.</em></h1>
+  <p style="margin-top:8mm">Your toolkit for job number 2: where to look, what to post, what to ask, what to agree, and a freelancer agreement to sign.</p>
+  <p class="small" style="margin-top:4mm">For Dad · November 2026</p>
+  <div class="foot" style="margin-top:14mm"><span>Goal: 3 DJs + 1–2 acoustic acts signed in 2–3 weeks</span><span>eklipsemedia.co.uk</span></div>
+</section>
+
+<!-- 2 WHERE + POST -->
+<section class="page">
+  <span class="num">1</span>
+  <p class="label">Where to look</p>
+  <h2>Find 6–8, sign the best 3.</h2>
+  <div class="grid2">
+    <div class="box"><h3>Online</h3><ul class="t small">
+      <li>Facebook groups: search "DJs Midlands", "Coventry DJs", "Warwickshire musicians", "wedding suppliers Warwickshire"</li>
+      <li>Lastminutemusicians, Add to Event, Encore, Bark: browse local DJs' profiles and reviews</li>
+      <li>Instagram: #coventrydj #warwickshiredj #birminghamdj</li></ul></div>
+    <div class="box"><h3>Offline</h3><ul class="t small">
+      <li>Old contacts from your 90s DJ days. Many still play or know people who do</li>
+      <li>Local pubs and bars with DJ nights: ask the bar manager</li>
+      <li>Music shops and DJ equipment hire firms: they know who's good</li></ul></div>
+  </div>
+  <p class="label" style="margin-top:3mm">The post: copy and paste into Facebook groups</p>
+  <div class="hi small" style="white-space:pre-line;font-size:11.5pt">🎧 <b>DJs and acoustic acts wanted: Warwickshire, Coventry and Birmingham</b>
+
+I'm launching Eklipse Media, an events agency booking weddings, parties and corporate events across the Midlands. (I was behind the decks myself back in the 90s!)
+
+I'm building a small, trusted roster of:
+• Wedding and party DJs (commercial, 80s/90s/00s, R&amp;B, house)
+• Acoustic acts for ceremonies and drinks receptions
+
+You'll need: your own PA and DJ kit, PAT testing, public liability insurance, and a video of you playing.
+
+What you get: paid bookings you didn't have to find, one point of contact, and fair, agreed fees paid promptly after every event.
+
+Interested? Comment or message me with a link to a video and your usual rate for a 4-hour set. 🙌</div>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>2</span></div>
+</section>
+
+<!-- 3 CALL + VETTING -->
+<section class="page">
+  <span class="num">2</span>
+  <p class="label">The 15-minute call</p>
+  <h2>What to ask, and what to check.</h2>
+  <div class="box"><h3>Questions to ask</h3><ul class="t small">
+    <li>"How long have you been playing weddings and parties? Roughly how many a year?"</li>
+    <li>"What kit do you bring? Speakers, lights, a mic for speeches? Do you have backup?"</li>
+    <li>"What's your fee for a 4-hour evening set? And per extra hour?"</li>
+    <li>"How far will you travel? Do you charge for it?"</li>
+    <li>"What do you do if a guest keeps requesting songs that don't fit?" <span class="muted">(you want a calm, sensible answer)</span></li>
+    <li>"Which Saturdays are you free next year?"</li></ul></div>
+  <div class="box"><h3>Before you sign them, tick all of these</h3>
+  <table class="small">
+    <tr><td>☐ Public liability insurance certificate (in date, at least £5m)</td><td></td></tr>
+    <tr><td>☐ PAT testing certificate for their kit (in date)</td><td></td></tr>
+    <tr><td>☐ Video of them playing a real event (not just a mix)</td><td></td></tr>
+    <tr><td>☐ At least 2 reviews or a reference you've called</td><td></td></tr>
+    <tr><td>☐ Photos you're allowed to use on our website and socials</td><td></td></tr>
+    <tr><td>☐ Turned up to the call on time and was easy to talk to</td><td></td></tr>
+  </table></div>
+  <div class="hi small"><b>Red flags:</b> no insurance, won't send a video, vague about kit, badmouths other clients, or late replying to you. If they're slow with you, they'll be slow with our clients.</div>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>3</span></div>
+</section>
+
+<!-- 4 FEE SHEET -->
+<section class="page">
+  <span class="num">3</span>
+  <p class="label">Your roster</p>
+  <h2>Write it down as you go.</h2>
+  <p class="small">Fill this in (or copy it into a Google Sheet), then send me the fees. I'll set our prices so Eklipse keeps about £200–£300 per booking.</p>
+  <table class="small" style="border-top:2px solid var(--t)">
+    <tr style="font-weight:700"><td>Name &amp; type</td><td style="text-align:left">Fee (4 hrs)</td><td style="text-align:left">Extra hr</td><td style="text-align:left">Insured / PAT</td><td style="text-align:left">Style</td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>
+  </table>
+  <p class="label" style="margin-top:7mm">What to agree with every freelancer</p>
+  <div class="grid2">
+    <div class="box"><ul class="t small" style="margin:0">
+      <li><b>Fee</b> per 4-hour set and per extra hour</li>
+      <li><b>Arrival:</b> at least 90 minutes before start</li>
+      <li><b>Dress:</b> smart black (we can give Eklipse T-shirts later)</li></ul></div>
+    <div class="box"><ul class="t small" style="margin:0">
+      <li><b>Paid</b> within 7 days after the event</li>
+      <li><b>No self-promotion</b> to our clients: no business cards</li>
+      <li><b>Can't make it?</b> At least 4 weeks' notice, plus help find cover</li></ul></div>
+  </div>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>4</span></div>
+</section>
+
+<!-- 5 AGREEMENT 1 -->
+<section class="page small">
+  <span class="num">4</span>
+  <p class="label">Freelancer agreement: draft</p>
+  <h2 style="font-size:24pt">Eklipse Media freelance performer agreement</h2>
+  <div class="hi" style="font-size:10pt;padding:3mm 5mm"><b>Draft template, not legal advice.</b> Have a solicitor check it before using it (it's in the Step 2 budget).</div>
+  <p style="font-size:10.5pt"><b>Between:</b> Eklipse Media Limited ("Eklipse") and ______________________ ("the Performer"). <b>Date:</b> ___________</p>
+  <ol style="font-size:10.5pt;padding-left:5mm;line-height:1.5">
+    <li style="margin-bottom:2mm"><b>Bookings.</b> Eklipse may offer the Performer bookings. Each booking is confirmed in writing (email or WhatsApp) with the date, venue, times, fee and client requirements (the "Booking Sheet"). Neither party has to offer or accept any particular booking.</li>
+    <li style="margin-bottom:2mm"><b>Fee and payment.</b> Eklipse pays the fee on the Booking Sheet by bank transfer within 7 days after the event, once the Performer sends an invoice. The client pays Eklipse, never the Performer directly.</li>
+    <li style="margin-bottom:2mm"><b>Equipment.</b> The Performer provides professional, safe, PAT-tested equipment suitable for the venue, including backup for essential items (for example, a second music source and cables).</li>
+    <li style="margin-bottom:2mm"><b>Insurance.</b> The Performer holds public liability insurance of at least £5 million (or more if the venue requires it) and gives Eklipse a current certificate.</li>
+    <li style="margin-bottom:2mm"><b>On the day.</b> The Performer arrives at least 90 minutes before the start time (or as agreed), dresses smartly, follows the venue's rules (including sound limits and curfews), stays sober enough to work professionally, and treats the client, guests and venue staff with respect.</li>
+    <li style="margin-bottom:2mm"><b>Representing Eklipse.</b> At Eklipse bookings the Performer represents Eklipse Media. They do not hand out their own business cards or promote their own services to the client or guests.</li>
+    <li style="margin-bottom:2mm"><b>Clients.</b> For 12 months after an event, the Performer agrees not to take direct bookings from clients introduced by Eklipse. Any such enquiry goes through Eklipse.</li>
+  </ol>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>5</span></div>
+</section>
+
+<!-- 6 AGREEMENT 2 -->
+<section class="page small">
+  <ol start="8" style="font-size:10.5pt;padding-left:5mm;line-height:1.5;margin-top:4mm">
+    <li style="margin-bottom:2mm"><b>Cancellation by the Performer.</b> The Performer gives at least 4 weeks' notice if they can't do a confirmed booking, except in a genuine emergency, and helps Eklipse find suitable cover where possible.</li>
+    <li style="margin-bottom:2mm"><b>Cancellation by the client.</b> If a client cancels a confirmed booking, Eklipse pays the Performer ______% of their fee when the cancellation is within ______ days of the event. Otherwise no fee is due.</li>
+    <li style="margin-bottom:2mm"><b>Photos and video.</b> Eklipse may use photos and video of the Performer at Eklipse events, and material the Performer supplies, to promote Eklipse, with credit where practical.</li>
+    <li style="margin-bottom:2mm"><b>Client information.</b> The Performer uses client and guest details only for the booking, keeps them private and deletes them afterwards, in line with UK data-protection law.</li>
+    <li style="margin-bottom:2mm"><b>Self-employed.</b> The Performer is an independent contractor, not an employee, and is responsible for their own tax and National Insurance.</li>
+    <li style="margin-bottom:2mm"><b>Ending this agreement.</b> Either party may end this agreement with 4 weeks' written notice. Confirmed bookings still go ahead unless both parties agree otherwise.</li>
+    <li style="margin-bottom:2mm"><b>Law.</b> This agreement is governed by the law of England and Wales.</li>
+  </ol>
+  <div class="grid2" style="margin-top:8mm">
+    <div class="box"><h3>For Eklipse Media Limited</h3><p style="margin-top:10mm;border-top:1px solid var(--line);padding-top:2mm" class="muted">Signature</p><p class="muted">Name: _____________________</p><p class="muted">Date: ______________________</p></div>
+    <div class="box"><h3>The Performer</h3><p style="margin-top:10mm;border-top:1px solid var(--line);padding-top:2mm" class="muted">Signature</p><p class="muted">Name: _____________________</p><p class="muted">Date: ______________________</p></div>
+  </div>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>6</span></div>
+</section>
+
+<!-- 7 NEXT -->
+<section class="page">
+  <span class="num">5</span>
+  <p class="label">What happens next</p>
+  <h2>Once you've got your first 3…</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="box" style="margin:0"><h3>Send us the roster</h3><p class="small" style="margin:0">Names, fees and styles from page 4. We'll set the prices and packages so Eklipse keeps about £200–£300 a booking.</p></div></div>
+    <div class="step"><div class="n">2</div><div class="box" style="margin:0"><h3>Collect their photos and videos</h3><p class="small" style="margin:0">They go on the website, socials and venue flyers. Real DJs playing real events. No stock photos.</p></div></div>
+    <div class="step"><div class="n">3</div><div class="box" style="margin:0"><h3>We launch the new website</h3><p class="small" style="margin:0">With real prices and the quote builder. Then you start contacting venues with the flyer.</p></div></div>
+    <div class="step"><div class="n">4</div><div class="box" style="margin:0"><h3>Tell everyone you know</h3><p class="small" style="margin:0">Friends, family, old DJ contacts and anyone getting married or planning a party. Your first bookings will come from people who know you.</p></div></div>
+  </div>
+  <div class="quote" style="margin-top:6mm">Target: <span>3 DJs + 1–2 acoustic acts signed within 3 weeks.</span></div>
+  <div class="foot"><span>Eklipse Media · DJ toolkit</span><span>7</span></div>
+</section>
+
+</body></html>
