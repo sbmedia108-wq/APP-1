@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<title>Eklipse Media: The Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{--ink:#07070a;--ink2:#17171f;--paper:#faf8f4;--line:#e6e1d8;--t:#1b1b22;--m:#5d5d6b;--c:#f4a62a;--c7:#a35f00;--cs:#fff4e0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:400 13.5pt/1.55 Inter,sans-serif;color:var(--t);background:#888}
+.page{width:210mm;height:297mm;background:var(--paper);padding:20mm 18mm 16mm;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+h1,h2,h3{font-family:"Bricolage Grotesque";letter-spacing:-.03em;line-height:1.05}
+h2{font-size:30pt;margin-bottom:5mm}
+h3{font-size:15pt;margin:0 0 2mm;letter-spacing:-.01em}
+p{margin-bottom:3.5mm}
+.label{font:600 9pt/1 Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--c7);margin-bottom:4mm}
+.num{display:inline-flex;align-items:center;justify-content:center;width:9mm;height:9mm;border-radius:50%;background:var(--ink);color:var(--c);font:800 12pt "Bricolage Grotesque";margin-bottom:5mm}
+.foot{margin-top:auto;display:flex;justify-content:space-between;font-size:8.5pt;color:var(--m);border-top:1px solid var(--line);padding-top:3mm}
+.box{background:#fff;border:1px solid var(--line);border-radius:4mm;padding:5mm 6mm;margin-bottom:4mm}
+.hi{background:var(--cs);border:1px solid #f6d49a;border-radius:4mm;padding:5mm 6mm;margin-bottom:4mm}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+ul.t{list-style:none;margin:0}
+ul.t li{padding:1.6mm 0 1.6mm 6mm;position:relative}
+ul.t li::before{content:"";position:absolute;left:0;top:3.6mm;width:2.2mm;height:2.2mm;border-radius:50%;background:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:12pt}
+td{padding:2.6mm 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:600}
+tr.total td{border-bottom:0;font-weight:700;font-size:13pt}
+.big{font:800 40pt/1 "Bricolage Grotesque";letter-spacing:-.04em;color:var(--c7)}
+.muted{color:var(--m)}
+.small{font-size:10.5pt}
+/* cover */
+.cover{background:var(--ink);color:#e9e8ee}
+.ring{position:absolute;border-radius:50%;background:radial-gradient(circle,transparent 58%,rgba(255,190,85,.95) 63%,rgba(244,166,42,.35) 68%,transparent 78%);filter:blur(1.5px)}
+.disc{position:absolute;border-radius:50%;background:var(--ink)}
+.cover h1{font-size:56pt;line-height:.95;margin-top:auto;position:relative}
+.cover h1 em{font-style:normal;color:var(--c)}
+.cover p{color:#a9adbd;font-size:14pt;max-width:130mm;position:relative}
+.brand{display:flex;align-items:center;gap:3mm;font:800 15pt "Bricolage Grotesque";position:relative}
+.brand small{font:500 8pt Inter;letter-spacing:.22em;color:#a9adbd}
+.cover .foot{border-color:#24242f;color:#a9adbd;position:relative}
+.steps{display:grid;gap:4mm}
+.step{display:grid;grid-template-columns:12mm 1fr;gap:4mm;align-items:start}
+.step .n{width:12mm;height:12mm;border-radius:50%;background:var(--c);color:var(--ink);display:flex;align-items:center;justify-content:center;font:800 15pt "Bricolage Grotesque"}
+.quote{font-family:"Bricolage Grotesque";font-size:15pt;font-weight:700;letter-spacing:-.01em;background:var(--ink);color:#e9e8ee;border-radius:4mm;padding:5mm 6mm;margin:3mm 0 4mm}
+.quote span{color:var(--c)}
+img.shot{border-radius:3mm;border:1px solid var(--line);display:block}
+.no{color:#b3261e;font-weight:600}
+.yes{color:#1e7a46;font-weight:600}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="page cover">
+  <div class="ring" style="width:190mm;height:190mm;right:-70mm;top:-40mm"></div>
+  <div class="disc" style="width:132mm;height:132mm;right:-37mm;top:-15mm"></div>
+  <div class="brand"><svg width="30" height="30" viewBox="0 0 64 64"><circle cx="32" cy="32" r="21" fill="none" stroke="#f4a62a" stroke-width="3"/><circle cx="36.5" cy="29" r="19" fill="#07070a"/></svg>EKLIPSE <small>MEDIA</small></div>
+  <h1>The plan<br>to get <em>Eklipse</em><br>off the ground.</h1>
+  <p style="margin-top:8mm">A simple, low-risk way to start. No equipment to buy, about £100–£250 to begin, and around 5 hours a week each.</p>
+  <p class="small" style="margin-top:4mm">Prepared for Dad · November 2026</p>
+  <div class="foot" style="margin-top:14mm"><span>8 short pages · 10-minute read</span><span>eklipsemedia.co.uk</span></div>
+</section>
+
+<!-- 2 BIG IDEA -->
+<section class="page">
+  <span class="num">1</span>
+  <p class="label">The big idea</p>
+  <h2>We don't need to buy any equipment to start.</h2>
+  <p>We run Eklipse as a <b>booking agency</b>. You find the clients, and we book local freelance DJs and live acts who bring their <b>own kit and insurance</b>. They play the event, and Eklipse keeps the difference.</p>
+  <div class="box" style="margin-top:3mm">
+    <h3>How one booking makes money (example)</h3>
+    <table>
+      <tr><td>💷 Client pays Eklipse</td><td>£850</td></tr>
+      <tr><td>🎧 Freelance DJ gets (brings their own kit)</td><td>£550–£650</td></tr>
+      <tr class="total"><td>✅ Eklipse keeps</td><td style="color:var(--c7)">£200–£300</td></tr>
+    </table>
+  </div>
+  <div class="grid2">
+    <div class="hi"><h3>Why start this way</h3><ul class="t small"><li>No big spend before we know it works</li><li>We can take bookings straight away</li><li>We can cover more than one event a night</li></ul></div>
+    <div class="box"><h3>Later on</h3><p class="small" style="margin:0">Once the business has made enough profit, you buy your own kit and start DJing gigs yourself again, keeping the full fee.</p></div>
+  </div>
+  <p class="small muted" style="margin-top:2mm">For reference, UK couples typically pay about £850–£1,300 for a wedding DJ, and the average entertainment booking around Coventry is about £795.</p>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>2</span></div>
+</section>
+
+<!-- 3 WEBSITE -->
+<section class="page">
+  <span class="num">2</span>
+  <p class="label">Urgent: the current website</p>
+  <h2>Some problems are putting people off right now.</h2>
+  <div class="grid2" style="grid-template-columns:1.15fr .85fr;align-items:start">
+    <div>
+      <div class="box"><h3>❌ Google says we're a construction company</h3><p class="small" style="margin:0">The description under our name in search results is about "construction consultancy and quantity surveying". It was left over from another site.</p></div>
+      <div class="box"><h3>❌ The share picture is a builder</h3><p class="small" style="margin:0">When anyone shares our link on WhatsApp or Facebook, the preview shows a construction worker in a hard hat.</p></div>
+      <div class="box"><h3>❌ The logo is labelled "Piers Brown Associates"</h3><p class="small" style="margin:0">That's another company's name. Google reads it.</p></div>
+      <div class="box"><h3>❌ An empty "customer reviews" section</h3><p class="small" style="margin:0">A big heading with nothing under it looks like we have no happy customers.</p></div>
+      <p class="yes small">✔ These are quick fixes. I'll sort them this week.</p>
+    </div>
+    <div>
+      <img class="shot" src="../marketing/graphics/site-preview.png" style="width:100%">
+      <p class="small muted" style="margin-top:2mm;text-align:center">The new website, ready to go live</p>
+    </div>
+  </div>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>3</span></div>
+</section>
+
+<!-- 4 HONEST -->
+<section class="page">
+  <span class="num">3</span>
+  <p class="label">One important thing</p>
+  <h2>We only say what's true.</h2>
+  <p>The current website says things we can't back up yet. Misleading customers is against UK consumer law, and if someone books expecting a decade of experience, it could backfire badly.</p>
+  <div class="grid2" style="margin-top:2mm">
+    <div class="box"><h3 class="no">Take out</h3><ul class="t small"><li>"Over a decade of experience"</li><li>"Our DJs are seasoned professionals"</li><li>PR, crisis comms and audio branding (until we can show examples)</li><li>Any reviews we don't actually have</li></ul></div>
+    <div class="box"><h3 class="yes">What we CAN say</h3><ul class="t small"><li>"Behind the decks since the 90s"</li><li>"Hand-picked, vetted, insured DJs and live acts"</li><li>"One point of contact for the whole night"</li><li>Podcast production (my side)</li></ul></div>
+  </div>
+  <div class="quote">It started behind the decks in the 90s. <span>That's a great story.</span></div>
+  <div class="hi"><h3>📸 Please dig these out</h3><p class="small" style="margin:0">Any old photos, flyers or mixtapes from your 90s DJ days. Real history beats stock photos every time, and they'll be some of our best posts.</p></div>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>4</span></div>
+</section>
+
+<!-- 5 WHO DOES WHAT -->
+<section class="page">
+  <span class="num">4</span>
+  <p class="label">Who does what</p>
+  <h2>About 5 hours a week each.</h2>
+  <div class="box">
+    <h3>👨 You: the face of the business</h3>
+    <table class="small">
+      <tr><td>Answer enquiries, call people back, send quotes (same day)</td><td>2 hrs</td></tr>
+      <tr><td>Find freelance DJs and acts, then contact and visit venues</td><td>1.5 hrs</td></tr>
+      <tr><td>Take deposits, pay freelancers, sort insurance</td><td>0.5 hrs</td></tr>
+      <tr><td>Sunday catch-up with me + spare</td><td>1 hr</td></tr>
+    </table>
+    <p class="small muted" style="margin:2mm 0 0">Plus: go along to the first few events to check they go well.</p>
+  </div>
+  <div class="box">
+    <h3>🧑 Me: online and podcasts</h3>
+    <table class="small">
+      <tr><td>Social media: posting 2–3 times a week</td><td>1.5 hrs</td></tr>
+      <tr><td>Website, Google listing, wedding directories</td><td>0.5 hrs</td></tr>
+      <tr><td>Podcast clients (finding them and doing the work)</td><td>2 hrs</td></tr>
+      <tr><td>Working with Claude + Sunday catch-up</td><td>1 hr</td></tr>
+    </table>
+  </div>
+  <div class="hi">
+    <h3>🤖 Claude (the AI I've been using)</h3>
+    <p class="small" style="margin:0">Writes everything for us: social posts, emails, quotes, contracts, ads, website changes and messages to venues and DJs. It built the new website and this plan.</p>
+  </div>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>5</span></div>
+</section>
+
+<!-- 6 MONEY -->
+<section class="page">
+  <span class="num">5</span>
+  <p class="label">The money</p>
+  <h2>Start small. Grow from profit.</h2>
+  <div class="grid2" style="grid-template-columns:1fr 1fr 1fr;gap:3mm">
+    <div class="hi"><p class="label" style="margin-bottom:2mm">Step 1 · Now</p><p class="big" style="font-size:24pt">£100–250</p><ul class="t small"><li>Insurance ~£60–150/yr</li><li>Cards + venue flyers ~£40–80</li><li>Website, Google, social: free</li></ul></div>
+    <div class="box"><p class="label" style="margin-bottom:2mm">Step 2 · After 1st deposit</p><p class="big" style="font-size:24pt;color:var(--t)">£500–900</p><ul class="t small"><li>Solicitor checks our contract</li><li>Small ads test</li><li>Photos at our first events</li></ul></div>
+    <div class="box"><p class="label" style="margin-bottom:2mm">Step 3 · From profit only</p><p class="big" style="font-size:24pt;color:var(--t)">£2–4k</p><ul class="t small"><li>Practice controller first</li><li>Then second-hand gig kit</li><li>So you can DJ yourself</li></ul></div>
+  </div>
+  <div class="quote" style="margin-top:2mm">The rule: <span>we don't buy DJ kit until the business has paid for it.</span></div>
+  <div class="box">
+    <h3>A realistic first year (part-time)</h3>
+    <table class="small">
+      <tr><td>Cautious: 6 bookings, no podcast client</td><td>~£900</td></tr>
+      <tr><td>Good: 15 bookings + 1 podcast client for 6 months</td><td>~£5,000</td></tr>
+      <tr><td>Strong: 25 bookings + 1 podcast client most of the year</td><td>~£10,000</td></tr>
+    </table>
+    <p class="small muted" style="margin:2mm 0 0">Profit after costs. These are estimates. It's a side business to start, and a strong year pays for your own kit.</p>
+  </div>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>6</span></div>
+</section>
+
+<!-- 7 FIRST STEPS -->
+<section class="page">
+  <span class="num">6</span>
+  <p class="label">Your first 3 jobs</p>
+  <h2>Here's where to start.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="box" style="margin:0"><h3>Get WhatsApp Business</h3><p class="small">Download it for the 07988 number and set this auto-reply so nobody waits:</p><p class="small" style="margin:0;background:var(--cs);padding:3mm 4mm;border-radius:3mm"><i>"Thanks for getting in touch! We'll get back to you today with ideas and a price."</i></p></div></div>
+    <div class="step"><div class="n">2</div><div class="box" style="margin:0"><h3>Find 3 freelance DJs + 1–2 acoustic acts</h3><p class="small" style="margin:0">Look in local DJ Facebook groups and on Lastminutemusicians and Add to Event. Check each has <b>insurance</b>, <b>PAT-tested kit</b> and a <b>video</b> of them playing. Agree their fee for a 4-hour set. I'll send you a message to copy and paste.</p></div></div>
+    <div class="step"><div class="n">3</div><div class="box" style="margin:0"><h3>Get 3 quotes for public liability insurance</h3><p class="small" style="margin:0">Venues and clients ask for it, even from agencies. Expect roughly £60–£150 a year.</p></div></div>
+  </div>
+  <div class="hi" style="margin-top:5mm"><h3>📅 Every Sunday: 30-minute catch-up</h3><p class="small" style="margin:0">What's come in, what's booked, what's stuck, and 3 jobs each for the week ahead.</p></div>
+  <div class="foot"><span>Eklipse Media · The plan</span><span>7</span></div>
+</section>
+
+<!-- 8 GOAL -->
+<section class="page">
+  <span class="num">7</span>
+  <p class="label">The goal</p>
+  <h2>3 paid bookings in the next 8 weeks.</h2>
+  <table style="margin-bottom:5mm">
+    <tr><td>🟢 3+ bookings, happy clients</td><td>Push harder</td></tr>
+    <tr><td>🟡 1–2 bookings</td><td>Keep going, more venue visits</td></tr>
+    <tr><td>🟠 Enquiries but no bookings</td><td>Fix prices or replies</td></tr>
+    <tr><td>🔴 No enquiries</td><td>Fix how people find us</td></tr>
+  </table>
+  <p>Either way, we've only spent a couple of hundred pounds and a few hours, and we'll know exactly what to change.</p>
+  <p class="label" style="margin-top:3mm">The new look</p>
+  <div class="grid2" style="align-items:start">
+    <div><img class="shot" src="../marketing/graphics/instagram-1.png" style="width:100%"><p class="small muted" style="margin-top:2mm;text-align:center">Launch post for Instagram</p></div>
+    <div><img class="shot" src="../marketing/graphics/venue-one-pager.png" style="width:85%;margin:0 auto"><p class="small muted" style="margin-top:2mm;text-align:center">Flyer to hand to venues</p></div>
+  </div>
+  <div class="foot"><span>Let me know what you think! 🌘</span><span>8</span></div>
+</section>
+</body></html>
