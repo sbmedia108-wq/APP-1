@@ -1,0 +1,125 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:IS;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/InstrumentSerif-Regular.ttf)}
+@font-face{font-family:IS;font-style:italic;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/InstrumentSerif-Italic.ttf)}
+@font-face{font-family:ISans;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf)}
+@font-face{font-family:ISans;font-weight:700;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Bold.ttf)}
+@font-face{font-family:Gloock;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/Gloock-Regular.ttf)}
+@font-face{font-family:Hand;src:url(file:///home/user/APP-1/.claude/skills/canvas-design/canvas-fonts/NothingYouCouldDo-Regular.ttf)}
+:root{--cream:#F4EEE2;--pine:#28432F;--sage:#7E9A73;--sage-d:#5F7A57;--berry:#A3313A;--umber:#6B4A2E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;background:var(--cream);overflow:hidden}
+#p{position:relative;width:1080px;height:1350px}
+svg#art{position:absolute;inset:0}
+.t{position:absolute;left:0;right:0;text-align:center;color:var(--pine)}
+.label{font-family:ISans;font-weight:700;font-size:17px;letter-spacing:.42em;color:var(--sage-d);text-transform:uppercase;padding-left:.42em}
+.name{font-family:IS;font-style:italic;font-size:178px;line-height:1;letter-spacing:-.01em}
+.join{font-family:IS;font-size:50px;line-height:1}
+.join em{font-style:italic;color:var(--sage-d)}
+.dow{font-family:ISans;font-weight:700;font-size:16px;letter-spacing:.38em;color:var(--sage-d);text-transform:uppercase;padding-left:.38em}
+.num{font-family:Gloock;font-size:142px;line-height:1;color:var(--pine)}
+.amp{font-family:IS;font-style:italic;font-size:76px;color:var(--berry)}
+.month{font-family:ISans;font-weight:700;font-size:19px;letter-spacing:.55em;padding-left:.55em}
+.venue{font-family:IS;font-size:64px;line-height:1}
+.venue-pre{font-family:IS;font-style:italic;font-size:30px;color:var(--sage-d)}
+.hand{font-family:Hand;font-size:32px;color:var(--berry)}
+.band-l{font-family:ISans;font-weight:700;font-size:16px;letter-spacing:.42em;color:#E9E3D3;text-transform:uppercase;padding-left:.42em}
+.band-t{font-family:IS;font-style:italic;font-size:70px;color:var(--cream);line-height:1}
+</style></head><body><div id="p">
+<svg id="art" width="1080" height="1350" viewBox="0 0 1080 1350"></svg>
+
+<div class="t label" style="top:384px">A Christmas Pop-Up</div>
+<div class="t name" style="top:418px">Doodle Daze</div>
+<div class="t join" style="top:602px">will be joining <em>the Cake Ladies</em></div>
+
+<div style="position:absolute;top:712px;left:0;right:0;display:flex;justify-content:center;align-items:flex-end;gap:46px">
+  <div style="text-align:center"><div class="dow">Saturday</div><div class="num" style="margin-top:10px">28</div></div>
+  <div class="amp" style="padding-bottom:26px">&amp;</div>
+  <div style="text-align:center"><div class="dow">Sunday</div><div class="num" style="margin-top:10px">29</div></div>
+</div>
+<div class="t month" style="top:886px;color:var(--pine)">NOVEMBER 2026</div>
+
+<div class="t venue-pre" style="top:950px">at the</div>
+<div class="t venue" style="top:984px">Exbury Club Pavilion</div>
+<div class="t hand" style="top:1068px;transform:rotate(-3deg)">pop on down &amp; have a looksie!</div>
+
+<div class="t band-l" style="top:1192px">With lots of Christmas goodies</div>
+<div class="t band-t" style="top:1226px">Decorations &amp; Gift Tags</div>
+</div>
+<script>
+const S=document.getElementById('art'),NS='http://www.w3.org/2000/svg';
+const el=(t,a,p=S)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+const defs=el('defs',{});
+defs.innerHTML=`
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .42  0 0 0 0 .32  0 0 0 0 .2  0 0 0 .07 0"/></filter>
+<radialGradient id="wood" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#E3C79C"/><stop offset=".72" stop-color="#D2AE7F"/><stop offset="1" stop-color="#A87B4C"/></radialGradient>
+<filter id="woodgrain" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".012 .22" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" values="0 0 0 0 .45  0 0 0 0 .3  0 0 0 0 .16  0 0 0 .22 0" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in" result="gg"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gg"/></feMerge></filter>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#5a3f22" flood-opacity=".22"/></filter>
+<filter id="inset"><feOffset dx="0" dy="2.4"/><feGaussianBlur stdDeviation="1.2"/></filter>`;
+
+// shape paths centred on 0,0, unit ~ r
+function star(r,ri=.4){let d='';for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*ri:r;d+=(i?'L':'M')+(rr*Math.cos(a)).toFixed(2)+','+(rr*Math.sin(a)).toFixed(2)}return d+'Z'}
+function tree(r){const w=r*.9;return `M0,${-r} L${w*.42},${-r*.35} L${w*.24},${-r*.35} L${w*.62},${r*.2} L${w*.38},${r*.2} L${w*.8},${r*.72} L${w*.12},${r*.72} L${w*.12},${r} L${-w*.12},${r} L${-w*.12},${r*.72} L${-w*.8},${r*.72} L${-w*.38},${r*.2} L${-w*.62},${r*.2} L${-w*.24},${-r*.35} L${-w*.42},${-r*.35}Z`}
+function heart(r){return `M0,${r*.85} C${-r*1.25},${-r*.05} ${-r*.7},${-r*1.05} 0,${-r*.42} C${r*.7},${-r*1.05} ${r*1.25},${-r*.05} 0,${r*.85}Z`}
+function flake(g,r,col,sw){for(let i=0;i<6;i++){const a=i*60;const k=el('g',{transform:`rotate(${a})`},g);
+ el('line',{x1:0,y1:0,x2:0,y2:-r,stroke:col,'stroke-width':sw,'stroke-linecap':'round'},k);
+ for(const [p,l] of [[.42,.3],[.7,.22]]){el('path',{d:`M${-r*l},${-r*(p+l*.9)} L0,${-r*p} L${r*l},${-r*(p+l*.9)}`,fill:'none',stroke:col,'stroke-width':sw*.8,'stroke-linecap':'round','stroke-linejoin':'round'},k)}}
+ el('circle',{r:sw*1.1,fill:col},g)}
+
+// paper grain
+el('rect',{width:1080,height:1350,filter:'url(#grain)'});
+
+// twine
+const ty=x=>48+70*(1-Math.pow((x-540)/620,2));
+let d='';for(let x=-20;x<=1100;x+=10)d+=(x<-10?'M':'L')+x+','+ty(x).toFixed(1);
+el('path',{d,fill:'none',stroke:'#9C7A52','stroke-width':3.2,'stroke-linecap':'round'});
+el('path',{d,fill:'none',stroke:'#C4A47A','stroke-width':1.2,'stroke-dasharray':'3 5','stroke-linecap':'round'});
+
+const cream='#F4EEE2';
+const orns=[[150,64,'star'],[345,104,'tree'],[540,132,'heart'],[735,104,'flake'],[930,64,'tree2']];
+orns.forEach(([x,len,kind],i)=>{
+  const top=ty(x),cy=top+len+62,R=60;
+  const sway=[-2.2,1.4,0,-1.4,2.2][i];
+  const g=el('g',{transform:`rotate(${sway} ${x} ${top})`});
+  el('line',{x1:x,y1:top,x2:x,y2:cy-R+12,stroke:'#8E6C45','stroke-width':1.6},g);
+  // tiny knot
+  el('circle',{cx:x,cy:top+1,r:3.2,fill:'#8E6C45'},g);
+  const o=el('g',{transform:`translate(${x} ${cy})`,filter:'url(#shadow)'},g);
+  const w=el('g',{filter:'url(#woodgrain)'},o);
+  el('circle',{r:R,fill:'url(#wood)'},w);
+  el('circle',{r:R-1,fill:'none',stroke:'#7C5631','stroke-width':2,opacity:.65},o);
+  el('circle',{r:R-7,fill:'none',stroke:'#8C643A','stroke-width':.8,opacity:.35,'stroke-dasharray':'1.5 4'},o);
+  // hanging hole
+  el('circle',{cy:-R+12,r:5,fill:'#7C5631'},o);el('circle',{cy:-R+12.8,r:4,fill:cream},o);
+  // cutout
+  const cut=el('g',{transform:'translate(0 6)'},o);
+  const mk=(p,fill)=>{
+    if(kind==='star')el('path',{d:star(32),fill},p);
+    if(kind==='tree'||kind==='tree2')el('path',{d:tree(32),fill},p);
+    if(kind==='heart')el('path',{d:heart(30),fill},p);
+  };
+  if(kind==='flake'){const s=el('g',{},cut);flake(el('g',{transform:'translate(0 1.5)'},s),30,'#6E4B2A',7.5);flake(s,30,cream,6.5)}
+  else{mk(cut,'#6E4B2A');const c2=el('g',{transform:'translate(0 1.8)'},cut);mk(c2,cream);
+       // re-draw cream slightly smaller offset gives burnt top edge
+  }
+});
+
+// divider under "joining"
+const dv=el('g',{transform:'translate(540 682)'});
+el('line',{x1:-170,y1:0,x2:-22,y2:0,stroke:'#7E9A73','stroke-width':1.4},dv);
+el('line',{x1:22,y1:0,x2:170,y2:0,stroke:'#7E9A73','stroke-width':1.4},dv);
+el('path',{d:heart(9),fill:'#A3313A',transform:'translate(0 0)'},dv);
+
+// handwritten note (added later)
+const hn=el('g',{transform:'translate(812 940) rotate(-6)'});
+// band
+el('rect',{x:0,y:1146,width:1080,height:204,fill:'#5F7A57'});
+el('rect',{x:0,y:1146,width:1080,height:204,filter:'url(#grain)',opacity:.9});
+// scalloped tag-edge: row of tiny cream stars/trees along the band
+const motifs=['star','tree','heart','tree','star'];
+for(let i=0;i<27;i++){const x=40+i*38.46;const k=i%4;
+  const g=el('g',{transform:`translate(${x} 1322)`,opacity:.55});
+  if(k===0)el('path',{d:star(8),fill:'#E9E3D3'},g);
+  else if(k===1||k===3)el('path',{d:tree(8),fill:'#E9E3D3'},g);
+  else el('circle',{r:2.4,fill:'#E9E3D3'},g);
+}
+</script></body></html>
