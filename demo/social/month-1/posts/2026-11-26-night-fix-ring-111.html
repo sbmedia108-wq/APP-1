@@ -1,0 +1,28 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Night-time fix: NHS 111. Yellow coaches, on a night field. Three big yellow keys spell 111. */
+.kicker { color:#FFC72C; } .kicker i { background:#FFC72C; }
+h1 { top:136px; }
+.glow { position:absolute; left:20px; top:330px; width:900px; height:420px; background:radial-gradient(closest-side, rgba(255,199,44,.30), rgba(255,199,44,0)); }
+.ones { position:absolute; left:var(--m); top:410px; display:flex; gap:40px; }
+.one { width:212px; height:212px; background:radial-gradient(circle at 40% 30%, #ffdb6e 0%, #FFC72C 55%, #e9a90c 100%); color:var(--ink);
+  display:grid; place-items:center; font-weight:800; font-size:140px; line-height:1; letter-spacing:-4px; padding-bottom:8px;
+  box-shadow: inset 0 -12px 20px rgba(150,90,0,.35), inset 0 10px 14px rgba(255,255,255,.55), 0 14px 0 #b07f08, 0 0 70px rgba(255,199,44,.45), 0 34px 44px rgba(0,0,0,.4); }
+.free { position:absolute; left:830px; top:440px; width:170px; font-size:30px; font-weight:800; line-height:1.15; color:#FFC72C; }
+.free span { display:block; color:#dbe4f5; font-weight:400; font-size:26px; margin-top:8px; }
+.warn { position:absolute; left:var(--m); right:var(--m); top:930px; display:flex; align-items:center; gap:24px; background:#fff; color:var(--ink); border-radius:30px; padding:22px 30px;
+  font-size:29px; line-height:1.3; box-shadow: 0 8px 0 #c9d3e8, 0 18px 30px rgba(0,0,0,.3); }
+.warn i { font-style:normal; flex:none; background:var(--red); color:#fff; font-weight:800; font-size:34px; padding:14px 20px; border-radius:18px;
+  box-shadow: inset 0 -4px 6px rgba(0,0,0,.25), inset 0 4px 4px rgba(255,255,255,.3); }
+.warn b { font-weight:800; }
+</style></head><body>
+<section id="post" class="f-night">
+  <div class="kicker"><i></i>Night-time fix</div>
+  <h1>Feeling poorly in the night? Ring&nbsp;111.</h1>
+  <div class="glow"></div>
+  <div class="ones chk"><div class="one btn">1</div><div class="one btn">1</div><div class="one btn">1</div></div>
+  <div class="free chk">Free.<span>Any time, day or night.</span></div>
+  <div class="say chk" style="left:var(--m); top:712px; width:920px"><div class="tile"></div><div class="bub" style="flex:1">For urgent advice that <b>isn&rsquo;t an emergency</b>. Or go to <b>111.nhs.uk</b> on your phone and answer the&nbsp;questions.</div></div>
+  <div class="warn chk"><i>999</i><div><b>Chest pain, stroke signs or can&rsquo;t breathe?</b> Don&rsquo;t wait. Ring 999&nbsp;straight&nbsp;away.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Free tech help, coming soon to Android</span></div></div><div class="keys"><i></i><i></i><i class="on"></i><i></i></div></div>
+</section></body></html>

@@ -57,6 +57,17 @@ Ask Mavis has 156 step-by-step guides in 13 areas: the telly, phone basics, call
 But you don't need to find the right one. Press the big button and say what's wrong in your own words. "The telly's gone blue." "I can't find my photos." Mavis finds the guide and talks you through it, one step at a time.
 
 Free on Android, coming soon. What would you ask it first?""")
+post("2026-11-26", "Thu", "LinkedIn", "08:00", "Behind the build: the 2am guide", "2026-11-26-night-fix-ring-111.png", """
+Ask Mavis covers the GP and the NHS as well as the telly and the Wi-Fi. One of the shortest guides in there is NHS 111.
+
+It's there because of when people get stuck. Not at two in the afternoon with the family round. At two in the morning, feeling rough, and not sure if it's worth bothering anyone.
+
+The answer is short. Ring 111. It's free and it's there all night. Or go to 111.nhs.uk and answer the questions. And for chest pain, signs of a stroke or struggling to breathe, ring 999.
+
+A lot of building this app has been like that. Not clever technology. Just the right sentence, at the moment someone needs it, in words they don't have to decode.
+
+Ask Mavis is a free app for people who find tech hard. Coming to Android in January.""",
+     "#DigitalInclusion #NHS #HealthInequalities #AgeingWell")
 post("2026-11-26", "Thu", "Facebook", "11:00", "Plain-English word of the week: router", "2026-11-26-word-of-the-week-router.png", """
 Plain-English word of the week: router.
 
@@ -87,6 +98,14 @@ Pop your answer in the comments. We'll share the answer later on.
 It's one of the three daily teasers in Ask Mavis: a tech tip, a "spot the scam" and a word puzzle, new every day.""")
 
 # ---------------- Week 2 ----------------
+post("2026-11-28", "Sat", "Facebook", "18:30", "Night-time fix: ring 111", "2026-11-26-night-fix-ring-111.png", """
+Feeling poorly in the night and not sure what to do? Ring 111.
+
+It's free, any time of day or night, for urgent advice when it isn't an emergency. Or go to 111.nhs.uk on your phone and answer the questions. They'll tell you what to do next, and can book you a call back or an appointment.
+
+Chest pain, signs of a stroke, or can't breathe? Don't wait. Ring 999.
+
+Please share this with someone who lives on their own.""")
 post("2026-11-30", "Mon", "LinkedIn", "08:00", "Behind the build: voice first", "2026-11-30-monday-fix-speak-instead-of-typing.png", """
 Plenty of people can do far more on their phone than they think. They just can't type it.
 
