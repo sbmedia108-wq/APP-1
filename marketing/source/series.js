@@ -63,7 +63,7 @@ P['04-value'] = { theme: 'con', html: `<body style="background:#ECEDE8;color:#1F
 P['05-early-access'] = { theme: 'char', html: `<body class="dk" style="background:#1F1F1F;color:#F4F5F1">
   <div class="top">${lock('#F4F5F1')}
     <div class="h" style="color:#80D83B">Early access<br>is open.</div>
-    <div class="s" style="color:#AEB3AB">Get Site Queue on your site before launch, at the early-bird rate.</div>
+    <div class="s" style="color:#AEB3AB">Sign up before launch and get 25% off for your first 6 months.</div>
     <div style="margin-top:40px;background:#80D83B;color:#1F1F1F;border-radius:999px;padding:20px 46px;font-size:30px;font-weight:700">Join at sitequeue.uk</div></div>
   ${hero(K.phoneHome(), 790, 500)}
   </body>` };

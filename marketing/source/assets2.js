@@ -38,7 +38,7 @@ body{width:794px;height:1123px;background:#FBFBF8;color:#1F1F1F}
   <div class="roles">${['Main contractors', 'Site and project managers', 'Contracts managers', 'Subcontractors and trades', 'Forklift and delivery drivers', 'Labour and plant operators'].map(r => `<span>${r}</span>`).join('')}</div>
 </div>
 <div class="abs on-lime" style="left:48px;right:48px;bottom:44px;border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:24px">
-  <div><div class="d" style="font-size:34px">Get early access</div><div style="font-size:13.5px;font-weight:600;color:#2E5A14;margin-top:6px;max-width:400px;line-height:1.45">Join the list for early-bird pricing before the 2027 launch, and a direct line to the founder.</div></div>
+  <div><div class="d" style="font-size:34px">Get early access</div><div style="font-size:13.5px;font-weight:600;color:#2E5A14;margin-top:6px;max-width:400px;line-height:1.45">Sign up before the 2027 launch for 25% off your first 6 months, and a direct line to the founder.</div></div>
   <div style="text-align:right;font-weight:700;font-size:15px;line-height:1.5">sitequeue.uk<br><span style="font-weight:600;color:#2E5A14">[contact email]</span></div>
 </div>
 <div class="abs" style="right:48px;bottom:18px;font-size:9px;font-weight:600;color:#9A9F98;letter-spacing:.02em">Design by SB Media</div>`);
