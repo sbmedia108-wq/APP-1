@@ -51,6 +51,14 @@ There are 156 guides so far, across 13 areas, from the telly to the GP to car pa
 
 I'm building it for my generation, to help the older generation. If you're the one who gets those calls, what are they usually about?""",
      "#BehindTheBuild #DigitalInclusion #Founder #AgeingPopulation")
+post("2026-11-25", "Wed", "Facebook", "11:00", "Feature: pay for parking by phone", "2026-11-25-feature-pay-parking-by-phone.png", """
+Car park only takes an app? You can often just ring instead.
+
+Look on the parking sign for two things: the location code, and a phone number to pay by calling. Ring it, and a voice asks for the code, your number plate and your card. No app needed.
+
+One thing to watch: if there's a QR code sticker stuck on top of the sign, don't scan it. Scammers put fake ones there. Only use the number or app printed on the sign itself.
+
+Know someone who dreads the car park at the hospital or the shops? Share this with them.""")
 post("2026-11-25", "Wed", "Facebook", "18:30", "Feature: 156 guides, one big button", "2026-11-25-feature-156-guides.png", """
 Ask Mavis has 156 step-by-step guides in 13 areas: the telly, phone basics, calls, WhatsApp, email, photos, Wi-Fi, apps, passwords, scams, banking, the GP, and those ordering screens and car park machines.
 
@@ -123,6 +131,17 @@ Open a message, touch the little microphone on the keyboard, and say what you wa
 Lovely for shaky hands, stiff fingers, or anyone who finds spelling a faff.
 
 Tag someone who'd find this handy.""")
+post("2026-12-01", "Tue", "LinkedIn", "08:00", "Behind the build: the plainest step first", "2026-11-25-feature-pay-parking-by-phone.png", """
+Paying for parking has quietly become a tech test.
+
+More car parks want you to pay by app now. For a lot of people that's where the trip goes wrong: no signal, no account, a card number to type in, and someone waiting for the space.
+
+When I wrote the parking guide for Ask Mavis, the most useful step was the plainest one. Most signs have a phone number. You ring it, give the location code, your number plate and your card, and you're done. No app at all.
+
+So that step comes first, before the app instructions. A small choice about order, but it can be the difference between getting to the appointment and giving up and driving home.
+
+Ask Mavis is a free app for people who find tech hard. Coming to Android in January.""",
+     "#DigitalInclusion #UXWriting #InclusiveDesign #AgeingWell")
 post("2026-12-01", "Tue", "Facebook", "11:00", "Scam Watch: the \"press 1\" call", "2026-12-01-scam-watch-press-1-call.png", """
 Scam Watch: the "press 1" call.
 

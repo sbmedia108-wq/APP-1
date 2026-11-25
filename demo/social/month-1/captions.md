@@ -74,7 +74,21 @@ I'm building it for my generation, to help the older generation. If you're the o
 
 ---
 
-## 5. Wed 2026-11-25, 18:30 · Facebook · Feature: 156 guides, one big button
+## 5. Wed 2026-11-25, 11:00 · Facebook · Feature: pay for parking by phone
+
+Image: `posts/2026-11-25-feature-pay-parking-by-phone.png`
+
+Car park only takes an app? You can often just ring instead.
+
+Look on the parking sign for two things: the location code, and a phone number to pay by calling. Ring it, and a voice asks for the code, your number plate and your card. No app needed.
+
+One thing to watch: if there's a QR code sticker stuck on top of the sign, don't scan it. Scammers put fake ones there. Only use the number or app printed on the sign itself.
+
+Know someone who dreads the car park at the hospital or the shops? Share this with them.
+
+---
+
+## 6. Wed 2026-11-25, 18:30 · Facebook · Feature: 156 guides, one big button
 
 Image: `posts/2026-11-25-feature-156-guides.png`
 
@@ -86,7 +100,7 @@ Free on Android, coming soon. What would you ask it first?
 
 ---
 
-## 6. Thu 2026-11-26, 08:00 · LinkedIn · Behind the build: the 2am guide
+## 7. Thu 2026-11-26, 08:00 · LinkedIn · Behind the build: the 2am guide
 
 Image: `posts/2026-11-26-night-fix-ring-111.png`
 
@@ -104,7 +118,7 @@ Ask Mavis is a free app for people who find tech hard. Coming to Android in Janu
 
 ---
 
-## 7. Thu 2026-11-26, 11:00 · Facebook · Plain-English word of the week: router
+## 8. Thu 2026-11-26, 11:00 · Facebook · Plain-English word of the week: router
 
 Image: `posts/2026-11-26-word-of-the-week-router.png`
 
@@ -118,7 +132,7 @@ Every Thursday we take one tech word and say it plainly. Handy if English isn't 
 
 ---
 
-## 8. Fri 2026-11-27, 08:00 · LinkedIn · Behind the build: the daily brain teaser
+## 9. Fri 2026-11-27, 08:00 · LinkedIn · Behind the build: the daily brain teaser
 
 Image: `posts/2026-11-27-brain-teaser-aeroplane.png`
 
@@ -134,7 +148,7 @@ Today's question is in the picture. Answer below if you like. No googling.
 
 ---
 
-## 9. Fri 2026-11-27, 18:30 · Facebook · Feel-good Friday: brain teaser (aeroplane)
+## 10. Fri 2026-11-27, 18:30 · Facebook · Feel-good Friday: brain teaser (aeroplane)
 
 Image: `posts/2026-11-27-brain-teaser-aeroplane.png`
 
@@ -151,7 +165,7 @@ It's one of the three daily teasers in Ask Mavis: a tech tip, a "spot the scam" 
 
 ---
 
-## 10. Sat 2026-11-28, 18:30 · Facebook · Night-time fix: ring 111
+## 11. Sat 2026-11-28, 18:30 · Facebook · Night-time fix: ring 111
 
 Image: `posts/2026-11-26-night-fix-ring-111.png`
 
@@ -165,7 +179,7 @@ Please share this with someone who lives on their own.
 
 ---
 
-## 11. Mon 2026-11-30, 08:00 · LinkedIn · Behind the build: voice first
+## 12. Mon 2026-11-30, 08:00 · LinkedIn · Behind the build: voice first
 
 Image: `posts/2026-11-30-monday-fix-speak-instead-of-typing.png`
 
@@ -181,7 +195,7 @@ For the people this is for, voice isn't a gimmick. It's the front door.
 
 ---
 
-## 12. Mon 2026-11-30, 11:00 · Facebook · Monday Fix: talk instead of typing
+## 13. Mon 2026-11-30, 11:00 · Facebook · Monday Fix: talk instead of typing
 
 Image: `posts/2026-11-30-monday-fix-speak-instead-of-typing.png`
 
@@ -195,7 +209,25 @@ Tag someone who'd find this handy.
 
 ---
 
-## 13. Tue 2026-12-01, 11:00 · Facebook · Scam Watch: the "press 1" call
+## 14. Tue 2026-12-01, 08:00 · LinkedIn · Behind the build: the plainest step first
+
+Image: `posts/2026-11-25-feature-pay-parking-by-phone.png`
+
+Paying for parking has quietly become a tech test.
+
+More car parks want you to pay by app now. For a lot of people that's where the trip goes wrong: no signal, no account, a card number to type in, and someone waiting for the space.
+
+When I wrote the parking guide for Ask Mavis, the most useful step was the plainest one. Most signs have a phone number. You ring it, give the location code, your number plate and your card, and you're done. No app at all.
+
+So that step comes first, before the app instructions. A small choice about order, but it can be the difference between getting to the appointment and giving up and driving home.
+
+Ask Mavis is a free app for people who find tech hard. Coming to Android in January.
+
+#DigitalInclusion #UXWriting #InclusiveDesign #AgeingWell
+
+---
+
+## 15. Tue 2026-12-01, 11:00 · Facebook · Scam Watch: the "press 1" call
 
 Image: `posts/2026-12-01-scam-watch-press-1-call.png`
 
@@ -219,7 +251,7 @@ Share this with someone who answers every call. We all know one.
 
 ---
 
-## 14. Wed 2026-12-02, 08:00 · LinkedIn · Behind the build: the helper button
+## 16. Wed 2026-12-02, 08:00 · LinkedIn · Behind the build: the helper button
 
 Image: `posts/2026-12-02-feature-call-my-helper.png`
 
@@ -235,7 +267,7 @@ The aim was never to replace the family. It's to make the family's job smaller, 
 
 ---
 
-## 15. Wed 2026-12-02, 18:30 · Facebook · Feature: call my helper
+## 17. Wed 2026-12-02, 18:30 · Facebook · Feature: call my helper
 
 Image: `posts/2026-12-02-feature-call-my-helper.png`
 
@@ -249,7 +281,7 @@ If you're usually the helper, this one's for you too.
 
 ---
 
-## 16. Thu 2026-12-03, 11:00 · Facebook · Practise with Mavis: ordering screens
+## 18. Thu 2026-12-03, 11:00 · Facebook · Practise with Mavis: ordering screens
 
 Image: `posts/2026-12-03-practise-ordering-at-home.png`
 
@@ -261,7 +293,7 @@ Good for anyone who'd like a practice run first, including people with learning 
 
 ---
 
-## 17. Fri 2026-12-04, 08:00 · LinkedIn · Founder: the family tech support
+## 19. Fri 2026-12-04, 08:00 · LinkedIn · Founder: the family tech support
 
 Image: `posts/2026-12-04-feel-good-family-tech-support.png`
 
@@ -277,7 +309,7 @@ Ask Mavis is built for exactly that gap. If you're the family tech support, I'd 
 
 ---
 
-## 18. Fri 2026-12-04, 18:30 · Facebook · Feel-good Friday: tag the tech support
+## 20. Fri 2026-12-04, 18:30 · Facebook · Feel-good Friday: tag the tech support
 
 Image: `posts/2026-12-04-feel-good-family-tech-support.png`
 
@@ -289,7 +321,7 @@ Tag them below. They've earned a cup of tea and a biscuit.
 
 ---
 
-## 19. Mon 2026-12-07, 08:00 · LinkedIn · Behind the build: plain words for the telly
+## 21. Mon 2026-12-07, 08:00 · LinkedIn · Behind the build: plain words for the telly
 
 Image: `posts/2026-12-07-monday-fix-tv-clear-voice.png`
 
@@ -305,7 +337,7 @@ Small thing. Saves a lot of Sunday evening phone calls.
 
 ---
 
-## 20. Mon 2026-12-07, 11:00 · Facebook · Monday Fix: telly voices too quiet
+## 22. Mon 2026-12-07, 11:00 · Facebook · Monday Fix: telly voices too quiet
 
 Image: `posts/2026-12-07-monday-fix-tv-clear-voice.png`
 
@@ -319,7 +351,7 @@ Share with someone who has the volume on 40.
 
 ---
 
-## 21. Tue 2026-12-08, 11:00 · Facebook · Scam Watch: Christmas parcel email
+## 23. Tue 2026-12-08, 11:00 · Facebook · Scam Watch: Christmas parcel email
 
 Image: `posts/2026-12-08-scam-watch-christmas-parcel-email.png`
 
@@ -339,7 +371,7 @@ Please share before the Christmas post gets busy.
 
 ---
 
-## 22. Wed 2026-12-09, 08:00 · LinkedIn · Behind the build: why the scam check never says "safe"
+## 24. Wed 2026-12-09, 08:00 · LinkedIn · Behind the build: why the scam check never says "safe"
 
 Image: `posts/2026-12-09-feature-scam-check.png`
 
@@ -357,7 +389,7 @@ Better to teach the pause.
 
 ---
 
-## 23. Wed 2026-12-09, 18:30 · Facebook · Feature: scam check
+## 25. Wed 2026-12-09, 18:30 · Facebook · Feature: scam check
 
 Image: `posts/2026-12-09-feature-scam-check.png`
 
@@ -369,7 +401,7 @@ It will never tell you a message is definitely safe, because scams change all th
 
 ---
 
-## 24. Thu 2026-12-10, 11:00 · Facebook · Plain-English word of the week: one-time code
+## 26. Thu 2026-12-10, 11:00 · Facebook · Plain-English word of the week: one-time code
 
 Image: `posts/2026-12-10-word-of-the-week-one-time-code.png`
 
@@ -383,7 +415,7 @@ If you know someone learning English, these words are worth sharing with them.
 
 ---
 
-## 25. Fri 2026-12-11, 08:00 · LinkedIn · Behind the build: plain English
+## 27. Fri 2026-12-11, 08:00 · LinkedIn · Behind the build: plain English
 
 Image: `posts/2026-12-11-brain-teaser-unscramble.png`
 
@@ -399,7 +431,7 @@ So every Thursday I share one tech word, said plainly, and every day the app has
 
 ---
 
-## 26. Fri 2026-12-11, 18:30 · Facebook · Feel-good Friday: unscramble
+## 28. Fri 2026-12-11, 18:30 · Facebook · Feel-good Friday: unscramble
 
 Image: `posts/2026-12-11-brain-teaser-unscramble.png`
 
@@ -411,7 +443,7 @@ Answer in the comments, and no peeking at anyone else's first!
 
 ---
 
-## 27. Mon 2026-12-14, 08:00 · LinkedIn · The size of it: 8 million (LinkedIn only)
+## 29. Mon 2026-12-14, 08:00 · LinkedIn · The size of it: 8 million (LinkedIn only)
 
 Image: `posts/2026-12-14-linkedin-8-million.png`
 
@@ -431,7 +463,7 @@ Source: https://www.goodthingsfoundation.org/discover/our-news/our-news-2026/dig
 
 ---
 
-## 28. Mon 2026-12-14, 11:00 · Facebook · Monday Fix: family in Favourites
+## 30. Mon 2026-12-14, 11:00 · Facebook · Monday Fix: family in Favourites
 
 Image: `posts/2026-12-14-monday-fix-favourites.png`
 
@@ -445,7 +477,7 @@ Share with someone who scrolls past 200 contacts to find their daughter.
 
 ---
 
-## 29. Tue 2026-12-15, 11:00 · Facebook · Scam Watch: lookalike name
+## 31. Tue 2026-12-15, 11:00 · Facebook · Scam Watch: lookalike name
 
 Image: `posts/2026-12-15-scam-watch-lookalike-netflix.png`
 
@@ -463,7 +495,7 @@ Forward scam texts to 7726. It's free.
 
 ---
 
-## 30. Wed 2026-12-16, 08:00 · LinkedIn · Behind the build: designing with dementia in mind
+## 32. Wed 2026-12-16, 08:00 · LinkedIn · Behind the build: designing with dementia in mind
 
 Image: `posts/2026-12-16-feature-read-aloud.png`
 
@@ -479,7 +511,7 @@ If you work with people living with dementia, or care for someone who is, I'd re
 
 ---
 
-## 31. Wed 2026-12-16, 18:30 · Facebook · Feature: read out loud
+## 33. Wed 2026-12-16, 18:30 · Facebook · Feature: read out loud
 
 Image: `posts/2026-12-16-feature-read-aloud.png`
 
@@ -491,7 +523,7 @@ Know someone who'd find it easier to hear than read? Tag them.
 
 ---
 
-## 32. Thu 2026-12-17, 11:00 · Facebook · Practise with Mavis: a practice video call
+## 34. Thu 2026-12-17, 11:00 · Facebook · Practise with Mavis: a practice video call
 
 Image: `posts/2026-12-17-practise-video-call.png`
 
@@ -507,7 +539,7 @@ Tag the person you'll practise with.
 
 ---
 
-## 33. Fri 2026-12-18, 08:00 · LinkedIn · Behind the build: badges without being patronising
+## 35. Fri 2026-12-18, 08:00 · LinkedIn · Behind the build: badges without being patronising
 
 Image: `posts/2026-12-18-feel-good-badges.png`
 
@@ -523,7 +555,7 @@ Confidence is half of digital inclusion. The other half is a good guide.
 
 ---
 
-## 34. Fri 2026-12-18, 18:30 · Facebook · Feel-good Friday: which badge first?
+## 36. Fri 2026-12-18, 18:30 · Facebook · Feel-good Friday: which badge first?
 
 Image: `posts/2026-12-18-feel-good-badges.png`
 
@@ -535,7 +567,7 @@ Tell us in the comments!
 
 ---
 
-## 35. Mon 2026-12-21, 08:00 · LinkedIn · Seasonal: set it up before you wrap it
+## 37. Mon 2026-12-21, 08:00 · LinkedIn · Seasonal: set it up before you wrap it
 
 Image: `posts/2026-12-21-monday-fix-before-you-wrap.png`
 
@@ -549,7 +581,7 @@ And in January, Ask Mavis lands on Android. Free, voice first, one step at a tim
 
 ---
 
-## 36. Mon 2026-12-21, 11:00 · Facebook · Monday Fix: before you wrap a phone
+## 38. Mon 2026-12-21, 11:00 · Facebook · Monday Fix: before you wrap a phone
 
 Image: `posts/2026-12-21-monday-fix-before-you-wrap.png`
 
@@ -565,7 +597,7 @@ Then Christmas Day is for using it, not setting it up. Share with anyone wrappin
 
 ---
 
-## 37. Tue 2026-12-22, 11:00 · Facebook · Scam Watch: gift cards
+## 39. Tue 2026-12-22, 11:00 · Facebook · Scam Watch: gift cards
 
 Image: `posts/2026-12-22-scam-watch-gift-cards.png`
 
@@ -581,7 +613,7 @@ If it's already happened, contact the gift card company and your bank straight a
 
 ---
 
-## 38. Wed 2026-12-23, 08:00 · LinkedIn · Launch countdown: partners wanted
+## 40. Wed 2026-12-23, 08:00 · LinkedIn · Launch countdown: partners wanted
 
 Image: `posts/2026-12-23-launch-countdown-january.png`
 
@@ -597,7 +629,7 @@ If that's you, my messages are open. Merry Christmas when it comes.
 
 ---
 
-## 39. Wed 2026-12-23, 18:30 · Facebook · Launch countdown: coming in January
+## 41. Wed 2026-12-23, 18:30 · Facebook · Launch countdown: coming in January
 
 Image: `posts/2026-12-23-launch-countdown-january.png`
 
@@ -609,7 +641,7 @@ Follow this page to be the first to know when it's ready. And if you know someon
 
 ---
 
-## 40. Thu 2026-12-24, 11:00 · Facebook · Plain-English word of the week: network key
+## 42. Thu 2026-12-24, 11:00 · Facebook · Plain-English word of the week: network key
 
 Image: `posts/2026-12-24-word-of-the-week-network-key.png`
 
@@ -623,7 +655,7 @@ Happy Christmas Eve.
 
 ---
 
-## 41. Fri 2026-12-25, 09:00 · LinkedIn · Christmas Day
+## 43. Fri 2026-12-25, 09:00 · LinkedIn · Christmas Day
 
 Image: `posts/2026-12-25-christmas-day.png`
 
@@ -637,7 +669,7 @@ Ask Mavis arrives in January. Thank you for following along this year. Enjoy the
 
 ---
 
-## 42. Fri 2026-12-25, 10:00 · Facebook · Christmas Day
+## 44. Fri 2026-12-25, 10:00 · Facebook · Christmas Day
 
 Image: `posts/2026-12-25-christmas-day.png`
 
@@ -649,7 +681,7 @@ See you in January.
 
 ---
 
-## 43. Sat 2026-12-26, 11:00 · Facebook · Boxing Day: new phone or tablet
+## 45. Sat 2026-12-26, 11:00 · Facebook · Boxing Day: new phone or tablet
 
 Image: `posts/2026-12-26-boxing-day-new-device.png`
 
