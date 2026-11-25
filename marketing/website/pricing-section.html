@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing | Site Queue</title>
-<!-- Site Queue pricing section. Prices from Luke (Nov 2026): tiers by site size; plot limits [X]/[Y] still to set.
+<!-- Site Queue pricing section. Prices from Luke (Nov 2026): tiers by site size; 7 main contractor tiers by plot count, subcontractor £100, early access 25% off 6 months to end of May 2027.
      Drop the <section> into a WordPress Custom HTML block. Styles are scoped to .sq-pricing. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
@@ -27,6 +27,14 @@
   .sq-pricing .btn { display: block; text-align: center; font-weight: 700; font-size: 16px; padding: 14px; border-radius: 10px; text-decoration: none; background: var(--char); color: #fff; }
   .sq-pricing .plan.pop .btn { background: var(--lime); color: var(--char); }
   .sq-pricing .btn:focus-visible { outline: 3px solid var(--deep); outline-offset: 3px; }
+  .sq-pricing .large { margin-top: 18px; background: #FBFBF8; border-radius: 16px; padding: 24px 28px; border: 1.5px solid var(--line); display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: center; }
+  .sq-pricing .lh b { display: block; font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 30px; }
+  .sq-pricing .lh span { font-size: 14.5px; color: var(--grey); line-height: 1.45; display: block; margin-top: 4px; }
+  .sq-pricing .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .sq-pricing .tiers div { background: var(--con); border-radius: 12px; padding: 14px 16px; }
+  .sq-pricing .tiers span { display: block; font-weight: 700; font-size: 15px; }
+  .sq-pricing .tiers small { display: block; font-size: 13px; color: var(--grey); margin-top: 2px; }
+  .sq-pricing .tiers b { display: block; font-family: 'Barlow Condensed', Arial, sans-serif; font-weight: 800; font-size: 34px; margin-top: 8px; }
   .sq-pricing .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
   .sq-pricing .extra { background: #FBFBF8; border-radius: 16px; padding: 22px 28px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
   .sq-pricing .extra b { display: block; font-size: 18px; }
@@ -38,7 +46,7 @@
   .sq-pricing .compare a { color: var(--lime); font-weight: 700; text-decoration: none; }
   .sq-pricing .early { margin-top: 18px; border: 2px dashed var(--deep); border-radius: 16px; padding: 18px 24px; font-weight: 600; }
   .sq-pricing .small { font-size: 13px; color: var(--grey); margin-top: 16px; }
-  @media (max-width: 860px) { .sq-pricing .plans, .sq-pricing .extras { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .sq-pricing .plans, .sq-pricing .extras, .sq-pricing .large { grid-template-columns: 1fr; } .sq-pricing .tiers { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body style="margin:0">
@@ -50,30 +58,40 @@
 
     <div class="plans">
       <div class="plan">
-        <div class="who">Up to [X] plots</div>
-        <h3>Small site</h3>
-        <div class="price">£399</div><div class="per">per site, per month</div>
-        <p>Everything Site Queue does: logistics, inductions, programme, drawings, safety, site map and site feed.</p>
+        <div class="who">1–9 plots</div>
+        <h3>Minor</h3>
+        <div class="price">£149</div><div class="per">per site, per month</div>
+        <p>Small developments and infill sites. Every feature included.</p>
         <a class="btn" href="#demo">Book a demo</a>
       </div>
       <div class="plan pop">
-        <div class="who">[X]–[Y] plots</div>
-        <h3>Medium site</h3>
-        <div class="price">£499</div><div class="per">per site, per month</div>
-        <p>Everything Site Queue does, sized for a bigger site with more people, plots and data.</p>
+        <div class="who">10–49 plots</div>
+        <h3>Medium</h3>
+        <div class="price">£249</div><div class="per">per site, per month</div>
+        <p>The typical housing site, with more trades, deliveries and plots to track.</p>
         <a class="btn" href="#demo">Book a demo</a>
       </div>
       <div class="plan">
-        <div class="who">Over [Y] plots</div>
-        <h3>Large site</h3>
-        <div class="price">£599</div><div class="per">per site, per month</div>
-        <p>Everything Site Queue does, for the biggest developments.</p>
+        <div class="who">50–199 plots</div>
+        <h3>Major</h3>
+        <div class="price">£399</div><div class="per">per site, per month</div>
+        <p>Big phased sites with several gangs and a busy gate.</p>
         <a class="btn" href="#demo">Book a demo</a>
       </div>
     </div>
 
+    <div class="large">
+      <div class="lh"><b>Large-scale sites</b><span>For 200 plots and up. Same app, same features, sized for the biggest developments.</span></div>
+      <div class="tiers">
+        <div><span>Tier 1</span><small>200–499 plots</small><b>£499</b></div>
+        <div><span>Tier 2</span><small>500–999 plots</small><b>£599</b></div>
+        <div><span>Tier 3</span><small>1,000–1,499 plots</small><b>£699</b></div>
+        <div><span>Strategic site</span><small>1,500+ plots</small><b>£799</b></div>
+      </div>
+    </div>
+
     <div class="extras">
-      <div class="extra"><div><b>Subcontractor companies</b><span>Company dashboard, analytics, reports and snagging. Only pay for the sites you're on, and it stops when the job's done.</span></div><div class="amt">£100</div></div>
+      <div class="extra"><div><b>Subcontractor companies</b><span>Per site, up to 200 active plots. Company dashboard, analytics, reports and snagging. It stops when the job's done.</span></div><div class="amt">£100</div></div>
       <div class="extra"><div><b>Tradespeople, drivers, labourers, operators</b><span>Join any site with its code.</span></div><div class="amt">Free</div></div>
     </div>
 
@@ -82,9 +100,9 @@
       <a href="/what-site-queue-replaces/">See the breakdown</a>
     </div>
 
-    <div class="early">Early access: <b>25% off for your first 6 months</b> when you sign up before launch. <a href="#demo" style="color:#2E5A14">Join early access</a></div>
+    <div class="early">Early access: <b>25% off for your first 6 months</b> when you sign up before the end of May 2027. A Minor site is £112 a month, a Major site £299. <a href="#demo" style="color:#2E5A14">Join early access</a></div>
 
-    <p class="small">Prices exclude VAT. Subcontractor price is per main contractor site or managed site.</p>
+    <p class="small">Prices exclude VAT. Plots are the number of plots on the site. Subcontractor price is per site they work on.</p>
   </div>
 </section>
 </body>

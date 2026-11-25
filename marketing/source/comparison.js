@@ -25,7 +25,7 @@ const portrait = `
     `<div>${list(28, 15)}<div style="display:flex;justify-content:space-between;border-top:2px solid #F2F3EF;padding-top:16px;font-size:34px;font-weight:700"><span>Total</span><span>about £1,600</span></div></div>`,
     `<div style="background:#80D83B;color:#1F1F1F;border-radius:18px;padding:26px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px">
        <div><div class="d" style="font-size:60px">Site Queue</div><div style="font-size:22px;font-weight:600;color:#2E5A14;margin-top:6px">Everything above, in one app. Unlimited users. Free for workers.</div></div>
-       <div style="text-align:right;white-space:nowrap"><div style="font-size:22px;font-weight:700">from</div><div class="d" style="font-size:84px">£399</div><div style="font-size:20px;font-weight:600;color:#2E5A14">per site, per month</div></div></div>`,
+       <div style="text-align:right;white-space:nowrap"><div style="font-size:22px;font-weight:700">from</div><div class="d" style="font-size:84px">£149</div><div style="font-size:20px;font-weight:600;color:#2E5A14">per site, per month</div></div></div>`,
   ], 26)}
   <div class="abs" style="left:72px;right:72px;bottom:34px;font-size:15px;color:#7D827C;line-height:1.4">Based on the cheapest published plans for one housing site with 10 office users, 50 operatives and 5 tracked machines, November 2026. Excludes VAT, setup fees and hardware.</div>`;
 
@@ -33,8 +33,8 @@ const wide = `
   <img class="tile abs" src="${K.LOGO}" style="left:80px;top:72px;width:84px">
   ${K.stack(80, 200, 640, [
     `<div class="d" style="font-size:104px">Eight tools. Or one app.</div>`,
-    `<div style="font-size:26px;color:#B7BCB4;line-height:1.45">Running one site on separate software costs around £1,600 a month. Site Queue does all of it, from £399 per site.</div>`,
-    `<div style="background:#80D83B;color:#1F1F1F;border-radius:18px;padding:24px 28px"><div class="d" style="font-size:56px">from £399</div><div style="font-size:21px;font-weight:600;color:#2E5A14;margin-top:6px">per site, per month. Unlimited users. Free for workers.</div></div>`,
+    `<div style="font-size:26px;color:#B7BCB4;line-height:1.45">Running one site on separate software costs around £1,600 a month. Site Queue does all of it, from £149 per site.</div>`,
+    `<div style="background:#80D83B;color:#1F1F1F;border-radius:18px;padding:24px 28px"><div class="d" style="font-size:56px">from £149</div><div style="font-size:21px;font-weight:600;color:#2E5A14;margin-top:6px">per site, per month. Unlimited users. Free for workers.</div></div>`,
   ], 28)}
   <div class="abs" style="left:800px;top:120px;width:720px">${list(26, 14)}<div style="display:flex;justify-content:space-between;border-top:2px solid #F2F3EF;padding-top:16px;font-size:32px;font-weight:700"><span>Separate tools, per month</span><span>about £1,600</span></div></div>
   <div class="abs" style="left:80px;right:80px;bottom:34px;font-size:15px;color:#7D827C">Cheapest published plans for one housing site (10 office users, 50 operatives, 5 machines), November 2026. Excludes VAT, setup fees and hardware.</div>`;
