@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mitch character sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F4EF;--ink:#15151C;--muted:#6E6D78;--line:#E6E2D9;--lime:#C8F23A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#DCD8CE;font-family:Inter,sans-serif;color:var(--ink);padding:40px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.d{font-family:'Bricolage Grotesque';letter-spacing:-.03em}
+#sheet{width:1600px;background:var(--paper);border-radius:36px;padding:56px;display:grid;grid-template-columns:560px 1fr;gap:48px}
+.hero{background:#fff;border:1px solid var(--line);border-radius:30px;padding:36px;display:flex;flex-direction:column}
+.hero svg{width:100%;height:auto}
+.label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.row{display:grid;gap:14px}
+.cell{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px 10px 16px;text-align:center}
+.cell svg{width:100%;height:150px}
+.cell b{font-family:'Bricolage Grotesque';font-size:18px;display:block;letter-spacing:-.02em}
+.cell small{font-size:12px;color:var(--muted);font-weight:500;line-height:1.35;display:block;margin-top:3px}
+.lvl{display:inline-block;font-size:11px;font-weight:700;background:var(--ink);color:var(--lime);border-radius:99px;padding:3px 8px;margin-bottom:6px}
+.fact{display:flex;gap:10px;font-size:14px;line-height:1.45;padding:10px 0;border-top:1px solid var(--line)}
+.fact b{min-width:92px}
+#solo{width:900px;height:900px;background:radial-gradient(circle at 50% 42%,#FBFFE6,#EEF3D8 70%);border-radius:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:40px}
+#solo svg{width:640px}
+</style>
+</head>
+<body>
+
+<div id="sheet">
+  <div class="hero">
+    <div class="label">Meet your revision buddy</div>
+    <h1 style="font-size:64px;font-weight:800;margin-top:6px;line-height:1">Mitch.</h1>
+    <p style="font-size:18px;color:var(--muted);margin-top:8px">Powerhouse of the cell. Powered by your revision.</p>
+    <div id="hero" style="margin:10px 0 4px"></div>
+    <div class="fact"><b>Species</b><span>Mitochondrion (yes, really)</span></div>
+    <div class="fact"><b>Eats</b><span>Quiz answers. Right ones taste better.</span></div>
+    <div class="fact"><b>Likes</b><span>Streaks, lo-fi beats, being in every Biology paper</span></div>
+    <div class="fact"><b>Dislikes</b><span>"Makes energy". It <i>releases</i> energy. Come on.</span></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:34px">
+    <div>
+      <div class="label">Evolution · grows as you earn XP</div>
+      <h2 style="font-size:34px;font-weight:800;margin:4px 0 16px">From blob to Grade 9.</h2>
+      <div class="row" style="grid-template-columns:repeat(5,1fr)" id="evo"></div>
+    </div>
+    <div>
+      <div class="label">Moods · reacts to how you're doing</div>
+      <h2 style="font-size:34px;font-weight:800;margin:4px 0 16px">Never sad. Occasionally sleepy.</h2>
+      <div class="row" style="grid-template-columns:repeat(4,1fr)" id="moods"></div>
+    </div>
+    <div>
+      <div class="label">Unlockables · earned, never bought</div>
+      <h2 style="font-size:34px;font-weight:800;margin:4px 0 16px">Fits for every subject.</h2>
+      <div class="row" style="grid-template-columns:repeat(4,1fr)" id="fits"></div>
+    </div>
+  </div>
+</div>
+
+<div id="solo"></div>
+
+<script>
+const INK='#15151C', LIME='#C8F23A', DEEP='#9CC41A';
+function eyes(t){
+  const L=125,R=175,Y=126;
+  const one=(x)=>{
+    if(t==='happy') return `<path d="M${x-10} ${Y+4} q10 -14 20 0" stroke="${INK}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+    if(t==='closed') return `<path d="M${x-10} ${Y} q10 10 20 0" stroke="${INK}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+    if(t==='half') return `<ellipse cx="${x}" cy="${Y+2}" rx="10" ry="12" fill="${INK}"/><rect x="${x-14}" y="${Y-14}" width="28" height="12" fill="${LIME}"/><path d="M${x-12} ${Y-2} h24" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><circle cx="${x+3}" cy="${Y+5}" r="3" fill="#fff"/>`;
+    if(t==='star') return `<path d="M${x} ${Y-12} l4 8 9 1 -7 6 2 9 -8 -5 -8 5 2 -9 -7 -6 9 -1z" fill="${INK}"/>`;
+    return `<ellipse cx="${x}" cy="${Y}" rx="10" ry="13" fill="${INK}"/><circle cx="${x+3}" cy="${Y-5}" r="3.5" fill="#fff"/>`;
+  };
+  return one(L)+one(R);
+}
+function mouth(t){
+  if(t==='open') return `<path d="M138 146 q12 0 24 0 q-2 16 -12 16 q-10 0 -12 -16z" fill="${INK}"/><path d="M144 156 q6 4 12 0" stroke="#F2547D" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+  if(t==='smirk') return `<path d="M139 150 q12 6 24 -4" stroke="${INK}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`;
+  if(t==='flat') return `<path d="M141 151 h18" stroke="${INK}" stroke-width="5.5" stroke-linecap="round"/>`;
+  if(t==='o') return `<ellipse cx="150" cy="152" rx="5" ry="6" fill="${INK}"/>`;
+  return `<path d="M138 147 q12 12 24 0" stroke="${INK}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`;
+}
+const ACC={
+  headphones:`<path d="M58 128 C52 30 248 30 242 128" stroke="${INK}" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="40" y="108" width="26" height="44" rx="11" fill="#8B6CFF" stroke="${INK}" stroke-width="5"/><rect x="234" y="108" width="26" height="44" rx="11" fill="#8B6CFF" stroke="${INK}" stroke-width="5"/>`,
+  glasses:`<rect x="106" y="110" width="38" height="32" rx="10" fill="rgba(255,255,255,.35)" stroke="${INK}" stroke-width="5"/><rect x="156" y="110" width="38" height="32" rx="10" fill="rgba(255,255,255,.35)" stroke="${INK}" stroke-width="5"/><path d="M144 122 h12" stroke="${INK}" stroke-width="5"/>`,
+  cap:`<rect x="122" y="58" width="56" height="22" rx="4" fill="${INK}"/><polygon points="150,30 222,54 150,78 78,54" fill="${INK}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M150 54 L204 64 L204 92" stroke="#FFC93C" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="204" cy="96" r="7" fill="#FFC93C"/>`,
+  labcoat:`<path d="M72 160 q0 30 26 40 l24 -38 z" fill="#fff" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><path d="M228 160 q0 30 -26 40 l-24 -38 z" fill="#fff" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><rect x="196" y="176" width="14" height="10" rx="2" fill="#FF7A45"/>`,
+  ruff:`<path d="M82 172 ${Array.from({length:9},(_,i)=>`q${8} 18 ${17} 0`).join(' ')}" fill="#fff" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/>`,
+  beanie:`<path d="M84 92 q66 -86 132 0 z" fill="#F2547D" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/><rect x="80" y="86" width="140" height="18" rx="9" fill="#F2547D" stroke="${INK}" stroke-width="5"/><circle cx="150" cy="26" r="12" fill="#fff" stroke="${INK}" stroke-width="5"/>`,
+  crown:`<path d="M112 70 l10 -34 l18 20 l10 -28 l10 28 l18 -20 l10 34 z" fill="#FFC93C" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>`,
+  zzz:`<text x="214" y="70" font-family="Bricolage Grotesque" font-weight="800" font-size="30" fill="${INK}">z</text><text x="238" y="44" font-family="Bricolage Grotesque" font-weight="800" font-size="22" fill="${INK}" opacity=".6">z</text>`,
+  sparkle:`<path d="M244 58 l5 14 14 5 -14 5 -5 14 -5 -14 -14 -5 14 -5z" fill="#FFC93C" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/><path d="M52 82 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z" fill="#FFC93C" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>`,
+  sweat:`<path d="M222 92 q8 14 0 20 q-8 -6 0 -20z" fill="#7FC8FF" stroke="${INK}" stroke-width="3.5"/>`,
+  aura:``
+};
+function body(stage){
+  if(stage===1){ // Spark
+    return `<ellipse cx="150" cy="210" rx="40" ry="7" fill="${INK}" opacity=".1"/>
+    <circle cx="150" cy="138" r="62" fill="${LIME}" stroke="${INK}" stroke-width="6"/>
+    <ellipse cx="128" cy="108" rx="14" ry="8" fill="#fff" opacity=".6" transform="rotate(-25 128 108)"/>`;
+  }
+  const cristae = stage>=3 ? `
+    <rect x="66" y="84" width="168" height="102" rx="51" fill="none" stroke="${DEEP}" stroke-width="5"/>
+    <path d="M90 86 v26 M210 86 v26 M104 184 v-22 M196 184 v-22 M150 186 v-14" stroke="${DEEP}" stroke-width="5" stroke-linecap="round"/>` : '';
+  return `<ellipse cx="150" cy="214" rx="78" ry="8" fill="${INK}" opacity=".1"/>
+    <ellipse cx="118" cy="202" rx="16" ry="9" fill="${INK}"/><ellipse cx="182" cy="202" rx="16" ry="9" fill="${INK}"/>
+    <path d="M56 140 q-18 4 -20 20" stroke="${INK}" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M244 140 q18 4 20 20" stroke="${INK}" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <rect x="52" y="70" width="196" height="130" rx="65" fill="${LIME}" stroke="${INK}" stroke-width="6.5"/>
+    ${cristae}
+    <ellipse cx="96" cy="94" rx="18" ry="8" fill="#fff" opacity=".55" transform="rotate(-20 96 94)"/>`;
+}
+function mitch(o={}){
+  const s=o.stage||3, scale=o.scale||1;
+  let face = eyes(o.eyes||'open') + mouth(o.mouth||'smile') +
+    `<ellipse cx="106" cy="148" rx="10" ry="6" fill="#F2547D" opacity=".35"/><ellipse cx="194" cy="148" rx="10" ry="6" fill="#F2547D" opacity=".35"/>`;
+  const before = (o.acc||[]).includes('headphones') ? '' : '';
+  const glow = o.glow ? `<circle cx="150" cy="130" r="128" fill="url(#g)"/>` : '';
+  const acc=(o.acc||[]).map(a=>ACC[a]).join('');
+  const t = scale!==1 ? `transform="translate(${150*(1-scale)} ${200*(1-scale)}) scale(${scale})"` : '';
+  return `<svg viewBox="0 0 300 232" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="g"><stop offset="0" stop-color="#FFE680" stop-opacity=".9"/><stop offset="1" stop-color="#FFE680" stop-opacity="0"/></radialGradient></defs>
+    ${glow}<g ${t}>${body(s)}<g ${s===1?'transform="translate(0 6)"':''}>${face}</g>${acc}</g></svg>`;
+}
+const cell=(svg,title,sub,lvl)=>`<div class="cell">${svg}${lvl?`<span class="lvl">${lvl}</span>`:''}<b>${title}</b><small>${sub}</small></div>`;
+
+document.getElementById('hero').innerHTML = mitch({eyes:'half',mouth:'smirk',acc:['headphones']});
+document.getElementById('evo').innerHTML = [
+  cell(mitch({stage:1,eyes:'open',mouth:'o',scale:.75}),'Spark','Day one. Tiny. Curious.','0 XP'),
+  cell(mitch({stage:2,eyes:'open',mouth:'smile',scale:.72}),'Bean','Getting the hang of it.','500 XP'),
+  cell(mitch({stage:3,eyes:'half',mouth:'smirk',scale:.88}),'Mitch','Full powerhouse mode.','2,000 XP'),
+  cell(mitch({stage:3,eyes:'open',mouth:'smile',acc:['glasses','headphones']}),'Study Mitch','Locked in. Do not disturb.','6,000 XP'),
+  cell(mitch({stage:3,eyes:'happy',mouth:'open',acc:['cap','sparkle'],glow:true}),'Grade 9 Mitch','Results day energy.','15,000 XP'),
+].join('');
+document.getElementById('moods').innerHTML = [
+  cell(mitch({eyes:'happy',mouth:'open',acc:['sparkle']}),'Buzzing','Aced a quiz'),
+  cell(mitch({eyes:'half',mouth:'smirk'}),'Unbothered','Default setting'),
+  cell(mitch({eyes:'open',mouth:'o',acc:['sweat']}),'Mild panic','Exam in 7 days'),
+  cell(mitch({eyes:'closed',mouth:'flat',acc:['zzz']}),'Napping','Missed a day. No hard feelings.'),
+].join('');
+document.getElementById('fits').innerHTML = [
+  cell(mitch({eyes:'open',mouth:'smile',acc:['labcoat','glasses']}),'Lab coat','Chemistry · 10 quizzes'),
+  cell(mitch({eyes:'half',mouth:'smirk',acc:['ruff']}),'The Bard','English Lit · 8/10+ score'),
+  cell(mitch({eyes:'happy',mouth:'smile',acc:['beanie']}),'Winter beanie','7-day streak'),
+  cell(mitch({eyes:'half',mouth:'smirk',acc:['crown'],glow:true}),'Crown','30-day streak · rare'),
+].join('');
+document.getElementById('solo').innerHTML = mitch({eyes:'half',mouth:'smirk',acc:['headphones']}) +
+  `<div class="d" style="font-size:56px;font-weight:800;margin-top:10px">Mitch.</div><div style="font-size:20px;font-weight:600;opacity:.7">Powered by your revision.</div>`;
+</script>
+</body>
+</html>
