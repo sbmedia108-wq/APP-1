@@ -1,0 +1,50 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+/* Practise with Mavis: the cash machine. Green confirms: you can take your time. The hero is a cash machine front. */
+.atm { position:absolute; left:var(--m); top:340px; width:520px; padding:28px; border-radius:34px;
+  background:linear-gradient(#5b6474, #3d4452 60%, #343a46); box-shadow: inset 0 2px 1px rgba(255,255,255,.3), inset 0 -6px 12px rgba(0,0,0,.3), 0 14px 0 #23272f, 0 34px 50px rgba(0,0,0,.4); }
+.scr2 { position:relative; height:190px; margin:0 46px; border-radius:12px; background:linear-gradient(160deg, #e9f6ee, #cfe9d9); color:var(--ink); padding:20px 22px;
+  box-shadow: inset 0 0 0 6px #1d2129, inset 0 8px 18px rgba(0,0,0,.25); }
+.scr2 .q { font-size:24px; font-weight:800; margin-bottom:16px; }
+.scr2 .o { display:flex; justify-content:space-between; font-size:24px; font-weight:600; margin-top:12px; }
+.scr2 .o.hi { color:#0B7A3E; font-weight:800; }
+.side { position:absolute; top:94px; display:grid; gap:26px; }
+.side i { display:block; width:30px; height:22px; border-radius:5px; background:linear-gradient(#cfd5df, #9aa3b2); box-shadow:0 3px 0 #1d2129; }
+.slot { display:flex; align-items:center; gap:18px; margin:24px 46px 0; }
+.slot .gap { flex:1; height:16px; border-radius:8px; background:#14171d; box-shadow: inset 0 3px 4px #000, 0 1px 0 rgba(255,255,255,.2); position:relative; }
+.slot .gap::after { content:""; position:absolute; left:12px; right:12px; top:5px; height:6px; border-radius:3px; background:#3be07f; box-shadow:0 0 14px 3px rgba(59,224,127,.7); }
+.slot span { font-size:17px; font-weight:800; color:#c6cdd8; letter-spacing:1px; text-transform:uppercase; }
+.pad { display:grid; grid-template-columns: repeat(3, 76px) 150px; gap:12px; margin:26px auto 0; width:max-content; }
+.k { height:58px; border-radius:12px; display:grid; place-items:center; font-weight:800; font-size:28px; color:#1d2129; background:linear-gradient(#f4f6fa, #cfd5df);
+  box-shadow: inset 0 2px 1px #fff, 0 5px 0 #1d2129; }
+.k.w { font-size:21px; color:#fff; }
+.k.red { background:linear-gradient(#e2334c, #b40d28); } .k.yel { background:linear-gradient(#ffd34f, #e9a90c); color:var(--ink); }
+.k.grn { background:linear-gradient(#22b263, #0b7a3e); box-shadow: inset 0 2px 1px rgba(255,255,255,.5), 0 5px 0 #1d2129, 0 0 0 5px #fff, 0 0 30px 6px rgba(255,255,255,.55); }
+.tips { position:absolute; left:640px; right:var(--m); top:360px; display:grid; gap:30px; }
+.tp { display:flex; gap:18px; align-items:flex-start; font-size:30px; line-height:1.25; }
+.tp b { font-weight:800; }
+.tp i { font-style:normal; flex:none; width:50px; height:50px; border-radius:50%; background:#fff; display:grid; place-items:center; margin-top:-4px;
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.15), 0 5px 0 #8fc6a6; }
+.tp i svg { width:28px; height:28px; }
+</style></head><body>
+<section id="post" class="f-green">
+  <h1>Cash machine? Take your&nbsp;time.</h1>
+  <div class="atm chk">
+    <div class="scr2"><div class="q">What would you like?</div><div class="o hi"><span>Withdraw cash</span><span>&#9656;</span></div><div class="o"><span>Check balance</span><span>&#9656;</span></div></div>
+    <div class="side" style="left:22px"><i></i><i></i></div><div class="side" style="right:22px"><i></i><i></i></div>
+    <div class="slot"><span>Card</span><div class="gap"></div></div>
+    <div class="pad">
+      <div class="k">1</div><div class="k">2</div><div class="k">3</div><div class="k w red">Cancel</div>
+      <div class="k">4</div><div class="k">5</div><div class="k">6</div><div class="k w yel">Clear</div>
+      <div class="k">7</div><div class="k">8</div><div class="k">9</div><div class="k w grn">Enter</div>
+      <div class="k"></div><div class="k">0</div><div class="k"></div><div class="k"></div>
+    </div>
+  </div>
+  <div class="tips chk">
+    <div class="tp"><i><svg viewBox="0 0 24 24" fill="none" stroke="#0B7A3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><b>Cover the keypad</b> with your other hand for your&nbsp;PIN.</div></div>
+    <div class="tp"><i><svg viewBox="0 0 24 24" fill="none" stroke="#0B7A3E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><div><b>Take your card first.</b> Then take your&nbsp;money.</div></div>
+    <div class="tp"><i><svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></i><div>Someone too close? <b>Press Cancel</b> and walk&nbsp;away.</div></div>
+  </div>
+  <div class="say chk" style="left:var(--m); top:1000px; width:920px"><div class="tile"></div><div class="bub" style="flex:1">The machine waits, and nobody minds. <b>Ask me</b> and I&rsquo;ll go through it with you, one button at a&nbsp;time.</div></div>
+  <div class="sig"><div class="mark"><div class="tile"></div><div><b>Ask Mavis</b><span>Free tech help, coming soon to Android</span></div></div><div class="keys"><i></i><i class="on"></i><i></i><i></i></div></div>
+</section></body></html>

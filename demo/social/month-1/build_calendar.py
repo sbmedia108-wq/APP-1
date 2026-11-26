@@ -84,6 +84,19 @@ Say it "ROO-ter". It's the box that brings the internet into your home and sends
 If the internet stops, switch the router off at the wall, wait 30 seconds, and switch it back on. It fixes more than you'd think.
 
 Every Thursday we take one tech word and say it plainly. Handy if English isn't your first language, too. Which word should we do next?""")
+post("2026-11-26", "Thu", "Facebook", "18:30", "Practise with Mavis: the cash machine", "2026-11-26-practise-cash-machine.png", """
+Cash machine? Take your time.
+
+The machine waits for you, and nobody minds.
+
+Three things worth remembering:
+- Cover the keypad with your other hand when you type your PIN.
+- Take your card first, then your money.
+- If anyone stands too close or offers to help, press Cancel and walk away.
+
+If the machine keeps your card, ring your bank straight away. Their number is on your bank statements.
+
+Share this with someone who gets flustered at the cashpoint.""")
 post("2026-11-27", "Fri", "LinkedIn", "08:00", "Behind the build: the daily brain teaser", "2026-11-27-brain-teaser-aeroplane.png", """
 A tech help app usually gets opened when something has already gone wrong. You're stressed, the telly's blue, and now you've got to learn an app as well.
 
@@ -175,6 +188,19 @@ In Ask Mavis you can add a helper: a son, daughter, friend or carer. If a guide 
 No hunting through contacts. No working out how to explain it.
 
 If you're usually the helper, this one's for you too.""")
+post("2026-12-03", "Thu", "LinkedIn", "08:00", "Behind the build: confidence is a step", "2026-11-26-practise-cash-machine.png", """
+Some of the guides in Ask Mavis aren't about phones at all.
+
+There's one for the cash machine. Six steps. Card in, cover the keypad, type your PIN, choose the amount, take your card first, then your money.
+
+It might seem like nobody needs telling how a cash machine works. But think of anyone who's had someone stand too close behind them, or felt the queue watching while the screen asks something they didn't expect.
+
+So before the first step, Mavis says one thing out loud: "Take your time. The machine waits for you, and nobody minds."
+
+For a lot of people, confidence is the missing step. It costs nothing to write it down.
+
+Ask Mavis is a free app for people who find tech hard. Coming to Android in January.""",
+     "#DigitalInclusion #AgeingWell #InclusiveDesign #FinancialInclusion")
 post("2026-12-03", "Thu", "Facebook", "11:00", "Practise with Mavis: ordering screens", "2026-12-03-practise-ordering-at-home.png", """
 Practise with Mavis: those big ordering screens in takeaways can be stressful, especially with a queue behind you.
 
