@@ -1,0 +1,39 @@
+/* Shared promo video styles — all classes prefixed with v to avoid clashing with the app mockup CSS */
+:root{--ink:#15151C;--paper:#F6F4EF;--lime:#C8F23A;--lime-deep:#9CC41A;--pink:#F2547D;--blue:#3D7CFF;--green:#18B07A;--orange:#FF7A45;--purple:#8B6CFF;
+  --back:cubic-bezier(.34,1.56,.64,1);--out:cubic-bezier(.16,1,.3,1)}
+html,body{margin:0;padding:0;background:#000}
+#stage{width:540px;height:960px;position:relative;overflow:hidden;background:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.vscene{position:absolute;inset:0;overflow:hidden}
+.vabs{position:absolute}
+.vd{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.035em}
+.vcenter{left:0;right:0;text-align:center}
+.vchip{display:inline-block;font:700 13px/1 Inter;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:99px;background:var(--ink);color:var(--lime)}
+.vflash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:100}
+
+@keyframes vpop{0%{transform:scale(0) rotate(var(--rot0,-8deg));opacity:0}55%{transform:scale(1.14) rotate(2deg);opacity:1}78%{transform:scale(.95) rotate(0)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes vslam{0%{transform:scale(2.4);opacity:0;filter:blur(6px)}60%{transform:scale(.94);opacity:1;filter:blur(0)}100%{transform:scale(1);opacity:1}}
+@keyframes vrise{0%{transform:translateY(34px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes vfadeout{to{opacity:0;transform:scale(.9)}}
+@keyframes vfadeup{to{opacity:0;transform:translateY(-40px)}}
+@keyframes vflash{0%{opacity:.85}100%{opacity:0}}
+@keyframes vfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes vbob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-8px) rotate(calc(var(--r,0deg) * -1))}}
+@keyframes vspin{to{transform:rotate(360deg)}}
+@keyframes vpulse{0%,100%{transform:scale(1)}15%{transform:scale(1.08)}}
+@keyframes vdropin{0%{transform:translateY(-900px) scale(.9,1.15)}55%{transform:translateY(0) scale(.9,1.12)}68%{transform:translateY(0) scale(1.18,.82)}82%{transform:translateY(-14px) scale(.96,1.05)}100%{transform:none}}
+@keyframes vslideup{0%{transform:translateY(1100px)}100%{transform:none}}
+@keyframes vslidedown{to{transform:translateY(1100px)}}
+@keyframes vbump{0%,100%{transform:scale(1)}40%{transform:scale(1.035)}}
+@keyframes vtap{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}15%{opacity:1}100%{transform:translate(-50%,-50%) scale(1.5);opacity:0}}
+@keyframes vtapdot{0%{transform:translate(-50%,-50%) scale(1.3);opacity:0}25%{transform:translate(-50%,-50%) scale(.85);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+@keyframes vburst{0%{transform:translate(0,0) rotate(0) scale(.4);opacity:1}75%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rr)) scale(1);opacity:0}}
+@keyframes vgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes vfill{to{background:var(--lime)}}
+@keyframes vnumout{to{transform:translateY(-110%);opacity:0}}
+@keyframes vnumin{from{transform:translateY(110%);opacity:0}to{transform:none;opacity:1}}
+@keyframes vwiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+@keyframes vpeek{0%{transform:translateY(260px) rotate(-12deg)}100%{transform:translateY(0) rotate(-12deg)}}
+@keyframes vsheet{from{transform:translateY(105%)}to{transform:none}}
+@keyframes vzoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+@keyframes vbarfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes vmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}

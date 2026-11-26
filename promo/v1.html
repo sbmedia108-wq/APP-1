@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>swot. — The App (promo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F4EF; --card:#FFFFFF; --ink:#15151C; --ink2:#2A2A35; --muted:#6E6D78; --line:#E6E2D9;
+  --lime:#C8F23A; --lime-deep:#9CC41A;
+  --maths:#3D7CFF; --bio:#18B07A; --chem:#FF7A45; --eng:#F2547D; --hist:#8B6CFF;
+  --good:#18B07A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+.phone{width:390px;height:844px;background:var(--paper);border-radius:48px;overflow:hidden;position:relative;box-shadow:0 0 0 10px #15151C,0 0 0 11px #3a3a44,0 40px 80px -20px rgba(20,20,30,.45);display:flex;flex-direction:column}
+.status{height:50px;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0 34px;font-weight:600;font-size:15px;flex-shrink:0}
+.status .icons{display:flex;gap:6px;align-items:center}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:20px}
+.body{flex:1;padding:8px 22px 0;display:flex;flex-direction:column;overflow:hidden}
+h1,h2,h3,.display{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025em}
+.muted{color:var(--muted)}
+.btn{height:56px;border-radius:18px;background:var(--ink);color:#fff;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn .arrow{width:28px;height:28px;border-radius:50%;background:var(--lime);display:grid;place-items:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.lime{background:var(--lime);color:var(--ink)}
+.chip{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#ECE9E1;color:var(--ink2);display:inline-flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.card{background:var(--card);border-radius:22px;border:1px solid var(--line)}
+.tabbar{height:84px;border-top:1px solid var(--line);background:rgba(255,255,255,.85);display:flex;justify-content:space-around;padding-top:10px;flex-shrink:0}
+.tab{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:#9C9BA5}
+.tab.on{color:var(--ink)}
+.tab svg{width:24px;height:24px}
+.homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--ink)}
+
+/* Screen 1 */
+.logo{font-family:'Bricolage Grotesque';font-weight:800;font-size:30px;letter-spacing:-.04em}
+.logo i{font-style:normal;color:var(--lime-deep)}
+.stack{position:relative;height:236px;margin:18px 0 8px}
+.scard{position:absolute;width:200px;height:130px;border-radius:20px;padding:16px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px -12px rgba(0,0,0,.35)}
+.scard b{font-family:'Bricolage Grotesque';font-size:22px;letter-spacing:-.02em}
+.scard small{font-size:12px;opacity:.9;font-weight:500}
+.ages{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.age{height:44px;min-width:50px;padding:0 14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;font-weight:600;font-size:15px}
+.age.on{background:var(--ink);color:var(--lime);border-color:var(--ink)}
+
+/* Screen 2 */
+.streak{background:var(--ink);color:#fff;border-radius:24px;padding:18px;margin-top:16px}
+.week{display:flex;justify-content:space-between;margin-top:14px}
+.day{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:#9C9BA5;font-weight:600}
+.day i{width:30px;height:30px;border-radius:10px;background:#2C2C37;display:grid;place-items:center}
+.day.done i{background:var(--lime)}
+.day.today i{background:transparent;border:2px dashed var(--lime)}
+.bar{height:8px;border-radius:4px;background:#ECE9E1;overflow:hidden}
+.bar > div{height:100%;border-radius:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.subj{padding:14px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.subj .ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:#fff;font-family:'Bricolage Grotesque';font-weight:800;font-size:15px}
+.ad{border:1px dashed #C9C4B8;border-radius:14px;height:54px;display:flex;align-items:center;gap:12px;padding:0 12px;background:#EFECE5;margin:12px 0 10px}
+.adtag{font-size:10px;font-weight:700;background:#fff;border:1px solid #C9C4B8;color:var(--muted);padding:2px 6px;border-radius:5px;letter-spacing:.05em}
+
+/* Quiz */
+.qtop{display:flex;align-items:center;gap:12px;margin-top:6px}
+.x{width:40px;height:40px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex-shrink:0}
+.segs{flex:1;display:flex;gap:4px}
+.segs i{flex:1;height:6px;border-radius:3px;background:#E3DFD5}
+.segs i.d{background:var(--ink)}
+.segs i.c{background:var(--lime-deep)}
+.timer{font-weight:700;font-size:14px;padding:8px 12px;border-radius:12px;background:#fff;border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.opt{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;background:#fff;border:1.5px solid var(--line);font-weight:600;font-size:16px;margin-bottom:10px}
+.opt .k{width:34px;height:34px;border-radius:11px;background:#F1EEE7;display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--muted);flex-shrink:0}
+.opt.sel{border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink)}
+.opt.sel .k{background:var(--lime);color:var(--ink)}
+.opt.right{border:2px solid var(--good);background:#EAF8F1}
+.opt.right .k{background:var(--good);color:#fff}
+.opt.dim{opacity:.45}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--lime);border-radius:30px 30px 0 0;padding:24px 22px 40px}
+
+/* Results */
+.ring{width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--ink) 0 80%,#E3DFD5 80% 100%);display:grid;place-items:center;margin:8px auto 0}
+.ring > div{width:138px;height:138px;border-radius:50%;background:var(--paper);display:grid;place-items:center;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.stat b{font-family:'Bricolage Grotesque';font-size:20px;display:block;letter-spacing:-.02em}
+.stat small{font-size:11px;color:var(--muted);font-weight:600}
+.weak{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line)}
+.weak:last-child{border-bottom:0}
+</style>
+<link rel="stylesheet" href="engine.css">
+<style>
+.vdots{background-color:var(--paper);background-image:radial-gradient(#E0DCD1 1.3px,transparent 1.3px);background-size:22px 22px}
+.vrays{position:absolute;left:-400px;top:-300px;width:1340px;height:1340px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(21,21,28,.055) 0 9deg,transparent 9deg 18deg)}
+.vsubj{position:absolute}
+.vsubj > div{padding:12px 18px;border-radius:16px;font:800 21px/1 'Bricolage Grotesque';letter-spacing:-.02em;color:#fff;border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.vcap{position:absolute;left:36px;right:36px;top:60px}
+.vcap h2{font:800 50px/1 'Bricolage Grotesque';letter-spacing:-.04em;color:var(--ink);margin:14px 0 0}
+.vcap p{font:600 20px/1.3 Inter;color:#6E6D78;margin:10px 0 0}
+.vphonepos{position:absolute;left:75px;top:292px;width:390px;height:844px;transform:scale(.78);transform-origin:top center}
+.vphonepos .phone{position:absolute;left:0;top:0}
+.vsq{width:48px;height:48px;border-radius:14px;background:#2C2C37}
+.vcard{border-radius:22px;border:1px solid rgba(21,21,28,.08);height:124px;display:flex;align-items:center;gap:4px;padding:0 10px 0 2px}
+.vcard svg{width:132px;height:104px;flex-shrink:0}
+.vcard b{font:800 19px/1.05 'Bricolage Grotesque';letter-spacing:-.02em;color:var(--ink)}
+.vbubble{position:absolute;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:10px 14px;font:800 20px/1 'Bricolage Grotesque';color:var(--ink);box-shadow:0 4px 0 var(--ink)}
+</style>
+</head><body>
+<div id="stage">
+
+<!-- ========== 0–4  HOOK ========== -->
+<div class="vscene" data-show="0-4" style="background:var(--ink)">
+  <div style="position:absolute;left:-120px;top:520px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(200,242,58,.22),transparent 65%);animation:vfloat 3s ease-in-out 0s infinite"></div>
+  <div id="hook" style="position:absolute;inset:0;animation:vfadeout .35s ease-in 3.62s forwards">
+    <div class="vabs" style="left:44px;top:110px;right:44px">
+      <div style="font:700 14px Inter;letter-spacing:.12em;text-transform:uppercase;color:#8B8A96;display:flex;justify-content:space-between"><span>Exam season loading…</span><span style="color:var(--lime)">99%</span></div>
+      <div style="height:10px;border-radius:6px;background:#2C2C37;margin-top:12px;overflow:hidden"><div style="height:100%;background:var(--lime);transform-origin:left;animation:vbarfill 3.4s cubic-bezier(.3,.1,.2,1) 0s both"></div></div>
+    </div>
+    <div class="vabs vd" style="left:40px;top:250px;font-weight:800;font-size:132px;line-height:.92;color:#fff">
+      <div style="transform-origin:left center;animation:vslam .32s var(--out) 0s both">GCSEs</div>
+      <div style="transform-origin:left center;animation:vslam .32s var(--out) 1s both">are</div>
+      <div style="transform-origin:left center;color:var(--lime);animation:vslam .32s var(--out) 1.5s both">coming.</div>
+      <div style="font-size:44px;font-weight:600;color:#8B8A96;margin-top:22px;letter-spacing:-.02em;animation:vrise .4s var(--back) 2.5s both">(sorry.)</div>
+    </div>
+    <div class="vabs" style="right:-40px;bottom:40px;width:320px;animation:vpeek .5s var(--back) 2.45s both">
+      <div id="panic" style="animation:vwiggle .22s linear 2.95s infinite"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 4–8  LOGO ========== -->
+<div class="vscene" data-show="4-8" style="background:var(--lime)">
+  <div class="vrays" style="animation:vspin 24s linear 4s infinite"></div>
+  <div class="vabs" style="left:85px;top:150px;width:370px;animation:vdropin .75s ease-out 4s both">
+    <div id="logoMitch" style="animation:vfloat 1s ease-in-out 4.8s infinite"></div>
+  </div>
+  <div class="vabs vcenter vd" style="top:455px;font-weight:800;font-size:156px;line-height:1;color:var(--ink);animation:vslam .38s var(--out) 4.45s both">swot<span style="color:#fff">.</span></div>
+  <div class="vabs vcenter vd" style="top:640px;font-weight:800;font-size:36px;line-height:1.05;color:var(--ink);animation:vrise .5s var(--back) 5s both">Revision that doesn't<br>feel like detention.</div>
+  <div class="vsubj" style="left:24px;top:84px;transform:rotate(-8deg)"><div style="background:var(--blue);--rot0:-20deg;animation:vpop .45s var(--back) 5.5s both, vbob 1.6s ease-in-out 6s infinite">Maths</div></div>
+  <div class="vsubj" style="right:26px;top:118px;transform:rotate(7deg)"><div style="background:var(--green);animation:vpop .45s var(--back) 5.75s both, vbob 1.8s ease-in-out 6.25s infinite">Biology</div></div>
+  <div class="vsubj" style="left:20px;top:790px;transform:rotate(6deg)"><div style="background:var(--orange);animation:vpop .45s var(--back) 6s both, vbob 1.7s ease-in-out 6.5s infinite">Chemistry</div></div>
+  <div class="vsubj" style="right:20px;top:770px;transform:rotate(-6deg)"><div style="background:var(--pink);animation:vpop .45s var(--back) 6.25s both, vbob 1.9s ease-in-out 6.75s infinite">English Lit</div></div>
+  <div class="vsubj" style="left:178px;top:868px;transform:rotate(-3deg)"><div style="background:var(--purple);animation:vpop .45s var(--back) 6.5s both, vbob 1.6s ease-in-out 7s infinite">History</div></div>
+</div>
+
+<!-- ========== 8–18  APP WALKTHROUGH ========== -->
+<div class="vscene vdots" id="appScene" data-show="8-18">
+  <div class="vcap" data-show="8-12"><div style="animation:vrise .45s var(--back) 8.15s both"><span class="vchip">The app</span><h2>10-minute<br>quizzes.</h2><p>Every GCSE subject. Bus-ride sized.</p></div></div>
+  <div class="vcap" data-show="12-15"><div style="animation:vrise .45s var(--back) 12.05s both"><span class="vchip">Quiz mode</span><h2>Quick-fire<br>questions.</h2><p>Tap. Check. Done.</p></div></div>
+  <div class="vcap" data-show="15-18"><div style="animation:vrise .45s var(--back) 15.05s both"><span class="vchip">Every answer</span><h2>Learn why.<br>Not just what.</h2><p>Explained properly, with real exam tips.</p></div></div>
+  <div class="vphonepos">
+    <div id="phoneAnim" style="position:relative;width:390px;height:844px;animation:vslideup .65s var(--out) 8s both, vbump .28s ease-out 10s, vbump .28s ease-out 12s, vbump .28s ease-out 15s, vslidedown .45s ease-in 17.55s forwards">
+      <div class="phone" id="p1" data-show="8-10">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#15151C"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#15151C"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#15151C"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#15151C"/></svg>
+    <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#15151C" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="#15151C"/><rect x="24" y="4" width="2" height="4" rx="1" fill="#15151C" opacity=".4"/></svg>
+  </span></div>
+  <div class="body">
+    <div class="logo" style="margin-top:6px">swot<i>.</i></div>
+    <div class="stack">
+      <div class="scard" style="background:var(--eng);left:140px;top:4px;transform:rotate(8deg);justify-content:flex-start"><b style="text-align:right;padding-right:4px">English Lit</b></div>
+      <div class="scard" style="background:var(--bio);left:66px;top:52px;transform:rotate(-3deg);justify-content:flex-start"><b>Biology</b></div>
+      <div class="scard" style="background:var(--ink);left:0;top:104px;transform:rotate(-11deg);color:#fff"><small style="color:var(--lime)">Maths · Higher</small><b>Quadratics<br>(sorry)</b></div>
+    </div>
+    <h1 style="font-size:36px;line-height:1.02;font-weight:800;margin-top:6px">Revision that doesn't feel like detention.</h1>
+    <p class="muted" style="font-size:15px;line-height:1.45;margin-top:10px">10-minute quizzes for every GCSE subject. Made by people who also left it to the last minute.</p>
+    <p style="font-weight:700;font-size:15px;margin-top:20px">First up — how old are you?</p>
+    <div class="ages">
+      <div class="age">12</div><div class="age">13</div><div class="age">14</div><div class="age on">15</div><div class="age">16</div><div class="age">17+</div>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:10px;display:flex;gap:6px;align-items:center">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6E6D78" stroke-width="2.2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>
+      This keeps ads age-appropriate. We never sell your data.</p>
+    <div style="flex:1"></div>
+    <div class="btn" style="margin-bottom:44px">Let's go <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#15151C" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+  <div class="homebar"></div>
+</div><div class="phone" id="p2" data-show="10-12">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#15151C"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#15151C"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#15151C"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#15151C"/></svg>
+    <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#15151C" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="#15151C"/><rect x="24" y="4" width="2" height="4" rx="1" fill="#15151C" opacity=".4"/></svg>
+  </span></div>
+  <div class="body">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:4px">
+      <div>
+        <h2 style="font-size:28px;font-weight:800">Evening, Maya</h2>
+        <p class="muted" style="font-size:13.5px;line-height:1.4;margin-top:4px;max-width:250px">143 days till Maths Paper 1. No pressure. <span style="color:var(--ink)">(Some pressure.)</span></p>
+      </div>
+      <div style="width:44px;height:44px;border-radius:15px;background:var(--hist);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:17px">M</div>
+    </div>
+
+    <div class="streak">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2c1 4 5 6 5 11a5 5 0 01-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3-1-3 0-7 1-9.5z" fill="#C8F23A"/></svg>
+          <div><div class="display" style="font-size:22px;font-weight:800">6-day streak</div>
+          <div style="font-size:12.5px;color:#A9A8B3">One quiz today keeps it alive.</div></div>
+        </div>
+        <div class="chip" style="background:#2C2C37;color:var(--lime)">1,240 XP</div>
+      </div>
+      <div class="week">
+        <div class="day done"><i></i>M</div><div class="day done"><i></i>T</div><div class="day done"><i></i>W</div><div class="day done"><i></i>T</div><div class="day done"><i></i>F</div><div class="day done"><i></i>S</div><div class="day today"><i></i>S</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 14px 14px 16px;margin-top:12px;display:flex;align-items:center;gap:14px">
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:600" class="muted">Pick up where you left off</div>
+        <div class="display" style="font-size:18px;font-weight:700;margin:2px 0 8px">Chemistry · Bonding</div>
+        <div class="bar"><div style="width:60%;background:var(--chem)"></div></div>
+      </div>
+      <div style="width:48px;height:48px;border-radius:16px;background:var(--lime);display:grid;place-items:center"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="#15151C"/></svg></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:18px">
+      <h3 style="font-size:18px;font-weight:700">Your subjects</h3><span style="font-size:13px;font-weight:600" class="muted">Edit</span>
+    </div>
+    <div class="grid">
+      <div class="subj"><div class="ic" style="background:var(--maths)">∑</div><div style="font-weight:700;margin:10px 0 2px">Maths</div><div class="muted" style="font-size:12px;margin-bottom:8px">72% mastered</div><div class="bar"><div style="width:72%;background:var(--maths)"></div></div></div>
+      <div class="subj"><div class="ic" style="background:var(--bio)">B</div><div style="font-weight:700;margin:10px 0 2px">Biology</div><div class="muted" style="font-size:12px;margin-bottom:8px">58% mastered</div><div class="bar"><div style="width:58%;background:var(--bio)"></div></div></div>
+      <div class="subj"><div class="ic" style="background:var(--eng)">E</div><div style="font-weight:700;margin:10px 0 2px">English Lit</div><div class="muted" style="font-size:12px;margin-bottom:8px">41% · Needs love</div><div class="bar"><div style="width:41%;background:var(--eng)"></div></div></div>
+      <div class="subj"><div class="ic" style="background:var(--hist)">H</div><div style="font-weight:700;margin:10px 0 2px">History</div><div class="muted" style="font-size:12px;margin-bottom:8px">65% mastered</div><div class="bar"><div style="width:65%;background:var(--hist)"></div></div></div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="ad"><span class="adtag">AD</span><div style="width:34px;height:34px;border-radius:9px;background:#DAD5CA"></div><div style="font-size:12px;line-height:1.3"><b>Family-safe banner ad</b><div class="muted">320×50 · non-personalised</div></div></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab on"><svg viewBox="0 0 24 24" fill="#15151C"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg>Home</div>
+    <div class="tab"><svg viewBox="0 0 24 24" fill="none" stroke="#9C9BA5" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Quizzes</div>
+    <div class="tab"><svg viewBox="0 0 24 24" fill="none" stroke="#9C9BA5" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Progress</div>
+    <div class="tab"><svg viewBox="0 0 24 24" fill="none" stroke="#9C9BA5" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Me</div>
+  </div>
+  <div class="homebar"></div>
+</div><div class="phone" id="p3a" data-show="12-13.85">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#15151C"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#15151C"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#15151C"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#15151C"/></svg>
+    <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#15151C" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="#15151C"/><rect x="24" y="4" width="2" height="4" rx="1" fill="#15151C" opacity=".4"/></svg>
+  </span></div>
+  <div class="body">
+    <div class="qtop">
+      <div class="x"><svg width="14" height="14" viewBox="0 0 24 24" stroke="#15151C" stroke-width="3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></div>
+      <div class="segs"><i class="c"></i><i class="c"></i><i class="d"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="timer">0:42</div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:26px">
+      <span class="chip"><span class="dot" style="background:var(--bio)"></span>Biology</span>
+      <span class="chip">Cell biology</span>
+      <span class="chip">Higher</span>
+    </div>
+    <p class="muted" style="font-size:13px;font-weight:600;margin-top:22px">Question 3 of 10</p>
+    <h2 style="font-size:29px;line-height:1.1;font-weight:700;margin:8px 0 26px">Where in the cell does aerobic respiration happen?</h2>
+    <div class="opt"><span class="k">A</span>Nucleus</div>
+    <div class="opt"><span class="k">B</span>Ribosomes</div>
+    <div class="opt"><span class="k">C</span>Mitochondria</div>
+    <div class="opt"><span class="k">D</span>Cell membrane</div>
+    <p style="font-size:14px;font-weight:600;margin-top:10px;display:flex;align-items:center;gap:8px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15151C" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></svg>
+      Need a hint? <span class="muted" style="font-weight:500">We won't tell anyone.</span></p>
+    <div style="flex:1"></div>
+    <div class="btn" style="margin-bottom:44px">Check answer</div>
+  </div>
+  <div class="homebar"></div>
+</div><div class="phone" id="p3" data-show="13.85-15">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#15151C"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#15151C"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#15151C"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#15151C"/></svg>
+    <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#15151C" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="#15151C"/><rect x="24" y="4" width="2" height="4" rx="1" fill="#15151C" opacity=".4"/></svg>
+  </span></div>
+  <div class="body">
+    <div class="qtop">
+      <div class="x"><svg width="14" height="14" viewBox="0 0 24 24" stroke="#15151C" stroke-width="3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></div>
+      <div class="segs"><i class="c"></i><i class="c"></i><i class="d"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="timer">0:42</div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:26px">
+      <span class="chip"><span class="dot" style="background:var(--bio)"></span>Biology</span>
+      <span class="chip">Cell biology</span>
+      <span class="chip">Higher</span>
+    </div>
+    <p class="muted" style="font-size:13px;font-weight:600;margin-top:22px">Question 3 of 10</p>
+    <h2 style="font-size:29px;line-height:1.1;font-weight:700;margin:8px 0 26px">Where in the cell does aerobic respiration happen?</h2>
+    <div class="opt"><span class="k">A</span>Nucleus</div>
+    <div class="opt"><span class="k">B</span>Ribosomes</div>
+    <div class="opt sel"><span class="k">C</span>Mitochondria</div>
+    <div class="opt"><span class="k">D</span>Cell membrane</div>
+    <p style="font-size:14px;font-weight:600;margin-top:10px;display:flex;align-items:center;gap:8px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15151C" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></svg>
+      Need a hint? <span class="muted" style="font-weight:500">We won't tell anyone.</span></p>
+    <div style="flex:1"></div>
+    <div class="btn" style="margin-bottom:44px">Check answer</div>
+  </div>
+  <div class="homebar"></div>
+</div><div class="phone" id="p4" data-show="15-18">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="icons">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#15151C"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#15151C"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#15151C"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#15151C"/></svg>
+    <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#15151C" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="#15151C"/><rect x="24" y="4" width="2" height="4" rx="1" fill="#15151C" opacity=".4"/></svg>
+  </span></div>
+  <div class="body">
+    <div class="qtop">
+      <div class="x"><svg width="14" height="14" viewBox="0 0 24 24" stroke="#15151C" stroke-width="3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></div>
+      <div class="segs"><i class="c"></i><i class="c"></i><i class="c"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="timer">0:31</div>
+    </div>
+    <p class="muted" style="font-size:13px;font-weight:600;margin-top:24px">Question 3 of 10</p>
+    <h2 style="font-size:24px;line-height:1.12;font-weight:700;margin:8px 0 20px">Where in the cell does aerobic respiration happen?</h2>
+    <div class="opt dim"><span class="k">A</span>Nucleus</div>
+    <div class="opt dim"><span class="k">B</span>Ribosomes</div>
+    <div class="opt right"><span class="k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>Mitochondria</div>
+  </div>
+  <div class="sheet">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 style="font-size:30px;font-weight:800">Correct.</h2>
+      <span class="chip" style="background:var(--ink);color:var(--lime);font-size:13px">+20 XP</span>
+    </div>
+    <p class="display" style="font-size:18px;font-weight:600;margin-top:4px">Turns out the meme was right all along.</p>
+    <div style="background:rgba(255,255,255,.55);border-radius:18px;padding:14px;margin-top:16px;font-size:14px;line-height:1.5">
+      Mitochondria <b>release energy</b> from glucose through aerobic respiration.
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(21,21,28,.12);display:flex;gap:8px">
+        <span style="font-weight:700;white-space:nowrap">Exam tip</span><span>Write "releases energy", never "makes energy". Examiners will notice.</span>
+      </div>
+    </div>
+    <div class="btn" style="margin-top:18px">Next question <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#15151C" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+  <div class="homebar"></div>
+</div>
+    </div>
+  </div>
+  <div class="vabs" data-show="15.3-18" style="right:26px;top:300px;z-index:70;animation:vpop .45s var(--back) 15.35s both, vfadeup .4s ease-in 16.9s forwards">
+    <div class="vd" style="background:var(--ink);color:var(--lime);font-weight:800;font-size:34px;padding:12px 18px;border-radius:18px;box-shadow:0 6px 0 rgba(21,21,28,.2)">+20 XP</div>
+  </div>
+  <div class="vabs" data-show="15.5-18" style="left:-14px;top:776px;width:180px;z-index:70;animation:vpop .45s var(--back) 15.5s both, vslidedown .45s ease-in 17.5s forwards"><div id="appMitch" style="animation:vfloat .9s ease-in-out 16s infinite"></div></div>
+  <div class="vbubble" data-show="15.75-18" style="right:168px;top:306px;z-index:71;--rot0:10deg;animation:vpop .4s var(--back) 15.75s both, vfadeout .3s ease-in 17.4s forwards">nice one.</div>
+</div>
+
+<!-- ========== 18–21  STREAK ========== -->
+<div class="vscene" id="streakScene" data-show="18-21" style="background:var(--ink)">
+  <div style="position:absolute;left:20px;top:160px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,242,58,.2),transparent 62%)"></div>
+  <div class="vabs" style="left:200px;top:120px;width:140px;animation:vpop .45s var(--back) 18s both">
+    <div style="animation:vpulse .5s ease-out 18.5s infinite">
+      <svg viewBox="0 0 24 24" width="140" height="140"><path d="M12 1.5c1.2 4.3 5.6 6.4 5.6 11.6a5.6 5.6 0 01-11.2 0c0-2.3 1.1-3.9 2.2-5 0 2.2 1.1 3.3 2.2 3.3-1.1-3.3 0-7.6 1.2-9.9z" fill="#C8F23A"/><path d="M12 11c.8 1.6 2.6 2.6 2.6 4.6a2.6 2.6 0 01-5.2 0c0-1.6 1.6-2.6 2.6-4.6z" fill="#15151C" opacity=".85"/></svg>
+    </div>
+  </div>
+  <div class="vabs vcenter" style="top:290px;height:220px;overflow:hidden">
+    <div class="vabs vcenter vd" data-show="18-19.5" style="top:0;font-weight:800;font-size:220px;line-height:1;color:#fff;animation:vrise .4s var(--back) 18.05s both, vnumout .3s ease-in 19s forwards">6</div>
+    <div class="vabs vcenter vd" data-show="19-21" style="top:0;font-weight:800;font-size:220px;line-height:1;color:var(--lime);animation:vnumin .42s var(--back) 19s both">7</div>
+  </div>
+  <div class="vabs vcenter vd" style="top:515px;font-weight:800;font-size:40px;color:#fff;animation:vrise .4s var(--back) 18.2s both">day streak</div>
+  <div class="vabs" style="left:72px;top:610px;display:flex;gap:10px">
+    <div><div class="vsq" style="animation:vfill .15s 18.25s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.375s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.5s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.625s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.75s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.875s forwards"></div></div>
+    <div><div class="vsq" style="background:transparent;border:3px dashed var(--lime);box-sizing:border-box;animation:vfill .1s 19s forwards, vpop .4s var(--back) 19s both"></div></div>
+  </div>
+  <div class="vabs" style="left:72px;top:668px;display:flex;gap:10px;font:700 14px Inter;color:#6E6D78">
+    <span style="width:48px;text-align:center">M</span><span style="width:48px;text-align:center">T</span><span style="width:48px;text-align:center">W</span><span style="width:48px;text-align:center">T</span><span style="width:48px;text-align:center">F</span><span style="width:48px;text-align:center">S</span><span style="width:48px;text-align:center;color:var(--lime)">S</span>
+  </div>
+  <div class="vabs vcenter vd" style="top:745px;font-weight:800;font-size:52px;color:#fff;animation:vrise .45s var(--back) 19.35s both">Keep it alive.</div>
+  <div class="vabs vcenter" style="top:812px;font:600 21px Inter;color:#A9A8B3;animation:vrise .45s var(--back) 19.6s both">Mitch is counting on you.</div>
+</div>
+
+<!-- ========== 21–26  LEVEL UP MITCH ========== -->
+<div class="vscene" id="evoScene" data-show="21-26" style="background:#E9E3FF">
+  <div class="vrays" style="background:repeating-conic-gradient(from 0deg,rgba(139,108,255,.09) 0 9deg,transparent 9deg 18deg);top:-170px;animation:vspin 30s linear 21s infinite"></div>
+  <div class="vabs vcenter" style="top:74px;animation:vrise .4s var(--back) 21s both"><span class="vchip">Meet Mitch</span></div>
+  <div class="vabs vcenter vd" style="top:120px;font-weight:800;font-size:60px;line-height:.98;color:var(--ink);animation:vrise .45s var(--back) 21.1s both">Revise.<br>Level up Mitch.</div>
+  <div class="vabs" style="left:120px;top:628px;width:300px;height:36px;border-radius:50%;background:rgba(21,21,28,.1)"></div>
+  <div id="evoSlot" class="vabs" style="left:60px;top:300px;width:420px;height:340px"></div>
+  <div id="evoLabels" class="vabs vcenter" style="top:680px;height:110px"></div>
+  <div class="vabs" style="left:70px;top:812px;width:400px">
+    <div style="display:flex;justify-content:space-between;font:800 14px Inter;letter-spacing:.08em;text-transform:uppercase;color:#5B4BB5;margin-bottom:8px"><span>Level</span><span>Grade 9</span></div>
+    <div style="height:18px;border-radius:12px;background:#fff;border:3px solid var(--ink);overflow:hidden"><div style="height:100%;background:var(--lime);transform-origin:left;animation:vbarfill 3.5s linear 21.5s both"></div></div>
+  </div>
+</div>
+
+<!-- ========== 26–30  UNLOCK 10+ MITCHES ========== -->
+<div class="vscene vdots" id="gridScene" data-show="26-30">
+  <div class="vabs vcenter vd" style="top:52px;font-weight:800;font-size:56px;line-height:.98;color:var(--ink);animation:vrise .45s var(--back) 26.05s both">Unlock 10+<br>Mitches.</div>
+  <div class="vabs vcenter" style="top:178px;font:600 20px Inter;color:#6E6D78;animation:vrise .45s var(--back) 26.2s both">Earn them with revision. Never buy them.</div>
+  <div class="vabs" style="left:22px;right:22px;top:232px">
+    <div id="vgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;transform-origin:center top;animation:vzoom 2s ease-in-out 28s both"></div>
+  </div>
+</div>
+
+<!-- ========== 30–32  END CARD ========== -->
+<div class="vscene" data-show="30-33" style="background:var(--lime)">
+  <div class="vrays" style="animation:vspin 24s linear 30s infinite"></div>
+  <div class="vabs" style="left:100px;top:150px;width:340px;animation:vpop .5s var(--back) 30s both"><div id="endMitch" style="animation:vfloat 1s ease-in-out 30.5s infinite"></div></div>
+  <div class="vabs vcenter vd" style="top:430px;font-weight:800;font-size:160px;line-height:1;color:var(--ink);animation:vslam .38s var(--out) 30.1s both">swot<span style="color:#fff">.</span></div>
+  <div class="vabs vcenter vd" style="top:618px;font-weight:800;font-size:40px;color:var(--ink);animation:vrise .45s var(--back) 30.35s both">Free GCSE revision.</div>
+  <div class="vabs vcenter" style="top:688px;animation:vrise .45s var(--back) 30.55s both"><span class="vchip" style="font-size:16px;padding:12px 18px">Coming soon · iOS &amp; Android</span></div>
+  <div class="vabs vcenter" style="top:880px;font:600 16px Inter;color:rgba(21,21,28,.6);animation:vrise .45s var(--back) 30.8s both">Made by people who also left it to the last minute.</div>
+</div>
+
+</div>
+<script src="mitch.js"></script>
+<script src="engine.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+$('#panic').innerHTML = mitch({eyes:'open',mouth:'o',acc:['sweat']});
+$('#logoMitch').innerHTML = mitch({eyes:'half',mouth:'smirk',acc:['headphones']});
+$('#appMitch').innerHTML = mitch({eyes:'happy',mouth:'open',acc:['sparkle']});
+$('#endMitch').innerHTML = mitch({eyes:'happy',mouth:'open',acc:['headphones','sparkle']});
+
+// Evolution
+const EVO = [
+  {t:21.5,e:22.5,o:{stage:1,eyes:'open',mouth:'o'},name:'Spark',xp:'0 XP'},
+  {t:22.5,e:23.5,o:{stage:2,eyes:'open',mouth:'smile'},name:'Bean',xp:'500 XP'},
+  {t:23.5,e:24.5,o:{stage:3,eyes:'half',mouth:'smirk'},name:'Mitch',xp:'2,000 XP'},
+  {t:24.5,e:25.0,o:{stage:3,eyes:'open',mouth:'smile',acc:['glasses','headphones']},name:'Study Mitch',xp:'6,000 XP'},
+  {t:25.0,e:26.1,o:{stage:3,eyes:'happy',mouth:'open',acc:['cap','sparkle'],glow:true},name:'Grade 9 Mitch',xp:'15,000 XP'},
+];
+EVO.forEach(s => {
+  const d = document.createElement('div');
+  d.dataset.show = `${s.t}-${s.e}`;
+  d.style.cssText = `position:absolute;inset:0;transform-origin:50% 90%;animation:vpop .42s var(--back) ${s.t}s both`;
+  d.innerHTML = mitch(s.o);
+  $('#evoSlot').appendChild(d);
+  const l = document.createElement('div');
+  l.dataset.show = `${s.t}-${s.e}`;
+  l.style.cssText = `position:absolute;left:0;right:0;animation:vrise .3s var(--back) ${s.t}s both`;
+  l.innerHTML = `<div class="vd" style="font-weight:800;font-size:40px;color:var(--ink)">${s.name}</div><div style="margin-top:8px"><span class="vchip">${s.xp}</span></div>`;
+  $('#evoLabels').appendChild(l);
+});
+
+// Grid of variants
+VARIANTS.forEach((v, i) => {
+  const c = document.createElement('div');
+  c.className = 'vcard';
+  c.style.cssText = `background:${v.bg};animation:vpop .42s var(--back) ${26.25 + i * 0.12}s both`;
+  c.innerHTML = mitch(v) + `<b>${v.name.replace(' Mitch','<br>Mitch')}</b>`;
+  $('#vgrid').appendChild(c);
+});
+
+// p3a = quiz before selection; streak fill on home
+document.querySelector('#p2 .day.today i').style.animation = 'vfill .2s 11s forwards';
+document.querySelector('#p4 .sheet').style.animation = 'vsheet .5s cubic-bezier(.16,1,.3,1) 15s both';
+
+// Taps (phones must be visible to measure)
+const TAPS = [['#p1', '#p1 .btn', 9.45], ['#p2', '#p2 [style*="width:48px"]', 11.45], ['#p3', () => document.querySelectorAll('#p3 .opt')[2], 13.9], ['#p3', '#p3 .btn', 14.6]];
+TAPS.forEach(([h, target, time]) => {
+  seek(time);
+  const el = typeof target === 'function' ? target() : $(target);
+  tapAt($(h), el, time);
+});
+
+burst($('#appScene'), 270, 600, 15.12, 30, 300);
+burst($('#streakScene'), 270, 400, 19.0, 26, 260);
+burst($('#evoScene'), 270, 470, 25.0, 34, 300);
+burst($('#evoScene'), 270, 470, 23.5, 18, 220);
+flashes([4, 8, 18, 21, 26, 30]);
+seek(0);
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body></html>

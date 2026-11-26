@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>swot. — The App (promo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>{{MOCKCSS}}</style>
+<link rel="stylesheet" href="engine.css">
+<style>
+.vdots{background-color:var(--paper);background-image:radial-gradient(#E0DCD1 1.3px,transparent 1.3px);background-size:22px 22px}
+.vrays{position:absolute;left:-400px;top:-300px;width:1340px;height:1340px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(21,21,28,.055) 0 9deg,transparent 9deg 18deg)}
+.vsubj{position:absolute}
+.vsubj > div{padding:12px 18px;border-radius:16px;font:800 21px/1 'Bricolage Grotesque';letter-spacing:-.02em;color:#fff;border:3px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.vcap{position:absolute;left:36px;right:36px;top:60px}
+.vcap h2{font:800 50px/1 'Bricolage Grotesque';letter-spacing:-.04em;color:var(--ink);margin:14px 0 0}
+.vcap p{font:600 20px/1.3 Inter;color:#6E6D78;margin:10px 0 0}
+.vphonepos{position:absolute;left:75px;top:292px;width:390px;height:844px;transform:scale(.78);transform-origin:top center}
+.vphonepos .phone{position:absolute;left:0;top:0}
+.vsq{width:48px;height:48px;border-radius:14px;background:#2C2C37}
+.vcard{border-radius:22px;border:1px solid rgba(21,21,28,.08);height:124px;display:flex;align-items:center;gap:4px;padding:0 10px 0 2px}
+.vcard svg{width:132px;height:104px;flex-shrink:0}
+.vcard b{font:800 19px/1.05 'Bricolage Grotesque';letter-spacing:-.02em;color:var(--ink)}
+.vbubble{position:absolute;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:10px 14px;font:800 20px/1 'Bricolage Grotesque';color:var(--ink);box-shadow:0 4px 0 var(--ink)}
+</style>
+</head><body>
+<div id="stage">
+
+<!-- ========== 0–4  HOOK ========== -->
+<div class="vscene" data-show="0-4" style="background:var(--ink)">
+  <div style="position:absolute;left:-120px;top:520px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(200,242,58,.22),transparent 65%);animation:vfloat 3s ease-in-out 0s infinite"></div>
+  <div id="hook" style="position:absolute;inset:0;animation:vfadeout .35s ease-in 3.62s forwards">
+    <div class="vabs" style="left:44px;top:110px;right:44px">
+      <div style="font:700 14px Inter;letter-spacing:.12em;text-transform:uppercase;color:#8B8A96;display:flex;justify-content:space-between"><span>Exam season loading…</span><span style="color:var(--lime)">99%</span></div>
+      <div style="height:10px;border-radius:6px;background:#2C2C37;margin-top:12px;overflow:hidden"><div style="height:100%;background:var(--lime);transform-origin:left;animation:vbarfill 3.4s cubic-bezier(.3,.1,.2,1) 0s both"></div></div>
+    </div>
+    <div class="vabs vd" style="left:40px;top:250px;font-weight:800;font-size:132px;line-height:.92;color:#fff">
+      <div style="transform-origin:left center;animation:vslam .32s var(--out) 0s both">GCSEs</div>
+      <div style="transform-origin:left center;animation:vslam .32s var(--out) 1s both">are</div>
+      <div style="transform-origin:left center;color:var(--lime);animation:vslam .32s var(--out) 1.5s both">coming.</div>
+      <div style="font-size:44px;font-weight:600;color:#8B8A96;margin-top:22px;letter-spacing:-.02em;animation:vrise .4s var(--back) 2.5s both">(sorry.)</div>
+    </div>
+    <div class="vabs" style="right:-40px;bottom:40px;width:320px;animation:vpeek .5s var(--back) 2.45s both">
+      <div id="panic" style="animation:vwiggle .22s linear 2.95s infinite"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 4–8  LOGO ========== -->
+<div class="vscene" data-show="4-8" style="background:var(--lime)">
+  <div class="vrays" style="animation:vspin 24s linear 4s infinite"></div>
+  <div class="vabs" style="left:85px;top:150px;width:370px;animation:vdropin .75s ease-out 4s both">
+    <div id="logoMitch" style="animation:vfloat 1s ease-in-out 4.8s infinite"></div>
+  </div>
+  <div class="vabs vcenter vd" style="top:455px;font-weight:800;font-size:156px;line-height:1;color:var(--ink);animation:vslam .38s var(--out) 4.45s both">swot<span style="color:#fff">.</span></div>
+  <div class="vabs vcenter vd" style="top:640px;font-weight:800;font-size:36px;line-height:1.05;color:var(--ink);animation:vrise .5s var(--back) 5s both">Revision that doesn't<br>feel like detention.</div>
+  <div class="vsubj" style="left:24px;top:84px;transform:rotate(-8deg)"><div style="background:var(--blue);--rot0:-20deg;animation:vpop .45s var(--back) 5.5s both, vbob 1.6s ease-in-out 6s infinite">Maths</div></div>
+  <div class="vsubj" style="right:26px;top:118px;transform:rotate(7deg)"><div style="background:var(--green);animation:vpop .45s var(--back) 5.75s both, vbob 1.8s ease-in-out 6.25s infinite">Biology</div></div>
+  <div class="vsubj" style="left:20px;top:790px;transform:rotate(6deg)"><div style="background:var(--orange);animation:vpop .45s var(--back) 6s both, vbob 1.7s ease-in-out 6.5s infinite">Chemistry</div></div>
+  <div class="vsubj" style="right:20px;top:770px;transform:rotate(-6deg)"><div style="background:var(--pink);animation:vpop .45s var(--back) 6.25s both, vbob 1.9s ease-in-out 6.75s infinite">English Lit</div></div>
+  <div class="vsubj" style="left:178px;top:868px;transform:rotate(-3deg)"><div style="background:var(--purple);animation:vpop .45s var(--back) 6.5s both, vbob 1.6s ease-in-out 7s infinite">History</div></div>
+</div>
+
+<!-- ========== 8–18  APP WALKTHROUGH ========== -->
+<div class="vscene vdots" id="appScene" data-show="8-18">
+  <div class="vcap" data-show="8-12"><div style="animation:vrise .45s var(--back) 8.15s both"><span class="vchip">The app</span><h2>10-minute<br>quizzes.</h2><p>Every GCSE subject. Bus-ride sized.</p></div></div>
+  <div class="vcap" data-show="12-15"><div style="animation:vrise .45s var(--back) 12.05s both"><span class="vchip">Quiz mode</span><h2>Quick-fire<br>questions.</h2><p>Tap. Check. Done.</p></div></div>
+  <div class="vcap" data-show="15-18"><div style="animation:vrise .45s var(--back) 15.05s both"><span class="vchip">Every answer</span><h2>Learn why.<br>Not just what.</h2><p>Explained properly, with real exam tips.</p></div></div>
+  <div class="vphonepos">
+    <div id="phoneAnim" style="position:relative;width:390px;height:844px;animation:vslideup .65s var(--out) 8s both, vbump .28s ease-out 10s, vbump .28s ease-out 12s, vbump .28s ease-out 15s, vslidedown .45s ease-in 17.55s forwards">
+      {{P1}}{{P2}}{{P3A}}{{P3}}{{P4}}
+    </div>
+  </div>
+  <div class="vabs" data-show="15.3-18" style="right:26px;top:300px;z-index:70;animation:vpop .45s var(--back) 15.35s both, vfadeup .4s ease-in 16.9s forwards">
+    <div class="vd" style="background:var(--ink);color:var(--lime);font-weight:800;font-size:34px;padding:12px 18px;border-radius:18px;box-shadow:0 6px 0 rgba(21,21,28,.2)">+20 XP</div>
+  </div>
+  <div class="vabs" data-show="15.5-18" style="left:-14px;top:776px;width:180px;z-index:70;animation:vpop .45s var(--back) 15.5s both, vslidedown .45s ease-in 17.5s forwards"><div id="appMitch" style="animation:vfloat .9s ease-in-out 16s infinite"></div></div>
+  <div class="vbubble" data-show="15.75-18" style="right:168px;top:306px;z-index:71;--rot0:10deg;animation:vpop .4s var(--back) 15.75s both, vfadeout .3s ease-in 17.4s forwards">nice one.</div>
+</div>
+
+<!-- ========== 18–21  STREAK ========== -->
+<div class="vscene" id="streakScene" data-show="18-21" style="background:var(--ink)">
+  <div style="position:absolute;left:20px;top:160px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,242,58,.2),transparent 62%)"></div>
+  <div class="vabs" style="left:200px;top:120px;width:140px;animation:vpop .45s var(--back) 18s both">
+    <div style="animation:vpulse .5s ease-out 18.5s infinite">
+      <svg viewBox="0 0 24 24" width="140" height="140"><path d="M12 1.5c1.2 4.3 5.6 6.4 5.6 11.6a5.6 5.6 0 01-11.2 0c0-2.3 1.1-3.9 2.2-5 0 2.2 1.1 3.3 2.2 3.3-1.1-3.3 0-7.6 1.2-9.9z" fill="#C8F23A"/><path d="M12 11c.8 1.6 2.6 2.6 2.6 4.6a2.6 2.6 0 01-5.2 0c0-1.6 1.6-2.6 2.6-4.6z" fill="#15151C" opacity=".85"/></svg>
+    </div>
+  </div>
+  <div class="vabs vcenter" style="top:290px;height:220px;overflow:hidden">
+    <div class="vabs vcenter vd" data-show="18-19.5" style="top:0;font-weight:800;font-size:220px;line-height:1;color:#fff;animation:vrise .4s var(--back) 18.05s both, vnumout .3s ease-in 19s forwards">6</div>
+    <div class="vabs vcenter vd" data-show="19-21" style="top:0;font-weight:800;font-size:220px;line-height:1;color:var(--lime);animation:vnumin .42s var(--back) 19s both">7</div>
+  </div>
+  <div class="vabs vcenter vd" style="top:515px;font-weight:800;font-size:40px;color:#fff;animation:vrise .4s var(--back) 18.2s both">day streak</div>
+  <div class="vabs" style="left:72px;top:610px;display:flex;gap:10px">
+    <div><div class="vsq" style="animation:vfill .15s 18.25s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.375s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.5s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.625s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.75s forwards"></div></div>
+    <div><div class="vsq" style="animation:vfill .15s 18.875s forwards"></div></div>
+    <div><div class="vsq" style="background:transparent;border:3px dashed var(--lime);box-sizing:border-box;animation:vfill .1s 19s forwards, vpop .4s var(--back) 19s both"></div></div>
+  </div>
+  <div class="vabs" style="left:72px;top:668px;display:flex;gap:10px;font:700 14px Inter;color:#6E6D78">
+    <span style="width:48px;text-align:center">M</span><span style="width:48px;text-align:center">T</span><span style="width:48px;text-align:center">W</span><span style="width:48px;text-align:center">T</span><span style="width:48px;text-align:center">F</span><span style="width:48px;text-align:center">S</span><span style="width:48px;text-align:center;color:var(--lime)">S</span>
+  </div>
+  <div class="vabs vcenter vd" style="top:745px;font-weight:800;font-size:52px;color:#fff;animation:vrise .45s var(--back) 19.35s both">Keep it alive.</div>
+  <div class="vabs vcenter" style="top:812px;font:600 21px Inter;color:#A9A8B3;animation:vrise .45s var(--back) 19.6s both">Mitch is counting on you.</div>
+</div>
+
+<!-- ========== 21–26  LEVEL UP MITCH ========== -->
+<div class="vscene" id="evoScene" data-show="21-26" style="background:#E9E3FF">
+  <div class="vrays" style="background:repeating-conic-gradient(from 0deg,rgba(139,108,255,.09) 0 9deg,transparent 9deg 18deg);top:-170px;animation:vspin 30s linear 21s infinite"></div>
+  <div class="vabs vcenter" style="top:74px;animation:vrise .4s var(--back) 21s both"><span class="vchip">Meet Mitch</span></div>
+  <div class="vabs vcenter vd" style="top:120px;font-weight:800;font-size:60px;line-height:.98;color:var(--ink);animation:vrise .45s var(--back) 21.1s both">Revise.<br>Level up Mitch.</div>
+  <div class="vabs" style="left:120px;top:628px;width:300px;height:36px;border-radius:50%;background:rgba(21,21,28,.1)"></div>
+  <div id="evoSlot" class="vabs" style="left:60px;top:300px;width:420px;height:340px"></div>
+  <div id="evoLabels" class="vabs vcenter" style="top:680px;height:110px"></div>
+  <div class="vabs" style="left:70px;top:812px;width:400px">
+    <div style="display:flex;justify-content:space-between;font:800 14px Inter;letter-spacing:.08em;text-transform:uppercase;color:#5B4BB5;margin-bottom:8px"><span>Level</span><span>Grade 9</span></div>
+    <div style="height:18px;border-radius:12px;background:#fff;border:3px solid var(--ink);overflow:hidden"><div style="height:100%;background:var(--lime);transform-origin:left;animation:vbarfill 3.5s linear 21.5s both"></div></div>
+  </div>
+</div>
+
+<!-- ========== 26–30  UNLOCK 10+ MITCHES ========== -->
+<div class="vscene vdots" id="gridScene" data-show="26-30">
+  <div class="vabs vcenter vd" style="top:52px;font-weight:800;font-size:56px;line-height:.98;color:var(--ink);animation:vrise .45s var(--back) 26.05s both">Unlock 10+<br>Mitches.</div>
+  <div class="vabs vcenter" style="top:178px;font:600 20px Inter;color:#6E6D78;animation:vrise .45s var(--back) 26.2s both">Earn them with revision. Never buy them.</div>
+  <div class="vabs" style="left:22px;right:22px;top:232px">
+    <div id="vgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;transform-origin:center top;animation:vzoom 2s ease-in-out 28s both"></div>
+  </div>
+</div>
+
+<!-- ========== 30–32  END CARD ========== -->
+<div class="vscene" data-show="30-33" style="background:var(--lime)">
+  <div class="vrays" style="animation:vspin 24s linear 30s infinite"></div>
+  <div class="vabs" style="left:100px;top:150px;width:340px;animation:vpop .5s var(--back) 30s both"><div id="endMitch" style="animation:vfloat 1s ease-in-out 30.5s infinite"></div></div>
+  <div class="vabs vcenter vd" style="top:430px;font-weight:800;font-size:160px;line-height:1;color:var(--ink);animation:vslam .38s var(--out) 30.1s both">swot<span style="color:#fff">.</span></div>
+  <div class="vabs vcenter vd" style="top:618px;font-weight:800;font-size:40px;color:var(--ink);animation:vrise .45s var(--back) 30.35s both">Free GCSE revision.</div>
+  <div class="vabs vcenter" style="top:688px;animation:vrise .45s var(--back) 30.55s both"><span class="vchip" style="font-size:16px;padding:12px 18px">Coming soon · iOS &amp; Android</span></div>
+  <div class="vabs vcenter" style="top:880px;font:600 16px Inter;color:rgba(21,21,28,.6);animation:vrise .45s var(--back) 30.8s both">Made by people who also left it to the last minute.</div>
+</div>
+
+</div>
+<script src="mitch.js"></script>
+<script src="engine.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+$('#panic').innerHTML = mitch({eyes:'open',mouth:'o',acc:['sweat']});
+$('#logoMitch').innerHTML = mitch({eyes:'half',mouth:'smirk',acc:['headphones']});
+$('#appMitch').innerHTML = mitch({eyes:'happy',mouth:'open',acc:['sparkle']});
+$('#endMitch').innerHTML = mitch({eyes:'happy',mouth:'open',acc:['headphones','sparkle']});
+
+// Evolution
+const EVO = [
+  {t:21.5,e:22.5,o:{stage:1,eyes:'open',mouth:'o'},name:'Spark',xp:'0 XP'},
+  {t:22.5,e:23.5,o:{stage:2,eyes:'open',mouth:'smile'},name:'Bean',xp:'500 XP'},
+  {t:23.5,e:24.5,o:{stage:3,eyes:'half',mouth:'smirk'},name:'Mitch',xp:'2,000 XP'},
+  {t:24.5,e:25.0,o:{stage:3,eyes:'open',mouth:'smile',acc:['glasses','headphones']},name:'Study Mitch',xp:'6,000 XP'},
+  {t:25.0,e:26.1,o:{stage:3,eyes:'happy',mouth:'open',acc:['cap','sparkle'],glow:true},name:'Grade 9 Mitch',xp:'15,000 XP'},
+];
+EVO.forEach(s => {
+  const d = document.createElement('div');
+  d.dataset.show = `${s.t}-${s.e}`;
+  d.style.cssText = `position:absolute;inset:0;transform-origin:50% 90%;animation:vpop .42s var(--back) ${s.t}s both`;
+  d.innerHTML = mitch(s.o);
+  $('#evoSlot').appendChild(d);
+  const l = document.createElement('div');
+  l.dataset.show = `${s.t}-${s.e}`;
+  l.style.cssText = `position:absolute;left:0;right:0;animation:vrise .3s var(--back) ${s.t}s both`;
+  l.innerHTML = `<div class="vd" style="font-weight:800;font-size:40px;color:var(--ink)">${s.name}</div><div style="margin-top:8px"><span class="vchip">${s.xp}</span></div>`;
+  $('#evoLabels').appendChild(l);
+});
+
+// Grid of variants
+VARIANTS.forEach((v, i) => {
+  const c = document.createElement('div');
+  c.className = 'vcard';
+  c.style.cssText = `background:${v.bg};animation:vpop .42s var(--back) ${26.25 + i * 0.12}s both`;
+  c.innerHTML = mitch(v) + `<b>${v.name.replace(' Mitch','<br>Mitch')}</b>`;
+  $('#vgrid').appendChild(c);
+});
+
+// p3a = quiz before selection; streak fill on home
+document.querySelector('#p2 .day.today i').style.animation = 'vfill .2s 11s forwards';
+document.querySelector('#p4 .sheet').style.animation = 'vsheet .5s cubic-bezier(.16,1,.3,1) 15s both';
+
+// Taps (phones must be visible to measure)
+const TAPS = [['#p1', '#p1 .btn', 9.45], ['#p2', '#p2 [style*="width:48px"]', 11.45], ['#p3', () => document.querySelectorAll('#p3 .opt')[2], 13.9], ['#p3', '#p3 .btn', 14.6]];
+TAPS.forEach(([h, target, time]) => {
+  seek(time);
+  const el = typeof target === 'function' ? target() : $(target);
+  tapAt($(h), el, time);
+});
+
+burst($('#appScene'), 270, 600, 15.12, 30, 300);
+burst($('#streakScene'), 270, 400, 19.0, 26, 260);
+burst($('#evoScene'), 270, 470, 25.0, 34, 300);
+burst($('#evoScene'), 270, 470, 23.5, 18, 220);
+flashes([4, 8, 18, 21, 26, 30]);
+seek(0);
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body></html>
