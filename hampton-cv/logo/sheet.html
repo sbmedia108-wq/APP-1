@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><title>Hampton CV — Logo</title>
+<link rel="stylesheet" href="../src/brand.css">
+<style>
+.page { padding: 16mm 18mm; }
+.hero { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; height: 62mm; display: grid; place-items: center; margin-top: 5mm; }
+.hero img { width: 125mm; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 4mm; }
+.cell { border-radius: 4px; height: 38mm; display: grid; place-items: center; border: 1px solid var(--line); position: relative; }
+.cell img { max-width: 70%; max-height: 62%; }
+.cell .lb { position: absolute; left: 3mm; bottom: 2.5mm; font: 600 7pt/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+.row3 { display: grid; grid-template-columns: 44mm 1fr; gap: 4mm; margin-top: 4mm; }
+.sizes { border: 1px solid var(--line); border-radius: 4px; background: var(--white); display: flex; align-items: flex-end; gap: 7mm; padding: 5mm 6mm; }
+.sizes figure { text-align: center; font-size: 7pt; color: var(--muted); }
+.sizes img { display: block; margin: 0 auto 1.5mm; }
+.rules { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.rules li { font-size: 9pt; margin-left: 4mm; margin-bottom: 1mm; }
+</style></head><body>
+<section class="page">
+  <div class="eyebrow">Logo</div>
+  <h2>The Hampton CV mark.</h2>
+  <p class="lede">A page with a folded corner (a CV) carrying an H (Hampton). It's simple enough to read as a 16px browser icon and bold enough for a shop sign.</p>
+  <div class="hero"><img src="svg/hampton-cv-logo.svg" alt=""></div>
+  <div class="grid">
+    <div class="cell" style="background:var(--forest)"><img src="svg/hampton-cv-logo-reversed.svg" alt=""><span class="lb" style="color:#fff">Reversed</span></div>
+    <div class="cell" style="background:var(--paper)"><img src="svg/hampton-cv-logo-stacked.svg" alt="" style="max-height:80%"><span class="lb">Stacked</span></div>
+    <div class="cell" style="background:#fff"><img src="svg/hampton-cv-logo-black.svg" alt=""><span class="lb">One colour (black)</span></div>
+    <div class="cell" style="background:#111"><img src="svg/hampton-cv-logo-white.svg" alt=""><span class="lb" style="color:#fff">One colour (white)</span></div>
+  </div>
+  <div class="row3">
+    <div class="cell" style="background:#fff;height:38mm"><img src="svg/hampton-cv-avatar.svg" alt="" style="width:27mm;max-width:none;max-height:none;border-radius:50%"><span class="lb">Profile picture</span></div>
+    <div class="sizes">
+      <figure><img src="svg/hampton-cv-mark.svg" width="16" alt="">16px</figure>
+      <figure><img src="svg/hampton-cv-mark.svg" width="32" alt="">32px</figure>
+      <figure><img src="svg/hampton-cv-mark.svg" width="64" alt="">64px</figure>
+      <figure><img src="svg/hampton-cv-logo.svg" width="150" alt="">Small print (25mm)</figure>
+    </div>
+  </div>
+  <div class="rules">
+    <div><h3>Do</h3><ul><li>Leave clear space around it at least the width of the H</li><li>Use the reversed version on dark photos or forest green</li><li>Use the one-colour versions for stamps, embroidery and photocopies</li></ul></div>
+    <div><h3>Don't</h3><ul><li>Stretch, rotate or add shadows</li><li>Recolour the page anything but amber, black or white</li><li>Retype the name in another font (use the files)</li></ul></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Logo</span><span>Files in logo/svg and logo/png</span></div>
+</section>
+</body></html>
