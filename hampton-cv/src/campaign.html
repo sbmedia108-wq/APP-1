@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Hampton CV — Launch Campaign</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+/* ---------- cover ---------- */
+.cover { background: var(--forest); color: var(--paper); padding: 0; display: grid; grid-template-columns: 1fr 92mm; }
+.cover .left { padding: 20mm 14mm 18mm 18mm; display: flex; flex-direction: column; }
+.cover .logo { color: var(--paper); }
+.cover h1 { font-size: 50pt; line-height: .95; font-weight: 800; margin-top: auto; letter-spacing: -0.035em; }
+.cover h1 em { font-style: normal; color: var(--amber); }
+.cover .sub { font-family: var(--serif); font-size: 14pt; line-height: 1.4; margin-top: 8mm; color: #d8e2dd; max-width: 95mm; }
+.cover .price-tag { margin-top: 10mm; display: inline-flex; align-items: baseline; gap: 8px; background: var(--amber); color: var(--ink); padding: 10px 16px; border-radius: 4px; font: 700 12pt/1 var(--display); align-self: flex-start; }
+.cover .price-tag b { font-size: 22pt; }
+.cover .right { position: relative; background: url(../assets/lewis.png) center 30% / cover no-repeat; }
+.cover .right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--forest) 0%, rgba(31,58,51,0) 22%); }
+.cover .caption { position: absolute; z-index: 2; left: 14mm; bottom: 16mm; color: var(--white); }
+.cover .caption b { display: block; font: 700 15pt/1.1 var(--display); }
+.cover .caption span { font-size: 9pt; opacity: .85; }
+.cover .doc-label { margin-top: 12mm; font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: #9fb5ac; }
+
+/* ---------- pricing ---------- */
+.about { display: grid; grid-template-columns: 46mm 1fr; gap: 9mm; align-items: center; margin: 6mm 0 9mm; }
+.about img { width: 46mm; height: 56mm; object-fit: cover; object-position: center 25%; border-radius: 3px; }
+.about p { font-family: var(--serif); font-size: 11.5pt; line-height: 1.5; }
+.about p + p { margin-top: 3mm; }
+.tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; }
+.tier { background: var(--white); border: 1px solid var(--line); border-radius: 4px; padding: 6mm 4.5mm 5mm; display: flex; flex-direction: column; }
+.tier.hot { background: var(--forest); color: var(--paper); border-color: var(--forest); position: relative; }
+.tier.hot::before { content: "Most popular"; position: absolute; top: -9px; left: 4.5mm; background: var(--amber); color: var(--ink); font: 700 7pt/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 4px 7px; border-radius: 2px; }
+.tier .name { font: 650 10.5pt/1.2 var(--display); }
+.tier .price { font: 800 28pt/1 var(--display); letter-spacing: -0.03em; margin: 3mm 0 1mm; }
+.tier .price small { font-size: 10pt; font-weight: 600; }
+.tier .for { font-size: 8.5pt; color: var(--muted); min-height: 9mm; }
+.tier.hot .for { color: #b9cbc4; }
+.tier ul { list-style: none; margin-top: 3mm; border-top: 1px solid var(--line); padding-top: 3mm; }
+.tier.hot ul { border-color: var(--forest-2); }
+.tier li { font-size: 8.5pt; line-height: 1.35; padding: 1.2mm 0 1.2mm 12px; position: relative; }
+.tier li::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 6px; height: 6px; background: var(--amber); border-radius: 1px; }
+.addons { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.box { border: 1px solid var(--line); border-radius: 4px; padding: 5mm; background: var(--white); }
+.box.amber { background: var(--amber-soft); border-color: #ecd3a6; }
+.row { display: flex; justify-content: space-between; font-size: 9.5pt; padding: 1.4mm 0; border-bottom: 1px dashed var(--line); }
+.row:last-child { border-bottom: 0; }
+.row b { font-family: var(--display); }
+
+/* ---------- brand kit ---------- */
+.kit { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 6mm; }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.sw { border-radius: 4px; height: 30mm; padding: 3mm; display: flex; flex-direction: column; justify-content: flex-end; font-size: 7.5pt; line-height: 1.3; border: 1px solid var(--line); }
+.sw b { font-size: 8.5pt; }
+.logo-lockups { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+.lockup { height: 30mm; border-radius: 4px; display: grid; place-items: center; border: 1px solid var(--line); }
+.type-spec .big { font: 800 30pt/1 var(--display); letter-spacing: -0.03em; }
+.type-spec .ser { font: 13pt/1.4 var(--serif); margin-top: 2mm; }
+.type-spec .meta { font-size: 8pt; color: var(--muted); margin-top: 1mm; }
+.voice { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--white); }
+.voice div { padding: 4mm 5mm; }
+.voice .do { border-right: 1px solid var(--line); }
+.voice h4 { font: 700 8pt/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2mm; }
+.voice .do h4 { color: #2e7d4f; } .voice .dont h4 { color: #b24a3a; }
+.voice li { font-size: 9pt; margin-left: 4mm; }
+
+/* ---------- plan ---------- */
+.plan { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin-top: 5mm; }
+.wk { background: var(--white); border: 1px solid var(--line); border-top: 4px solid var(--amber); border-radius: 3px; padding: 4mm; }
+.wk .n { font: 800 18pt/1 var(--display); color: var(--forest); }
+.wk .t { font: 650 9.5pt/1.25 var(--display); margin: 1.5mm 0 2mm; }
+.wk li { font-size: 8.2pt; line-height: 1.35; margin: 0 0 1mm 3.5mm; }
+table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size: 9pt; }
+.costs th { text-align: left; font: 700 7.5pt/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 2mm 2mm; border-bottom: 2px solid var(--ink); }
+.costs td { padding: 1.4mm 2mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+.costs td:last-child, .costs th:last-child { text-align: right; white-space: nowrap; }
+.costs tr.total td { font-weight: 700; border-bottom: 0; border-top: 2px solid var(--ink); }
+.free { color: #2e7d4f; font-weight: 600; }
+.targets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; margin-top: 4mm; }
+.target { background: var(--forest); color: var(--paper); border-radius: 4px; padding: 4mm; }
+.target b { display: block; font: 800 20pt/1 var(--display); color: var(--amber); }
+.target span { font-size: 8.5pt; }
+
+/* ---------- social ---------- */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 5mm; }
+.post .tile { aspect-ratio: 1; border-radius: 4px; overflow: hidden; position: relative; padding: 5mm; display: flex; flex-direction: column; }
+.tile.t1 { background: var(--forest); color: var(--paper); }
+.tile.t1 .q { font: 800 17pt/1.02 var(--display); letter-spacing: -0.03em; margin-top: auto; }
+.tile.t1 .q em { font-style: normal; color: var(--amber); }
+.tile.t2 { background: var(--amber); color: var(--ink); }
+.tile.t2 .big { font: 800 44pt/0.9 var(--display); letter-spacing: -0.04em; margin-top: auto; }
+.tile.t2 .s { font: 600 10pt/1.2 var(--display); margin-top: 2mm; }
+.tile.t3 { background: url(../assets/lewis.png) center 28% / cover; color: var(--white); justify-content: flex-end; }
+.tile.t3::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,36,31,0) 40%, rgba(22,36,31,.92) 100%); }
+.tile.t3 > * { position: relative; }
+.tile.t3 .q { font: 700 12pt/1.15 var(--display); }
+.tile .mini { font: 700 7pt/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
+.post .cap { font-size: 8.3pt; line-height: 1.45; margin-top: 2.5mm; color: var(--ink); }
+.post .cap .tag { color: var(--forest-2); }
+.captions { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+.capt { background: var(--white); border: 1px solid var(--line); border-radius: 3px; padding: 3.5mm 4mm; }
+.capt .k { font: 700 7.5pt/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.5mm; }
+.capt p { font-size: 8.5pt; line-height: 1.45; }
+
+/* ---------- scripts ---------- */
+.scripts { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 5mm; }
+.script { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--forest); border-radius: 3px; padding: 4mm 5mm; }
+.script .where { font: 700 7.5pt/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2mm; }
+.script p { font-family: var(--serif); font-size: 9.6pt; line-height: 1.45; }
+.script p + p { margin-top: 2mm; }
+.script.wide { grid-column: span 2; }
+
+/* ---------- workflow ---------- */
+.steps { counter-reset: s; margin-top: 5mm; display: grid; gap: 3mm; }
+.step { display: grid; grid-template-columns: 12mm 1fr; gap: 4mm; background: var(--white); border: 1px solid var(--line); border-radius: 3px; padding: 4mm; }
+.step::before { counter-increment: s; content: counter(s); font: 800 20pt/1 var(--display); color: var(--amber); }
+.step p { font-size: 9pt; }
+.prompt { font: 8.3pt/1.45 "JetBrains Mono", monospace; background: var(--ink); color: #e5ece8; border-radius: 3px; padding: 3.5mm 4mm; margin-top: 2mm; white-space: pre-wrap; }
+.check { columns: 2; column-gap: 8mm; margin-top: 3mm; }
+.check li { list-style: none; font-size: 9pt; padding-left: 16px; position: relative; margin-bottom: 1.6mm; break-inside: avoid; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 9px; height: 9px; border: 1.5px solid var(--forest); border-radius: 2px; }
+
+/* ---------- flyer ---------- */
+.flyer { background: var(--paper); padding: 0; display: flex; flex-direction: column; }
+.flyer .top { background: var(--forest); color: var(--paper); padding: 16mm 18mm 0; display: grid; grid-template-columns: 1fr 70mm; gap: 6mm; height: 150mm; }
+.flyer .top h1 { font: 800 44pt/0.95 var(--display); letter-spacing: -0.035em; margin-top: 14mm; }
+.flyer .top h1 em { font-style: normal; color: var(--amber); }
+.flyer .top p { font-family: var(--serif); font-size: 13pt; color: #d8e2dd; margin-top: 6mm; line-height: 1.4; }
+.flyer .top .photo { align-self: end; height: 125mm; background: url(../assets/lewis.png) center 20% / cover; border-radius: 4px 4px 0 0; }
+.flyer .mid { padding: 10mm 18mm 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.fp { border: 2px solid var(--forest); border-radius: 4px; padding: 5mm; text-align: center; }
+.fp.hot { background: var(--amber); border-color: var(--amber); }
+.fp .n { font: 650 10pt/1.2 var(--display); }
+.fp .p { font: 800 32pt/1 var(--display); letter-spacing: -0.03em; margin: 2mm 0; }
+.fp .d { font-size: 8.5pt; color: var(--muted); }
+.fp.hot .d { color: var(--ink); }
+.flyer .ticks { padding: 8mm 18mm 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 8mm; }
+.flyer .ticks div { font: 600 10.5pt/1.3 var(--display); padding-left: 18px; position: relative; }
+.flyer .ticks div::before { content: "✓"; position: absolute; left: 0; color: var(--amber); font-weight: 800; }
+.flyer .bottom { margin-top: auto; background: var(--ink); color: var(--paper); padding: 8mm 18mm; display: flex; justify-content: space-between; align-items: center; }
+.flyer .bottom .offer { font: 800 15pt/1.15 var(--display); }
+.flyer .bottom .offer span { color: var(--amber); }
+.flyer .contact { text-align: right; font-size: 10pt; line-height: 1.6; }
+.flyer .contact b { font: 700 12pt/1.2 var(--display); color: var(--amber); }
+.tear { display: grid; grid-template-columns: repeat(8, 1fr); border-top: 1px dashed #777; }
+.tear div { writing-mode: vertical-rl; transform: rotate(180deg); height: 26mm; font: 600 7.5pt/1 var(--sans); padding: 2mm; border-left: 1px dashed #777; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <div class="left">
+    <div class="logo"><svg viewBox="0 0 32 32"><path d="M4 2h18l6 6v22H4z" fill="#e6a23c"/><path d="M22 2v6h6z" fill="#b97f25"/><path d="M10 10v13M20 10v13M10 16.5h10" stroke="#1f3a33" stroke-width="3" stroke-linecap="round"/></svg>Hampton CV</div>
+    <div class="doc-label">Launch campaign · 2026</div>
+    <h1>Your next job starts on <em>one page.</em></h1>
+    <p class="sub">Professional, recruiter-ready CVs written by a real person. Fast turnaround, plain pricing, no upsell nonsense.</p>
+    <div class="price-tag">CVs from <b>£19</b></div>
+  </div>
+  <div class="right">
+    <div class="caption"><b>Lewis Hampton</b><span>Founder &amp; CV writer</span></div>
+  </div>
+</section>
+
+<!-- 2. ABOUT + PRICING -->
+<section class="page">
+  <div class="eyebrow">The offer</div>
+  <h2>Cheap enough to say yes to.<br>Good enough to get the call.</h2>
+  <div class="about">
+    <img src="../assets/lewis.png" alt="Lewis Hampton">
+    <div>
+      <p>Hi, I'm Lewis. I write CVs that get people interviews: clear, honest, and built to get through the software that recruiters use to filter applications.</p>
+      <p>Most CV services charge £100–£300. I keep my costs close to zero, so you don't pay for an office or an agency. You get one person who reads your history properly and writes it up like it matters.</p>
+    </div>
+  </div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="name">CV Check-up</div>
+      <div class="price">£9</div>
+      <div class="for">Already have a CV? I'll tell you what to fix.</div>
+      <ul><li>Written review of your CV</li><li>Top 5 changes, ranked</li><li>ATS (applicant tracking software) check</li><li>Back within 48 hours</li></ul>
+    </div>
+    <div class="tier">
+      <div class="name">Starter CV</div>
+      <div class="price">£19</div>
+      <div class="for">Students, school leavers, first jobs.</div>
+      <ul><li>1-page CV written from scratch</li><li>Skills from school, hobbies &amp; part-time work</li><li>Word + PDF files</li><li>1 round of changes</li></ul>
+    </div>
+    <div class="tier hot">
+      <div class="name">Professional CV</div>
+      <div class="price">£35</div>
+      <div class="for">Experienced workers &amp; career changers.</div>
+      <ul><li>2-page tailored CV</li><li>Achievements written with numbers</li><li>Keyword-matched to your target job</li><li>Word + PDF files</li><li>2 rounds of changes</li></ul>
+    </div>
+    <div class="tier">
+      <div class="name">Career Pack</div>
+      <div class="price">£55</div>
+      <div class="for">Everything you need to apply.</div>
+      <ul><li>Professional CV</li><li>Matching cover letter</li><li>LinkedIn headline &amp; About section</li><li>Unlimited tweaks for 14 days</li></ul>
+    </div>
+  </div>
+
+  <div class="addons">
+    <div class="box">
+      <h3>Add-ons</h3>
+      <div class="row"><span>Extra cover letter</span><b>£10</b></div>
+      <div class="row"><span>LinkedIn profile rewrite</span><b>£15</b></div>
+      <div class="row"><span>24-hour rush</span><b>+£8</b></div>
+      <div class="row"><span>Tailor your CV to one more job</span><b>£7</b></div>
+    </div>
+    <div class="box amber">
+      <h3>Launch offers</h3>
+      <div class="row"><span>First 20 customers</span><b>30% off</b></div>
+      <div class="row"><span>Bring a friend: you both get</span><b>£5 off</b></div>
+      <div class="row"><span>Students &amp; jobseekers (with proof)</span><b>20% off</b></div>
+      <div class="row"><span>Leave a Google review</span><b>Free check-up</b></div>
+    </div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>02</span></div>
+</section>
+
+<!-- 3. BRAND KIT -->
+<section class="page">
+  <div class="eyebrow">Brand kit</div>
+  <h2>One look, used everywhere.</h2>
+  <p class="lede">Use the same colours, fonts and tone on every post, flyer and CV. Looking consistent makes a one-person business look established.</p>
+
+  <div class="kit">
+    <div>
+      <h3>Logo</h3>
+      <div class="logo-lockups">
+        <div class="lockup" style="background:var(--paper)"><div class="logo"><svg viewBox="0 0 32 32"><path d="M4 2h18l6 6v22H4z" fill="#e6a23c"/><path d="M22 2v6h6z" fill="#b97f25"/><path d="M10 10v13M20 10v13M10 16.5h10" stroke="#1f3a33" stroke-width="3" stroke-linecap="round"/></svg>Hampton CV</div></div>
+        <div class="lockup" style="background:var(--forest)"><div class="logo" style="color:var(--paper)"><svg viewBox="0 0 32 32"><path d="M4 2h18l6 6v22H4z" fill="#e6a23c"/><path d="M22 2v6h6z" fill="#b97f25"/><path d="M10 10v13M20 10v13M10 16.5h10" stroke="#1f3a33" stroke-width="3" stroke-linecap="round"/></svg>Hampton CV</div></div>
+      </div>
+      <p style="font-size:8.5pt;color:var(--muted);margin-top:2mm">The mark is a page with a folded corner and an H. Use it as the profile picture on every platform that doesn't use Lewis's photo.</p>
+    </div>
+    <div>
+      <h3>Colours</h3>
+      <div class="swatches">
+        <div class="sw" style="background:#1f3a33;color:#f6f2ea"><b>Forest</b>#1F3A33</div>
+        <div class="sw" style="background:#e6a23c"><b>Amber</b>#E6A23C</div>
+        <div class="sw" style="background:#f6f2ea"><b>Paper</b>#F6F2EA</div>
+        <div class="sw" style="background:#16241f;color:#f6f2ea"><b>Ink</b>#16241F</div>
+      </div>
+      <p style="font-size:8.5pt;color:var(--muted);margin-top:2mm">Forest and paper do most of the work. Amber is for one thing per design: the price, the offer, or the button.</p>
+    </div>
+    <div class="type-spec">
+      <h3>Type</h3>
+      <div class="big">Get the interview.</div>
+      <div class="meta">Headlines · Inter Display ExtraBold (free on Google Fonts)</div>
+      <div class="ser">Clear, honest CVs written by a real person.</div>
+      <div class="meta">Body &amp; quotes · Charter or Georgia (free; Georgia comes with Windows and macOS)</div>
+    </div>
+    <div>
+      <h3>Tagline options</h3>
+      <div class="row"><span><b>Your next job starts on one page.</b></span><span>main</span></div>
+      <div class="row"><span>Get the interview, not the silence.</span><span>ads</span></div>
+      <div class="row"><span>Real CVs. Real person. Real cheap.</span><span>flyers</span></div>
+      <div class="row"><span>From £19. Back in 48 hours.</span><span>price-led</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:7mm">Tone of voice</h3>
+  <div class="voice">
+    <div class="do"><h4>Do</h4><ul><li>Talk like a helpful mate who knows recruiting</li><li>Lead with the price; it's the selling point</li><li>Use real numbers: "48 hours", "£19", "2 pages"</li><li>Show before-and-after examples (with permission)</li></ul></div>
+    <div class="dont"><h4>Don't</h4><ul><li>Promise jobs or "guaranteed interviews"</li><li>Use buzzwords: "synergy", "rockstar", "ninja"</li><li>Make up reviews or customer numbers</li><li>Slag off other CV services by name</li></ul></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>03</span></div>
+</section>
+
+<!-- 4. PLAN + BUDGET -->
+<section class="page">
+  <div class="eyebrow">30-day launch plan</div>
+  <h2>Launching on (almost) no money.</h2>
+  <p class="lede">Every channel below is free. The only real cost is time: about an hour a day for the first month.</p>
+
+  <div class="plan">
+    <div class="wk"><div class="n">01</div><div class="t">Set up</div><ul>
+      <li>Make Facebook page, Instagram, TikTok &amp; LinkedIn as <b>@hamptoncv</b></li>
+      <li>Free Google Business Profile (service-area, no address shown)</li>
+      <li>Google Form for orders; Stripe or PayPal payment links</li>
+      <li>Write 3 free sample CVs for friends &amp; family; ask for honest feedback</li>
+    </ul></div>
+    <div class="wk"><div class="n">02</div><div class="t">Tell everyone</div><ul>
+      <li>Personal post on every account: "I've started a business"</li>
+      <li>Message 30 people you know who are job hunting or know someone who is</li>
+      <li>Post in 5 local Facebook groups (check the rules first)</li>
+      <li>Daily post: tips, before/after, price</li>
+    </ul></div>
+    <div class="wk"><div class="n">03</div><div class="t">Go local</div><ul>
+      <li>Print 100 flyers (page 8): libraries, job centre noticeboards, colleges, gyms, cafés</li>
+      <li>Ask local colleges' careers staff whether you can offer a student rate</li>
+      <li>Short TikTok/Reels: "3 CV mistakes in 30 seconds"</li>
+    </ul></div>
+    <div class="wk"><div class="n">04</div><div class="t">Prove it</div><ul>
+      <li>Ask every customer for a Google review (script on page 6)</li>
+      <li>Share real results, with permission: "Got the interview!"</li>
+      <li>List on Fiverr / PeoplePerHour as a backup source of orders</li>
+      <li>Check the numbers: what worked? Do more of that.</li>
+    </ul></div>
+  </div>
+
+  <h3 style="margin-top:5mm">Start-up budget</h3>
+  <table class="costs">
+    <tr><th>Item</th><th>Notes</th><th>Cost</th></tr>
+    <tr><td>Claude</td><td>Already downloaded; use it to draft, then edit every CV yourself</td><td>Existing</td></tr>
+    <tr><td>Social media, Google Business Profile, Gmail</td><td>All free accounts</td><td class="free">£0</td></tr>
+    <tr><td>Canva (free plan) / Google Docs</td><td>Designs, CV layouts, export to PDF &amp; Word</td><td class="free">£0</td></tr>
+    <tr><td>Google Forms + Stripe / PayPal links</td><td>No monthly fee; they take a small cut of each payment</td><td class="free">£0 upfront</td></tr>
+    <tr><td>ICO data protection fee</td><td>You'll hold people's personal details, so check at ico.org.uk whether you need to pay (around £50/yr for small businesses)</td><td>~£50/yr</td></tr>
+    <tr><td>100 printed A5 flyers <i>(optional)</i></td><td>Or print at the library</td><td>~£15</td></tr>
+    <tr><td>Domain name, e.g. hamptoncv.co.uk <i>(optional)</i></td><td>Check it's available; adds trust for email</td><td>~£10/yr</td></tr>
+    <tr class="total"><td>Total to launch</td><td>Can start at £0 and add the rest from first sales</td><td>£0 – £75</td></tr>
+  </table>
+
+  <h3 style="margin-top:4mm">Month-one targets</h3>
+  <div class="targets">
+    <div class="target"><b>15</b><span>paying customers (about 1 every 2 days)</span></div>
+    <div class="target"><b>£400</b><span>revenue at an average of ~£27 per order</span></div>
+    <div class="target"><b>8</b><span>Google reviews, which matter more than followers</span></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>04</span></div>
+</section>
+
+<!-- 5. SOCIAL -->
+<section class="page">
+  <div class="eyebrow">Social content</div>
+  <h2>Ready-to-post content.</h2>
+  <p class="lede">Three templates to rotate: a tip, a price post, a personal post. Square 1080×1080 versions of these are in the <b>output/social</b> folder.</p>
+
+  <div class="posts">
+    <div class="post">
+      <div class="tile t1"><div class="mini" style="color:var(--amber)">CV tip #1</div><div class="q">Recruiters spend about <em>7 seconds</em> on your CV. Make the top third count.</div></div>
+      <p class="cap">Most CVs bury the good stuff on page 2. Put your strongest achievement in the first 3 lines, with a number in it. Want me to do it for you? CVs from £19, link in bio. <span class="tag">#CVtips #JobHunting #UKjobs</span></p>
+    </div>
+    <div class="post">
+      <div class="tile t2"><div class="mini">Hampton CV</div><div class="big">£19</div><div class="s">A professionally written CV.<br>Back in 48 hours.</div></div>
+      <p class="cap">Why pay £150 for a CV? Starter CVs £19, Professional £35, the full Career Pack with cover letter and LinkedIn £55. First 20 customers get 30% off. DM "CV" to start. <span class="tag">#CVwriting #NewJob</span></p>
+    </div>
+    <div class="post">
+      <div class="tile t3"><div class="mini" style="color:var(--amber)">Meet the writer</div><div class="q">"I read every CV like it's my own job on the line."</div></div>
+      <p class="cap">I'm Lewis 👋 I've just launched Hampton CV to help people get interviews without paying agency prices. I'll write your CV properly, and you'll talk to a real person the whole way through. Share this with someone who's job hunting 🙏 <span class="tag">#SmallBusiness</span></p>
+    </div>
+  </div>
+
+  <div class="captions">
+    <div class="capt"><div class="k">Tip post</div><p>Stop writing "hard-working team player". Everyone says it. Write what you did instead: "Trained 4 new starters in 2 weeks" beats any adjective. More tips every week, follow along.</p></div>
+    <div class="capt"><div class="k">Before / after</div><p>BEFORE: "Responsible for stock." AFTER: "Cut stock-count errors by 30% by introducing a weekly checking system." Same job, very different CV. Want yours rewritten? From £19.</p></div>
+    <div class="capt"><div class="k">TikTok / Reels idea</div><p>30s video: hold up a printed CV, cross out 3 phrases with a red pen, say what to write instead. Text on screen: "3 things to delete from your CV today." End: "CVs from £19, link in bio."</p></div>
+    <div class="capt"><div class="k">LinkedIn post</div><p>I've started a CV writing service: Hampton CV. Proper, tailored CVs from £19, because I think a good CV shouldn't cost a week's shopping. If you know someone who's job hunting, I'd really appreciate a share.</p></div>
+    <div class="capt"><div class="k">January hook (peak season)</div><p>New year, new job? January is the busiest month for job hunting. Get your CV sorted before everyone else does: 30% off this week only.</p></div>
+    <div class="capt"><div class="k">Student hook (May–Sept)</div><p>Finishing school, college or uni? Your first CV is the hardest one to write. Starter CVs £19, or £15.20 with the student discount. We'll turn your part-time jobs and projects into skills employers want.</p></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>05</span></div>
+</section>
+
+<!-- 6. SCRIPTS -->
+<section class="page">
+  <div class="eyebrow">Copy-paste scripts</div>
+  <h2>What to say, word for word.</h2>
+  <p class="lede">Swap the bits in [brackets]. Always sound like you, not a robot.</p>
+
+  <div class="scripts">
+    <div class="script"><div class="where">Message to people you know</div>
+      <p>Hey [name]! Bit of news: I've started a CV writing business called Hampton CV. Proper, tailored CVs from £19.</p>
+      <p>If you or anyone you know is job hunting, I'd love to help, and the first 20 people get 30% off. No pressure at all, but a share would mean loads 🙏</p></div>
+    <div class="script"><div class="where">Local Facebook group post</div>
+      <p>Hi all, hope it's OK to post. I'm Lewis, a local lad who's just started writing CVs for people. They're from £19 (most places charge £100+), and I'll have it back to you in 48 hours.</p>
+      <p>If you're job hunting and your CV needs a refresh, drop me a message. Happy to give anyone a free quick tip in the comments too 👇</p></div>
+    <div class="script"><div class="where">Reply when someone enquires</div>
+      <p>Thanks for getting in touch! To get started, fill in this quick form: [Google Form link]. It takes about 10 minutes. Attach your old CV if you have one.</p>
+      <p>Once it's in, I'll send a payment link for [package] (£[price]) and you'll have your CV within 48 hours. Any questions, just ask.</p></div>
+    <div class="script"><div class="where">Asking for a review (2 days after delivery)</div>
+      <p>Hi [name], hope the applications are going well! If you've got 1 minute, a Google review would really help my little business grow: [review link].</p>
+      <p>As a thank you, I'll do a free CV check-up any time you need one in the future.</p></div>
+    <div class="script wide"><div class="where">Email to college / sixth form careers adviser</div>
+      <p>Subject: Affordable CV help for your students</p>
+      <p>Hi [name], I'm Lewis Hampton and I run Hampton CV, a local CV writing service. I know many students struggle with their first CV, so I'm offering students 20% off (Starter CVs from £15.20). I'd also be happy to run a free 30-minute "CV basics" talk for a class or careers event. Would that be useful? I can send sample CVs so you can see the quality first.</p>
+      <p>Best wishes, Lewis</p></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>06</span></div>
+</section>
+
+<!-- 7. WORKFLOW -->
+<section class="page">
+  <div class="eyebrow">How to deliver it</div>
+  <h2>One CV in under an hour, using Claude.</h2>
+  <p class="lede">Claude makes each CV fast to write, which is how the prices stay low. You add the judgement and checking.</p>
+
+  <div class="steps">
+    <div class="step"><div><h3>Collect the facts</h3><p>The Google Form asks for: target job, every job with dates, what they actually did, any numbers (sales, customers, team size), qualifications, skills, and an old CV if they have one. Also ask for 1–2 job adverts they want to apply for.</p></div></div>
+    <div class="step"><div><h3>Draft with Claude</h3><p>Paste the form answers and the job advert into Claude with a prompt like this:</p>
+      <div class="prompt">Write a UK-style 2-page CV for this person, targeting the job advert below.
+Use ONLY facts from their answers; never invent jobs, dates, grades or numbers.
+Turn duties into achievements, using their real numbers where given.
+Include: profile (3–4 lines), key skills matching the advert's keywords,
+experience (newest first, 3–5 bullet points each), education, extras.
+Plain formatting that applicant tracking systems can read. No photo, age or marital status.
+If something useful is missing, list questions I should ask them.
+
+[form answers]   [job advert]</div></div></div>
+    <div class="step"><div><h3>Edit &amp; check it yourself</h3><p>Read every line. Ask the customer the questions Claude flagged. Put the text into your Canva or Google Docs CV template and export Word + PDF.</p></div></div>
+    <div class="step"><div><h3>Deliver, then follow up</h3><p>Send the files with a short note on how to tailor it for each job. Two days later, send the review request (page 6).</p></div></div>
+  </div>
+
+  <h3 style="margin-top:6mm">Quality checklist before sending</h3>
+  <ul class="check">
+    <li>Every fact matches what the customer told you</li>
+    <li>No spelling errors (read it aloud)</li>
+    <li>Contact details correct &amp; professional email</li>
+    <li>Dates consistent, newest job first</li>
+    <li>Keywords from the job advert included</li>
+    <li>Fits on 1 page (Starter) or 2 pages (Pro)</li>
+    <li>No photo, age, date of birth or marital status</li>
+    <li>Customer's data deleted after 3 months, and they've been told</li>
+  </ul>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>07</span></div>
+</section>
+
+<!-- 8. FLYER -->
+<section class="page flyer">
+  <div class="top">
+    <div>
+      <div class="logo" style="color:var(--paper)"><svg viewBox="0 0 32 32"><path d="M4 2h18l6 6v22H4z" fill="#e6a23c"/><path d="M22 2v6h6z" fill="#b97f25"/><path d="M10 10v13M20 10v13M10 16.5h10" stroke="#1f3a33" stroke-width="3" stroke-linecap="round"/></svg>Hampton CV</div>
+      <h1>Get the interview, <em>not the silence.</em></h1>
+      <p>Professional CVs written by a real person, for a fraction of agency prices. Back within 48 hours.</p>
+    </div>
+    <div class="photo"></div>
+  </div>
+  <div class="mid">
+    <div class="fp"><div class="n">Starter CV</div><div class="p">£19</div><div class="d">Students &amp; first jobs</div></div>
+    <div class="fp hot"><div class="n">Professional CV</div><div class="p">£35</div><div class="d">Tailored, 2 pages, 2 revisions</div></div>
+    <div class="fp"><div class="n">Career Pack</div><div class="p">£55</div><div class="d">CV + cover letter + LinkedIn</div></div>
+  </div>
+  <div class="ticks">
+    <div>Written for the job you want</div>
+    <div>Gets past recruitment software</div>
+    <div>Word &amp; PDF files included</div>
+    <div>Talk to Lewis directly, start to finish</div>
+  </div>
+  <div class="bottom">
+    <div class="offer">Launch offer: <span>30% off</span><br>for the first 20 customers</div>
+    <div class="contact"><b>@hamptoncv</b><br>Facebook · Instagram · TikTok<br>[phone] · [email]</div>
+  </div>
+  <div class="tear">
+    <div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div><div>Hampton CV · @hamptoncv</div>
+  </div>
+</section>
+
+</body>
+</html>
