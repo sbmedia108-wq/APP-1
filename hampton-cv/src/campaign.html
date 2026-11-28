@@ -143,6 +143,20 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
 .flyer .contact b { font: 700 12pt/1.2 var(--display); color: var(--amber); }
 .tear { display: grid; grid-template-columns: repeat(8, 1fr); border-top: 1px dashed #777; }
 .tear div { writing-mode: vertical-rl; transform: rotate(180deg); height: 26mm; font: 600 7.5pt/1 var(--sans); padding: 2mm; border-left: 1px dashed #777; text-align: center; }
+
+/* ---------- logo guide ---------- */
+.lg-hero { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; height: 60mm; display: grid; place-items: center; margin-top: 4mm; }
+.lg-hero img { width: 120mm; }
+.lg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 4mm; }
+.lg-cell { border-radius: 4px; height: 36mm; padding-bottom: 5mm; display: grid; place-items: center; border: 1px solid var(--line); position: relative; }
+.lg-cell img { max-width: 70%; max-height: 62%; }
+.lg-cell .lb { position: absolute; left: 3mm; bottom: 2.5mm; font: 600 7pt/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; opacity: .6; }
+.lg-row { display: grid; grid-template-columns: 44mm 1fr; gap: 4mm; margin-top: 4mm; }
+.lg-sizes { border: 1px solid var(--line); border-radius: 4px; background: var(--white); display: flex; align-items: flex-end; gap: 7mm; padding: 5mm 6mm; }
+.lg-sizes figure { text-align: center; font-size: 7pt; color: var(--muted); }
+.lg-sizes img { display: block; margin: 0 auto 1.5mm; }
+.lg-rules { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.lg-rules li { font-size: 9pt; margin-left: 4mm; margin-bottom: 1mm; }
 </style>
 </head>
 <body>
@@ -229,10 +243,10 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
     <div>
       <h3>Logo</h3>
       <div class="logo-lockups">
-        <div class="lockup" style="background:var(--paper)"><div class="logo"><svg viewBox="0 0 64 64"><path d="M14 3h27l16 16v38a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z" fill="#e6a23c"/><path d="M41 3v12a4 4 0 0 0 4 4h12z" fill="#b97f25"/><path d="M23 24v24M44 24v24M23 36h21" stroke="#1f3a33" stroke-width="6.5" stroke-linecap="round" fill="none"/></svg>Hampton CV</div></div>
-        <div class="lockup" style="background:var(--forest)"><div class="logo" style="color:var(--paper)"><svg viewBox="0 0 64 64"><path d="M14 3h27l16 16v38a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z" fill="#e6a23c"/><path d="M41 3v12a4 4 0 0 0 4 4h12z" fill="#b97f25"/><path d="M23 24v24M44 24v24M23 36h21" stroke="#1f3a33" stroke-width="6.5" stroke-linecap="round" fill="none"/></svg>Hampton CV</div></div>
+        <div class="lockup" style="background:var(--paper)"><img src="../logo/svg/hampton-cv-logo.svg" alt="Hampton CV logo" style="width:80%"></div>
+        <div class="lockup" style="background:var(--forest)"><img src="../logo/svg/hampton-cv-logo-reversed.svg" alt="Hampton CV logo, reversed" style="width:80%"></div>
       </div>
-      <p style="font-size:8.5pt;color:var(--muted);margin-top:2mm">The mark is a page with a folded corner and an H. Use it as the profile picture on every platform that doesn't use Lewis's photo.</p>
+      <p style="font-size:8.5pt;color:var(--muted);margin-top:2mm">A page with a folded corner and an H. All versions and rules are on the next page.</p>
     </div>
     <div>
       <h3>Colours</h3>
@@ -268,7 +282,35 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
   <div class="folio"><span>Hampton CV · Launch campaign</span><span>03</span></div>
 </section>
 
-<!-- 4. PLAN + BUDGET -->
+<!-- 4. LOGO -->
+<section class="page">
+  <div class="eyebrow">Logo</div>
+  <h2>The Hampton CV logo.</h2>
+  <p class="lede">A page with a folded corner (a CV) with an H for Hampton on it. Simple enough to read as a 16px browser icon, bold enough for a shop sign.</p>
+  <div class="lg-hero"><img src="../logo/svg/hampton-cv-logo.svg" alt="Hampton CV logo"></div>
+  <div class="lg-grid">
+    <div class="lg-cell" style="background:var(--forest)"><img src="../logo/svg/hampton-cv-logo-reversed.svg" alt=""><span class="lb" style="color:#fff">For dark backgrounds</span></div>
+    <div class="lg-cell" style="background:var(--paper)"><img src="../logo/svg/hampton-cv-logo-stacked.svg" alt="" style="max-height:78%"><span class="lb">Stacked</span></div>
+    <div class="lg-cell" style="background:#fff"><img src="../logo/svg/hampton-cv-logo-black.svg" alt=""><span class="lb">Black only</span></div>
+    <div class="lg-cell" style="background:#111"><img src="../logo/svg/hampton-cv-logo-white.svg" alt=""><span class="lb" style="color:#fff">White only</span></div>
+  </div>
+  <div class="lg-row">
+    <div class="lg-cell" style="background:#fff"><img src="../logo/svg/hampton-cv-avatar.svg" alt="" style="width:22mm;max-width:none;max-height:none;border-radius:50%"><span class="lb">Profile picture</span></div>
+    <div class="lg-sizes">
+      <figure><img src="../logo/svg/hampton-cv-mark.svg" width="16" alt="">16px</figure>
+      <figure><img src="../logo/svg/hampton-cv-mark.svg" width="32" alt="">32px</figure>
+      <figure><img src="../logo/svg/hampton-cv-mark.svg" width="64" alt="">64px</figure>
+      <figure><img src="../logo/svg/hampton-cv-logo.svg" width="150" alt="">Small print (25mm)</figure>
+    </div>
+  </div>
+  <div class="lg-rules">
+    <div><h3>Do</h3><ul><li>Leave space around it at least the width of the H</li><li>Use the dark-background version on green or dark photos</li><li>Use black or white only for stamps, T-shirts and photocopies</li></ul></div>
+    <div><h3>Don't</h3><ul><li>Stretch, rotate or add shadows</li><li>Recolour the page anything but amber, black or white</li><li>Retype the name in another font; use the files</li></ul></div>
+  </div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>04</span></div>
+</section>
+
+<!-- 5. PLAN + BUDGET -->
 <section class="page">
   <div class="eyebrow">30-day launch plan</div>
   <h2>Launching on (almost) no money.</h2>
@@ -288,12 +330,12 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
       <li>Daily post: tips, before/after, price</li>
     </ul></div>
     <div class="wk"><div class="n">03</div><div class="t">Go local</div><ul>
-      <li>Print 100 flyers (page 8): libraries, job centre noticeboards, colleges, gyms, cafés</li>
+      <li>Print 100 flyers (page 9): libraries, job centre noticeboards, colleges, gyms, cafés</li>
       <li>Ask local colleges' careers staff whether you can offer a student rate</li>
       <li>Short TikTok/Reels: "3 CV mistakes in 30 seconds"</li>
     </ul></div>
     <div class="wk"><div class="n">04</div><div class="t">Prove it</div><ul>
-      <li>Ask every customer for a Google review (script on page 6)</li>
+      <li>Ask every customer for a Google review (script on page 7)</li>
       <li>Share real results, with permission: "Got the interview!"</li>
       <li>List on Fiverr / PeoplePerHour as a backup source of orders</li>
       <li>Check the numbers: what worked? Do more of that.</li>
@@ -319,10 +361,10 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
     <div class="target"><b>£400</b><span>revenue at an average of ~£27 per order</span></div>
     <div class="target"><b>8</b><span>Google reviews, which matter more than followers</span></div>
   </div>
-  <div class="folio"><span>Hampton CV · Launch campaign</span><span>04</span></div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>05</span></div>
 </section>
 
-<!-- 5. SOCIAL -->
+<!-- 6. SOCIAL -->
 <section class="page">
   <div class="eyebrow">Social content</div>
   <h2>Ready-to-post content.</h2>
@@ -351,10 +393,10 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
     <div class="capt"><div class="k">January hook (peak season)</div><p>New year, new job? January is the busiest month for job hunting. Get your CV sorted before everyone else does: 30% off this week only.</p></div>
     <div class="capt"><div class="k">Student hook (May–Sept)</div><p>Finishing school, college or uni? Your first CV is the hardest one to write. Starter CVs £19, or £15.20 with the student discount. We'll turn your part-time jobs and projects into skills employers want.</p></div>
   </div>
-  <div class="folio"><span>Hampton CV · Launch campaign</span><span>05</span></div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>06</span></div>
 </section>
 
-<!-- 6. SCRIPTS -->
+<!-- 7. SCRIPTS -->
 <section class="page">
   <div class="eyebrow">Copy-paste scripts</div>
   <h2>What to say, word for word.</h2>
@@ -378,10 +420,10 @@ table.costs { width: 100%; border-collapse: collapse; margin-top: 3mm; font-size
       <p>Hi [name], I'm Lewis Hampton and I run Hampton CV, a local CV writing service. I know many students struggle with their first CV, so I'm offering students 20% off (Starter CVs from £15.20). I'd also be happy to run a free 30-minute "CV basics" talk for a class or careers event. Would that be useful? I can send sample CVs so you can see the quality first.</p>
       <p>Best wishes, Lewis</p></div>
   </div>
-  <div class="folio"><span>Hampton CV · Launch campaign</span><span>06</span></div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>07</span></div>
 </section>
 
-<!-- 7. WORKFLOW -->
+<!-- 8. WORKFLOW -->
 <section class="page">
   <div class="eyebrow">How to deliver it</div>
   <h2>One CV in under an hour, using Claude.</h2>
@@ -400,7 +442,7 @@ If something useful is missing, list questions I should ask them.
 
 [form answers]   [job advert]</div></div></div>
     <div class="step"><div><h3>Edit &amp; check it yourself</h3><p>Read every line. Ask the customer the questions Claude flagged. Put the text into your Canva or Google Docs CV template and export Word + PDF.</p></div></div>
-    <div class="step"><div><h3>Deliver, then follow up</h3><p>Send the files with a short note on how to tailor it for each job. Two days later, send the review request (page 6).</p></div></div>
+    <div class="step"><div><h3>Deliver, then follow up</h3><p>Send the files with a short note on how to tailor it for each job. Two days later, send the review request (page 7).</p></div></div>
   </div>
 
   <h3 style="margin-top:6mm">Quality checklist before sending</h3>
@@ -414,10 +456,10 @@ If something useful is missing, list questions I should ask them.
     <li>No photo, age, date of birth or marital status</li>
     <li>Customer's data deleted after 3 months, and they've been told</li>
   </ul>
-  <div class="folio"><span>Hampton CV · Launch campaign</span><span>07</span></div>
+  <div class="folio"><span>Hampton CV · Launch campaign</span><span>08</span></div>
 </section>
 
-<!-- 8. FLYER -->
+<!-- 9. FLYER -->
 <section class="page flyer">
   <div class="top">
     <div>
